@@ -111,8 +111,9 @@ class AuthController extends Controller
         }
         else if($data['type'] == 2){
             Healthcare::create([
-            'name' => $data['email'],
+            'name' => $data['name'],
             'user_id' => $user['id'],
+            'email' =>  $data['email'],
             'country_id' => $data['country'],
             'state_id' => $data['state'],
             'city_id' => $data['city'],

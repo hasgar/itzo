@@ -127,7 +127,7 @@
 										<i class="icons8-search lp-search-icon"></i>
 									</div>
 									<div class="clearfix"></div> <!-- ../clearfix -->
-									<input type="hidden" name="country" class="country-sel" value="1">
+									<input type="hidden" name="country" class="country-sel" value="101">
 									<input type="hidden" name="state"  class="state-sel" value="1">
 									<input type="hidden" name="city" class="city-sel" value="1">
 									<input type="hidden" name="type" class="type-sel" value="1">

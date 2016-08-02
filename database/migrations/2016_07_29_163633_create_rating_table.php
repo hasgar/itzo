@@ -18,6 +18,7 @@ class CreateRatingTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('healthcare_id')->unsigned();
             $table->text('message');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

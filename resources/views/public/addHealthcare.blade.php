@@ -220,7 +220,7 @@
 										</div>
 										
 										<div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
-											<label for="description">Description</label>
+											<label for="description">About Healthcare</label>
 											<textarea type="description" class="form-control" name="description" id="description">{{ old('description') }}</textarea>
 											@if ($errors->has('description'))
 												<span class="help-block">

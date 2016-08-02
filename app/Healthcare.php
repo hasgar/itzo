@@ -10,5 +10,8 @@ class Healthcare extends Model
         'id', 'created_at', 'updated_at',
     ];
       protected $table = 'healthcare';
-    
+    public function rating()
+  {
+    return $this->hasMany('App\Ratings', 'healthcare_id', 'id');
+  }
 }

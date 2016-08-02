@@ -15,6 +15,7 @@ class CreateHealthcareTable extends Migration
         Schema::create('healthcare', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 150);
+            $table->string('email', 150);
             $table->text('address');
             $table->integer('state_id')->unsigned();
             $table->integer('city_id')->unsigned();

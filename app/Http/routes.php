@@ -17,6 +17,7 @@ Route::post('/getCities', 'LocationController@getCities');
 Route::post('/getStates', 'LocationController@getStates');
 Route::get('/selectHealthcare', 'HealthcareController@selectHealthcare');
 Route::get('/healthcare/{id}/{name}', 'HealthcareController@showHealthcare');
+Route::get('/book/{id}/{name}', 'HealthcareController@bookHealthcare')->middleware('isUser');
 Route::get('/signin', 'UserController@showSignIn');
 Route::get('/signup', 'UserController@showSignUp');
 Route::get('/user/dashboard', 'UserController@dashboard');
@@ -25,3 +26,4 @@ Route::auth();
 
 Route::get('/add-health-care', 'HealthcareController@addHealthcare');
 
+Route::post('/addRating', 'RatingController@addRating');
