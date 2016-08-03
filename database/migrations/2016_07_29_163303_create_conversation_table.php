@@ -16,8 +16,10 @@ class CreateConversationTable extends Migration
             $table->increments('id');
             $table->integer('user_1_id')->unsigned();
             $table->integer('user_2_id')->unsigned();
+            $table->integer('booking_id')->nullable();
             $table->text('message');
             $table->string('ip',40);
+            $table->string('from_user',10)->nullable();
             $table->timestamps();
         });
     }

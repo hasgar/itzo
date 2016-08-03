@@ -1,9 +1,10 @@
 @extends('public.layouts.master')
 
-@section('title', 'Sign In - Chikitzo')
+@section('title', 'Book Health Care')
 
 
 @section('content')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 <div id="page">
 	<!--==================================Header Open=================================-->
 	<header class="">
@@ -20,15 +21,15 @@
 									</li>
 									@else 
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashbaord">Dashboard</a></li>
+									<li><a href="/user/dashboard">Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashbaord">  Dashboard</a></li>
+									<li><a href="/healthcare/dashboard">  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashbaord">  Dashboard</a></li>
+									<li><a href="/admin/dashboard">  Dashboard</a></li>
 									</li>
 									@endif
 									@endif
@@ -65,15 +66,15 @@
 									<li><a href="/signin"><i class="fa fa-user user-plus-icon"></i>  Login</a> / <a href="/signup"><i class="fa fa-user-plus user-plus-icon"></i>  Register</a></li>
 									@else 
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/user/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/healthcare/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/admin/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@endif
@@ -106,43 +107,42 @@
 						<div class="col-md-12">
 							<div class="login-form-popup lp-border-radius-8">
 								<div class="siginincontainer">
+								@if($done == 1) 
+								<h1 class="text-center">Success!</h1>
+								<div class="alert alert-success margin-top-20">Your booking has been made successfully!
+</div>
+
+									
+									@else
 									<h1 class="text-center">Book Health Care</h1>
-									<form class="form-horizontal margin-top-30" role="form" method="POST" action="{{ url('/login') }}">
+									<form class="form-horizontal margin-top-30" role="form" method="POST" action="/booked">
 										{{ csrf_field() }}
-										<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-											<label for="siusername">Email Address *</label>
-											<input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}"/>
-										@if ($errors->has('email'))
+										<div class="form-group {{ $errors->has('dateOfBook') ? ' has-error' : '' }}">
+											<label for="dateOfBook">Date of booking *</label>
+											<input type="text" class="form-control" id="dateOfBook" name="dateOfBook" value="{{ old('dateOfBook') }}"/>
+										@if ($errors->has('dateOfBook'))
 											<span class="help-block">
-												<strong>{{ $errors->first('email') }}</strong>
+												<strong>{{ $errors->first('dateOfBook') }}</strong>
 											</span>
 										@endif
 										</div>
-										<div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-											<label for="password">Password *</label>
-											<input type="password" class="form-control" id="password" name="password"/>
-											@if ($errors->has('password'))
+										<div class="form-group {{ $errors->has('message') ? ' has-error' : '' }}">
+											<label for="message">Message</label>
+											<textarea type="message" class="form-control" id="message" name="message"/>{{ old('dateOfBook') }}</textarea>
+											@if ($errors->has('message'))
 												<span class="help-block">
-													<strong>{{ $errors->first('password') }}</strong>
+													<strong>{{ $errors->first('message') }}</strong>
 												</span>
 											@endif
 										</div>
-										<div class="form-group">
-											<div class="checkbox pad-bottom-10">
-												<input id="check1" type="checkbox" name="remember">
-												<label for="check1">Keep me signed in</label>
-											</div>
-										</div>
 										
+										<input type="hidden" value="{{ $healthcare[0]['id'] }}" name="id" >
 										<div class="form-group">
-											<input type="submit" value="Sign in" class="lp-secondary-btn width-full btn-first-hover" /> 
+											<input type="submit" value="Book Now" class="lp-secondary-btn width-full btn-first-hover" /> 
 										</div>
 									</form>	
 									<div class="pop-form-bottom">
-										<div class="bottom-links">
-											<a  href="/signup">Not a member? Sign up</a>
-											<a  href="/password/reset" class="pull-right">Forgot Password</a>
-										</div>
+										@endif
 
 									</div>
 								<a class="md-close"><i class="fa fa-close"></i></a>

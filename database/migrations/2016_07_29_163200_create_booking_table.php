@@ -18,6 +18,7 @@ class CreateBookingTable extends Migration
             $table->integer('user_id')->unsigned();
            $table->text('message');
            $table->date('date');
+           $table->boolean('is_confirmed')->default(0);
             $table->timestamps();
         });
     }

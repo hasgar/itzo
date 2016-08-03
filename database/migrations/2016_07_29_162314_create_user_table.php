@@ -21,6 +21,7 @@ class CreateUserTable extends Migration
             $table->integer('country_id')->unsigned();
             $table->string('pin', 25)->nullable();
             $table->string('mobile', 20)->nullable();
+            $table->string('email', 150)->nullable();
             $table->timestamps();
         });
     }

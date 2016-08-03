@@ -23,6 +23,6 @@ class isUser
             return $next($request);
         }
         }
-        return "no permission";
+    return redirect('/noPermission');
     }
 }

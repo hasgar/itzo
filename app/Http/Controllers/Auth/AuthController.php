@@ -11,6 +11,7 @@ use Auth;
 use Sentinel;
 use App\Users;
 use App\Healthcare;
+use App\HealthcareTypes;
 class AuthController extends Controller
 {
     /*
@@ -91,7 +92,7 @@ class AuthController extends Controller
     {
        
         $user = User::create([
-            'name' => $data['email'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -99,7 +100,9 @@ class AuthController extends Controller
             Users::create([
             'name' => $data['email'],
             'user_id' => $user['id'],
+            'email' => $user['email'],
             'country_id' => $data['country'],
+            'mobile' => $data['mobile'],
             'state_id' => $data['state'],
             'city_id' => $data['city'],
         ]);
@@ -110,7 +113,7 @@ class AuthController extends Controller
             $role->users()->attach($user1);
         }
         else if($data['type'] == 2){
-            Healthcare::create([
+           $healthcare = Healthcare::create([
             'name' => $data['name'],
             'user_id' => $user['id'],
             'email' =>  $data['email'],
@@ -121,8 +124,13 @@ class AuthController extends Controller
             'pin' => $data['pin'],
             'mobile' => $data['mobile'],
             'phone' => $data['phone'],
+            'price' => $data['price'],
             'description' => $data['description'],
             'payment_till' => '2016-12-31',
+        ]);
+        HealthcareTypes::create([
+            'type_id' => $data['treatment_type'],
+            'healthcare_id' => $healthcare['id']
         ]);
             $user1 = Sentinel::findById($user['id']);
 

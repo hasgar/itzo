@@ -20,15 +20,15 @@
 									</li>
 									@else 
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashbaord">Dashboard</a></li>
+									<li><a href="/user/dashboard">Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashbaord">  Dashboard</a></li>
+									<li><a href="/healthcare/dashboard">  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashbaord">  Dashboard</a></li>
+									<li><a href="/admin/dashboard">  Dashboard</a></li>
 									</li>
 									@endif
 									@endif
@@ -143,6 +143,38 @@
 											@if ($errors->has('password_confirmation'))
 												<span class="help-block">
 													<strong>{{ $errors->first('password_confirmation') }}</strong>
+												</span>
+											@endif
+										</div>
+										<div class="form-group {{ $errors->has('treatment_type') ? ' has-error' : '' }}">
+											<label for="treatment_type">Type of Treatment *</label>
+											<select type="treatment_type" class="form-control" id="treatment_type" name="treatment_type">
+<option value="0">Select your treatment type</option>
+@foreach ($types as $type)
+										<option value="{{$type['id']}}">{{$type['name']}}</option>
+										@endforeach
+</select>
+											@if ($errors->has('treatment_type'))
+												<span class="help-block">
+													<strong>{{ $errors->first('treatment_type') }}</strong>
+												</span>
+											@endif
+										</div>
+										<div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
+											<label for="price">Price Category *</label>
+											<select type="price" class="form-control" id="price" name="price">
+<option value="0">Select your price category</option>
+<option value="5">$$$$$</option>
+<option value="4">$$$$</option>
+<option value="3">$$$</option>
+<option value="2">$$</option>
+<option value="1">$</option>
+								
+									
+</select>
+											@if ($errors->has('price'))
+												<span class="help-block">
+													<strong>{{ $errors->first('price') }}</strong>
 												</span>
 											@endif
 										</div>

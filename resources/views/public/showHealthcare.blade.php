@@ -35,15 +35,15 @@
 									</li>
 									@else 
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashbaord">Dashboard</a></li>
+									<li><a href="/user/dashboard">Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashbaord">  Dashboard</a></li>
+									<li><a href="/healthcare/dashboard">  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashbaord">  Dashboard</a></li>
+									<li><a href="/admin/dashboard">  Dashboard</a></li>
 									</li>
 									@endif
 									@endif
@@ -63,15 +63,15 @@
 									<li><a href="/signin"><i class="fa fa-user user-plus-icon"></i>  Login</a> / <a href="/signup"><i class="fa fa-user-plus user-plus-icon"></i>  Register</a></li>
 									@else 
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/user/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/healthcare/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/admin/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@endif
@@ -135,14 +135,16 @@
 									</span>
 								</li>
 								<li>
-									
+									@if(isset($healthcare[0]['website']))
 									<span class="website-link-icon">
 										<!-- Globe icon by Icons8 -->
 										<img class="icon icons8-Globe" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAGhklEQVRoQ91ai3EUORBVywGciQATASYCmwiwIwAiwCSgkZTA4QgwERgiwERwJgJMBOcLwOqrp2rN9Wg134UqjqlyuXZ2Z9RP/brVei0yP+jy3h+llE6I6NgYg78j+dMj3OADM+P/nbX2i/f+7keYQPu8RIx/SUSvGkYvffUtM19Zaz/tA2oTEABg5s4YAwD5YuZ/iOgP9fmDtfYjM1/jHhGdp5TOiOjl2DPGmCsiClsArQLivT9k5j8rAMXgF7gPQNbaV977jzC46zrG/xBCHst7f5ZSgsEAjf+faoBy/633/n6pWxcDgQHM/N4YcygeAACP2fPeXwCggDj13t8WA2ogAuY4pXQDMEQEg98JTb3y2D0RvS4TMgdoEZCu6+CFCwHwRWY8B6nQ7FuhTz1wC0jxjKLdk0InAQRPnYjx70IIb/cCIlQCx0/F0Dx7+qVd133G98x8GWPMYKvvB9TS3znn3hHRG2PMTQjhuf4OXk4pwUOg4EfxzijVRj0iIGDkcYsyelbl+6MWp8c8Is8fppTuhGLntTe99z0FjTG3RPR8LG5GgaiZRvAOeK/4n70hs3XVcv8UEAGDBIHY2/FKHU/wTAjhvDVOE4hyOdKqt9Ze1jPhvQedPsMbMcacALYAwTPOOQQ2Av+ZThTKa2+IyEuMNim8A0SyU8796gI3EYAfykDOOXx+ycwhxpgH2QNIjhVm/hBjzGsTaMXMWHPweTBRWJNqGg6ASFwgAx0iLaKMSCldqAyCMZCtsEbkAYiozzhbgajMlyfMGHOmKwVmRqbEZAEcMig8iHH74B8AUbP8JcaYM5XMzikWLQxARI8rg7Fm3Jf6iZlzWj44OPiOlKpjBAY/PDzk54kIs3wstRnqMtRn/cXM3zFh1torTTfnHNafE+29/D5lLMqOb5KBjsfKBMkkoNXTMTrtc5+Zv8o61S+q+n2yziCDIaZ6NvRAlDd6nk7w/i+ZTeR+uBeVb6l6C5+Pau/JLJdqF8/dWmthMO6h/EEWvA0hPJuajJatpf7J3hCXT3Je4uhv/LbUT1ODzqVf/Wz5LRE9mqqzqmoi25uBOOewgnY171oGqrT7NcY44PXWYC/POedAmaey8OW9y9hVvFJqtQyk6zp4A1TYSWv1i1SBOEtBefdoiVK/2zmHUuRFMW4KiFom7kIIT0i7aQlVlPcm149ixBpqbX03gh5AconAzJ9ijEixk1dJf0u8t9YjG2wpHnxNpRyZW6EVj3MeX8LjDUBK2TNYxybipMT2JYAUw2bjQxLDLwOkxAlWflKBjhJ5MlOsneG1v1+b2ksGxToEIDmrzOXuLcG7Fsja32vgPZC5IP/Vv//9gPzvqeWcw5758c9Ip/twfsnirMql7zr9LspaKl0v+v2alV0ZtmgdGaTf32ZB3FAWrFpAV3oEaub1inLpvxLltykapewoAT9bpvxqZTx2nTHGo7JDLCL07B5DlQWzW9K1Wavrun4LPVcuNTdWra3j2Eq+th5aEyNLy6XRra7Qqwhus17RW1KIDyklSDxF2unFh0YXCyJDLz4wM4QHCBCQfrL4ABVlbgs9Kj4AiBbJRLps9vZEAYRWO7tf31ifYd+OvsioHNQSSpoCXS0oS1xAvoRoBzGtvzCDMstF2inqHxpAOwKdeh4SEt6Fd0KxrHUyTCRSPWTafnuhxPUBc3YkUyXzQzJFoxK9wl51LAogJNNaJGt5YEmMFDZAHCySaaWJAVAokmmrjbFIxC4DaPlS8bSpjq/Zv6jqYiBip5SgL+cJ05M0K2KrfXnpJKGtEKy16PENukUSK0iX9yGER2PxsMQjXddB8AO9xtoK2JujswV7lrUVapFBlG8UiDvBpwpIBOdejR7su7VwXuyQCYOUiqw2qvRMtt6k84oghIy/A0aJZDsy/xJqVW2MZutN9GCAgLiNzlmzjzjZ1cVAKSUUZuiwonXgY4yXmkZK5t/cDG15wzmHLlVuvMITotCvb4ZWxvYxIykRVPpp7WnpKeZMORYTdUwu6rPLgqlPLOBWf9yiFJItCo4dGCiU0QcG9LGQ+gTF3OK6GIiAAdXgnf48CQAxM1px53J/cGKhdYSjnKCA+m+MuZZDOb1ci/vW2oufcoRDz0jjuAW+Bn910zIDJKJ8JoWZ0baDsf1BnPoZAZCPhcx5YDO1Wi8GIPQVpWFa9xYX2YJKAesU+oVbAJRBVlFryjIBhaZpf/BsovVW6rKbfYzX9vwLJ4dMu+kNqhoAAAAASUVORK5CYII=" alt="web-link">
 									</span>
+									
 									<span class="website-link">
 										{{ $healthcare[0]['website'] }}
 									</span>
+									@endif
 								</li>
 							</ul>
 							<div class="padding-top-10">Address: {{ $healthcare[0]['address'] }}</div>
@@ -261,7 +263,7 @@
 							</div>
 							<input type="hidden" name="healthcare_id" value="{{ $healthcare[0]['id'] }}">
 							<div class="form-group margin-bottom-0">
-								<input type="submit" value="Submit Review" class="lp-review-btn btn-second-hover"  />
+								<input type="submit" value="@if (Auth::guest()) Login as User to Submit @else Submit Review @endif" class="lp-review-btn btn-second-hover"  @if (Auth::guest()) disabled @endif/>
 							</div>
 							</form>
 						</div>
@@ -324,14 +326,14 @@
 												<img class="icon icons8-Marker" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAEy0lEQVRoQ91aQXbTShCszgpnQzjB93ABnBMgnwBnGXnx4QSEE8ScAHMCwsLOEucEUk4Q5wSTf4KEDbBK82YykkfG0vRISh7va5X3PJKmurqreloh/E8u6hvHeKHfMDABYQjGARFG5h3MWINwB8YNAatsqi76fHcvQJJzPcQ9TgFMiHAg2SAz7gCssI8P+ZEyf3e6OgNJzvUp7nHiAbhm4AyENe5xl0/V2uwwWegR9nAAxoiAtwBeOabusId5fqw+dkHSGkjyTR/gB7IydYCvIMzyY3Uj2ZBlkTEj4N8y9fYxbstOKyA2urAgTBpdM+EkP1a5BMD2muRcJ8SYG4Zcuo0LFmOeFw3EMaEdiEseYNI2isVGzTPpJ1YAXlsw+1Cxz4wCspVOl1mqkpiohdaOl9qwasCs86k6DK33f48DstAzIqtO1zxAEhu10MYcMwaMSbOP+VTNQvcUv4uBOIm9MinFjMM2eSzZlKuZLDbF5ECW+swoDANf81QZ+Xy0K2nxLjmQhb61bBBUSGJtLf3Ce9xbg9w4+x5WeIbPoZQ07BNDG1byqXohiZgISLLUEwK+mdrIUmU3VnclC23Y+lTn8DZlCO/yVBmVqr3GS22M9BUDR6G15iFSIEVafchTZTR/52VAEOGLM7gL59jWX0zuuw7gjf09sMHECQsDn/NUnYRYEQEpZZEwrjM+31+Y8S6fqrNdLy/Ahoq5KHoAIpkXAUkW2qjVqEmtyggyLvKpmgTSpvCLWok13QMRrqSeIgIyXmo2G8tSVbu+BNvAWgHOk9hG45O8N8pHJA+UrPFZkqyXrPnrgTiXvwX4e5a+DJ5xpKn1kNMNaVPKZURqNcn5oxR7qVoNkunJ5SpP1VGj1yx1RkDS1E956hYUD7mPFJre0Mg9pALfAPS8UX7P9SkxZiZleEDDOpf3VFDUPIpSy3P2Rk331hnDWxEwz1J1aSI2XurXDHsitK1/yBAlWeCzLgPycPC5DUmwdXDbzvCZYWZ3evF3Br1tajs2hQ7wAC9CvZk4tVxExb2Pc3kzkDDGaIcM9gzDdmoyD21MmgHRjLhIzwl4/yRt/EKviGDmY429XTsgLVrrUKO3sxfz0lhyZIgyxGJx6RUNTWGbzfv3eB20qFlsBaTUdiDPUzXuuumdjCy1JmDYJOG77hOpVtnsVb2i93N76ebM/2XTl8OYQEUBeeyiTwSOXwcuHogremtqgvO7NKqb3qrZ8XsD4ljpfaLShY0oQ6woS5WV2uPvU7HRGohlZTMc6KxgyUapRA1iZ9WqsOIrmHBkUyO3JwR8QgulauXsOzfhxj8M3GCAw1APtf2MyuSlQzA6pZbn9sGJSF2tFKNR6cinqeai5fePqLqxjZXjiOF2RW6JRqExbEg4OgOpFL7wu4ZNqZ+4cq1I6wLvrUYqrcsPXoPoH8l3jWSp7ZFAMksOMVH83gsjjhU7GQylmDcdiUrFEKDegGx5y04V21Ip8aEpBKIX1dp+ifc54I+xUNGG9KFS2+/tlRHLim1feG3HQt5RtegEQmMgSfR7dfamF1bGQgR7ACNGZutHMIlsA6Z3Rkol2wz17P+ZuI+ovUjtkzHigbHTEKdkotFnGzYepdj9jXjfzc2grffv8r0bYtso9nnfb8uVHmDpOaieAAAAAElFTkSuQmCC" alt="map-marker">
 											</span>
 											<span class="phone-number ">
-												<a href="https://www.google.co.in/maps/place/{{urlencode($healthcare[0]['name'])."/@".$healthcare[0]['latitude'].",".$healthcare[0]['longtitude']}} ,17z/" target="_blank">View Large Map</a>
+												View in Map
 											</span>
 										</a>
 									</li>
 								</ul><!-- ../post-stat -->
 							</div>
 							<div class="widget-content ">
-								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.0288221877845!2d{{$healthcare[0]['latitude']."!3d".$healthcare[0]['longtitude']}}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba6594f7679313b%3A0xa67a3de6339d0466!2sBaby+Memorial+Hospital!5e0!3m2!1sen!2sin!4v1470127222200" width="300" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+								<iframe src="https://www.google.com/maps?q={{$healthcare[0]['latitude']}},{{$healthcare[0]['longtitude']}}&hl=es;z%3D16&amp;output=embed" width="300" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe>
 							</div>
 						</div><!-- ../widget-box  -->
 <div class="widget-box widget-bg-color widget-categories lp-border-radius-5">

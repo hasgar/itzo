@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
 use App\Ratings;
+use App\Healthcare;
 use Auth;
 class RatingController extends Controller
 {
@@ -39,6 +40,7 @@ class RatingController extends Controller
             'message' => $request['message'],
             'healthcare_id' =>  $request['healthcare_id'],
         ]);
-    return redirect('/healthcare/2/asdsad');
+    
+    return redirect('/healthcare/'.Healthcare::where('id',$request['healthcare_id'])->pluck('id')[0].'/'.urlencode(Healthcare::where('id',$request['healthcare_id'])->pluck('name')[0]));
   }
 }

@@ -20,15 +20,15 @@
 									</li>
 									@else 
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashbaord">Dashboard</a></li>
+									<li><a href="/user/dashboard">Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashbaord">  Dashboard</a></li>
+									<li><a href="/healthcare/dashboard">  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashbaord">  Dashboard</a></li>
+									<li><a href="/admin/dashboard">  Dashboard</a></li>
 									</li>
 									@endif
 									@endif
@@ -65,15 +65,15 @@
 									<li><a href="/signin"><i class="fa fa-user user-plus-icon"></i>  Login</a> / <a href="/signup"><i class="fa fa-user-plus user-plus-icon"></i>  Register</a></li>
 									@else 
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/user/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/healthcare/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/admin/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@endif
@@ -198,7 +198,7 @@
 								<div class="lp-grid-box-thumb-container">
 									<div class="lp-grid-box-thumb">
 										<a href="/healthcare/{{ $health['id'] }}/{{ urlencode($health['name']) }}">
-										<img src="images/grid/grid-8.png" alt="grid-3" />
+										<img src="images/grid/{{ $health['pro_pic'] }}" alt="grid-3" />
 									</a>
 									</div><!-- ../grid-box-thumb -->
 
@@ -211,7 +211,7 @@
 									</h4>
 									<p>
 										<i class="fa fa-map-marker"></i>
-										<span>{{ $health['address'] }}</span>
+										<span>{{ $health['city'][0]['name'] }}</span>
 									</p>
 									<ul class="lp-grid-box-price">
 										<li class="category-cion"><a href="/healthcare/{{ $health['id'] }}/{{ urlencode($health['name']) }}">
@@ -223,6 +223,7 @@
 								</div><!-- ../grid-box-description-->
 								<div class="lp-grid-box-bottom">
 									<div class="pull-left">
+									@if(count($health['rating']) > 0)
 										@for($i=0;$i<$health['rating'][0]['rating'];$i++)
 										<i class="fa fa-star"></i>
 										@endfor
@@ -230,6 +231,9 @@
 										<i class="fa fa-star-o"></i>
 										@endfor
 										<span class="rating-ratio">{{$health['rating'][0]['rating']}}</span>
+								  @else
+								   <span class="rating-ratio">Never rated</span>
+								  @endif
 									</div>
 									<div class="pull-right">
 										@for($i=0;$i<$health['price'];$i++)

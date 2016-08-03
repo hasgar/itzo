@@ -14,4 +14,8 @@ class Healthcare extends Model
   {
     return $this->hasMany('App\Ratings', 'healthcare_id', 'id');
   }
+  public function city()
+  {
+    return $this->hasMany('App\Cities', 'id', 'city_id');
+  }
 }
