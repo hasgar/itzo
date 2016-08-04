@@ -34,6 +34,7 @@ class CreateHealthcareTable extends Migration
             $table->text('description')->nullable();
             $table->integer('price')->nullable();
             $table->integer('user_id')->unsigned();
+            $table->boolean('certificate')->nullable();
             $table->date('payment_till')->default('0000-00-00');
             $table->boolean('is_approved')->default(0);
             $table->boolean('status')->default(1);

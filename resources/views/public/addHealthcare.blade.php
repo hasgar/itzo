@@ -112,7 +112,7 @@
                        					 {{ csrf_field() }}
 										<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 											<label for="name">Health Care Name *</label>
-											<input type="name" class="form-control" name="name" id="name" value="{{ old('name') }}">
+											<input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
 											@if ($errors->has('name'))
 												<span class="help-block">
 													<strong>{{ $errors->first('name') }}</strong>
@@ -148,7 +148,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('treatment_type') ? ' has-error' : '' }}">
 											<label for="treatment_type">Type of Treatment *</label>
-											<select type="treatment_type" class="form-control" id="treatment_type" name="treatment_type">
+											<select class="form-control" id="treatment_type" name="treatment_type">
 <option value="0">Select your treatment type</option>
 @foreach ($types as $type)
 										<option value="{{$type['id']}}">{{$type['name']}}</option>
@@ -162,7 +162,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
 											<label for="price">Price Category *</label>
-											<select type="price" class="form-control" id="price" name="price">
+											<select  class="form-control" id="price" name="price">
 <option value="0">Select your price category</option>
 <option value="5">$$$$$</option>
 <option value="4">$$$$</option>
@@ -178,9 +178,21 @@
 												</span>
 											@endif
 										</div>
+										<div class="form-group {{ $errors->has('certificate') ? ' has-error' : '' }}">
+											<label for="certificate">Do you have certification ?</label>
+											<select  class="form-control" id="certificate" name="certificate">
+<option value="1">Yes</option>
+<option value="0">No</option>
+</select>
+											@if ($errors->has('certificate'))
+												<span class="help-block">
+													<strong>{{ $errors->first('certificate') }}</strong>
+												</span>
+											@endif
+										</div>
 										<div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}">
 											<label for="country">Country *</label>
-											<select type="country" class="form-control" id="country" name="country">
+											<select  class="form-control" id="country" name="country">
 <option value="0">Select your country</option>
 @foreach ($countries as $country)
 										<option value="{{$country['id']}}">{{$country['name']}}</option>
@@ -194,18 +206,18 @@
 										</div>
 										<div class="form-group {{ $errors->has('state') ? ' has-error' : '' }}">
 											<label for="state">State *</label>
-											<select type="state" class="form-control" id="state" name="state">
+											<select class="form-control" id="state" name="state">
 <option value="0">Select your state</option>
 </select>
 											@if ($errors->has('state'))
 												<span class="help-block">
-													<strong>{{ $errors->first('country') }}</strong>
+													<strong>{{ $errors->first('state') }}</strong>
 												</span>
 											@endif
 										</div>
 										<div class="form-group {{ $errors->has('city') ? ' has-error' : '' }}">
 											<label for="city">City *</label>
-											<select type="city" class="form-control" id="city" name="city">
+											<select class="form-control" id="city" name="city">
 <option value="0">Select your city</option>
 </select>
 											@if ($errors->has('city'))
@@ -216,7 +228,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
 											<label for="address">Address *</label>
-											<textarea type="address" class="form-control" name="address" id="address">{{ old('address') }}</textarea>
+											<textarea class="form-control" name="address" id="address">{{ old('address') }}</textarea>
 											@if ($errors->has('address'))
 												<span class="help-block">
 													<strong>{{ $errors->first('address') }}</strong>
@@ -225,7 +237,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('pin') ? ' has-error' : '' }}">
 											<label for="pin">Pin *</label>
-											<input type="pin" class="form-control" name="pin" id="pin" value="{{ old('pin') }}">
+											<input type="text" class="form-control" name="pin" id="pin" value="{{ old('pin') }}">
 											@if ($errors->has('pin'))
 												<span class="help-block">
 													<strong>{{ $errors->first('pin') }}</strong>
@@ -253,10 +265,37 @@
 										
 										<div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
 											<label for="description">About Healthcare</label>
-											<textarea type="description" class="form-control" name="description" id="description">{{ old('description') }}</textarea>
+											<textarea class="form-control" name="description" id="description">{{ old('description') }}</textarea>
 											@if ($errors->has('description'))
 												<span class="help-block">
 													<strong>{{ $errors->first('description') }}</strong>
+												</span>
+											@endif
+										</div>
+										<div class="form-group {{ $errors->has('photo_1') ? ' has-error' : '' }}">
+											<label for="photo_1">Photo 1 </label>
+											<input type="file" class="form-control" name="photo_1" id="photo_1" value="{{ old('photo_1') }}">
+											@if ($errors->has('photo_1'))
+												<span class="help-block">
+													<strong>{{ $errors->first('photo_1') }}</strong>
+												</span>
+											@endif
+										</div>
+										<div class="form-group {{ $errors->has('photo_2') ? ' has-error' : '' }}">
+											<label for="photo_2">Photo 2 </label>
+											<input type="file" class="form-control" name="photo_2" id="photo_2" value="{{ old('photo_2') }}">
+											@if ($errors->has('photo_2'))
+												<span class="help-block">
+													<strong>{{ $errors->first('photo_2') }}</strong>
+												</span>
+											@endif
+										</div>
+										<div class="form-group {{ $errors->has('photo_3') ? ' has-error' : '' }}">
+											<label for="photo_3">Photo 3</label>
+											<input type="file" class="form-control" name="photo_3" id="photo_3" value="{{ old('photo_3') }}">
+											@if ($errors->has('photo_3'))
+												<span class="help-block">
+													<strong>{{ $errors->first('photo_3') }}</strong>
 												</span>
 											@endif
 										</div>

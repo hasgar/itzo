@@ -60,7 +60,7 @@ trait RegistersUsers
             );
         }
 
-        Auth::guard($this->getGuard())->login($this->create($request->all()));
+        Auth::guard($this->getGuard())->login($this->create($request->all(),$request));
 
         return redirect($this->redirectPath());
     }

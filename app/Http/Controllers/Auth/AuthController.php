@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -11,6 +10,7 @@ use Auth;
 use Sentinel;
 use App\Users;
 use App\Healthcare;
+use App\Photos;
 use App\HealthcareTypes;
 class AuthController extends Controller
 {
@@ -88,9 +88,9 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    protected function create(array $data, $request)
     {
-       
+      
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -113,10 +113,11 @@ class AuthController extends Controller
             $role->users()->attach($user1);
         }
         else if($data['type'] == 2){
-           $healthcare = Healthcare::create([
+            $healthcare = Healthcare::create([
             'name' => $data['name'],
             'user_id' => $user['id'],
             'email' =>  $data['email'],
+            'certificate' =>  $data['certificate'],
             'country_id' => $data['country'],
             'state_id' => $data['state'],
             'city_id' => $data['city'],
@@ -128,6 +129,30 @@ class AuthController extends Controller
             'description' => $data['description'],
             'payment_till' => '2016-12-31',
         ]);
+            for($i=1;$i<4;$i++){
+                if($request->hasFile('photo_'.$i)){
+               
+            $extension = $request->file('photo_'.$i)->getClientOriginalExtension();
+            $destinationPath = '/images/healthcare/';
+            $fileName = str_replace(" ","",uniqid('img_'.$or['id'].'_', true).microtime().'.'.$extension);
+            if($request->file('photo_'.$i)->move($destinationPath, $fileName))
+            {
+              $photos = Photos::create([
+            'healthcare_id' => $healthcare['id'],
+            'photo_url' => $fileName,
+           ]);
+            }
+            else {
+              return [
+                'status' => 'error',
+                'message' => 'image_upload',
+                'errors' => 'photo upload failed'
+            ];
+            }
+            }
+            }
+
+
         HealthcareTypes::create([
             'type_id' => $data['treatment_type'],
             'healthcare_id' => $healthcare['id']
