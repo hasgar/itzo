@@ -98,7 +98,7 @@ class AuthController extends Controller
         ]);
         if($data['type'] == 1){
             Users::create([
-            'name' => $data['email'],
+            'name' => $data['name'],
             'user_id' => $user['id'],
             'email' => $user['email'],
             'country_id' => $data['country'],
@@ -133,8 +133,8 @@ class AuthController extends Controller
                 if($request->hasFile('photo_'.$i)){
                
             $extension = $request->file('photo_'.$i)->getClientOriginalExtension();
-            $destinationPath = '/images/healthcare/';
-            $fileName = str_replace(" ","",uniqid('img_'.$or['id'].'_', true).microtime().'.'.$extension);
+            $destinationPath = 'images/healthcare/';
+            $fileName = str_replace(" ","",uniqid('img_'.$healthcare['id'].'_', true).microtime().'.'.$extension);
             if($request->file('photo_'.$i)->move($destinationPath, $fileName))
             {
               $photos = Photos::create([

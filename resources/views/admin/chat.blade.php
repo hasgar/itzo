@@ -109,7 +109,7 @@
 									<h1 class="text-center">Chat</h1>
 
 									
-									<form class="form-horizontal margin-top-30" role="form" method="POST" action="{{ url('/user/chatSend') }}">
+									<!--<form class="form-horizontal margin-top-30" role="form" method="POST" action="{{ url('/healthcare/chatSend') }}">
 										{{ csrf_field() }}
 										<input type="hidden" value="{{$booking[0]['id']}}" name="id" >
 										<div class="col-md-10"><div class="form-group {{ $errors->has('message') ? ' has-error' : '' }}">
@@ -126,17 +126,17 @@
 											<input type="submit" class="btn btn-warning chat-send" value="Send" class="btn btn-warning" /> 
 										</div>
 										</div>
-									</form>	
+									</form>	-->
 									<div class="chat-box">
 									@foreach($chat as $c)
 									@if($c['from_user'] == 'user')
-									<div class="alert alert-success">
-  <strong>You:</strong> {{$c['message']}}
+									<div class="alert alert-warning">
+  <strong>User:</strong> {{$c['message']}}
 </div>
 @endif
 @if($c['from_user'] == 'healthcare')
-									<div class="alert alert-warning">
-  <strong>They:</strong> {{$c['message']}}
+									<div class="alert alert-success">
+  <strong>Healthcare:</strong> {{$c['message']}}
 </div>
 @endif
 @if($c['from_user'] == 'admin')

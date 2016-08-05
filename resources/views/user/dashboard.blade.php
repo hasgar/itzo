@@ -99,7 +99,22 @@
 	<!--==================================Section Open=================================-->
 	<section class="aliceblue">
 			<div class="dashboard-tabs">
-				
+				<div class="container">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active">
+							<a href="#" role="tab" data-toggle="tab">
+								Your Bookings
+							</a>
+						</li>
+						
+						<li>
+							<a href="/user/settings" role="tab" data-toggle="tab">
+								Account Settings
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<div class="container">
 				<!-- Tab panes -->
@@ -167,6 +182,13 @@
 																</span>
 																<span class="lp-list-sp-text">
 																	Cancelled by Healthcare
+																</span>
+																@elseif($book['is_confirmed'] == 4)
+																<span class="lp-list-sp-icon">
+																	<i class="fa fa-close"></i>
+																</span>
+																<span class="lp-list-sp-text">
+																	Cancelled by Admin
 																</span>
 																@elseif($book['is_confirmed'] == 3)
 																<span class="lp-list-sp-icon">

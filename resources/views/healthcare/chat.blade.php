@@ -139,6 +139,11 @@
   <strong>You:</strong> {{$c['message']}}
 </div>
 @endif
+@if($c['from_user'] == 'admin')
+									<div class="alert alert-info">
+  <strong>You:</strong> {{$c['message']}}
+</div>
+@endif
 @endforeach
 									</div>
 									<div class="pop-form-bottom">

@@ -1,9 +1,10 @@
 @extends('public.layouts.master')
 
-@section('title', 'Chat - Chikitzo')
+@section('title', 'Book Health Care')
 
 
 @section('content')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 <div id="page">
 	<!--==================================Header Open=================================-->
 	<header class="">
@@ -85,10 +86,10 @@
 		</div><!-- ../menu-bar -->
 		<div class="page-heading listing-page archive-page ">
 			<div class="page-heading-inner-container text-center">
-				<h1>Chat</h1>
+				<h1>Book Health Care</h1>
 				<ul class="breadcrumbs">
 					<li><a href="/">Home</a></li>
-					<li><span>Chat</span></li>
+					<li><span>Book Health Care</span></li>
 				</ul>
 			</div>
 			<div class="page-header-overlay"></div>
@@ -105,50 +106,20 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="login-form-popup lp-border-radius-8">
-								<div class="siginincontainer chat-window">
-									<h1 class="text-center">Chat</h1>
+								<div class="siginincontainer">
+								 
+								<h1 class="text-center">@if($status == 0) Error! @else Success! @endif</h1>
+								<div class="alert @if($status == 1) alert-success @else alert-danger @endif margin-top-20">@if($status == 1) Your @if($type == 'password') password @else email @endif has been changed successfully! @else You entered wrong password @endif
+</div>
 
 									
-									<form class="form-horizontal margin-top-30" role="form" method="POST" action="{{ url('/user/chatSend') }}">
-										{{ csrf_field() }}
-										<input type="hidden" value="{{$booking[0]['id']}}" name="id" >
-										<div class="col-md-10"><div class="form-group {{ $errors->has('message') ? ' has-error' : '' }}">
-											<input type="text" class="form-control chat-msg" placeholder="Type your message" id="message" name="message" value="{{ old('message') }}"/>
-										@if ($errors->has('email'))
-											<span class="help-block">
-												<strong>{{ $errors->first('email') }}</strong>
-											</span>
-										@endif
+									
+<div class="pop-form-bottom">
+										<div class="bottom-links" align="center">
+											<a href="{{$back}}"><i class="fa fa-chevron-left"></i> Go back to dashboard</a>
 										</div>
-										</div>
-										<div class="col-md-2">
-										<div class="form-group">
-											<input type="submit" class="btn btn-warning chat-send" value="Send" class="btn btn-warning" /> 
-										</div>
-										</div>
-									</form>	
-									<div class="chat-box">
-									@foreach($chat as $c)
-									@if($c['from_user'] == 'user')
-									<div class="alert alert-success">
-  <strong>You:</strong> {{$c['message']}}
-</div>
-@endif
-@if($c['from_user'] == 'healthcare')
-									<div class="alert alert-warning">
-  <strong>They:</strong> {{$c['message']}}
-</div>
-@endif
-@if($c['from_user'] == 'admin')
-									<div class="alert alert-info">
-  <strong>You:</strong> {{$c['message']}}
-</div>
-@endif
-@endforeach
+										
 									</div>
-									<div class="pop-form-bottom">
-									
-
 									</div>
 								<a class="md-close"><i class="fa fa-close"></i></a>
 								</div>

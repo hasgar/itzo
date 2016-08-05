@@ -77,7 +77,7 @@ class HealthcareController extends Controller
        
             $healthcare = Healthcare::where('id', $request['id'])->get();
             $booking = Booking::create(['healthcare_id' => $request['id'],
-            'user_id' => Auth::user()->id, 
+            'user_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0], 
             'message' => $request['message'], 
             'date' => $request['dateOfBook'],
             'is_confirmed' => 0,
@@ -125,6 +125,18 @@ class HealthcareController extends Controller
             'ip' => $_SERVER["REMOTE_ADDR"],
             'booking_id' => $request->id,
             'from_user' => 'healthcare',
+            ]);
+        return redirect('/healthcare/dashboard');
+    }
+    public function aCancelBook(Request $request){
+        $booking = Booking::where('id',$request->id)->where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->update(['is_confirmed' => 4]);
+        $booking = Booking::where('id',$request->id)->get();
+        Conversation::create(['user_1_id' => $booking[0]['user_id'],
+            'user_2_id' => $booking[0]['healthcare_id'], 
+            'message' => "Booking #CH".$request->id." Cancelled by Admin",  
+            'ip' => $_SERVER["REMOTE_ADDR"],
+            'booking_id' => $request->id,
+            'from_user' => 'admin',
             ]);
         return redirect('/healthcare/dashboard');
     }

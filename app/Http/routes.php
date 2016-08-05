@@ -31,10 +31,35 @@ Route::post('/addRating', 'RatingController@addRating');
 Route::get('/user/cancel/{id}/{name}', 'HealthcareController@cancelBooking')->middleware('isUser');
 Route::get('/user/chat/{id}/{name}', 'UserController@chat')->middleware('isUser');
 Route::post('/user/chatSend', 'UserController@chatSend')->middleware('isUser');
-
+Route::get('/admin/chat/{id}/{name}/{healthcare}', 'UserController@aChat')->middleware('isAdmin');
 Route::get('/noPermission', 'UserController@noPermission');
 Route::get('/healthcare/dashboard', 'UserController@hDashboard')->middleware('isHealthcare');
+Route::get('/admin/dashboard', 'UserController@aDashboard')->middleware('isAdmin');
+Route::get('/admin/users', 'UserController@aUsers')->middleware('isAdmin');
+Route::get('/admin/settings', 'UserController@aSettings')->middleware('isAdmin');
+Route::get('/user/settings', 'UserController@uSettings')->middleware('isUser');
+Route::get('/healthcare/settings', 'UserController@hSettings')->middleware('isHealthcare');
+Route::get('/admin/block/{id}/{name}', 'UserController@block')->middleware('isAdmin');
+Route::get('/admin/bookings/{id}/{name}', 'UserController@userBookings')->middleware('isAdmin');
+Route::get('/admin/unblock/{id}/{name}', 'UserController@unblock')->middleware('isAdmin');
 Route::get('/healthcare/cancel/{id}/{name}', 'HealthcareController@cancelBook')->middleware('isHealthcare');
 Route::get('/healthcare/confirm/{id}/{name}', 'HealthcareController@confirmBook')->middleware('isHealthcare');
 Route::get('/healthcare/chat/{id}/{name}', 'UserController@hChat')->middleware('isHealthcare');
 Route::post('/healthcare/chatSend', 'UserController@hChatSend')->middleware('isHealthcare');
+
+Route::post('/admin/updateEmail', 'UserController@aUpdateEmail')->middleware('isAdmin');
+Route::post('/admin/updatePassword', 'UserController@aUpdatePassword')->middleware('isAdmin');
+Route::post('/user/updateEmail', 'UserController@uUpdateEmail')->middleware('isUser');
+Route::post('/user/updatePassword', 'UserController@uUpdatePassword')->middleware('isUser');
+Route::post('/healthcare/updateEmail', 'UserController@hUpdateEmail')->middleware('isHealthcare');
+Route::post('/healthcare/updatePassword', 'UserController@hUpdatePassword')->middleware('isHealthcare');
+
+Route::get('/admin/emailSuccess', 'UserController@aeSuccess')->middleware('isAdmin');
+Route::get('/admin/passwordSuccess', 'UserController@apSuccess')->middleware('isAdmin');
+Route::get('/admin/error', 'UserController@aError')->middleware('isAdmin');
+Route::get('/user/emailSuccess', 'UserController@ueSuccess')->middleware('isUser');
+Route::get('/user/passwordSuccess', 'UserController@upSuccess')->middleware('isUser');
+Route::get('/user/error', 'UserController@uError')->middleware('isUser');
+Route::get('/healthcare/emailSuccess', 'UserController@heSuccess')->middleware('isHealthcare');
+Route::get('/healthcare/passwordSuccess', 'UserController@hpSuccess')->middleware('isHealthcare');
+Route::get('/healthcare/error', 'UserController@hError')->middleware('isHealthcare');

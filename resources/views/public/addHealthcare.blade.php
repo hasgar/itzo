@@ -108,7 +108,7 @@
 								
 								<div class="siginupcontainer page-signup">
 									<h1 class="text-center">Add Health Care</h1>
-									<form class="form-horizontal margin-top-30"role="form" method="POST" action="{{ url('/register') }}">
+									<form class="form-horizontal margin-top-30"role="form" method="POST" action="{{ url('/register') }}" enctype='multipart/form-data'>
                        					 {{ csrf_field() }}
 										<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 											<label for="name">Health Care Name *</label>

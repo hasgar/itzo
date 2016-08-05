@@ -1,6 +1,6 @@
 @extends('public.layouts.master')
 
-@section('title', 'Healthcare Dashboard')
+@section('title', 'Admin Dashboard')
 
 
 @section('content')
@@ -85,10 +85,10 @@
 		</div><!-- ../menu-bar -->
 		<div class="page-heading listing-page archive-page ">
 			<div class="page-heading-inner-container text-center">
-				<h1>Healthcare Dashboard</h1>
+				<h1>Admin Dashboard</h1>
 				<ul class="breadcrumbs">
 					<li><a href="/">Home</a></li>
-					<li><span>Healthcare Dashboard</span></li>
+					<li><span>Admin Dashboard</span></li>
 				</ul>
 			</div>
 			<div class="page-header-overlay"></div>
@@ -104,16 +104,16 @@
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="active">
 							<a href="#" role="tab" data-toggle="tab">
-								Your Bookings
+								Bookings
 							</a>
 						</li>
 						<li>
-							<a href="/healthcare/edit" role="tab" data-toggle="tab">
-								Your Healthcare
+							<a href="/admin/users" role="tab" data-toggle="tab">
+								Users
 							</a>
 						</li>
 						<li>
-							<a href="/healthcare/settings" role="tab" data-toggle="tab">
+							<a href="/admin/settings" role="tab" data-toggle="tab">
 								Account Settings
 							</a>
 						</li>
@@ -128,7 +128,7 @@
 							
 							
 							<div class="user-recent-listings-container">
-									<div class="col-md-8"><h3 class="padding-top-35 padding-bottom-35">Your Bookings</h3></div><div class="col-md-4"><div class="price-plan-button  pull-right">
+									<div class="col-md-8"><h3 class="padding-top-35 padding-bottom-35">{{$booking[0]['user'][0]['name']}}'s Bookings</h3></div><div class="col-md-4"><div class="price-plan-button  pull-right">
 									<a href="/logout" class="lp-secondary-btn btn-second-hover">Sign Out</a>
 								</div></div><div class="user-recent-listings-inner">
 									<div class="row lp-list-page-list">
@@ -221,19 +221,19 @@
 															<p></p>
 														</div>
 														<div class="lp-list-pay-btn">
-															 <a href="/healthcare/chat/{{$book['id']}}/{{urlencode($book['user'][0]['name'])}}" > 
+															 <a href="/admin/chat/{{$book['id']}}/{{urlencode($book['user'][0]['name'])}}/{{urlencode($book['healthcare'][0]['name'])}}" > 
 																<i class="fa fa-wechat"></i>
-																<span>Chat</span>
+																<span>See Chat</span>
 														 </a> 
 														</div>
-														<div class="lp-list-pay-btn">
+														<!-- <div class="lp-list-pay-btn">
 															@if($book['is_confirmed'] == 0 || $book['is_confirmed'] == 1)  <a href="/healthcare/confirm/{{$book['id']}}/{{urlencode($book['user'][0]['name'])}}" onclick="return confirm('Are you sure?')"> @else <a href="javascript::void(0)" onclick="alert('Its already cancelled'); return false">  @endif
 																<i class="fa fa-check"></i>
 																<span>Confirm</span>
 															  </a> 
-														</div>
+														</div> -->
 														<div class="lp-list-pay-btn">
-															@if($book['is_confirmed'] == 0 || $book['is_confirmed'] == 1)  <a href="/healthcare/cancel/{{$book['id']}}/{{urlencode($book['user'][0]['name'])}}" onclick="return confirm('Are you sure?')"> @else <a href="javascript::void(0)" onclick="alert('Its already cancelled'); return false">  @endif
+															@if($book['is_confirmed'] == 0 || $book['is_confirmed'] == 1)  <a href="/admin/cancel/{{$book['id']}}/{{urlencode($book['user'][0]['name'])}}" onclick="return confirm('Are you sure?')"> @else <a href="javascript::void(0)" onclick="alert('Its already cancelled'); return false">  @endif
 																<i class="fa fa-close"></i>
 																<span>Cancel</span>
 															  </a> 
@@ -246,7 +246,7 @@
 @else 
 <div class="col-md-12 col-sm-6 col-xs-12 lp-list-view">
 											<div class="lp-list-view-inner-contianer lp-border lp-border-radius-8 clearfix no-bookings" align="center">
-<h4 class="no-bookings">No don't have any booking</h4>
+<h4 class="no-bookings">No Bookings done</h4>
 											</div>
 											</div>
 @endif

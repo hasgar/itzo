@@ -16,7 +16,7 @@ class Booking extends Model
   }
    public function user()
   {
-    return $this->hasMany('App\Users', 'user_id', 'user_id');
+    return $this->hasMany('App\Users', 'id', 'user_id');
   }
    
 }

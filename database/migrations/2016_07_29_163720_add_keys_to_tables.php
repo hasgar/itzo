@@ -81,7 +81,7 @@ class AddKeysToTables extends Migration
            ->references('id')->on('healthcare')
            ->onDelete('cascade');
            $table->foreign('user_id')
-           ->references('id')->on('users')
+           ->references('id')->on('user')
            ->onDelete('cascade');
          }); 
          Schema::table('conversations', function (Blueprint $table) {
