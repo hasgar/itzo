@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function showSignIn(){
+    public function showSignIn() {
       
         if (Auth::check()) {
             $user = Sentinel::findById(Auth::user()->id);
@@ -36,7 +36,7 @@ class UserController extends Controller
         }
         return view('public.signin');
     }
-
+    
     public function showSignUp(){
       
         if (Auth::check()) {
@@ -88,7 +88,7 @@ class UserController extends Controller
 public function noPermission(){
           return view('public.noPermission');
     }
-    public function hDashboard(){
+    public function hDashboard() {
         
         $booking = Booking::where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->with(['healthcare','user'])->orderBy('id','desc')->get();
 

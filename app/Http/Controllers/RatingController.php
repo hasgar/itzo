@@ -10,15 +10,24 @@ use Validator;
 use App\Ratings;
 use App\Healthcare;
 use Auth;
+use Maatwebsite\Excel\Facades\Excel;
 class RatingController extends Controller
 {
    public function __construct()
-  {
-      $this->middleware('isUser');
-  }
+    {
+        $this->middleware('isUser');
+    }
   
    public function addRating(Request $request)
   {
+      //$results =Excel::load( 'public/sample.csv' , function($reader) {
+        //  return  $reader->toObject();
+      //});
+      return Excel::load($request->file('file'), function($reader) {
+
+})->get();
+      return $results;
+            return 'sds';
       $rules = array(
         'rating' => 'required|in:1,2,3,4,5',
         'message' => 'required',

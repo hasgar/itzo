@@ -74,7 +74,7 @@ class HealthcareController extends Controller
     }
 
      public function book(Request $request) {
-       
+            
             $healthcare = Healthcare::where('id', $request['id'])->get();
             $booking = Booking::create(['healthcare_id' => $request['id'],
             'user_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0], 

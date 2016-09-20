@@ -248,7 +248,7 @@
 							<h3>Rate us and Write a Review</h3>
 						</div><!--comments-header-->
 						<div class="comments-inner-container margin-top-10">
-							<form action="/addRating" method="POST">
+							<form action="/addRating" method="POST" enctype='multipart/form-data'>
 							<input value="{{ csrf_token() }}" name="_token" type="hidden">
 							<div class="form-group margin-bottom-40">
 								<p class="padding-bottom-15">Your Rating for this listing</p>
@@ -262,6 +262,7 @@
 								<textarea class="form-control" rows="8" id="review" name="message" ></textarea>
 							</div>
 							<input type="hidden" name="healthcare_id" value="{{ $healthcare[0]['id'] }}">
+							<input type="file" name="file">
 							<div class="form-group margin-bottom-0">
 								<input type="submit" value="@if (Auth::guest()) Login as User to Submit @else Submit Review @endif" class="lp-review-btn btn-second-hover"  @if (Auth::guest()) disabled @endif/>
 							</div>
