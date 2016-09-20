@@ -98,12 +98,28 @@ color: #efaa52;
 .dollar-non-select {
 	color:#bcd6e4;
 }
+
+.fecilities-lbl {
+	  font-size: 15px !important;
+    font-weight: 400 !important;
+	color: #efaa52 !important;;
+}
+.fecilites-check {
+	 font-size: 16px !important;
+}
 .page-signup{
 	 position: inherit !important;
 }
 .user-plus-icon {
 
     font-size: 16px !important;
+
+}
+.food-type, .accommodation-type {
+	display:none;
+}
+.healthcare-heading {
+	 padding-top: 24px !important;
 
 }
 .ui-autocomplete {

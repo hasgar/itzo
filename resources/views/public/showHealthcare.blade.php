@@ -262,7 +262,7 @@
 								<textarea class="form-control" rows="8" id="review" name="message" ></textarea>
 							</div>
 							<input type="hidden" name="healthcare_id" value="{{ $healthcare[0]['id'] }}">
-							<input type="file" name="file">
+							<!--<input type="file" name="file">-->
 							<div class="form-group margin-bottom-0">
 								<input type="submit" value="@if (Auth::guest()) Login as User to Submit @else Submit Review @endif" class="lp-review-btn btn-second-hover"  @if (Auth::guest()) disabled @endif/>
 							</div>

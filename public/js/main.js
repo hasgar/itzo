@@ -1,5 +1,19 @@
 $(document).ready(function() {
     "use-strict";
+    $('#accommodation').on('change', function() {
+  if(this.value == 1 ) {
+      $('.accommodation-type').show()
+  } else {
+      $('.accommodation-type').hide()
+  }
+});
+$('#food').on('change', function() {
+  if(this.value == 1 ) {
+      $('.food-type').show()
+  } else {
+      $('.food-type').hide()
+  }
+});
 $('#country').on('change', function (e) {
     if($('select[id=country]').val() != "0") {
         $("#state option[value!='0']").remove();
