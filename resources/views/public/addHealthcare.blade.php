@@ -342,7 +342,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
 											<label for="address">Address *</label>
-											<textarea range="[13, 23]" class="form-control" name="address" id="address" placeholder="Enter your healthcare center"  required>{{ old('address') }}</textarea>
+											<textarea class="form-control" name="address" id="address" placeholder="Enter your healthcare center address"  required>{{ old('address') }}</textarea>
 											@if ($errors->has('address'))
 												<span class="help-block">
 													<strong>{{ $errors->first('address') }}</strong>
@@ -425,26 +425,26 @@
 
 										<div class="form-group {{ $errors->has('fecilities') ? ' has-error' : '' }}">
 											<label for="fecilities">Available Fecilities</label> <br>
-											<label for="fec-lab" class="fecilities-lbl"><input type="checkbox" id="fec-lab" name="fec-lab" class="fecilites-check"> Lab</label>
-											<label for="fec-parking" class="fecilities-lbl"><input type="checkbox" id="fec-parking" name="fec-parking" class="fecilites-check"> Parking</label>
-									<label for="fec-pharmacy" class="fecilities-lbl"><input type="checkbox" id="fec-pharmacy" name="fec-pharmacy" class="fecilites-check"> Pharmacy</label>
-									<label for="fec-wheelchair" class="fecilities-lbl"><input type="checkbox" id="fec-wheelchair" name="fec-wheelchair" class="fecilites-check"> Wheelchair Access</label>
-									<label for="fec-ambulance" class="fecilities-lbl"><input type="checkbox" id="fec-ambulance" name="fec-ambulance" class="fecilites-check"> Ambulance</label>
-									<label for="fec-inpatient" class="fecilities-lbl"><input type="checkbox" id="fec-inpatient" name="fec-inpatient" class="fecilites-check"> Inpatient</label>
-									<label for="fec-bloodbank" class="fecilities-lbl"><input type="checkbox" id="fec-bloodbank" name="fec-bloodbank" class="fecilites-check"> Blood Bank</label>
-									<label for="fec-fitnesscentre" class="fecilities-lbl"><input type="checkbox" id="fec-fitnesscentre" name="fec-fitnesscentre" class="fecilites-check"> Fitness Centre</label>
-									<label for="fec-yoga" class="fecilities-lbl"><input type="checkbox" id="fec-yoga" name="fec-yoga" class="fecilites-check"> Yoga</label>
-									<label for="fec-massage" class="fecilities-lbl"><input type="checkbox" id="fec-massage" name="fec-massage" class="fecilites-check"> Massage</label>
-									<label for="fec-sports" class="fecilities-lbl"><input type="checkbox" id="fec-sports" name="fec-sports" class="fecilites-check"> Sports</label>
-									<label for="fec-tours" class="fecilities-lbl"><input type="checkbox" id="fec-tours" name="fec-tours" class="fecilites-check"> Tours</label>
-									<label for="fec-insurance" class="fecilities-lbl"><input type="checkbox" id="fec-insurance" name="fec-insurance" class="fecilites-check"> Insurance</label>
+											<label for="fec-lab" class="fecilities-lbl"><input type="checkbox" id="fec-lab" name="fec-lab" class="fecilites-check" value="1"> Lab</label>
+											<label for="fec-parking" class="fecilities-lbl"><input type="checkbox" id="fec-parking" name="fec-parking" class="fecilites-check" value="1"> Parking</label>
+									<label for="fec-pharmacy" class="fecilities-lbl"><input type="checkbox" id="fec-pharmacy" name="fec-pharmacy" class="fecilites-check" value="1"> Pharmacy</label>
+									<label for="fec-wheelchair" class="fecilities-lbl"><input type="checkbox" id="fec-wheelchair" name="fec-wheelchair" class="fecilites-check" value="1"> Wheelchair Access</label>
+									<label for="fec-ambulance" class="fecilities-lbl"><input type="checkbox" id="fec-ambulance" name="fec-ambulance" class="fecilites-check" value="1"> Ambulance</label>
+									<label for="fec-inpatient" class="fecilities-lbl"><input type="checkbox" id="fec-inpatient" name="fec-inpatient" class="fecilites-check" value="1"> Inpatient</label>
+									<label for="fec-bloodbank" class="fecilities-lbl"><input type="checkbox" id="fec-bloodbank" name="fec-bloodbank" class="fecilites-check" value="1"> Blood Bank</label>
+									<label for="fec-fitnesscentre" class="fecilities-lbl"><input type="checkbox" id="fec-fitnesscentre" name="fec-fitnesscentre" class="fecilites-check" value="1"> Fitness Centre</label>
+									<label for="fec-yoga" class="fecilities-lbl"><input type="checkbox" id="fec-yoga" name="fec-yoga" class="fecilites-check" value="1" > Yoga</label>
+									<label for="fec-massage" class="fecilities-lbl"><input type="checkbox" id="fec-massage" name="fec-massage" class="fecilites-check" value="1"> Massage</label>
+									<label for="fec-sports" class="fecilities-lbl"><input type="checkbox" id="fec-sports" name="fec-sports" class="fecilites-check" value="1"> Sports</label>
+									<label for="fec-tours" class="fecilities-lbl"><input type="checkbox" id="fec-tours" name="fec-tours" class="fecilites-check" value="1"> Tours</label>
+									<label for="fec-insurance" class="fecilities-lbl"><input type="checkbox" id="fec-insurance" name="fec-insurance" class="fecilites-check" value="1"> Insurance</label>
 										</div>
 										<div class="form-group {{ $errors->has('payment') ? ' has-error' : '' }}">
 											<label for="payment">Payment Modes</label> <br>
-											<label for="pay-cash" class="fecilities-lbl"><input type="checkbox" id="pay-cash" name="pay-cash" class="fecilites-check"> Cash</label>
-											<label for="pay-creditcard" class="fecilities-lbl"><input type="checkbox" id="pay-creditcard" name="pay-creditcard" class="fecilites-check"> Credit Card</label>
-									<label for="pay-debitcard" class="fecilities-lbl"><input type="checkbox" id="pay-debitcard" name="pay-debitcard" class="fecilites-check"> Debit Card</label>
-									<label for="pay-cheque" class="fecilities-lbl"><input type="checkbox" id="fec-cheque" name="fec-cheque" class="fecilites-check"> Cheque</label>
+											<label for="pay-cash" class="fecilities-lbl"><input type="checkbox" id="pay-cash" name="pay-cash" value="1" class="fecilites-check"> Cash</label>
+											<label for="pay-creditcard" class="fecilities-lbl"><input type="checkbox" id="pay-creditcard"  value="1" name="pay-creditcard" class="fecilites-check"> Credit Card</label>
+									<label for="pay-debitcard" class="fecilities-lbl"><input type="checkbox" id="pay-debitcard" value="1" name="pay-debitcard" class="fecilites-check"> Debit Card</label>
+									<label for="pay-cheque" class="fecilities-lbl"><input type="checkbox" id="pay-cheque" value="1" name="pay-cheque" class="fecilites-check"> Cheque</label>
 										</div>
 
 										<div class="form-group {{ $errors->has('accommodation') ? ' has-error' : '' }}">
@@ -462,10 +462,10 @@
 
 										<div class="form-group {{ $errors->has('accommodation_type') ? ' has-error' : '' }} accommodation-type">
 											<label for="accommodation_type">Accomodation Type</label> <br>
-											<label for="accommodation_single_ac" class="fecilities-lbl"><input type="checkbox" id="accommodation_single_ac" name="accommodation_single_ac" class="fecilites-check"> Single AC</label>
-											<label for="accommodation_single_non_ac" class="fecilities-lbl"><input type="checkbox" id="accommodation_single_non_ac" name="accommodation_single_non_ac" class="fecilites-check"> Single Non AC</label>
-									<label for="accommodation_shared" class="fecilities-lbl"><input type="checkbox" id="accommodation_shared" name="accommodation_shared" class="fecilites-check"> Shared Rooms</label>
-									<label for="accommodation_general" class="fecilities-lbl"><input type="checkbox" id="accommodation_general" name="accommodation_general" class="fecilites-check"> General Ward</label>
+											<label for="accommodation_single_ac" class="fecilities-lbl"><input type="checkbox" value="1" id="accommodation_single_ac" name="accommodation_single_ac" class="fecilites-check"> Single AC</label>
+											<label for="accommodation_single_non_ac" class="fecilities-lbl"><input type="checkbox" value="1" id="accommodation_single_non_ac" name="accommodation_single_non_ac" class="fecilites-check"> Single Non AC</label>
+									<label for="accommodation_shared" class="fecilities-lbl"><input type="checkbox" id="accommodation_shared" value="1" name="accommodation_shared" class="fecilites-check"> Shared Rooms</label>
+									<label for="accommodation_general" class="fecilities-lbl"><input type="checkbox" id="accommodation_general" value="1"  name="accommodation_general" class="fecilites-check"> General Ward</label>
 										</div>
 
 <div class="form-group {{ $errors->has('food') ? ' has-error' : '' }}">
@@ -482,10 +482,10 @@
 										</div>
 										<div class="form-group {{ $errors->has('food_types') ? ' has-error' : '' }} food-type">
 											<label for="food_types">Type of Foods</label> <br>
-											<label for="food_veg" class="fecilities-lbl"><input type="checkbox" id="food_veg" name="food_veg" class="fecilites-check"> Veg</label>
-											<label for="food_non_veg" class="fecilities-lbl"><input type="checkbox" id="food_non_veg" name="food_non_veg" class="fecilites-check"> Non Veg</label>
-									<label for="food_organic" class="fecilities-lbl"><input type="checkbox" id="food_organic" name="food_organic" class="fecilites-check"> Organic Food</label>
-									<label for="food_personalised" class="fecilities-lbl"><input type="checkbox" id="food_personalised" name="food_personalised" class="fecilites-check"> Personalised Diet</label>
+											<label for="food_veg" class="fecilities-lbl"><input type="checkbox" value="1" id="food_veg" name="food_veg" class="fecilites-check"> Veg</label>
+											<label for="food_non_veg" class="fecilities-lbl"><input type="checkbox" value="1" id="food_non_veg" name="food_non_veg" class="fecilites-check"> Non Veg</label>
+									<label for="food_organic" class="fecilities-lbl"><input type="checkbox" value="1" id="food_organic" name="food_organic" class="fecilites-check"> Organic Food</label>
+									<label for="food_personalised" class="fecilities-lbl"><input type="checkbox" value="1" id="food_personalised" name="food_personalised" class="fecilites-check"> Personalised Diet</label>
 										</div>
 										<div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
 											<label for="price">Price Category *</label>

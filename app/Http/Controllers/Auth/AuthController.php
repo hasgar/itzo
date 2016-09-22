@@ -113,6 +113,45 @@ class AuthController extends Controller
             $role->users()->attach($user1);
         }
         else if($data['type'] == 2){
+            if(!isset($data['food_veg'])) {
+                $data['food_veg'] = 0;
+            }
+            if(!isset($data['food_non_veg'])) {
+                $data['food_non_veg'] = 0;
+            }
+            if(!isset($data['food_organic'])) {
+                $data['food_organic'] = 0;
+            }
+            if(!isset($data['food_personalised'])) {
+                $data['food_personalised'] = 0;
+            }
+            if(!isset($data['fec-lab'])) {
+                $data['fec-lab'] = 0;
+            }
+            if(!isset($data['fec-parking'])) {
+                $data['fec-parking'] = 0;
+            }
+            if(!isset($data['food_veg'])) {
+                $data['food_veg'] = 0;
+            }
+            if(!isset($data['food_veg'])) {
+                $data['food_veg'] = 0;
+            }
+            if(!isset($data['food_veg'])) {
+                $data['food_veg'] = 0;
+            }
+            if(!isset($data['food_veg'])) {
+                $data['food_veg'] = 0;
+            }
+            if(!isset($data['food_veg'])) {
+                $data['food_veg'] = 0;
+            }
+            if(!isset($data['food_veg'])) {
+                $data['food_veg'] = 0;
+            }
+            if(!isset($data['food_veg'])) {
+                $data['food_veg'] = 0;
+            }
             $healthcare = Healthcare::create([
             'name' => $data['name'],
             'user_id' => $user['id'],
@@ -126,9 +165,40 @@ class AuthController extends Controller
             'mobile' => $data['mobile'],
             'phone' => $data['phone'],
             'fax' => $data['fax'],
-            'veg' => $data['food_veg'],
             'price' => $data['price'],
             'description' => $data['description'],
+            'veg' => $data['food_veg'],
+            'non_veg' => $data['food_non_veg'],
+            'organic' => $data['food_organic'],
+            'personalised_diet' => $data['food_personalised'],
+            'food' => $data['food'],
+            'accommodation' => $data['accommodation'],
+            'mon_from' => $data['working_hours_mon_from'],
+            'mon_to' => $data['working_hours_mon_to'],
+            'sun_from' => $data['working_hours_sun_from'],
+            'sun_to' => $data['working_hours_sun_to'],
+            'contact_email' => $data['contact_email'],
+            'contact_name' => $data['contact_name'],
+            'website' => $data['website'],
+            'lab' => $data['fec-lab'],
+            'parking' => $data['fec-parking'],
+            'pharmacy' => $data['fec-pharmacy'],
+            'wheelchair' => $data['fec-wheelchair'],
+            'ambulance' => $data['fec-ambulance'],
+            'inpatient' => $data['fec-inpatient'],
+            'bloodbank' => $data['fec-bloodbank'],
+            'fitness' => $data['fec-fitnesscentre'],
+            'yoga' => $data['fec-yoga'],
+            'massage' => $data['fec-massage'],
+            'sports' => $data['fec-sports'],
+            'tours' => $data['fec-tours'],
+            'insurance' => $data['fec-insurance'],
+            'cash' => $data['pay-cash'],
+            'debit_card' => $data['pay-debitcard'],
+            'debit_card' => $data['pay-creditcard'],
+            'cheque' => $data['pay-cheque'],
+            'longtitude' => $data['loc-lon'],
+            'latitude' => $data['loc-lat'],
             'payment_till' => '2016-12-31',
         ]);
             for($i=1;$i<4;$i++){
