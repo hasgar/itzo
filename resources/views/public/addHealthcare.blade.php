@@ -108,11 +108,11 @@
 								
 								<div class="siginupcontainer page-signup">
 									<h1 class="text-center healthcare-heading">Add Your Health Care</h1>
-									<form class="form-horizontal margin-top-30"role="form" method="POST" action="{{ url('/register') }}" enctype='multipart/form-data'>
+									<form id="add-healthcare" class="form-horizontal margin-top-30"role="form" method="POST" action="{{ url('/register') }}" enctype='multipart/form-data'>
                        					 {{ csrf_field() }}
 										<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 											<label for="name">Health care Service name *</label>
-											<input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
+											<input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" required placeholder="Enter health center name">
 											@if ($errors->has('name'))
 												<span class="help-block">
 													<strong>{{ $errors->first('name') }}</strong>
@@ -120,8 +120,8 @@
 											@endif
 										</div>
 										<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-											<label for="supassword">Email Address *</label>
-											<input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+											<label for="email">Email Address *</label>
+											<input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Enter health center official email" required>
 											 @if ($errors->has('email'))
 												<span class="help-block">
 													<strong>{{ $errors->first('email') }}</strong>
@@ -130,7 +130,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
 											<label for="sipassword">Password *</label>
-											<input type="password" class="form-control" id="password" name="password">
+											<input type="password" class="form-control" id="password" name="password" required placeholder="Enter password">
 											 @if ($errors->has('password'))
 												<span class="help-block">
 													<strong>{{ $errors->first('password') }}</strong>
@@ -139,7 +139,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 											<label for="sipassword">Confirm Password *</label>
-											<input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+											<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required placeholder="Repeat password">
 											@if ($errors->has('password_confirmation'))
 												<span class="help-block">
 													<strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -148,8 +148,8 @@
 										</div>
 										<div class="form-group {{ $errors->has('treatment_type') ? ' has-error' : '' }}">
 											<label for="treatment_type">Type of Treatment *</label>
-											<select class="form-control" id="treatment_type" name="treatment_type">
-<option value="0">Select your treatment type</option>
+											<select class="form-control" id="treatment_type" name="treatment_type" required>
+<option value="">Select your treatment type</option>
 @foreach ($types as $type)
 										<option value="{{$type['id']}}">{{$type['name']}}</option>
 										@endforeach
@@ -162,16 +162,136 @@
 										</div>
 											<div class="form-group {{ $errors->has('working_hours') ? ' has-error' : '' }}">
 											<label for="working_hours">Working Hours ?</label>
-											<select  class="form-control" id="working_hours" name="working_hours">
-<option value="Monday to Saturday (10am - 8pm)">Monday to Saturday (10am - 8pm)</option>
-<option value="Sunday (10am - 4pm)">Sunday (10am - 4pm)</option>
-</select>
-											@if ($errors->has('working_hours'))
+									 </div>
+									 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
+											<div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											<option value="Monday to Saturday">Monday to Saturday</option>
+											</select>
+											</div>
+											<div class="col-md-3"><select  class="form-control" name="working_hours_mon_from" id="working_hours_mon_from" required>
+											<option value="01 AM">01 AM</option>
+											<option value="02 AM">02 AM</option>
+											<option value="03 AM">03 AM</option>
+											<option value="04 AM">04 AM</option>
+											<option value="05 AM">05 AM</option>
+											<option value="06 AM">06 AM</option>
+											<option value="07 AM">07 AM</option>
+											<option value="08 AM">08 AM</option>
+											<option value="09 AM">09 AM</option>
+											<option value="10 AM">10 AM</option>
+											<option value="11 AM">11 AM</option>
+											<option value="12 PM">12 PM</option>
+											<option value="01 PM">01 PM</option>
+											<option value="02 PM">02 PM</option>
+											<option value="03 PM">03 PM</option>
+											<option value="04 PM">04 PM</option>
+											<option value="05 PM">05 PM</option>
+											<option value="06 PM">06 PM</option>
+											<option value="07 PM">07 PM</option>
+											<option value="08 PM">08 PM</option>
+											<option value="09 PM">09 PM</option>
+											<option value="10 PM">10 PM</option>
+											<option value="11 PM">11 PM</option>
+											<option value="12 AM">12 AM</option>
+											</select>
+											</div>
+											<div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_mon_to" id="working_hours_mon_to"  required>
+											<option value="01 AM">01 AM</option>
+											<option value="02 AM">02 AM</option>
+											<option value="03 AM">03 AM</option>
+											<option value="04 AM">04 AM</option>
+											<option value="05 AM">05 AM</option>
+											<option value="06 AM">06 AM</option>
+											<option value="07 AM">07 AM</option>
+											<option value="08 AM">08 AM</option>
+											<option value="09 AM">09 AM</option>
+											<option value="10 AM">10 AM</option>
+											<option value="11 AM">11 AM</option>
+											<option value="12 PM">12 PM</option>
+											<option value="01 PM">01 PM</option>
+											<option value="02 PM">02 PM</option>
+											<option value="03 PM">03 PM</option>
+											<option value="04 PM">04 PM</option>
+											<option value="05 PM">05 PM</option>
+											<option value="06 PM">06 PM</option>
+											<option value="07 PM">07 PM</option>
+											<option value="08 PM">08 PM</option>
+											<option value="09 PM">09 PM</option>
+											<option value="10 PM">10 PM</option>
+											<option value="11 PM">11 PM</option>
+											<option value="12 AM">12 AM</option></select>
+											</div>
+											@if ($errors->has('working_hours_mon'))
 												<span class="help-block">
-													<strong>{{ $errors->first('working_hours') }}</strong>
+													<strong>{{ $errors->first('working_hours_mon') }}</strong>
 												</span>
 											@endif
 										</div>
+										<div class="form-group {{ $errors->has('working_hours_sun') ? ' has-error' : '' }}">
+											<div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											<option value="Sunday">Sunday</option>
+											</select>
+											</div>
+											<div class="col-md-3"><select  class="form-control" name="working_hours_sun_from" id="working_hours_sun_from"   required>
+											<option value="01 AM">01 AM</option>
+											<option value="02 AM">02 AM</option>
+											<option value="03 AM">03 AM</option>
+											<option value="04 AM">04 AM</option>
+											<option value="05 AM">05 AM</option>
+											<option value="06 AM">06 AM</option>
+											<option value="07 AM">07 AM</option>
+											<option value="08 AM">08 AM</option>
+											<option value="09 AM">09 AM</option>
+											<option value="10 AM">10 AM</option>
+											<option value="11 AM">11 AM</option>
+											<option value="12 PM">12 PM</option>
+											<option value="01 PM">01 PM</option>
+											<option value="02 PM">02 PM</option>
+											<option value="03 PM">03 PM</option>
+											<option value="04 PM">04 PM</option>
+											<option value="05 PM">05 PM</option>
+											<option value="06 PM">06 PM</option>
+											<option value="07 PM">07 PM</option>
+											<option value="08 PM">08 PM</option>
+											<option value="09 PM">09 PM</option>
+											<option value="10 PM">10 PM</option>
+											<option value="11 PM">11 PM</option>
+											<option value="12 AM">12 AM</option>
+											</select>
+											</div>
+											<div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_sun_to" id="working_hours_sun_to"   required>
+											<option value="01 AM">01 AM</option>
+											<option value="02 AM">02 AM</option>
+											<option value="03 AM">03 AM</option>
+											<option value="04 AM">04 AM</option>
+											<option value="05 AM">05 AM</option>
+											<option value="06 AM">06 AM</option>
+											<option value="07 AM">07 AM</option>
+											<option value="08 AM">08 AM</option>
+											<option value="09 AM">09 AM</option>
+											<option value="10 AM">10 AM</option>
+											<option value="11 AM">11 AM</option>
+											<option value="12 PM">12 PM</option>
+											<option value="01 PM">01 PM</option>
+											<option value="02 PM">02 PM</option>
+											<option value="03 PM">03 PM</option>
+											<option value="04 PM">04 PM</option>
+											<option value="05 PM">05 PM</option>
+											<option value="06 PM">06 PM</option>
+											<option value="07 PM">07 PM</option>
+											<option value="08 PM">08 PM</option>
+											<option value="09 PM">09 PM</option>
+											<option value="10 PM">10 PM</option>
+											<option value="11 PM">11 PM</option>
+											<option value="12 AM">12 AM</option></select>
+											</div>
+											@if ($errors->has('working_hours_sun'))
+												<span class="help-block">
+													<strong>{{ $errors->first('working_hours_sun') }}</strong>
+												</span>
+											@endif
+										</div>
+										
 										<div class="form-group {{ $errors->has('certificate') ? ' has-error' : '' }}">
 											<label for="certificate">Do you have certification ?</label>
 											<select  class="form-control" id="certificate" name="certificate">
@@ -184,10 +304,10 @@
 												</span>
 											@endif
 										</div>
-										<div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}">
+										<div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}"   required>
 											<label for="country">Country *</label>
 											<select  class="form-control" id="country" name="country">
-<option value="0">Select your country</option>
+<option value="">Select your country</option>
 @foreach ($countries as $country)
 										<option value="{{$country['id']}}">{{$country['name']}}</option>
 										@endforeach
@@ -198,10 +318,10 @@
 												</span>
 											@endif
 										</div>
-										<div class="form-group {{ $errors->has('state') ? ' has-error' : '' }}">
+										<div class="form-group {{ $errors->has('state') ? ' has-error' : '' }}"   required>
 											<label for="state">State *</label>
 											<select class="form-control" id="state" name="state">
-<option value="0">Select your state</option>
+<option value="">Select your state</option>
 </select>
 											@if ($errors->has('state'))
 												<span class="help-block">
@@ -209,10 +329,10 @@
 												</span>
 											@endif
 										</div>
-										<div class="form-group {{ $errors->has('city') ? ' has-error' : '' }}">
+										<div class="form-group {{ $errors->has('city') ? ' has-error' : '' }}"   required>
 											<label for="city">City *</label>
 											<select class="form-control" id="city" name="city">
-<option value="0">Select your city</option>
+<option value="">Select your city</option>
 </select>
 											@if ($errors->has('city'))
 												<span class="help-block">
@@ -222,7 +342,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
 											<label for="address">Address *</label>
-											<textarea class="form-control" name="address" id="address">{{ old('address') }}</textarea>
+											<textarea range="[13, 23]" class="form-control" name="address" id="address" placeholder="Enter your healthcare center"  required>{{ old('address') }}</textarea>
 											@if ($errors->has('address'))
 												<span class="help-block">
 													<strong>{{ $errors->first('address') }}</strong>
@@ -231,7 +351,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('pin') ? ' has-error' : '' }}">
 											<label for="pin">Pin *</label>
-											<input type="text" class="form-control" name="pin" id="pin" value="{{ old('pin') }}">
+											<input type="text" class="form-control" name="pin" id="pin" required value="{{ old('pin') }}" placeholder="Enter health center Pin code">
 											@if ($errors->has('pin'))
 												<span class="help-block">
 													<strong>{{ $errors->first('pin') }}</strong>
@@ -240,7 +360,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('contact_name') ? ' has-error' : '' }}">
 											<label for="contact_name">Contact Person Name </label>
-											<input type="text" class="form-control" name="contact_name" id="contact_name" value="{{ old('contact_name') }}">
+											<input type="text" class="form-control" name="contact_name" required id="contact_name" placeholder="Enter contact person name" value="{{ old('contact_name') }}">
 											@if ($errors->has('contact_name'))
 												<span class="help-block">
 													<strong>{{ $errors->first('contact_name') }}</strong>
@@ -249,7 +369,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('contact_email') ? ' has-error' : '' }}">
 											<label for="contact_email">Contact Person Email </label>
-											<input type="text" class="form-control" name="contact_email" id="contact_email" value="{{ old('contact_name') }}">
+											<input type="text" class="form-control" name="contact_email" required id="contact_email" placeholder="Enter contact person email" value="{{ old('contact_name') }}">
 											@if ($errors->has('contact_email'))
 												<span class="help-block">
 													<strong>{{ $errors->first('contact_email') }}</strong>
@@ -258,7 +378,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('mobile') ? ' has-error' : '' }}">
 											<label for="mobile">Mobile *</label>
-											<input type="text" class="form-control" name="mobile" id="mobile" value="{{ old('mobile') }}">
+											<input type="text" class="form-control" name="mobile" required id="mobile" placeholder="Enter health center mobile number" value="{{ old('mobile') }}" >
 											@if ($errors->has('mobile'))
 												<span class="help-block">
 													<strong>{{ $errors->first('mobile') }}</strong>
@@ -266,8 +386,8 @@
 											@endif
 										</div>
 										<div class="form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
-											<label for="phone">Phone </label>
-											<input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone') }}">
+											<label for="phone">Phone *</label>
+											<input type="text" class="form-control" name="phone" required id="phone" placeholder="Enter health center phone number" value="{{ old('phone') }}">
 											@if ($errors->has('phone'))
 												<span class="help-block">
 													<strong>{{ $errors->first('phone') }}</strong>
@@ -276,7 +396,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('fax') ? ' has-error' : '' }}">
 											<label for="fax">Fax</label>
-											<input type="text" class="form-control" name="faxmobile" id="fax" value="{{ old('fax') }}">
+											<input type="text" class="form-control" name="fax"  id="fax" value="{{ old('fax') }}" placeholder="Enter Health center fax">
 											@if ($errors->has('fax'))
 												<span class="help-block">
 													<strong>{{ $errors->first('fax') }}</strong>
@@ -285,7 +405,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('website') ? ' has-error' : '' }}">
 											<label for="website">Website</label>
-											<input type="text" class="form-control" name="website" id="website" value="{{ old('website') }}">
+											<input type="text" class="form-control" name="website"  id="website" value="{{ old('website') }}" placeholder="Enter Health center website address">
 											@if ($errors->has('website'))
 												<span class="help-block">
 													<strong>{{ $errors->first('website') }}</strong>
@@ -294,8 +414,8 @@
 										</div>
 										
 										<div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
-											<label for="description">Describe your health care</label>
-											<textarea class="form-control" name="description" id="description" placeholder="Tell us more about your health centre (less than 200 words)">{{ old('description') }}</textarea>
+											<label for="description">Describe your health care *</label>
+											<textarea class="form-control" name="description" required id="description" placeholder="Tell us more about your health centre (less than 200 words)">{{ old('description') }}</textarea>
 											@if ($errors->has('description'))
 												<span class="help-block">
 													<strong>{{ $errors->first('description') }}</strong>
@@ -329,7 +449,7 @@
 
 										<div class="form-group {{ $errors->has('accommodation') ? ' has-error' : '' }}">
 											<label for="accommodation">Does accommodation available?</label>
-											<select  class="form-control" id="accommodation" name="accommodation">
+											<select  class="form-control" id="accommodation" name="accommodation" required>
 <option value="0">No</option>
 <option value="1">Yes</option>
 </select>
@@ -350,7 +470,7 @@
 
 <div class="form-group {{ $errors->has('food') ? ' has-error' : '' }}">
 											<label for="accommodation">Does food available?</label>
-											<select  class="form-control" id="food" name="food">
+											<select  class="form-control" id="food" name="food" required>
 <option value="0">No</option>
 <option value="1">Yes</option>
 </select>
@@ -367,13 +487,10 @@
 									<label for="food_organic" class="fecilities-lbl"><input type="checkbox" id="food_organic" name="food_organic" class="fecilites-check"> Organic Food</label>
 									<label for="food_personalised" class="fecilities-lbl"><input type="checkbox" id="food_personalised" name="food_personalised" class="fecilites-check"> Personalised Diet</label>
 										</div>
-
-										
-
 										<div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
 											<label for="price">Price Category *</label>
-											<select  class="form-control" id="price" name="price">
-												<option value="0">Select your price category</option>
+											<select  class="form-control" id="price" name="price" required>
+												<option value="">Select your price category</option>
 												<option value="5">$$$$$</option>
 												<option value="4">$$$$</option>
 												<option value="3">$$$</option>
@@ -387,9 +504,21 @@
 												</span>
 											@endif
 										</div>
+
+<div class="form-group {{ $errors->has('location') ? ' has-error' : '' }}">
+											<label for="location">Choose location on map</label>
+											
+										</div>
+										<div id="somecomponent" style="width: 500px; height: 400px; margin-left: -14px;margin-bottom: 14px;"></div>
+										<input type="hidden" name="loc-lat" id="loc-lat">
+										<input type="hidden" name="loc-lon" id="loc-lon">
+										<input type="hidden" name="loc-add" id="loc-add">
+										<input type="hidden" name="loc-rad" id="loc-rad">
+
+										
 										<div class="form-group {{ $errors->has('photo_1') ? ' has-error' : '' }}">
-											<label for="photo_1">Photo 1 </label>
-											<input type="file" class="form-control" name="photo_1" id="photo_1" value="{{ old('photo_1') }}">
+											<label for="photo_1">Photo 1 *</label>
+											<input type="file" class="form-control" name="photo_1" id="photo_1" required value="{{ old('photo_1') }}">
 											@if ($errors->has('photo_1'))
 												<span class="help-block">
 													<strong>{{ $errors->first('photo_1') }}</strong>

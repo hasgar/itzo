@@ -125,6 +125,8 @@ class AuthController extends Controller
             'pin' => $data['pin'],
             'mobile' => $data['mobile'],
             'phone' => $data['phone'],
+            'fax' => $data['fax'],
+            'veg' => $data['food_veg'],
             'price' => $data['price'],
             'description' => $data['description'],
             'payment_till' => '2016-12-31',

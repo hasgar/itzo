@@ -122,6 +122,27 @@ color: #efaa52;
 	 padding-top: 24px !important;
 
 }
+.no-left-padding {
+	padding-left: 0px !important;
+}
+.no-right-padding {
+	padding-right: 0px !important;
+}
+.email-icon {
+    color: #9e9a9a;
+}
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.error {
+	    font-weight: 400 !important;
+    color: #bf3b3b !important;
+}
+input.error, textarea.error, select.error  {
+	  border: 1px solid #bf3b3b !important;
+}
 .ui-autocomplete {
     max-height: 200px;
     overflow-y: auto;   /* prevent horizontal scrollbar */
