@@ -209,6 +209,7 @@ class AuthController extends Controller
             'organic' => $data['food_organic'],
             'personalised_diet' => $data['food_personalised'],
             'food' => $data['food'],
+            'accommodation' => $data['accommodation'],
             'general_ward' => $data['accommodation_general'],
             'shared' => $data['accommodation_shared'],
             'single_non_ac' => $data['accommodation_single_non_ac'],
