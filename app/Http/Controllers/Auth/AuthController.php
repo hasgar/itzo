@@ -240,7 +240,7 @@ class AuthController extends Controller
             'longtitude' => $data['loc-lon'],
             'latitude' => $data['loc-lat'],
             'payment_till' => '2016-12-31',
-            'is_approved' => 0
+            'is_approved' => 1
         ]);
         $pro_pic = '';
             for($i=1;$i<4;$i++){
