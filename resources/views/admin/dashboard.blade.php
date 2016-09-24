@@ -137,7 +137,7 @@
 											<div class="lp-list-view-inner-contianer lp-border lp-border-radius-8 clearfix">
 												<div class="lp-list-view-thumb">
 													<div class="lp-list-view-thumb-inner">
-														<img src="/images/grid/{{$book['healthcare'][0]['pro_pic']}}" alt="list-1">
+														<img height="50" src="/images/healthcare/{{$book['healthcare'][0]['pro_pic']}}" alt="list-1">
 													</div>
 													
 												</div>
