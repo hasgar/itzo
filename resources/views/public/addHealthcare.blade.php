@@ -159,7 +159,7 @@
 													<strong>{{ $errors->first('treatment_type') }}</strong>
 												</span>
 											@endif
-											<div class="add-type">+ Add Type</div>
+											<div class="add-type"><i class="fa fa-plus"></i> Add Type</div>
 										</div>
 											<div class="form-group {{ $errors->has('working_hours') ? ' has-error' : '' }}">
 											<label for="working_hours">Working Hours ?</label>

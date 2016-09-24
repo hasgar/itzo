@@ -8,12 +8,16 @@ use App\Http\Requests;
 use Auth;
 use Sentinel;
 use App\Countries;
+use App\States;
+use App\Cities;
 use App\Booking;
 use App\Users;
 use App\User;
 use App\Types;
 use App\Healthcare;
+use App\Photos;
 use App\Conversation;
+use App\HealthcareTypes;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
@@ -160,9 +164,15 @@ public function noPermission(){
          $countries = Countries::all();
                  $countries = Countries::all();
          $types = Types::all();
-         $healthcare = Healthcare::where('user_id',Auth::user()->id);
-        
-        return view('healthcare.edit')->with('countries',$countries)->with('types',$types)->with('healthcare',$healthcare);
+         $healthcare = Healthcare::where('user_id',Auth::user()->id)->get();
+      $selectedTypes = HealthcareTypes::where('healthcare_id',$healthcare[0]['id'])->pluck('type_id');
+
+         $selectedTypes = Types::whereIn('id',$selectedTypes)->get();
+         $sCountry = Countries::where('id',$healthcare[0]['country_id'])->get();
+         $sState = States::where('id',$healthcare[0]['state_id'])->get();
+         $sCity = Cities::where('id',$healthcare[0]['city_id'])->get();
+         $sPhotos = Photos::where('healthcare_id',$healthcare[0]['id'])->get();
+        return view('healthcare.edit')->with('countries',$countries)->with('state',$sState)->with('photos',$sPhotos)->with('selectedTypes',$selectedTypes)->with('city',$sCity)->with('country',$sCountry)->with('types',$types)->with('healthcare',$healthcare);
     }
     public function aUpdateEmail(Request $request){
 

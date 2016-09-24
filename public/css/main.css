@@ -84,6 +84,15 @@ color: #efaa52;
     cursor: pointer;
 
 }
+.del-pic {
+    color: #f35a5a;
+
+}
+.del-pic:hover {
+    color: #c33737;
+    cursor: pointer;
+
+}
 .state-combo {
 	border-top-left-radius: 5px !important;
 	border-top-left-radius: 5px !important;
