@@ -36,7 +36,37 @@ class HealthcareController extends Controller
         $fecilities = Fecilities::all();
         $city_sel = Cities::where('id',$request['city'])->get()[0];
         $type_sel = Types::where('id',$request['type'])->get()[0];
-        return view('public.selectHealthcare')->with('states',$states)->with('fecilities',$fecilities)->with('cities',$cities)->with('types',$types)->with('healthcare',$healthcare)->with('city_sel',$city_sel)->with('state_sel',$state_sel)->with('type_sel',$type_sel);
+        $fec = "";
+        if(count($healthcare) < 1) {
+            return view('public.noHealthcareFound')->with('states',$states)->with('fecilities',$fecilities)->with('fec',$fec)->with('cities',$cities)->with('types',$types)->with('healthcare',$healthcare)->with('city_sel',$city_sel)->with('state_sel',$state_sel)->with('type_sel',$type_sel);
+        }
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('lab',1)->count() > 0)
+        $fec .= "8";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('parking',1)->count() > 0)
+        $fec .= ",9";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('pharmacy',1)->count() > 0)
+        $fec .= ",10";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('wheelchair',1)->count() > 0)
+        $fec .= ",11";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('ambulance',1)->count() > 0)
+        $fec .= ",12";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('inpatient',1)->count() > 0)
+        $fec .= ",13";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('bloodbank',1)->count() > 0)
+        $fec .= ",14";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('fitness',1)->count() > 0)
+        $fec .= ",15";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('yoga',1)->count() > 0)
+        $fec .= ",16";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('massage',1)->count() > 0)
+        $fec .= ",17";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('sports',1)->count() > 0)
+        $fec .= ",18";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('insurance',1)->count() > 0)
+        $fec .= ",20";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('tours',1)->count() > 0)
+        $fec .= "19";
+        return view('public.selectHealthcare')->with('states',$states)->with('fecilities',$fecilities)->with('fec',$fec)->with('cities',$cities)->with('types',$types)->with('healthcare',$healthcare)->with('city_sel',$city_sel)->with('state_sel',$state_sel)->with('type_sel',$type_sel);
         }
         else {
             return redirect('/404');

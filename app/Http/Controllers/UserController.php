@@ -11,6 +11,7 @@ use App\Countries;
 use App\Booking;
 use App\Users;
 use App\User;
+use App\Types;
 use App\Healthcare;
 use App\Conversation;
 use Illuminate\Support\Facades\Hash;
@@ -154,6 +155,14 @@ public function noPermission(){
     public function hSettings(Request $request){
         
         return view('healthcare.settings');
+    }
+     public function hEdit(Request $request){
+         $countries = Countries::all();
+                 $countries = Countries::all();
+         $types = Types::all();
+         $healthcare = Healthcare::where('user_id',Auth::user()->id);
+        
+        return view('healthcare.edit')->with('countries',$countries)->with('types',$types)->with('healthcare',$healthcare);
     }
     public function aUpdateEmail(Request $request){
 

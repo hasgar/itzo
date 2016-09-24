@@ -1,6 +1,6 @@
 @extends('public.layouts.master')
 
-@section('title', 'Add Health Care - Chikitzo')
+@section('title', 'Healthcare Dashboard')
 
 
 @section('content')
@@ -38,8 +38,7 @@
 		<div class="lp-menu-bar  lp-menu-bar-color">
 			<div class="container">
 					<div class="row">
-					@include('public.layouts.logo')
-						
+						@include('public.layouts.logo')
 						<div class="col-xs-6 mobile-nav-icon">
 							<a href="#menu" class="nav-icon">
 								<span class="icon-bar"></span>
@@ -60,15 +59,15 @@
 									<li><a href="/signin"><i class="fa fa-user user-plus-icon"></i>  Login</a> / <a href="/signup"><i class="fa fa-user-plus user-plus-icon"></i>  Register</a></li>
 									@else 
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/user/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/healthcare/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/admin/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
 									</li>
 									@endif
 									@endif
@@ -80,10 +79,10 @@
 		</div><!-- ../menu-bar -->
 		<div class="page-heading listing-page archive-page ">
 			<div class="page-heading-inner-container text-center">
-				<h1>Add Your Health Care</h1>
+				<h1>Healthcare Dashboard</h1>
 				<ul class="breadcrumbs">
 					<li><a href="/">Home</a></li>
-					<li><span>Add Your Health Care</span></li>
+					<li><span>Healthcare Dashboard</span></li>
 				</ul>
 			</div>
 			<div class="page-header-overlay"></div>
@@ -92,18 +91,49 @@
 	<!--==================================Header Close=================================-->
 	
 	<!--==================================Section Open=================================-->
-	<section>
-		
-		<div class="lp-section-row aliceblue">
-			<div class="lp-section-content-container-one">
+	<section class="aliceblue">
+			<div class="dashboard-tabs">
 				<div class="container">
-					<div class="row">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li>
+							<a href="/healthcare/dashboard" role="tab" data-toggle="tab">
+								Your Bookings
+							</a>
+						</li>
+
+						<li  class="active">
+							<a href="#" role="tab" data-toggle="tab">
+								Your Healthcare
+							</a>
+						</li>
+						
+						<li>
+							<a href="/healthcare/settings" role="tab" data-toggle="tab">
+								Account Settings
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="container">
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane fade active in" id="dashborad">
+						<div class="dashboard-tab">
+							
+							
+							<div class="user-recent-listings-container">
+									<div class="col-md-8"><h3 class="padding-top-35 padding-bottom-35">Your Healthcare</h3></div><div class="col-md-4"><div class="price-plan-button  pull-right">
+									<a href="/logout" class="lp-secondary-btn btn-second-hover">Sign Out</a>
+								</div></div><div class="user-recent-listings-inner">
+									
+										<div class="row">
 						<div class="col-md-12">
 							<div class="login-form-popup lp-border-radius-8">
 								
 								<div class="siginupcontainer page-signup">
-									<h1 class="text-center healthcare-heading">Add Your Health Care</h1>
-									<form id="add-healthcare" class="form-horizontal margin-top-30"role="form" method="POST" action="{{ url('/register') }}" enctype='multipart/form-data'>
+									<form id="add-healthcare" class="form-horizontal padding-top-15"role="form" method="POST" action="{{ url('/register') }}" enctype='multipart/form-data'>
                        					 {{ csrf_field() }}
 										<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 											<label for="name">Health care Service name *</label>
@@ -556,11 +586,17 @@
 								
 							</div>	
 						</div>
-					</div>
+					</div>	
+											
+										
+								</div>
+							</div>
+						</div>
+					</div>			
+					
+					
 				</div>
 			</div>
-		</div><!-- ../section-row -->
-	
 	</section>
-	
+
 @endsection

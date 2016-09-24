@@ -11,6 +11,7 @@ use Sentinel;
 use App\Users;
 use App\Healthcare;
 use App\Photos;
+use App\Types;
 use App\HealthcareTypes;
 class AuthController extends Controller
 {
@@ -131,26 +132,62 @@ class AuthController extends Controller
             if(!isset($data['fec-parking'])) {
                 $data['fec-parking'] = 0;
             }
-            if(!isset($data['food_veg'])) {
-                $data['food_veg'] = 0;
+            if(!isset($data['fec-pharmacy'])) {
+                $data['fec-pharmacy'] = 0;
             }
-            if(!isset($data['food_veg'])) {
-                $data['food_veg'] = 0;
+            if(!isset($data['fec-wheelchair'])) {
+                $data['fec-wheelchair'] = 0;
             }
-            if(!isset($data['food_veg'])) {
-                $data['food_veg'] = 0;
+            if(!isset($data['fec-ambulance'])) {
+                $data['fec-ambulance'] = 0;
             }
-            if(!isset($data['food_veg'])) {
-                $data['food_veg'] = 0;
+            if(!isset($data['fec-inpatient'])) {
+                $data['fec-inpatient'] = 0;
             }
-            if(!isset($data['food_veg'])) {
-                $data['food_veg'] = 0;
+            if(!isset($data['fec-bloodbank'])) {
+                $data['fec-bloodbank'] = 0;
             }
-            if(!isset($data['food_veg'])) {
-                $data['food_veg'] = 0;
+            if(!isset($data['fec-fitnesscentre'])) {
+                $data['fec-fitnesscentre'] = 0;
             }
-            if(!isset($data['food_veg'])) {
-                $data['food_veg'] = 0;
+            if(!isset($data['fec-yoga'])) {
+                $data['fec-yoga'] = 0;
+            }
+            if(!isset($data['fec-massage'])) {
+                $data['fec-massage'] = 0;
+            }
+            if(!isset($data['fec-tours'])) {
+                $data['fec-tours'] = 0;
+            }
+            if(!isset($data['fec-sports'])) {
+                $data['fec-sports'] = 0;
+            }
+            if(!isset($data['fec-insurance'])) {
+                $data['fec-insurance'] = 0;
+            }
+            if(!isset($data['pay-cheque'])) {
+                $data['pay-cheque'] = 0;
+            }
+            if(!isset($data['pay-creditcard'])) {
+                $data['pay-creditcard'] = 0;
+            }
+            if(!isset($data['pay-debitcard'])) {
+                $data['pay-debitcard'] = 0;
+            }
+            if(!isset($data['pay-cash'])) {
+                $data['pay-cash'] = 0;
+            }
+            if(!isset($data['accommodation_single_ac'])) {
+                $data['accommodation_single_ac'] = 0;
+            }
+            if(!isset($data['accommodation_single_non_ac'])) {
+                $data['accommodation_single_non_ac'] = 0;
+            }
+            if(!isset($data['accommodation_shared'])) {
+                $data['accommodation_shared'] = 0;
+            }
+            if(!isset($data['accommodation_general'])) {
+                $data['accommodation_general'] = 0;
             }
             $healthcare = Healthcare::create([
             'name' => $data['name'],
@@ -172,7 +209,10 @@ class AuthController extends Controller
             'organic' => $data['food_organic'],
             'personalised_diet' => $data['food_personalised'],
             'food' => $data['food'],
-            'accommodation' => $data['accommodation'],
+            'general_ward' => $data['accommodation_general'],
+            'shared' => $data['accommodation_shared'],
+            'single_non_ac' => $data['accommodation_single_non_ac'],
+            'single_ac' => $data['accommodation_single_ac'],
             'mon_from' => $data['working_hours_mon_from'],
             'mon_to' => $data['working_hours_mon_to'],
             'sun_from' => $data['working_hours_sun_from'],
@@ -200,13 +240,17 @@ class AuthController extends Controller
             'longtitude' => $data['loc-lon'],
             'latitude' => $data['loc-lat'],
             'payment_till' => '2016-12-31',
+            'is_approved' => 0
         ]);
+        $pro_pic = '';
             for($i=1;$i<4;$i++){
                 if($request->hasFile('photo_'.$i)){
                
             $extension = $request->file('photo_'.$i)->getClientOriginalExtension();
             $destinationPath = 'images/healthcare/';
             $fileName = str_replace(" ","",uniqid('img_'.$healthcare['id'].'_', true).microtime().'.'.$extension);
+            if($i == 1)
+$pro_pic = $fileName;
             if($request->file('photo_'.$i)->move($destinationPath, $fileName))
             {
               $photos = Photos::create([
@@ -223,12 +267,18 @@ class AuthController extends Controller
             }
             }
             }
-
-
-        HealthcareTypes::create([
-            'type_id' => $data['treatment_type'],
+            Healthcare::where('id',$healthcare['id'])->update(['pro_pic' => $pro_pic]);
+        $types_count = Types::all()->count();
+        for($i = 1;$i <= $types_count ; $i++) {
+        if($data["treatment_type_$i"] != "")
+        {
+            HealthcareTypes::create([
+            'type_id' => $data["treatment_type_$i"],
             'healthcare_id' => $healthcare['id']
         ]);
+        }  
+        } 
+        
             $user1 = Sentinel::findById($user['id']);
 
             $role = Sentinel::findRoleByName('Healthcare');

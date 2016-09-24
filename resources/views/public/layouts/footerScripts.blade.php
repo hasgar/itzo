@@ -28,7 +28,11 @@
 
 		<script type="text/javascript" src="/js/owl.carousel/owl-carousel/owl.carousel.min.js"></script>
 		<script>$(document).ready(function() {
- 
+ var addType = 1;
+$(".add-type").on("click" ,function() {
+     $(".treatment-type-"+(addType+1)).show();
+    addType++;
+});
   $("#owl-demo").owlCarousel({
  
       navigation : true, // Show next and prev buttons

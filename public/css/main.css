@@ -63,6 +63,27 @@ color: #efaa52;
 	border-left: 2px solid lightgrey;
 	width:165px;
 }
+.hide-type {
+	display:none;
+}
+.margin-top-7 {
+	margin-top: 7px;
+}
+.add-type {
+	margin-top:7px;
+    float: right;
+    color: #4f95ff;
+    font-size: 14px;
+
+}
+.mm-offcanvas {
+	display: none !important;
+}
+.add-type:hover {
+    color: #4082e6;
+    cursor: pointer;
+
+}
 .state-combo {
 	border-top-left-radius: 5px !important;
 	border-top-left-radius: 5px !important;
@@ -88,6 +109,9 @@ color: #efaa52;
 .text-below-footer {
 	padding-top: 15px;
     color: #dedede;
+}
+.padding-top-15 {
+	padding-top: 15px !important;
 }
 .dollar-color {
 	color: #c1e2f5;
