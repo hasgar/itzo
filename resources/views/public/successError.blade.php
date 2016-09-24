@@ -39,13 +39,7 @@
 		<div class="lp-menu-bar  lp-menu-bar-color">
 			<div class="container">
 					<div class="row">
-						<div class="col-md-4 col-xs-6 lp-logo-container">
-							<div class="lp-logo">
-								<a href="/">
-									<h2 class="main-logo"><i class="fa fa-heartbeat" aria-hidden="true"></i> Chikitzo</h2>
-								</a>
-							</div>
-						</div>
+						@include('public.layouts.logo')
 						<div class="col-xs-6 mobile-nav-icon">
 							<a href="#menu" class="nav-icon">
 								<span class="icon-bar"></span>

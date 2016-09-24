@@ -8,16 +8,21 @@ use App\Http\Requests;
 use Auth;
 use Sentinel;
 use App\Countries;
+use App\States;
+use App\Cities;
 use App\Booking;
 use App\Users;
 use App\User;
+use App\Types;
 use App\Healthcare;
+use App\Photos;
 use App\Conversation;
+use App\HealthcareTypes;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function showSignIn(){
+    public function showSignIn() {
       
         if (Auth::check()) {
             $user = Sentinel::findById(Auth::user()->id);
@@ -36,7 +41,7 @@ class UserController extends Controller
         }
         return view('public.signin');
     }
-
+    
     public function showSignUp(){
       
         if (Auth::check()) {
@@ -88,7 +93,7 @@ class UserController extends Controller
 public function noPermission(){
           return view('public.noPermission');
     }
-    public function hDashboard(){
+    public function hDashboard() {
         
         $booking = Booking::where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->with(['healthcare','user'])->orderBy('id','desc')->get();
 
@@ -106,6 +111,10 @@ public function noPermission(){
     public function aUsers(){
         $users = Users::with(['bookings'])->get();
         return view('admin.users')->with('users',$users);
+    }
+    public function aHealthcares(){
+        $healthcares = Healthcare::all();
+        return view('admin.healthcares')->with('healthcares',$healthcares);
     }
      public function hChat(Request $request){
         $booking = Booking::where('id',$request->id)->get();
@@ -137,6 +146,16 @@ public function noPermission(){
         
         return redirect('/admin/users');
     }
+    public function hBlock(Request $request){
+        $user = Healthcare::where('id',$request->id)->update(['is_approved' => 0]);
+        
+        return redirect('/admin/healthcares');
+    }
+    public function hApprove(Request $request){
+        $user = Healthcare::where('id',$request->id)->update(['is_approved' => 1]);
+        
+        return redirect('/admin/healthcares');
+    }
     public function unblock(Request $request){
         $user = Users::where('id',$request->id)->update(['status' => 1]);
         
@@ -154,6 +173,20 @@ public function noPermission(){
     public function hSettings(Request $request){
         
         return view('healthcare.settings');
+    }
+     public function hEdit(Request $request){
+         $countries = Countries::all();
+                 $countries = Countries::all();
+         $types = Types::all();
+         $healthcare = Healthcare::where('user_id',Auth::user()->id)->get();
+      $selectedTypes = HealthcareTypes::where('healthcare_id',$healthcare[0]['id'])->pluck('type_id');
+
+         $selectedTypes = Types::whereIn('id',$selectedTypes)->get();
+         $sCountry = Countries::where('id',$healthcare[0]['country_id'])->get();
+         $sState = States::where('id',$healthcare[0]['state_id'])->get();
+         $sCity = Cities::where('id',$healthcare[0]['city_id'])->get();
+         $sPhotos = Photos::where('healthcare_id',$healthcare[0]['id'])->get();
+        return view('healthcare.edit')->with('countries',$countries)->with('state',$sState)->with('photos',$sPhotos)->with('selectedTypes',$selectedTypes)->with('city',$sCity)->with('country',$sCountry)->with('types',$types)->with('healthcare',$healthcare);
     }
     public function aUpdateEmail(Request $request){
 

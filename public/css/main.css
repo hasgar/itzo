@@ -8,6 +8,9 @@ body{margin:0;font-size:16px;font-family:'Ubuntu', sans-serif;font-weight:300}h1
 	transition: all .0s ease;
 	-o-transition: all .0s ease;
 }
+.treatment-types {
+	width:100% !important;
+}
 .lp-menu > ul > li > a {
 	color:#efaa52;
 }
@@ -63,6 +66,36 @@ color: #efaa52;
 	border-left: 2px solid lightgrey;
 	width:165px;
 }
+.hide-type {
+	display:none;
+}
+.margin-top-7 {
+	margin-top: 7px;
+}
+.add-type {
+	margin-top:7px;
+    float: right;
+    color: #4f95ff;
+    font-size: 14px;
+
+}
+.mm-offcanvas {
+	display: none !important;
+}
+.add-type:hover {
+    color: #4082e6;
+    cursor: pointer;
+
+}
+.del-pic {
+    color: #f35a5a;
+
+}
+.del-pic:hover {
+    color: #c33737;
+    cursor: pointer;
+
+}
 .state-combo {
 	border-top-left-radius: 5px !important;
 	border-top-left-radius: 5px !important;
@@ -89,6 +122,9 @@ color: #efaa52;
 	padding-top: 15px;
     color: #dedede;
 }
+.padding-top-15 {
+	padding-top: 15px !important;
+}
 .dollar-color {
 	color: #c1e2f5;
 }
@@ -98,6 +134,15 @@ color: #efaa52;
 .dollar-non-select {
 	color:#bcd6e4;
 }
+
+.fecilities-lbl {
+	  font-size: 15px !important;
+    font-weight: 400 !important;
+	color: #efaa52 !important;;
+}
+.fecilites-check {
+	 font-size: 16px !important;
+}
 .page-signup{
 	 position: inherit !important;
 }
@@ -105,6 +150,34 @@ color: #efaa52;
 
     font-size: 16px !important;
 
+}
+.food-type, .accommodation-type {
+	display:none;
+}
+.healthcare-heading {
+	 padding-top: 24px !important;
+
+}
+.no-left-padding {
+	padding-left: 0px !important;
+}
+.no-right-padding {
+	padding-right: 0px !important;
+}
+.email-icon {
+    color: #9e9a9a;
+}
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.error {
+	    font-weight: 400 !important;
+    color: #bf3b3b !important;
+}
+input.error, textarea.error, select.error  {
+	  border: 1px solid #bf3b3b !important;
 }
 .ui-autocomplete {
     max-height: 200px;

@@ -26,6 +26,10 @@
 	
 	<link href='/css/mapbox.css' rel='stylesheet' />
 	<link href='/lib/chosen/chosen.css' rel='stylesheet' />
+	<link href='/js/owl.carousel/owl-carousel/owl.carousel.css' rel='stylesheet' />
+	<link href='/js/owl.carousel/owl-carousel/owl.transitions.css' rel='stylesheet' />
+	<link href='/js/owl.carousel/owl-carousel/owl.theme.css' rel='stylesheet' />
+	
 	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
 	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 	<link href="/css/main.css" type="text/css" rel="stylesheet" />

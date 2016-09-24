@@ -35,4 +35,9 @@ class HomeController extends Controller
         return view('public.home')->with('states',$states)->with('types',$types);
    
     }
+    public function notFound(Request $request)
+    {
+        return view('public.notFound');
+   
+    }
 }

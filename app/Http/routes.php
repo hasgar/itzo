@@ -27,6 +27,7 @@ Route::auth();
 
 Route::get('/add-health-care', 'HealthcareController@addHealthcare');
 
+Route::get('/404', 'HomeController@notFound');
 Route::post('/addRating', 'RatingController@addRating');
 Route::get('/user/cancel/{id}/{name}', 'HealthcareController@cancelBooking')->middleware('isUser');
 Route::get('/user/chat/{id}/{name}', 'UserController@chat')->middleware('isUser');
@@ -34,12 +35,17 @@ Route::post('/user/chatSend', 'UserController@chatSend')->middleware('isUser');
 Route::get('/admin/chat/{id}/{name}/{healthcare}', 'UserController@aChat')->middleware('isAdmin');
 Route::get('/noPermission', 'UserController@noPermission');
 Route::get('/healthcare/dashboard', 'UserController@hDashboard')->middleware('isHealthcare');
+Route::post('/healthcare/update', 'HealthcareController@update')->middleware('isHealthcare');
 Route::get('/admin/dashboard', 'UserController@aDashboard')->middleware('isAdmin');
 Route::get('/admin/users', 'UserController@aUsers')->middleware('isAdmin');
+Route::get('/admin/healthcares', 'UserController@aHealthcares')->middleware('isAdmin');
 Route::get('/admin/settings', 'UserController@aSettings')->middleware('isAdmin');
 Route::get('/user/settings', 'UserController@uSettings')->middleware('isUser');
 Route::get('/healthcare/settings', 'UserController@hSettings')->middleware('isHealthcare');
+Route::get('/healthcare/edit', 'UserController@hEdit')->middleware('isHealthcare');
 Route::get('/admin/block/{id}/{name}', 'UserController@block')->middleware('isAdmin');
+Route::get('/admin/healthcare/approve/{id}/{name}', 'UserController@hApprove')->middleware('isAdmin');
+Route::get('/admin/healthcare/block/{id}/{name}', 'UserController@hBlock')->middleware('isAdmin');
 Route::get('/admin/bookings/{id}/{name}', 'UserController@userBookings')->middleware('isAdmin');
 Route::get('/admin/unblock/{id}/{name}', 'UserController@unblock')->middleware('isAdmin');
 Route::get('/healthcare/cancel/{id}/{name}', 'HealthcareController@cancelBook')->middleware('isHealthcare');

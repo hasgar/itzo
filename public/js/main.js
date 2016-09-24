@@ -1,5 +1,35 @@
 $(document).ready(function() {
     "use-strict";
+
+  /* $('.LPtagsContainer').bind("DOMSubtreeModified",function(){
+  alert('changed');
+});
+    $(".healthcare-box").each(function(){
+               res1 = $(this).attr("data-fec").split(",");
+            res1 = res1.filter(Boolean)
+    if(res.every(elem => res1.indexOf(elem) > -1)) {
+        $(this).show()
+    }
+    else  {
+        $(this).hide()
+    }
+}); */
+
+    
+    $('#accommodation').on('change', function() {
+  if(this.value == 1 ) {
+      $('.accommodation-type').show()
+  } else {
+      $('.accommodation-type').hide()
+  }
+});
+$('#food').on('change', function() {
+  if(this.value == 1 ) {
+      $('.food-type').show()
+  } else {
+      $('.food-type').hide()
+  }
+});
 $('#country').on('change', function (e) {
     if($('select[id=country]').val() != "0") {
         $("#state option[value!='0']").remove();
@@ -9,8 +39,16 @@ $.ajaxSetup({
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
 });
+
+/*
+$("#add-type").on('click', function() {
+    alert('sdsd');
+    $(".treatment-type-"+addType+1).show();
+    addType++;
+});
+*/
 $.ajax({
-                url: '/getStates',
+                url: 'http://chikitzo.gpclub.in/getStates',
                 type: 'post',
                 data: {id:$('select[id=country]').val()},
                 success: function(data){
@@ -41,7 +79,7 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: '/getCities',
+                url: 'http://chikitzo.gpclub.in/getCities',
                 type: 'post',
                 data: {id:$('select[id=state]').val()},
                 success: function(data){
@@ -302,6 +340,7 @@ $.ajax({
                     else if($( this ).hasClass( "lookingfor-combo" )) {
                     $(".type-sel").val(ui.item.option.value);
                     }
+                    
                 else if($( this ).hasClass( "state-combo" )) {
                     $(".state-sel").val(ui.item.option.value);
 $(".city-combo").attr('placeholder','Please wait..');
@@ -312,7 +351,7 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: '/getCities',
+                url: 'http://chikitzo.gpclub.in/getCities',
                 type: 'post',
                 data: {id:ui.item.option.value},
                 success: function(data){
@@ -348,6 +387,9 @@ $.each(classList, function(index, item) {
     }
     if (item === 'your-state') {
         athis.input.addClass('state-combo');
+    }
+    if (item === 'fec-types') {
+        athis.input.addClass('fec-combo');
     }
     if (item === 'you-lookingfor') {
         athis.input.addClass('lookingfor-combo');
@@ -407,7 +449,7 @@ $.each(classList, function(index, item) {
         open: function() { $('#div .ui-menu').width(300) }  
     }), $(".custom-combobox-input").on("click", function() {
         $(this).autocomplete("search", "")
-    }), $(".state").next().children().attr("placeholder", "State"), $(".your-location").next().children().attr("placeholder", "Your Location"), $(".your-state").next().children().attr("placeholder", "Your State"), $(".your-city").next().children().attr("placeholder", "Your City"),$(".you-lookingfor").next().children().attr("placeholder", "What type of treatment you are looking for?"), $(".hospital-type").next().children().attr("placeholder", "Treatment type"), $(".city-filter").next().children().attr("placeholder", "City"), $(".postSubmitCat .location_input").attr("placeholder", "Chose one or more than one categories"), $(".md-trigger").on("click", function() {
+    }), $(".state").next().children().attr("placeholder", "State"), $(".your-location").next().children().attr("placeholder", "Your Location"), $(".your-state").next().children().attr("placeholder", "Your State"), $(".your-city").next().children().attr("placeholder", "Your City"),$(".you-lookingfor").next().children().attr("placeholder", "What type of treatment are you looking for?"), $(".hospital-type").next().children().attr("placeholder", "Treatment type"), $(".city-filter").next().children().attr("placeholder", "City"), $(".postSubmitCat .location_input").attr("placeholder", "Chose one or more than one categories"), $(".md-trigger").on("click", function() {
         function a() {
             new google.maps.Marker({
                 draggable: !0,
@@ -494,13 +536,33 @@ $.each(classList, function(index, item) {
             content: ['<a href="about.html" class="iconsmall iconsmalltext"><i class="fa fa-info"></i></a>', '<a href="' + i + '" class="userimage"><img class="icon icons8-Contacts" src="' + s + '" alt="user"></a>', '<a href="contact.html" class="iconsmall"><img class="icon icons8-Message" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADjElEQVRoge1YPWgUQRROkcIiRZCAERQVUlwhKGIghT/vTQotLCxSCFpYREkhGEQhhUVAwZAg6bQ88HbehGtSWKSwuMIihYVIiCHmdt5IikMiWJygKBKLnd3bS/budu+SrB77wVYz++77dud977vt6cmQIUOGDGkAibe74eo+IWmfjHbRvUKAOJc2qaQA4lxUj1TA4ZG0ycUFKPc8ElcaNXsZFz7fTZtkKwgy40D6U2SzC8X50DGbTJtsIwDxJJL5jcTbglhFNjsQTwXCiOfTJh0GlEq9gni+9uDNk56eJq4Fjh5D4h+eGFOAUqk3PfqWU3G1TxAvelzNb5B8219rar8g+QYSv7drhAv6zIGztxCFjXModdFy+QDS3Ayvt5wj1trYrq9BoTx0cPQth0J5CInXLAeOGhGxBiIUeRDJvEvDnuvt1byDIg9G7Ys92aG42ieUeW0LVoH4+v7Rt7/puNeQTNWaziIUV/sa7U0UUYDWB5DMrBXzFUk/2nv6PjHzAIm/2N+aBVofaL6/jawFUj8M2d/c3lCvQRA/C2aZ1A/j3NN2aBSKJwITUPxCSH2ifeoeLr0yp1CZF35TC8UTce/tKP0CuReQzJZ9/W8hz/3J6dtanqG8tbW2gNwLSe7vOMZbV/GzzhooPpm4BnEOldkIjpNyzyet0dkbKZSHkMzKjsBZSUKk/q36l1lJOq/aFhK2RiSzAsS5WniLZ89A+lYo+C16w9efV6YKjntt34RAqdQL0p0OhUoV9nehzFyQhYinojKaV0M/DiXul/4+yPOhugQu3ek4OS/ZHMlzPxIv1UJbtDWC1Pf8J43Ea+DoMaD1AaD1Ae9NBvltG4inImuQHg/VWGplJPEnu+SzoYasQIGhqWjiqxj65xZxfWt1/MDhkaCGMhuwUD7dkRB7lqt2ZiyDs3GsGYHgvjz3g3SnUfGy19BmCxUvC2XmGmWmXTWKPIjEpVrv6VuJhYySPiIkz6Din4LMHyT9/JIqH49DYC9xsWCOIulZJP6Fin8KyTOjpI+E9zQUctlxh1EZ6U9ZkHz/oAXshO29suVElx132F+LFOINObMZiGhjQO0XQPLZIBqR2fS57RJS7xbmTavUmQa8FB5yT9Lju4TYxe+C9NN/UYSPK8XNwyD1k9pQ3vk5iPgjSv7nv2n5EErfAeKPEUerSz6Zpk2qXXSvkP/96h4hGTJkyJAhDfwFrL5XNwpoE2kAAAAASUVORK5CYII=" alt="contactus"></a>']
         }
     });
+    var typesval = "";
+    var res = "";
+    var res1 = "";
     var t = $(".chosen-select").chosen(),
+    
         o = function() {
             $(".LPtagsContainer").empty(), t.find(":selected").each(function(a, i) {
-                $('<div class="active-tag">' + i.text + '<div class="remove-tag"><i class="fa fa-times"></i></div></div>').appendTo(".LPtagsContainer").on("click", function() {
+                $('<div class="active-tag">' + i.text + '</div>').appendTo(".LPtagsContainer").on("click", function() {
                     $(this).remove(), $(i).attr("selected", !1), t.trigger("chosen:updated"), $('.LPtagsContainer input[value="' + i.value + '"]').remove()
                 }), $('<input type="hidden" name="select_tag" value="' + i.value + '" />').appendTo(".LPtagsContainer")
+                typesval += i.value + ",";
             })
+            $('.selected-types').val(typesval)
+            res = typesval.split(",");
+            res = res.filter(Boolean);
+
+           $(".healthcare-box").each(function(){
+               res1 = $(this).attr("data-fec").split(",");
+            res1 = res1.filter(Boolean)
+    if(res.every(elem => res1.indexOf(elem) > -1)) {
+        $(this).show()
+    }
+    else  {
+        $(this).hide()
+    }
+});
+            typesval = "";
         };
     t.on("change", o), $(".sbutton").on("click", function(a) {
         a.preventDefault(), $(".smenu").toggleClass("share")

@@ -1,6 +1,6 @@
 @extends('public.layouts.master')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'Healthcare Dashboard')
 
 
 @section('content')
@@ -38,13 +38,7 @@
 		<div class="lp-menu-bar  lp-menu-bar-color">
 			<div class="container">
 					<div class="row">
-						<div class="col-md-4 col-xs-6 lp-logo-container">
-							<div class="lp-logo">
-								<a href="/">
-									<h2 class="main-logo"><i class="fa fa-heartbeat" aria-hidden="true"></i> Chikitzo</h2>
-								</a>
-							</div>
-						</div>
+						@include('public.layouts.logo')
 						<div class="col-xs-6 mobile-nav-icon">
 							<a href="#menu" class="nav-icon">
 								<span class="icon-bar"></span>
@@ -85,10 +79,10 @@
 		</div><!-- ../menu-bar -->
 		<div class="page-heading listing-page archive-page ">
 			<div class="page-heading-inner-container text-center">
-				<h1>Admin Dashboard</h1>
+				<h1>Healthcare Dashboard</h1>
 				<ul class="breadcrumbs">
 					<li><a href="/">Home</a></li>
-					<li><span>Admin Dashboard</span></li>
+					<li><span>Healthcare Dashboard</span></li>
 				</ul>
 			</div>
 			<div class="page-header-overlay"></div>
@@ -103,15 +97,17 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
 						<li>
-							<a href="/admin/dashboard" role="tab" data-toggle="tab">
-								Bookings
+							<a href="/healthcare/dashboard" role="tab" data-toggle="tab">
+								Your Bookings
 							</a>
 						</li>
-						<li >
-							<a href="/admin/users" role="tab" data-toggle="tab">
-								Users
+
+						<li>
+							<a href="/healthcare/edit" role="tab" data-toggle="tab">
+								Your Healthcare
 							</a>
 						</li>
+						
 						<li class="active">
 							<a href="#" role="tab" data-toggle="tab">
 								Account Settings

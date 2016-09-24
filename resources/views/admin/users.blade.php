@@ -38,13 +38,7 @@
 		<div class="lp-menu-bar  lp-menu-bar-color">
 			<div class="container">
 					<div class="row">
-						<div class="col-md-4 col-xs-6 lp-logo-container">
-							<div class="lp-logo">
-								<a href="/">
-									<h2 class="main-logo"><i class="fa fa-heartbeat" aria-hidden="true"></i> Chikitzo</h2>
-								</a>
-							</div>
-						</div>
+						@include('public.layouts.logo')
 						<div class="col-xs-6 mobile-nav-icon">
 							<a href="#menu" class="nav-icon">
 								<span class="icon-bar"></span>
@@ -110,6 +104,11 @@
 						<li class="active">
 							<a href="#" role="tab" data-toggle="tab">
 								Users
+							</a>
+						</li>
+						<li>
+							<a href="/admin/healthcares" role="tab" data-toggle="tab">
+								Healthcares
 							</a>
 						</li>
 						<li >
@@ -209,7 +208,7 @@
 @else 
 <div class="col-md-12 col-sm-6 col-xs-12 lp-list-view">
 											<div class="lp-list-view-inner-contianer lp-border lp-border-radius-8 clearfix no-bookings" align="center">
-<h4 class="no-bookings">No Bookings available</h4>
+<h4 class="no-bookings">No users available</h4>
 											</div>
 											</div>
 @endif

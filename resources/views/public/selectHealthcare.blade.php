@@ -38,13 +38,7 @@
 		<div class="lp-menu-bar  lp-menu-bar-color">
 			<div class="container">
 					<div class="row">
-						<div class="col-md-4 col-xs-6 lp-logo-container">
-							<div class="lp-logo">
-								<a href="/">
-									<h2 class="main-logo"><i class="fa fa-heartbeat" aria-hidden="true"></i> Chikitzo</h2>
-								</a>
-							</div>
-						</div>
+						@include('public.layouts.logo')
 						<div class="col-xs-6 mobile-nav-icon">
 							<a href="#menu" class="nav-icon">
 								<span class="icon-bar"></span>
@@ -146,7 +140,7 @@
 						<div class="form-group margin-right-0">
 							<div class="input-group margin-right-0">
 								<div class="input-group-addon lp-border"><i class="fa fa-tag"></i></div>
-									<select data-placeholder="Tags" class="chosen-select tag-select-one" multiple >
+									<select data-placeholder="Tags" class="chosen-select tag-select-one fec-types" multiple >
 
 										@foreach ($fecilities as $fecility)
 										<option value="{{$fecility['id']}}">{{$fecility['name']}}</option>
@@ -156,6 +150,7 @@
 							</div>
 						</div>
 					</form>
+					<input class="selected-types" value="[]" type="hidden" />
 				</div>
 			</div>
 			<div class="row">
@@ -191,14 +186,42 @@
 					<div class="md-overlay md-overlayi"></div> <!-- Overlay for Popup -->
 			</div>
 					<div class="row lp-list-page-grid">
-						
+						<?php $fect = "" ?>
 						@foreach ($healthcare as $health)
-						<div class="col-md-3 col-sm-6 lp-grid-box-contianer"  data-title="Photography" data-reviews="4" data-number="+007-123-4567-89" data-email="jhonruss@example.com" data-website="www.example.com" data-price="$20/h" data-pricetext="Text about your price" data-description="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi archeum" data-userimage="images/user-thumb-94x94.png" data-username="Jhon Russel" data-userlisting="14"  data-fb="www.facebook.com" data-gplus="www.plus.google.com" data-linkedin="www.linkedin.com" data-instagram="www.instagram.com" data-twitter="www.twitter.com" data-lattitue="51.514070" data-longitute="-0.142292"  data-id="10"  data-posturl="/healthcare/{{ $health['id'] }}/{{ urlencode($health['name']) }}" data-authorurl="author.html">
+						@if($health['lab'] == 1)
+        <?php $fect .= "8" ?>
+		@endif
+		@if($health['parking'] == 1)
+        <?php $fect .= ",9" ?> @endif
+		@if($health['pharmacy'] == 1)
+        <?php $fect .= ",10" ?> @endif
+        @if($health['wheelchair'] == 1)
+        <?php $fect .= ",11" ?> @endif
+        @if($health['ambulance'] == 1)
+        <?php $fect .= ",12" ?> @endif
+        @if($health['inpatient'] == 1)
+        <?php $fect .= ",13" ?> @endif
+        @if($health['bloodbank'] == 1)
+        <?php $fect .= ",14" ?> @endif
+        @if($health['fitness'] == 1)
+        <?php $fect .= ",15" ?> @endif
+        @if($health['yoga'] == 1)
+        <?php $fect .= ",16" ?> @endif
+        @if($health['massage'] == 1)
+        <?php $fect .= ",17" ?> @endif
+        @if($health['sports'] == 1)
+        <?php $fect .= ",18" ?> @endif
+        @if($health['insurance'] == 1)
+        <?php $fect .= ",20" ?> @endif
+        @if($health['tours'] == 1)
+        <?php $fect .= ",19" ?> @endif
+						<div class="col-md-3 col-sm-6 lp-grid-box-contianer healthcare-box" data-fec="<?php echo $fect;
+						$fect = ""; ?>" data-title="Photography" data-reviews="4" data-number="+007-123-4567-89" data-email="jhonruss@example.com" data-website="www.example.com" data-price="$20/h" data-pricetext="Text about your price" data-description="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi archeum" data-userimage="images/user-thumb-94x94.png" data-username="Jhon Russel" data-userlisting="14"  data-fb="www.facebook.com" data-gplus="www.plus.google.com" data-linkedin="www.linkedin.com" data-instagram="www.instagram.com" data-twitter="www.twitter.com" data-lattitue="51.514070" data-longitute="-0.142292"  data-id="10"  data-posturl="/healthcare/{{ $health['id'] }}/{{ urlencode($health['name']) }}" data-authorurl="author.html">
 							<div class="lp-grid-box lp-border lp-border-radius-8">
 								<div class="lp-grid-box-thumb-container">
 									<div class="lp-grid-box-thumb">
 										<a href="/healthcare/{{ $health['id'] }}/{{ urlencode($health['name']) }}">
-										<img src="images/grid/{{ $health['pro_pic'] }}" alt="grid-3" />
+										<img src="images/healthcare/{{ $health['pro_pic'] }}" alt="grid-3" />
 									</a>
 									</div><!-- ../grid-box-thumb -->
 

@@ -1,6 +1,6 @@
 @extends('public.layouts.master')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'User Dashboard')
 
 
 @section('content')
@@ -85,10 +85,10 @@
 		</div><!-- ../menu-bar -->
 		<div class="page-heading listing-page archive-page ">
 			<div class="page-heading-inner-container text-center">
-				<h1>Admin Dashboard</h1>
+				<h1>User Dashboard</h1>
 				<ul class="breadcrumbs">
 					<li><a href="/">Home</a></li>
-					<li><span>Admin Dashboard</span></li>
+					<li><span>User Dashboard</span></li>
 				</ul>
 			</div>
 			<div class="page-header-overlay"></div>
@@ -103,15 +103,11 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
 						<li>
-							<a href="/admin/dashboard" role="tab" data-toggle="tab">
-								Bookings
+							<a href="/user/dashboard" role="tab" data-toggle="tab">
+								Your Bookings
 							</a>
 						</li>
-						<li >
-							<a href="/admin/users" role="tab" data-toggle="tab">
-								Users
-							</a>
-						</li>
+						
 						<li class="active">
 							<a href="#" role="tab" data-toggle="tab">
 								Account Settings
