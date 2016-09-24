@@ -29,6 +29,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        
         $states = States::where('country_id',101)->get();
         $types = Types::all();
         return view('public.home')->with('states',$states)->with('types',$types);
