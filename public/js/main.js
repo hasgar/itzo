@@ -48,7 +48,7 @@ $("#add-type").on('click', function() {
 });
 */
 $.ajax({
-                url: '/getStates',
+                url: 'http://chikitzo.gpclub.in/getStates',
                 type: 'post',
                 data: {id:$('select[id=country]').val()},
                 success: function(data){
@@ -79,7 +79,7 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: '/getCities',
+                url: 'http://chikitzo.gpclub.in/getCities',
                 type: 'post',
                 data: {id:$('select[id=state]').val()},
                 success: function(data){
@@ -351,7 +351,7 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: '/getCities',
+                url: 'http://chikitzo.gpclub.in/getCities',
                 type: 'post',
                 data: {id:ui.item.option.value},
                 success: function(data){
@@ -449,7 +449,7 @@ $.each(classList, function(index, item) {
         open: function() { $('#div .ui-menu').width(300) }  
     }), $(".custom-combobox-input").on("click", function() {
         $(this).autocomplete("search", "")
-    }), $(".state").next().children().attr("placeholder", "State"), $(".your-location").next().children().attr("placeholder", "Your Location"), $(".your-state").next().children().attr("placeholder", "Your State"), $(".your-city").next().children().attr("placeholder", "Your City"),$(".you-lookingfor").next().children().attr("placeholder", "What type of treatment you are looking for?"), $(".hospital-type").next().children().attr("placeholder", "Treatment type"), $(".city-filter").next().children().attr("placeholder", "City"), $(".postSubmitCat .location_input").attr("placeholder", "Chose one or more than one categories"), $(".md-trigger").on("click", function() {
+    }), $(".state").next().children().attr("placeholder", "State"), $(".your-location").next().children().attr("placeholder", "Your Location"), $(".your-state").next().children().attr("placeholder", "Your State"), $(".your-city").next().children().attr("placeholder", "Your City"),$(".you-lookingfor").next().children().attr("placeholder", "What type of treatment are you looking for?"), $(".hospital-type").next().children().attr("placeholder", "Treatment type"), $(".city-filter").next().children().attr("placeholder", "City"), $(".postSubmitCat .location_input").attr("placeholder", "Chose one or more than one categories"), $(".md-trigger").on("click", function() {
         function a() {
             new google.maps.Marker({
                 draggable: !0,

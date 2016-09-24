@@ -106,6 +106,11 @@
 								Users
 							</a>
 						</li>
+						<li>
+							<a href="/admin/healthcares" role="tab" data-toggle="tab">
+								Healthcares
+							</a>
+						</li>
 						<li >
 							<a href="/admin/settings" role="tab" data-toggle="tab">
 								Account Settings
@@ -203,7 +208,7 @@
 @else 
 <div class="col-md-12 col-sm-6 col-xs-12 lp-list-view">
 											<div class="lp-list-view-inner-contianer lp-border lp-border-radius-8 clearfix no-bookings" align="center">
-<h4 class="no-bookings">No Bookings available</h4>
+<h4 class="no-bookings">No users available</h4>
 											</div>
 											</div>
 @endif

@@ -107,6 +107,11 @@
 							</a>
 						</li>
 						<li>
+							<a href="/admin/healthcares" role="tab" data-toggle="tab">
+								Healthcares
+							</a>
+						</li>
+						<li>
 							<a href="/admin/settings" role="tab" data-toggle="tab">
 								Account Settings
 							</a>

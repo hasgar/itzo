@@ -133,8 +133,10 @@
 							<div class="login-form-popup lp-border-radius-8">
 								
 								<div class="siginupcontainer page-signup">
-									<form id="add-healthcare" class="form-horizontal padding-top-15"role="form" method="POST" action="{{ url('/updateHealthcare') }}" enctype='multipart/form-data'>
+									<form id="add-healthcare" class="form-horizontal padding-top-15"role="form" method="POST" action="{{ url('/healthcare/update') }}" enctype='multipart/form-data'>
                        					 {{ csrf_field() }}
+											<input type="hidden" name="healthcare_id" id="healthcare_id" value="{{ $healthcare[0]['id'] }}">
+											
 										<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 											<label for="name">Health care Service name *</label>
 											<input type="text" class="form-control" name="name" id="name" value="{{ $healthcare[0]['name'] }}" required placeholder="Enter health center name">

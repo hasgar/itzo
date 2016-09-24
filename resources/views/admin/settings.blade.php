@@ -106,6 +106,11 @@
 								Users
 							</a>
 						</li>
+						<li>
+							<a href="/admin/healthcares" role="tab" data-toggle="tab">
+								Healthcares
+							</a>
+						</li>
 						<li class="active">
 							<a href="#" role="tab" data-toggle="tab">
 								Account Settings

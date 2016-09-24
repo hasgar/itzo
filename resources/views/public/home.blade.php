@@ -66,11 +66,11 @@
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/healthcare/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboards</a></li>
 									</li>
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
+									<li><a href="/admin/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboards</a></li>
 									</li>
 									@endif
 									@endif
@@ -85,8 +85,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-sm-12 text-center">
-						  <h1>Find best hospitals in india</h1>
-						  <p class="lp-banner-browse-txt">Get information about the best hospital in a city, read review, locate and book your appointment</p>
+						  <h1>Find the best hospitals in india</h1>
+						  <p class="lp-banner-browse-txt">Get information about the best hospital in a city, read reviews, locate and book your appointment</p>
 						</div>
 						<div class="col-md-10 col-xs-12 col-md-offset-1 col-sm-offset-0">
 							<div class="lp-search-bar">
@@ -104,7 +104,7 @@
 									<div class="ui-widget border-dropdown">
 									  <select class="comboboxs your-city">
 										<option value="">Select one...</option>
-										<option value="0">Select your state</option>
+										<option value="0">Select your city</option>
 									  </select>
 									</div>
 									<div class="ui-widget border-dropdown">
@@ -145,60 +145,8 @@
 
 					<div class="col-md-12">
 						<ul class="lp-home-categoires margin-top-subtract-55 padding-left-0">
-							<li>
-								<a href="listing.html" class="lp-border-radius-5">
-									<span>
-									<!-- Food icon by Icons8 -->
-									<i class="fa fa-ambulance hospital-type-icon"></i><br>
-										Hospital Type
-									</span>
-								</a>
-							</li>
-							<li>
-								<a href="listing.html" class="lp-border-radius-5">
-									<span>
-										<!-- Bar icon by Icons8 -->
-										<i class="fa fa-wheelchair hospital-type-icon"></i><br>
-										Hospital Type
-									</span>
-								</a>
-							</li>
-							<li>
-								<a href="listing.html" class="lp-border-radius-5">
-									<span>
-										<!-- Movie icon by Icons8 -->
-										<i class="fa fa-stethoscope hospital-type-icon"></i><br>
-										Hospital Type
-									</span>
-								</a>
-							</li>
-							<li>
-								<a href="listing.html" class="lp-border-radius-5">
-									<span>
-										<!-- Shopping Bag icon by Icons8 -->
-										<i class="fa fa-heartbeat hospital-type-icon"></i><br>
-										Hospital Type
-									</span>
-								</a>
-							</li>
-							<li>
-								<a href="listing.html" class="lp-border-radius-5">
-									<span>
-										<!-- Car icon by Icons8 -->
-<!-- Car icon by Icons8 -->
-<i class="fa fa-medkit hospital-type-icon"></i><br>
-Hospital Type
-									</span>
-								</a>
-							</li>
-							<li>
-								<a href="listing.html" class="lp-border-radius-5">
-									<span>
-									<!-- Cat Footprint icon by Icons8 -->
-<i class="fa fa-h-square hospital-type-icon"></i><br>
-Hospital Type
-									</span>
-								</a>
+							<li class="treatment-types">
+								<img src="/images/types_of_treatments.png" />
 							</li>
 						</ul>
 					</div>

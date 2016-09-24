@@ -112,6 +112,10 @@ public function noPermission(){
         $users = Users::with(['bookings'])->get();
         return view('admin.users')->with('users',$users);
     }
+    public function aHealthcares(){
+        $healthcares = Healthcare::all();
+        return view('admin.healthcares')->with('healthcares',$healthcares);
+    }
      public function hChat(Request $request){
         $booking = Booking::where('id',$request->id)->get();
         $chat = Conversation::where('user_2_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->where('booking_id',$request->id)->orderBy('id','desc')->get();
@@ -141,6 +145,16 @@ public function noPermission(){
         $user = Users::where('id',$request->id)->update(['status' => 0]);
         
         return redirect('/admin/users');
+    }
+    public function hBlock(Request $request){
+        $user = Healthcare::where('id',$request->id)->update(['is_approved' => 0]);
+        
+        return redirect('/admin/healthcares');
+    }
+    public function hApprove(Request $request){
+        $user = Healthcare::where('id',$request->id)->update(['is_approved' => 1]);
+        
+        return redirect('/admin/healthcares');
     }
     public function unblock(Request $request){
         $user = Users::where('id',$request->id)->update(['status' => 1]);
