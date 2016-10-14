@@ -118,7 +118,7 @@
 						</div>
 						<div class="col-md-4 no-padding">
 							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/accupuncture" > <img src="/images/accupuncture.png" class="h-types"  /></a>
+								<a href="/healthcare/type/acupuncture" > <img src="/images/accupuncture.png" class="h-types"  /></a>
 							</div>
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/ayurveda" > <img src="/images/ayurveda.png" class="h-types" /></a>
