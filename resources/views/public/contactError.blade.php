@@ -35,15 +35,15 @@
 			<div class="address-box mr-bottom-30">
 						<p>
 							<i class="fa fa-map-marker"></i>
-							<span>Your Address at Lutaco Tower 007A Nguyen Van Troi</span>
+							<span>Your Address</span>
 						</p>
 						<p>
 							<i class="fa fa-phone"></i>
-							<span>+008 1234 6789</span>
+							<span>+000 000 000</span>
 						</p>
 						<p>
 							<i class="fa fa-envelope"></i>
-							<span>support@takethemes.net</span>
+							<span>support@chiktizo.com</span>
 						</p>
 				
 					<ul class="social-icons post-socials contact-social">
