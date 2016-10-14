@@ -252,7 +252,7 @@
 
 										<div class="form-group {{ $errors->has('departments') ? ' has-error' : '' }}">
 											<label for="departments">Departments *</label>
-											<input type="email" class="form-control" id="departments" name="departments" value="{{ old('departments') }}" placeholder="Enter departments" required>
+											<input type="text" class="form-control" id="departments" name="departments" value="{{ old('departments') }}" placeholder="Enter departments" required>
 											 @if ($errors->has('departments'))
 												<span class="help-block">
 													<strong>{{ $errors->first('departments') }}</strong>
