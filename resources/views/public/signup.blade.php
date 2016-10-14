@@ -12,68 +12,13 @@
 		
 		<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
-								<ul>
-									<li><a href="/">Home</a>
-									</li>
-									@if (Auth::guest())
-									<li><a href="/signin">Sign In</a> / <a href="/signup">Sign Up</a></li>
-									</li>
-									@else 
-									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashboard">Dashboard</a></li>
-									</li>
-									@endif
-									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashboard">  Dashboard</a></li>
-									</li>
-									@endif
-									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashboard">  Dashboard</a></li>
-									</li>
-									@endif
-									@endif
-
-								</ul>
+								@include('public.layouts.headerMob')
 							</div>
 		<div class="lp-menu-bar  lp-menu-bar-color">
 			<div class="container">
 					<div class="row">
 						@include('public.layouts.logo')
-						<div class="col-xs-6 mobile-nav-icon">
-							<a href="#menu" class="nav-icon">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</a>s
-						</div>
-						<div class="col-md-8 col-xs-12 lp-menu-container">
-							<div class="pull-right lp-add-listing-btn">
-								<ul>
-
-									<li><a href="/add-health-care"><i class="fa fa-plus"></i> Add your health care service</a></li>
-								</ul>
-							</div>
-							<div class="lp-menu pull-right menu">
-								<ul>
-									@if (Auth::guest())
-									<li><a href="/signin"><i class="fa fa-user user-plus-icon"></i>  Login</a> / <a href="/signup"><i class="fa fa-user-plus user-plus-icon"></i>  Register</a></li>
-									@else 
-									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
-									</li>
-									@endif
-									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
-									</li>
-									@endif
-									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
-									</li>
-									@endif
-									@endif
-								</ul>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -106,7 +51,7 @@
                        					 {{ csrf_field() }}
 										<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 											<label for="name">Full Name *</label>
-											<input type="name" class="form-control" name="name" id="name" value="{{ old('name') }}">
+											<input type="name" class="form-control" name="name" id="name" value="{{ old('name') }}" required>
 											@if ($errors->has('name'))
 												<span class="help-block">
 													<strong>{{ $errors->first('name') }}</strong>
@@ -115,7 +60,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
 											<label for="supassword">Email Address *</label>
-											<input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+											<input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
 											 @if ($errors->has('email'))
 												<span class="help-block">
 													<strong>{{ $errors->first('email') }}</strong>
@@ -124,7 +69,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
 											<label for="sipassword">Password *</label>
-											<input type="password" class="form-control" id="password" name="password">
+											<input type="password" class="form-control" id="password" name="password" required>
 											 @if ($errors->has('password'))
 												<span class="help-block">
 													<strong>{{ $errors->first('password') }}</strong>
@@ -133,7 +78,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 											<label for="sipassword">Confirm Password *</label>
-											<input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+											<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
 											@if ($errors->has('password_confirmation'))
 												<span class="help-block">
 													<strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -142,7 +87,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('mobile') ? ' has-error' : '' }}">
 											<label for="mobile">Mobile Number</label>
-											<input type="text" class="form-control" id="mobile" name="mobile" value="{{ old('mobile') }}">
+											<input type="text" class="form-control" id="mobile" name="mobile" value="{{ old('mobile') }}" required>
 											 @if ($errors->has('mobile'))
 												<span class="help-block">
 													<strong>{{ $errors->first('mobile') }}</strong>
@@ -151,8 +96,8 @@
 										</div>
 										<div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}">
 											<label for="country">Country *</label>
-											<select type="country" class="form-control" id="country" name="country">
-										<option value="0">Select your country</option>
+											<select type="country" class="form-control" id="country" name="country" required>
+										<option value="">Select your country</option>
 										@foreach ($countries as $country)
 										<option value="{{$country['id']}}">{{$country['name']}}</option>
 										@endforeach
@@ -165,8 +110,8 @@
 										</div>
 										<div class="form-group {{ $errors->has('state') ? ' has-error' : '' }}">
 											<label for="state">State *</label>
-											<select type="state" class="form-control" id="state" name="state">
-<option value="0">Select your state</option>
+											<select type="state" class="form-control" id="state" name="state" required>
+<option value="">Select your state</option>
 </select>
 											@if ($errors->has('state'))
 												<span class="help-block">
@@ -176,8 +121,8 @@
 										</div>
 										<div class="form-group {{ $errors->has('city') ? ' has-error' : '' }}">
 											<label for="city">City *</label>
-											<select type="city" class="form-control" id="city" name="city">
-<option value="0">Select your city</option>
+											<select type="city" class="form-control" id="city" name="city" required>
+<option value="">Select your city</option>
 </select>
 											@if ($errors->has('city'))
 												<span class="help-block">

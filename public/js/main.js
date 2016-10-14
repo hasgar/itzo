@@ -48,11 +48,11 @@ $("#add-type").on('click', function() {
 });
 */
 $.ajax({
-                url: 'http://chikitzo.gpclub.in/getStates',
+                url: 'http://localhost/getStates',
                 type: 'post',
                 data: {id:$('select[id=country]').val()},
                 success: function(data){
-                    $("#state option[value='0']").text('Select your state');
+                    $("#state option[value='0']").text('Select state');
                     data = JSON.parse(data);
                     for(var i = 0;i<data.length;i++) {
                         $("#state").append("<option value='"+ data[i].id +"'>"+ data[i].name +"</option>");
@@ -60,7 +60,7 @@ $.ajax({
                 },
                 error: function(errorRes){
                     alert("Something went wrong.Please try after sometime")
-                     $("#state option[value='0']").text('Select your state');
+                     $("#state option[value='0']").text('Select state');
                 },
                 dataType: 'text',
                 timeout: 60000
@@ -79,11 +79,11 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: 'http://chikitzo.gpclub.in/getCities',
+                url: 'http://localhost/getCities',
                 type: 'post',
                 data: {id:$('select[id=state]').val()},
                 success: function(data){
-                    $("#city option[value='0']").text('Select your state');
+                    $("#city option[value='0']").text('Select state');
                     data = JSON.parse(data);
                     for(var i = 0;i<data.length;i++) {
                         $("#city").append("<option value='"+ data[i].id +"'>"+ data[i].name +"</option>");
@@ -91,7 +91,7 @@ $.ajax({
                 },
                 error: function(errorRes){
                     alert("Something went wrong.Please try after sometime")
-                     $("#city option[value='0']").text('Select your state');
+                     $("#city option[value='0']").text('Select state');
                 },
                 dataType: 'text',
                 timeout: 60000
@@ -351,20 +351,20 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: 'http://chikitzo.gpclub.in/getCities',
+                url: 'http://localhost/getCities',
                 type: 'post',
                 data: {id:ui.item.option.value},
                 success: function(data){
                     data = JSON.parse(data);
-                   $(".city-combo").attr('placeholder','Your city');
+                   $(".city-combo").attr('placeholder','City');
                     for(var i = 0;i<data.length;i++) {
                         $(".your-city").append("<option value='"+ data[i].id +"'>"+ data[i].name +"</option>");
                     }
                 },
                 error: function(errorRes){
                     alert("Something went wrong.Please try after sometime")
-                     $(".city-combo").attr('placeholder','Your city');
-                   $(".your-city").append("<option val='0'>Select your state</option>");
+                     $(".city-combo").attr('placeholder','City');
+                   $(".your-city").append("<option val='0'>Select state</option>");
                 },
                 dataType: 'text',
                 timeout: 60000
@@ -449,7 +449,7 @@ $.each(classList, function(index, item) {
         open: function() { $('#div .ui-menu').width(300) }  
     }), $(".custom-combobox-input").on("click", function() {
         $(this).autocomplete("search", "")
-    }), $(".state").next().children().attr("placeholder", "State"), $(".your-location").next().children().attr("placeholder", "Your Location"), $(".your-state").next().children().attr("placeholder", "Your State"), $(".your-city").next().children().attr("placeholder", "Your City"),$(".you-lookingfor").next().children().attr("placeholder", "What type of treatment are you looking for?"), $(".hospital-type").next().children().attr("placeholder", "Treatment type"), $(".city-filter").next().children().attr("placeholder", "City"), $(".postSubmitCat .location_input").attr("placeholder", "Chose one or more than one categories"), $(".md-trigger").on("click", function() {
+    }), $(".state").next().children().attr("placeholder", "State"), $(".your-location").next().children().attr("placeholder", "Location"), $(".your-state").next().children().attr("placeholder", "State"), $(".your-city").next().children().attr("placeholder", "City"),$(".you-lookingfor").next().children().attr("placeholder", "What type of treatment are you looking for?"), $(".hospital-type").next().children().attr("placeholder", "Treatment type"), $(".city-filter").next().children().attr("placeholder", "City"), $(".postSubmitCat .location_input").attr("placeholder", "Chose one or more than one categories"), $(".md-trigger").on("click", function() {
         function a() {
             new google.maps.Marker({
                 draggable: !0,

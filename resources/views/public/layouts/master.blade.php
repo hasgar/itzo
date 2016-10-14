@@ -29,7 +29,7 @@
 							<li><a href="/add-health-care">Add your health care service</a></li>
 							<li><a href="/contact">Contact</a></li>
 							@if (Auth::guest())
-                       			 <li><a href="/auth">Login / Register</a></li>
+                       			 <li><a href="/login">Login</a></li>
                     		@endif
 							
 							

@@ -52,10 +52,10 @@ class AuthController extends Controller
             return '/admin/dashboard';
         }
         if ($user->inRole('healthcare')){
-            return '/healthcare/dashboard';
+            return '/healthcare/successfullyRegistered';
         }
         if ($user->inRole('user')){
-            return '/user/dashboard';
+            return '/';
         }
            
             return '/';
@@ -69,7 +69,7 @@ class AuthController extends Controller
      */
     public function authenticate()
     {
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password],true)) {
             // Authentication passed...
             return redirect()->intended('dashboard');
         }
@@ -197,6 +197,7 @@ class AuthController extends Controller
             'country_id' => $data['country'],
             'state_id' => $data['state'],
             'city_id' => $data['city'],
+            'village' => $data['village'],
             'address' => $data['address'],
             'pin' => $data['pin'],
             'mobile' => $data['mobile'],
@@ -222,6 +223,7 @@ class AuthController extends Controller
             'contact_name' => $data['contact_name'],
             'website' => $data['website'],
             'lab' => $data['fec-lab'],
+            'departments' => $data['departments'],
             'parking' => $data['fec-parking'],
             'pharmacy' => $data['fec-pharmacy'],
             'wheelchair' => $data['fec-wheelchair'],

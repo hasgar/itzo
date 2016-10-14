@@ -73,6 +73,63 @@ class HealthcareController extends Controller
         }
     }
 
+
+    public function typeHealthcares(Request $request) {
+        $request->name = ucfirst($request->name);
+        if( $request->name == "Chinese")
+            $request->name = "Chinese/Traditional";
+        if( Types::where('name',$request->name)->count() > 0 ) {
+          $id = Types::where('name',$request->name)->pluck('id')[0];
+        
+         $healthcare_types = HealthcareTypes::where('type_id',$id)->pluck('healthcare_id');
+        $healthcare = Healthcare::where('is_approved', 1)->where('status', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->get();
+        $type_sel = Types::where('id',$id)->get()[0];
+        /*$states = States::where('country_id',101)->get();
+        $cities = Cities::where('state_id',$request['state'])->get();
+        $types = Types::all();
+        $state_sel = States::where('id',$request['state'])->get()[0];
+        $fecilities = Fecilities::all();
+        $city_sel = Cities::where('id',$request['city'])->get()[0];
+        $type_sel = Types::where('id',$request['type'])->get()[0];
+        $fec = "";
+        */
+        if(count($healthcare) < 1) {
+            return view('public.noHealthcaresFound')->with('healthcare',$healthcare)->with('type_sel',$type_sel);
+        }
+        /*if(Healthcare::where('id',$healthcare[0]['id'])->where('lab',1)->count() > 0)
+        $fec .= "8";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('parking',1)->count() > 0)
+        $fec .= ",9";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('pharmacy',1)->count() > 0)
+        $fec .= ",10";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('wheelchair',1)->count() > 0)
+        $fec .= ",11";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('ambulance',1)->count() > 0)
+        $fec .= ",12";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('inpatient',1)->count() > 0)
+        $fec .= ",13";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('bloodbank',1)->count() > 0)
+        $fec .= ",14";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('fitness',1)->count() > 0)
+        $fec .= ",15";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('yoga',1)->count() > 0)
+        $fec .= ",16";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('massage',1)->count() > 0)
+        $fec .= ",17";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('sports',1)->count() > 0)
+        $fec .= ",18";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('insurance',1)->count() > 0)
+        $fec .= ",20";
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('tours',1)->count() > 0)
+        $fec .= "19";
+        */
+        return view('public.selectHealthcares')->with('healthcare',$healthcare)->with('type_sel',$type_sel);
+        }
+        else {
+            return redirect('/404');
+        }
+    }
+
     public function showHealthcare(Request $request) {
         $healthcare = Healthcare::where('id', $request->id)->where('is_approved', 1)->where('status', 1)->get();
         $healthcare_types = HealthcareTypes::where('healthcare_id',$request->id);
