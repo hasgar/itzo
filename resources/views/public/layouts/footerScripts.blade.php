@@ -5,11 +5,15 @@
 <script>
     jQuery('#somecomponent').locationpicker({
         location: {
-            latitude: 21.9124471,
-            longitude: 77.919273
+            latitude: 11.2587531,
+            longitude: 75.78041000000007
         },
         radius: 300,
-		zoom: 4,
+		zoom: 12,
+        enableAutocomplete: true,
+        autocompleteOptions: {
+        types: ['(cities)'],
+        },
         inputBinding: {
             latitudeInput: $('#loc-lat'),
             longitudeInput: $('#loc-lon'),
@@ -19,7 +23,7 @@
     });
 </script>
 <script src="/js/js-validator/dist/jquery.validate.js"></script>
-<script> $("#add-healthcare").validate(); </script>
+<script> $(".form-horizontal").validate(); </script>
 		<script type="text/javascript" src='/js/mapbox.js'></script>
 		<script type="text/javascript" src='/js/leaflet.markercluster.js'></script>
 		<script type="text/javascript" src="/js/build.min.js"></script>
@@ -65,3 +69,5 @@ $(".add-type").on("click" ,function() {
 		
 		<script type="text/javascript" src="/js/main.js"></script>
 		
+
+        

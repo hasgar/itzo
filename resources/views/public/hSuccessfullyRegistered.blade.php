@@ -1,10 +1,9 @@
 @extends('public.layouts.master')
 
-@section('title', 'Book Health Care')
+@section('title', 'Successfully Registered')
 
 
 @section('content')
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 <div id="page">
 	<!--==================================Header Open=================================-->
 	<header class="">
@@ -25,10 +24,10 @@
 		</div><!-- ../menu-bar -->
 		<div class="page-heading listing-page archive-page ">
 			<div class="page-heading-inner-container text-center">
-				<h1>Book Health Care</h1>
+				<h1>Registration Successfull</h1>
 				<ul class="breadcrumbs">
 					<li><a href="/">Home</a></li>
-					<li><span>Book Health Care</span></li>
+					<li><span>Registration Successfull</span></li>
 				</ul>
 			</div>
 			<div class="page-header-overlay"></div>
@@ -46,19 +45,19 @@
 						<div class="col-md-12">
 							<div class="login-form-popup lp-border-radius-8">
 								<div class="siginincontainer">
-								 
-								<h1 class="text-center">@if($status == 0) Error! @else Success! @endif</h1>
-								<div class="alert @if($status == 1) alert-success @else alert-danger @endif margin-top-20">@if($status == 1) Your @if($type == 'password') password @else email @endif has been changed successfully! @else You entered wrong password @endif
-</div>
+									<h2 class="text-center">Registration Successfull</h2>
 
-									
-									
-<div class="pop-form-bottom">
-										<div class="bottom-links" align="center">
-											<a href="{{$back}}"><i class="fa fa-chevron-left"></i> Go back to dashboard</a>
-										</div>
-										
+								<div class="alert alert-success margin-top-20 text-center">Your Healthcare Registered Successfully! 
+</div>
+<div align="center">
+<a href="/healthcare/dashboard" class="secondary-btn">
+									Go to Dashboard
+								</a>
+					</div>				
 									</div>
+									<div class="pop-form-bottom">
+									
+
 									</div>
 								<a class="md-close"><i class="fa fa-close"></i></a>
 								</div>

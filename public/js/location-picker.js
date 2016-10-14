@@ -7,7 +7,7 @@
     function GMapContext(domElement, options) {
         var _map = new google.maps.Map(domElement, options);
         var _marker = new google.maps.Marker({
-            position: new google.maps.LatLng(54.19335, -3.92695),
+            position: new google.maps.LatLng(10.5390979, 73.8854868),
             map: _map,
             title: "Drag Me",
             visible: options.markerVisible,

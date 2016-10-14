@@ -26,7 +26,7 @@ class UserController extends Controller
       
         if (Auth::check()) {
             $user = Sentinel::findById(Auth::user()->id);
-            if ($user->inRole('admin')){
+             if ($user->inRole('admin')){
                return redirect('/admin/dashboard');
             }
             if ($user->inRole('user')){
@@ -74,7 +74,7 @@ class UserController extends Controller
                 return view('user.chat')->with('booking',$booking)->with('chat',$chat);
     }
     public function chatSend(Request $request){
-        if(Booking::where('id',$request['id'])->where('user_id',Auth::user()->id)->count() > 0){
+        if(Booking::where('id',$request['id'])->where('user_id',Users::where('user_id',Auth::user()->id)->pluck('id')[0])->count() > 0){
        Conversation::create(['user_1_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0],
             'user_2_id' => Booking::where('id',$request['id'])->pluck('healthcare_id')[0], 
             'message' => $request['message'] , 
@@ -92,6 +92,12 @@ class UserController extends Controller
 
 public function noPermission(){
           return view('public.noPermission');
+    }
+    public function uSuccessfullyRegistered(){
+          return view('public.uSuccessfullyRegistered');
+    }
+    public function hSuccessfullyRegistered(){
+          return view('public.hSuccessfullyRegistered');
     }
     public function hDashboard() {
         

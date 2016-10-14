@@ -38,71 +38,7 @@
 	<!--==================================Section Open=================================-->
 	<section>
 		<div class="container page-container">
-			<div class="row">
-				<div class="col-md-12 search-row margin-top-subtract-35  margin-bottom-35">
-					<form class="form-inline clearfix">
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon lp-border "><i class="fa fa-crosshairs"></i></div>
-									<div class="ui-widget border-dropdown">
-									  <select class="comboboxs state">
-											
-											<option value="{{$state_sel['id']}}">{{$state_sel['name']}}</option>
-										@foreach ($states as $state)
-										<option value="{{$state['id']}}">{{$state['name']}}</option>
-										@endforeach
-									  </select>
-									</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon lp-border"><i class="fa fa-crosshairs"></i></div>
-									<div class="ui-widget border-dropdown">
-									  <select class="comboboxs city-filter">
-											<option value="{{$city_sel['id']}}">{{$city_sel['name']}}</option>
-										@foreach ($cities as $city)
-										<option value="{{$city['id']}}">{{$city['name']}}</option>
-										@endforeach
-									  </select>
-									</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon lp-border"><i class="fa fa-list"></i></div>
-									<div class="ui-widget comboboxCategory border-dropdown">
-									  <select id="comboboxCategory" class="hospital-type">
-										<option value="{{$type_sel['id']}}">{{$type_sel['name']}}</option>
-										@foreach ($types as $type)
-										<option value="{{$type['id']}}">{{$type['name']}}</option>
-										@endforeach
-										 </select>
-									</div>
-
-							</div>
-						</div>
-						<div class="form-group margin-right-0">
-							<div class="input-group margin-right-0">
-								<div class="input-group-addon lp-border"><i class="fa fa-tag"></i></div>
-									<select data-placeholder="Tags" class="chosen-select tag-select-one fec-types" multiple >
-
-										@foreach ($fecilities as $fecility)
-										<option value="{{$fecility['id']}}">{{$fecility['name']}}</option>
-										@endforeach
-									
-									</select>
-							</div>
-						</div>
-					</form>
-					<input class="selected-types" value="[]" type="hidden" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="LPtagsContainer "></div>
-				</div>
-			</div>
+			
 			<!-- <div class="row listing-page-result-row margin-bottom-25">
 				<div class="col-md-4 col-sm-4 text-left">
 					<p>10 Results</p>
@@ -130,7 +66,7 @@
 					<!-- Popup Close -->
 					<div class="md-overlay md-overlayi"></div> <!-- Overlay for Popup -->
 			</div>
-					<div class="row lp-list-page-grid">
+					<div class="row lp-list-page-grid padding-top-50">
 						<?php $fect = "" ?>
 						@foreach ($healthcare as $health)
 						@if($health['lab'] == 1)

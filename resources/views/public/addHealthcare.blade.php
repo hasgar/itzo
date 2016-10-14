@@ -12,69 +12,13 @@
 		
 		<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
-								<ul>
-									<li><a href="/">Home</a>
-									</li>
-									@if (Auth::guest())
-									<li><a href="/signin">Sign In</a> / <a href="/signup">Sign Up</a></li>
-									</li>
-									@else 
-									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashboard">Dashboard</a></li>
-									</li>
-									@endif
-									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashboard">  Dashboard</a></li>
-									</li>
-									@endif
-									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashboard">  Dashboard</a></li>
-									</li>
-									@endif
-									@endif
-
-								</ul>
+								@include('public.layouts.headerMob')
 							</div>
 		<div class="lp-menu-bar  lp-menu-bar-color">
 			<div class="container">
 					<div class="row">
 					@include('public.layouts.logo')
 						
-						<div class="col-xs-6 mobile-nav-icon">
-							<a href="#menu" class="nav-icon">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</a>s
-						</div>
-						<div class="col-md-8 col-xs-12 lp-menu-container">
-							<div class="pull-right lp-add-listing-btn">
-								<ul>
-
-									<li><a href="/add-health-care"><i class="fa fa-plus"></i> Add your health care service</a></li>
-								</ul>
-							</div>
-							<div class="lp-menu pull-right menu">
-								<ul>
-									@if (Auth::guest())
-									<li><a href="/signin"><i class="fa fa-user user-plus-icon"></i>  Login</a> / <a href="/signup"><i class="fa fa-user-plus user-plus-icon"></i>  Register</a></li>
-									@else 
-									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
-									<li><a href="/user/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
-									</li>
-									@endif
-									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
-									<li><a href="/healthcare/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
-									</li>
-									@endif
-									@if(Sentinel::findById(Auth::user()->id)->inRole('admin'))
-									<li><a href="/admin/dashbaord"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
-									</li>
-									@endif
-									@endif
-								</ul>
-							</div>
-						</div>
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -159,7 +103,7 @@
 													<strong>{{ $errors->first('treatment_type') }}</strong>
 												</span>
 											@endif
-											<div class="add-type"><i class="fa fa-plus"></i> Add Type</div>
+											<div class="add-type"><i class="fa fa-plus"></i> Add More</div>
 										</div>
 											<div class="form-group {{ $errors->has('working_hours') ? ' has-error' : '' }}">
 											<label for="working_hours">Working Hours ?</label>
@@ -305,6 +249,17 @@
 												</span>
 											@endif
 										</div>
+
+										<div class="form-group {{ $errors->has('departments') ? ' has-error' : '' }}">
+											<label for="departments">Departments *</label>
+											<input type="email" class="form-control" id="departments" name="departments" value="{{ old('departments') }}" placeholder="Enter departments" required>
+											 @if ($errors->has('departments'))
+												<span class="help-block">
+													<strong>{{ $errors->first('departments') }}</strong>
+												</span>
+											@endif
+										</div>
+										
 										<div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}"   required>
 											<label for="country">Country *</label>
 											<select  class="form-control" id="country" name="country">
@@ -341,6 +296,16 @@
 												</span>
 											@endif
 										</div>
+										<div class="form-group {{ $errors->has('village') ? ' has-error' : '' }}"   required>
+											<label for="village">Town/Village *</label>
+											<input type="text" class="form-control" name="village" id="village" required value="{{ old('village') }}" placeholder="Enter health center town/village">
+											@if ($errors->has('village'))
+												<span class="help-block">
+													<strong>{{ $errors->first('village') }}</strong>
+												</span>
+											@endif
+											
+										</div>
 										<div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
 											<label for="address">Address *</label>
 											<textarea class="form-control" name="address" id="address" placeholder="Enter your healthcare center address"  required>{{ old('address') }}</textarea>
@@ -352,7 +317,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('pin') ? ' has-error' : '' }}">
 											<label for="pin">Pin *</label>
-											<input type="text" class="form-control" name="pin" id="pin" required value="{{ old('pin') }}" placeholder="Enter health center Pin code">
+											<input type="number" class="form-control" name="pin" id="pin" required value="{{ old('pin') }}" placeholder="Enter health center Pin code" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 											@if ($errors->has('pin'))
 												<span class="help-block">
 													<strong>{{ $errors->first('pin') }}</strong>
@@ -379,7 +344,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('mobile') ? ' has-error' : '' }}">
 											<label for="mobile">Mobile *</label>
-											<input type="text" class="form-control" name="mobile" required id="mobile" placeholder="Enter health center mobile number" value="{{ old('mobile') }}" >
+											<input type="number" class="form-control" name="mobile" required id="mobile" placeholder="Enter health center mobile number" value="{{ old('mobile') }}" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 											@if ($errors->has('mobile'))
 												<span class="help-block">
 													<strong>{{ $errors->first('mobile') }}</strong>
@@ -388,7 +353,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
 											<label for="phone">Phone *</label>
-											<input type="text" class="form-control" name="phone" required id="phone" placeholder="Enter health center phone number" value="{{ old('phone') }}">
+											<input type="number" class="form-control" name="phone" required id="phone" placeholder="Enter health center phone number" value="{{ old('phone') }}" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 											@if ($errors->has('phone'))
 												<span class="help-block">
 													<strong>{{ $errors->first('phone') }}</strong>
@@ -462,15 +427,15 @@
 										</div>
 
 										<div class="form-group {{ $errors->has('accommodation_type') ? ' has-error' : '' }} accommodation-type">
-											<label for="accommodation_type">Accomodation Type</label> <br>
+											<label for="accommodation_type">Accommodation Available?</label> <br>
 											<label for="accommodation_single_ac" class="fecilities-lbl"><input type="checkbox" value="1" id="accommodation_single_ac" name="accommodation_single_ac" class="fecilites-check"> Single AC</label>
 											<label for="accommodation_single_non_ac" class="fecilities-lbl"><input type="checkbox" value="1" id="accommodation_single_non_ac" name="accommodation_single_non_ac" class="fecilites-check"> Single Non AC</label>
-									<label for="accommodation_shared" class="fecilities-lbl"><input type="checkbox" id="accommodation_shared" value="1" name="accommodation_shared" class="fecilites-check"> Shared Rooms</label>
-									<label for="accommodation_general" class="fecilities-lbl"><input type="checkbox" id="accommodation_general" value="1"  name="accommodation_general" class="fecilites-check"> General Ward</label>
+										<label for="accommodation_shared" class="fecilities-lbl"><input type="checkbox" id="accommodation_shared" value="1" name="accommodation_shared" class="fecilites-check"> Shared Rooms</label>
+										<label for="accommodation_general" class="fecilities-lbl"><input type="checkbox" id="accommodation_general" value="1"  name="accommodation_general" class="fecilites-check"> General Ward</label>
 										</div>
 
 <div class="form-group {{ $errors->has('food') ? ' has-error' : '' }}">
-											<label for="accommodation">Does food available?</label>
+											<label for="accommodation">Food provided?</label>
 											<select  class="form-control" id="food" name="food" required>
 <option value="0">No</option>
 <option value="1">Yes</option>
@@ -510,12 +475,14 @@
 											<label for="location">Choose location on map</label>
 											
 										</div>
-										<div id="somecomponent" style="width: 500px; height: 400px; margin-left: -14px;margin-bottom: 14px;"></div>
+										<div class="form-group {{ $errors->has('loc-add') ? ' has-error' : '' }}">
+										<input type="text" class="form-control margin-bottom-5" name="loc-add"  id="loc-add" value="{{ old('loc-add') }}" placeholder="Enter your city">
+											
+										<div id="somecomponent" style="width: 490px; height: 400px; margin-left: -14px;margin-bottom: 14px;margin-left:0px"></div>
 										<input type="hidden" name="loc-lat" id="loc-lat">
 										<input type="hidden" name="loc-lon" id="loc-lon">
-										<input type="hidden" name="loc-add" id="loc-add">
 										<input type="hidden" name="loc-rad" id="loc-rad">
-
+</div>
 										
 										<div class="form-group {{ $errors->has('photo_1') ? ' has-error' : '' }}">
 											<label for="photo_1">Photo 1 *</label>
