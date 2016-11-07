@@ -47,9 +47,10 @@ class HomeController extends Controller
         $detail = '';
         foreach ($json as $field => $value) {
     if ($value["SL"] != "") {
-        if($value["SL"] >= 2) {
-       // $url = 'http://chikitzo.gpclub.in/register';
-        $value["Lab"] = strtolower(str_replace(' ', '',$value["Lab"]));
+
+        
+        if($value["SL"] >= 2 && User::where(email,strtolower(str_replace(' ', '', $value["Email ID"])))->count() < 1) {
+       $value["Lab"] = strtolower(str_replace(' ', '',$value["Lab"]));
         if ($value["Lab"] == "yes")
             $value["Lab"] = 1;
         else
