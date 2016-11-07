@@ -15,7 +15,7 @@ $(document).ready(function() {
     }
 }); */
 
-    
+
     $('#accommodation').on('change', function() {
   if(this.value == 1 ) {
       $('.accommodation-type').show()
@@ -48,7 +48,7 @@ $("#add-type").on('click', function() {
 });
 */
 $.ajax({
-                url: 'http://localhost/getStates',
+                url: 'http://chikitzo.gpclub.in/getStates',
                 type: 'post',
                 data: {id:$('select[id=country]').val()},
                 success: function(data){
@@ -79,7 +79,7 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: 'http://localhost/getCities',
+                url: 'http://chikitzo.gpclub.in/getCities',
                 type: 'post',
                 data: {id:$('select[id=state]').val()},
                 success: function(data){
@@ -99,7 +99,7 @@ $.ajax({
     }
 
 });
-            
+
     $(".post-slide").slick({
         infinite: !0,
         slidesToShow: 2,
@@ -326,7 +326,7 @@ $.ajax({
     }), $.widget("custom.combobox", {
         _create: function() {
             this.wrapper = $("<span>").addClass("custom-combobox").insertAfter(this.element), this.element.hide(), this._createAutocomplete(), this._createShowAllButton()
-            
+
         },
         _createAutocomplete: function() {
             var a = this.element.children(":selected"),
@@ -340,7 +340,7 @@ $.ajax({
                     else if($( this ).hasClass( "lookingfor-combo" )) {
                     $(".type-sel").val(ui.item.option.value);
                     }
-                    
+
                 else if($( this ).hasClass( "state-combo" )) {
                     $(".state-sel").val(ui.item.option.value);
 $(".city-combo").attr('placeholder','Please wait..');
@@ -351,7 +351,7 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: 'http://localhost/getCities',
+                url: 'http://chikitzo.gpclub.in/getCities',
                 type: 'post',
                 data: {id:ui.item.option.value},
                 success: function(data){
@@ -394,9 +394,9 @@ $.each(classList, function(index, item) {
     if (item === 'you-lookingfor') {
         athis.input.addClass('lookingfor-combo');
     }
-    
+
 }); }
-            
+
         },
         _createShowAllButton: function() {
             var a = this.input,
@@ -446,7 +446,7 @@ $.each(classList, function(index, item) {
         appendTo: ".input-group"
     }), $(".custom-combobox-input").autocomplete({
         minLength: 0,
-        open: function() { $('#div .ui-menu').width(300) }  
+        open: function() { $('#div .ui-menu').width(300) }
     }), $(".custom-combobox-input").on("click", function() {
         $(this).autocomplete("search", "")
     }), $(".state").next().children().attr("placeholder", "State"), $(".your-location").next().children().attr("placeholder", "Location"), $(".your-state").next().children().attr("placeholder", "State"), $(".your-city").next().children().attr("placeholder", "City"),$(".you-lookingfor").next().children().attr("placeholder", "What type of treatment are you looking for?"), $(".hospital-type").next().children().attr("placeholder", "Treatment type"), $(".city-filter").next().children().attr("placeholder", "City"), $(".postSubmitCat .location_input").attr("placeholder", "Chose one or more than one categories"), $(".md-trigger").on("click", function() {
@@ -540,7 +540,7 @@ $.each(classList, function(index, item) {
     var res = "";
     var res1 = "";
     var t = $(".chosen-select").chosen(),
-    
+
         o = function() {
             $(".LPtagsContainer").empty(), t.find(":selected").each(function(a, i) {
                 $('<div class="active-tag">' + i.text + '</div>').appendTo(".LPtagsContainer").on("click", function() {
