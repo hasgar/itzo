@@ -47,8 +47,8 @@ class HomeController extends Controller
         $detail = '';
         foreach ($json as $field => $value) {
     if ($value["SL"] != "") {
-        if($value["SL"] < 10) {
-        $url = 'http://chikitzo.gpclub.in/register';
+        if($value["SL"] < 2) {
+       // $url = 'http://chikitzo.gpclub.in/register';
         $value["Lab"] = strtolower(str_replace(' ', '',$value["Lab"]));
         if ($value["Lab"] == "yes")
             $value["Lab"] = 1;
