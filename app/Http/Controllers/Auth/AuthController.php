@@ -91,7 +91,6 @@ class AuthController extends Controller
      */
     protected function create(array $data, $request)
     {
-      
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -224,6 +223,7 @@ class AuthController extends Controller
             'website' => $data['website'],
             'lab' => $data['fec-lab'],
             'departments' => $data['departments'],
+            'no_of_beds' => $data['no_of_beds'],
             'parking' => $data['fec-parking'],
             'pharmacy' => $data['fec-pharmacy'],
             'wheelchair' => $data['fec-wheelchair'],

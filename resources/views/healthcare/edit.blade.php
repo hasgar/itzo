@@ -9,7 +9,7 @@
 	<header class="">
 
 
-		
+
 	<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
 								@include('public.layouts.headerMob')
@@ -18,7 +18,7 @@
 			<div class="container">
 					<div class="row">
 					@include('public.layouts.logo')
-						
+
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -34,7 +34,7 @@
 		</div><!-- ../Home Search Container -->
 	</header>
 	<!--==================================Header Close=================================-->
-	
+
 	<!--==================================Section Open=================================-->
 	<section class="aliceblue">
 			<div class="dashboard-tabs">
@@ -52,7 +52,7 @@
 								Your Healthcare
 							</a>
 						</li>
-						
+
 						<li>
 							<a href="/healthcare/settings" role="tab" data-toggle="tab">
 								Account Settings
@@ -66,22 +66,22 @@
 				<div class="tab-content">
 					<div class="tab-pane fade active in" id="dashborad">
 						<div class="dashboard-tab">
-							
-							
+
+
 							<div class="user-recent-listings-container">
 									<div class="col-md-8"><h3 class="padding-top-35 padding-bottom-35">Your Healthcare</h3></div><div class="col-md-4"><div class="price-plan-button  pull-right">
 									<a href="/logout" class="lp-secondary-btn btn-second-hover">Sign Out</a>
 								</div></div><div class="user-recent-listings-inner">
-									
+
 										<div class="row">
 						<div class="col-md-12">
 							<div class="login-form-popup lp-border-radius-8">
-								
+
 								<div class="siginupcontainer page-signup">
 									<form id="add-healthcare" class="form-horizontal padding-top-15"role="form" method="POST" action="{{ url('/healthcare/update') }}" enctype='multipart/form-data'>
                        					 {{ csrf_field() }}
 											<input type="hidden" name="healthcare_id" id="healthcare_id" value="{{ $healthcare[0]['id'] }}">
-											
+
 										<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 											<label for="name">Health care Service name *</label>
 											<input type="text" class="form-control" name="name" id="name" value="{{ $healthcare[0]['name'] }}" required placeholder="Enter health center name">
@@ -100,7 +100,7 @@
 												</span>
 											@endif
 										</div>
-										
+
 										<div class="form-group {{ $errors->has('treatment_type') ? ' has-error' : '' }}">
 											<label for="treatment_type">Type of Treatment *</label>
 											<?php $i = 1; ?>
@@ -266,11 +266,11 @@
 												</span>
 											@endif
 										</div>
-										
+
 										<div class="form-group {{ $errors->has('certificate') ? ' has-error' : '' }}">
 											<label for="certificate">Do you have certification ?</label>
 											<select  class="form-control" id="certificate" name="certificate">
-@if($healthcare[0]['certificate'] == 1)											
+@if($healthcare[0]['certificate'] == 1)
 <option value="1">Yes</option>
 <option value="0">No</option>
 @else
@@ -281,6 +281,15 @@
 											@if ($errors->has('certificate'))
 												<span class="help-block">
 													<strong>{{ $errors->first('certificate') }}</strong>
+												</span>
+											@endif
+										</div>
+										<div class="form-group {{ $errors->has('departments') ? ' has-error' : '' }}">
+											<label for="departments">Departments *</label>
+											<input type="text" class="form-control" id="departments" name="departments" value="{{ old('departments') }}" placeholder="Enter departments" required>
+											 @if ($errors->has('departments'))
+												<span class="help-block">
+													<strong>{{ $errors->first('departments') }}</strong>
 												</span>
 											@endif
 										</div>
@@ -321,6 +330,18 @@
 												</span>
 											@endif
 										</div>
+
+										<div class="form-group {{ $errors->has('village') ? ' has-error' : '' }}"   required>
+											<label for="village">Town/Village *</label>
+											<input type="text" class="form-control" name="village" id="village" required value="{{ old('village') }}" placeholder="Enter health center town/village">
+											@if ($errors->has('village'))
+												<span class="help-block">
+													<strong>{{ $errors->first('village') }}</strong>
+												</span>
+											@endif
+
+										</div>
+
 										<div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
 											<label for="address">Address *</label>
 											<textarea class="form-control" name="address" id="address" placeholder="Enter your healthcare center address"  required>{{ $healthcare[0]['address'] }}</textarea>
@@ -393,7 +414,7 @@
 												</span>
 											@endif
 										</div>
-										
+
 										<div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
 											<label for="description">Describe your health care *</label>
 											<textarea class="form-control" name="description" required id="description" placeholder="Tell us more about your health centre (less than 200 words)">{{ $healthcare[0]['description']}}</textarea>
@@ -431,15 +452,15 @@
 										<div class="form-group {{ $errors->has('accommodation') ? ' has-error' : '' }}">
 											<label for="accommodation">Does accommodation available?</label>
 											<select  class="form-control" id="accommodation" name="accommodation" required>
-@if($healthcare[0]['accommodation'] == 1) 
-<option value="1">Yes</option>	
+@if($healthcare[0]['accommodation'] == 1)
+<option value="1">Yes</option>
 <option value="0">No</option>
-@else	
-										
+@else
+
 <option value="0">No</option>
 <option value="1">Yes</option>
 
-@endif	
+@endif
 </select>
 											@if ($errors->has('accommodation'))
 												<span class="help-block">
@@ -459,15 +480,15 @@
 <div class="form-group {{ $errors->has('food') ? ' has-error' : '' }}">
 											<label for="accommodation">Does food available?</label>
 											<select  class="form-control" id="food" name="food" required>
-@if($healthcare[0]['food'] == 1) 
-<option value="1">Yes</option>	
+@if($healthcare[0]['food'] == 1)
+<option value="1">Yes</option>
 <option value="0">No</option>
-@else	
-										
+@else
+
 <option value="0">No</option>
 <option value="1">Yes</option>
 
-@endif	
+@endif
 </select>
 											@if ($errors->has('food'))
 												<span class="help-block">
@@ -496,7 +517,7 @@
 												<option value="3">$$$</option>
 												<option value="2">$$</option>
 												<option value="1">$</option>
-								
+
 											</select>
 											@if ($errors->has('price'))
 												<span class="help-block">
@@ -507,7 +528,7 @@
 
 <div class="form-group {{ $errors->has('location') ? ' has-error' : '' }}">
 											<label for="location">Choose location on map</label>
-											
+
 										</div>
 										<div id="somecomponent" style="width: 500px; height: 400px; margin-left: -14px;margin-bottom: 14px;"></div>
 										<input type="hidden" name="loc-lat" id="loc-lat" value="{{ $healthcare[0]['latitude'] }}">
@@ -538,27 +559,27 @@
 										</div>
 										<?php $i++; ?>
 										@endwhile
-								
+
 										<input type="hidden" name="type" value="2" />
 										<div class="form-group">
-											<input type="submit" value="Update" class="lp-secondary-btn width-full btn-first-hover"> 
+											<input type="submit" value="Update" class="lp-secondary-btn width-full btn-first-hover">
 										</div>
 									</form>
-									
+
 								<a class="md-close"><i class="fa fa-close"></i></a>
 								</div>
-								
-							</div>	
+
+							</div>
 						</div>
-					</div>	
-											
-										
+					</div>
+
+
 								</div>
 							</div>
 						</div>
-					</div>			
-					
-					
+					</div>
+
+
 				</div>
 			</div>
 	</section>

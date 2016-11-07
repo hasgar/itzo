@@ -433,6 +433,15 @@
 										<label for="accommodation_shared" class="fecilities-lbl"><input type="checkbox" id="accommodation_shared" value="1" name="accommodation_shared" class="fecilites-check"> Shared Rooms</label>
 										<label for="accommodation_general" class="fecilities-lbl"><input type="checkbox" id="accommodation_general" value="1"  name="accommodation_general" class="fecilites-check"> General Ward</label>
 										</div>
+<div class="form-group {{ $errors->has('no_of_beds') ? ' has-error' : '' }}">
+											<label for="no_of_beds">No of Beds *</label>
+											<input type="text" class="form-control" id="no_of_beds" name="no_of_beds" value="{{ old('no_of_beds') }}" placeholder="Enter No of beds" required>
+											 @if ($errors->has('no_of_beds'))
+												<span class="help-block">
+													<strong>{{ $errors->first('no_of_beds') }}</strong>
+												</span>
+											@endif
+										</div>
 
 <div class="form-group {{ $errors->has('food') ? ' has-error' : '' }}">
 											<label for="accommodation">Food provided?</label>

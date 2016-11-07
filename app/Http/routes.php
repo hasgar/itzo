@@ -12,6 +12,7 @@
 */
 
 
+Route::get('/up', 'HomeController@up');
 Route::get('/', 'HomeController@index');
 Route::post('/getCities', 'LocationController@getCities');
 Route::post('/getStates', 'LocationController@getStates');
