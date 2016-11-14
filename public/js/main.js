@@ -48,7 +48,7 @@ $("#add-type").on('click', function() {
 });
 */
 $.ajax({
-                url: 'http://chikitzo.gpclub.in/getStates',
+                url: 'http://www.chikitzo.com/getStates',
                 type: 'post',
                 data: {id:$('select[id=country]').val()},
                 success: function(data){
@@ -79,7 +79,7 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: 'http://chikitzo.gpclub.in/getCities',
+                url: 'http://www.chikitzo.com/getCities',
                 type: 'post',
                 data: {id:$('select[id=state]').val()},
                 success: function(data){
@@ -351,7 +351,7 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: 'http://chikitzo.gpclub.in/getCities',
+                url: 'http://www.chikitzo.com/getCities',
                 type: 'post',
                 data: {id:ui.item.option.value},
                 success: function(data){
