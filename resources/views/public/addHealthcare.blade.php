@@ -9,7 +9,7 @@
 	<header class="">
 
 
-		
+
 		<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
 								@include('public.layouts.headerMob')
@@ -18,7 +18,7 @@
 			<div class="container">
 					<div class="row">
 					@include('public.layouts.logo')
-						
+
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -34,17 +34,17 @@
 		</div><!-- ../Home Search Container -->
 	</header>
 	<!--==================================Header Close=================================-->
-	
+
 	<!--==================================Section Open=================================-->
 	<section>
-		
+
 		<div class="lp-section-row aliceblue">
 			<div class="lp-section-content-container-one">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="login-form-popup lp-border-radius-8">
-								
+
 								<div class="siginupcontainer page-signup">
 									<h1 class="text-center healthcare-heading">Add Your Health Care</h1>
 									<form id="add-healthcare" class="form-horizontal margin-top-30"role="form" method="POST" action="{{ url('/register') }}" enctype='multipart/form-data'>
@@ -236,7 +236,7 @@
 												</span>
 											@endif
 										</div>
-										
+
 										<div class="form-group {{ $errors->has('certificate') ? ' has-error' : '' }}">
 											<label for="certificate">Do you have certification ?</label>
 											<select  class="form-control" id="certificate" name="certificate">
@@ -259,7 +259,7 @@
 												</span>
 											@endif
 										</div>
-										
+
 										<div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}"   required>
 											<label for="country">Country *</label>
 											<select  class="form-control" id="country" name="country">
@@ -304,7 +304,7 @@
 													<strong>{{ $errors->first('village') }}</strong>
 												</span>
 											@endif
-											
+
 										</div>
 										<div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
 											<label for="address">Address *</label>
@@ -378,7 +378,7 @@
 												</span>
 											@endif
 										</div>
-										
+
 										<div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
 											<label for="description">Describe your health care *</label>
 											<textarea class="form-control" name="description" required id="description" placeholder="Tell us more about your health centre (less than 200 words)">{{ old('description') }}</textarea>
@@ -471,7 +471,7 @@
 												<option value="3">$$$</option>
 												<option value="2">$$</option>
 												<option value="1">$</option>
-								
+
 											</select>
 											@if ($errors->has('price'))
 												<span class="help-block">
@@ -480,19 +480,35 @@
 											@endif
 										</div>
 
+										<div class="form-group {{ $errors->has('payment_mode') ? ' has-error' : '' }}">
+											<label for="payment_mode">Payment Mode *</label>
+											<select  class="form-control" id="payment_mode" name="payment_mode" required>
+												<option value="">Select your payment mode</option>
+												<option value="cheque">Cheque</option>
+												<option value="dd">DD</option>
+												<option value="net_banking">Net banking</option>
+
+											</select>
+											@if ($errors->has('payment_mode'))
+												<span class="help-block">
+													<strong>{{ $errors->first('payment_mode') }}</strong>
+												</span>
+											@endif
+										</div>
+
 <div class="form-group {{ $errors->has('location') ? ' has-error' : '' }}">
 											<label for="location">Choose location on map</label>
-											
+
 										</div>
 										<div class="form-group {{ $errors->has('loc-add') ? ' has-error' : '' }}">
 										<input type="text" class="form-control margin-bottom-5" name="loc-add"  id="loc-add" value="{{ old('loc-add') }}" placeholder="Enter your city">
-											
+
 										<div id="somecomponent" style="width: 490px; height: 400px; margin-left: -14px;margin-bottom: 14px;margin-left:0px"></div>
 										<input type="hidden" name="loc-lat" id="loc-lat">
 										<input type="hidden" name="loc-lon" id="loc-lon">
 										<input type="hidden" name="loc-rad" id="loc-rad">
 </div>
-										
+
 										<div class="form-group {{ $errors->has('photo_1') ? ' has-error' : '' }}">
 											<label for="photo_1">Photo 1 *</label>
 											<input type="file" class="form-control" name="photo_1" id="photo_1" required value="{{ old('photo_1') }}">
@@ -520,23 +536,23 @@
 												</span>
 											@endif
 										</div>
-								
+
 										<input type="hidden" name="type" value="2" />
 										<div class="form-group">
-											<input type="submit" value="Submit" class="lp-secondary-btn width-full btn-first-hover"> 
+											<input type="submit" value="Submit" class="lp-secondary-btn width-full btn-first-hover">
 										</div>
 									</form>
-									
+
 								<a class="md-close"><i class="fa fa-close"></i></a>
 								</div>
-								
-							</div>	
+
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!-- ../section-row -->
-	
+
 	</section>
-	
+
 @endsection

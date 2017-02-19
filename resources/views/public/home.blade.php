@@ -20,7 +20,7 @@
 			<div class="container">
 					<div class="row">
 						@include('public.layouts.logo')
-						
+
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -29,15 +29,15 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-sm-12 text-center">
-						  <h1>Find the best hospitals in india</h1>
-						  <p class="lp-banner-browse-txt">Get information about the best hospital in a city, read reviews, locate and book your appointment</p>
+						  <h1>Find the best Health care in india</h1>
+						  <p class="lp-banner-browse-txt">Get information about the best health care in a city, read reviews, locate and book your appointment</p>
 						</div>
 						<div class="col-md-10 col-xs-12 col-md-offset-1 col-sm-offset-0">
 							<div class="lp-search-bar">
 								<form method="get" action="/selectHealthcare">
 									<div class="lp-search-bar-left">
-									
-									<div class="ui-widget border-dropdown">
+
+									<!--<div class="ui-widget border-dropdown">
 									  <select class="comboboxs your-state">
 										<option value="">Select one...</option>
 										@foreach ($states as $state)
@@ -51,6 +51,21 @@
 										<option value="0">Select your city</option>
 									  </select>
 									</div>
+
+								-->
+								<input type="hidden" class="your-state" value="19" name="your-state" />
+								<div class="ui-widget border-dropdown">
+									<select class="comboboxs your-city" name="city">
+									<option value="1947">Kozhikode</option>
+									</select>
+								</div>
+								<div class="ui-widget border-dropdown">
+									<select class="comboboxs your-locality" name="locality">
+									<option value="1">Nadakkavu</option>
+									<option value="2">Eranjipalam</option>
+									<option value="3">Koyilandy</option>
+									</select>
+								</div>
 									<div class="ui-widget border-dropdown">
 									  <select class="comboboxs you-lookingfor">
 										<option value="">Select one...</option>
@@ -69,7 +84,7 @@
 									<input type="hidden" name="state"  class="state-sel" value="1">
 									<input type="hidden" name="city" class="city-sel" value="1">
 									<input type="hidden" name="type" class="type-sel" value="1">
-									
+
 								</form>
 							</div> <!-- ../search-bar -->
 
@@ -93,41 +108,51 @@
 								<img src="/images/types_of_treatments.png" />
 							</li>
 						</ul> -->
-						
+
+<div class="col-md-4 no-padding">
 						<div class="col-md-4 no-padding">
+							<a href="/healthcare/type/allopathy" > <img src="/images/allopathy.png" class="h-types" /></a>
+						</div>
+
+						<div class="col-md-4 no-padding">
+							<a href="/healthcare/type/ayurveda" > <img src="/images/ayurveda.png" class="h-types" /></a>
+						</div>
+
+
+						<div class="col-md-4 no-padding">
+							<a href="/healthcare/type/holistic" > <img src="/images/holistic.png" class="h-types" /></a>
+						</div>
+</div>
+<div class="col-md-4 no-padding">
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/unani" ><img src="/images/unani.png" class="h-types" /></a>
 							</div>
+
+
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/siddha" ><img src="/images/siddha.png" class="h-types" /></a>
 							</div>
 							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/psychology" ><img src="/images/psychology.png" class="h-types" /></a>
-							</div>
-						</div>
-						<div class="col-md-4 no-padding">
-							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/homeopathy" > <img src="/images/homeopathy.png" class="h-types" /></a>
 							</div>
+</div>
 							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/holistic" > <img src="/images/holistic.png" class="h-types" /></a>
-							</div>
-							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/allopathy" > <img src="/images/allopathy.png" class="h-types" /></a>
-							</div>
-						</div>
-						<div class="col-md-4 no-padding">
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/acupuncture" > <img src="/images/accupuncture.png" class="h-types"  /></a>
 							</div>
+
 							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/ayurveda" > <img src="/images/ayurveda.png" class="h-types" /></a>
+								<a href="/healthcare/type/psychology" ><img src="/images/psychology.png" class="h-types" /></a>
 							</div>
+
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/chinese" ><img src="/images/chinese.png" class="h-types" /> </a>
-							</div>
-						</div>
-					
+							</div></div>
+
+
+
+
+
 					</div>
 				</div>
 			</div>
@@ -155,9 +180,9 @@
 										</div>
 										<div class="city-title text-center">
 											<h3 class="lp-h3">
-												<a href="listing.html">Healthcare Name</a>
+												<a href="listing.html">Advertise here</a>
 											</h3>
-											<label class="lp-listing-quantity">Mumbai</label>
+											<label class="lp-listing-quantity">Contact us</label>
 										</div>
 										<a href="listing.html" class="overlay-link"></a>
 									</div>
@@ -169,9 +194,9 @@
 										</div>
 										<div class="city-title text-center">
 											<h3 class="lp-h3">
-												<a href="listing.html">Healthcare Name</a>
+												<a href="listing.html">Advertise here</a>
 											</h3>
-											<label class="lp-listing-quantity">Benguluru</label>
+											<label class="lp-listing-quantity">Contact us</label>
 										</div>
 										<a href="listing.html" class="overlay-link"></a>
 									</div>
@@ -183,9 +208,9 @@
 										</div>
 										<div class="city-title text-center">
 											<h3 class="lp-h3">
-												<a href="listing.html">Healthcare Name</a>
+												<a href="listing.html">Advertise here</a>
 											</h3>
-											<label class="lp-listing-quantity">Cochin</label>
+											<label class="lp-listing-quantity">Contact us</label>
 										</div>
 										<a href="listing.html" class="overlay-link"></a>
 									</div>
@@ -197,9 +222,9 @@
 										</div>
 										<div class="city-title text-center">
 											<h3 class="lp-h3">
-												<a href="listing.html">Healthcare Name</a>
+												<a href="listing.html">Advertise here</a>
 											</h3>
-											<label class="lp-listing-quantity">New Delhi</label>
+											<label class="lp-listing-quantity">Contact us</label>
 										</div>
 										<a href="listing.html" class="overlay-link"></a>
 									</div>
@@ -212,5 +237,5 @@
 		</div><!-- ../section-row -->
 
 	</section>
-	
+
 @endsection

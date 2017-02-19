@@ -57,7 +57,7 @@ class AuthController extends Controller
         if ($user->inRole('user')){
             return '/';
         }
-           
+
             return '/';
       }
     }
@@ -242,13 +242,15 @@ class AuthController extends Controller
             'cheque' => $data['pay-cheque'],
             'longtitude' => $data['loc-lon'],
             'latitude' => $data['loc-lat'],
+            'payment_mode' => $data['payment_mode'],
+            'payment_done' => 0,
             'payment_till' => '2016-12-31',
             'is_approved' => 1
         ]);
         $pro_pic = '';
             for($i=1;$i<4;$i++){
                 if($request->hasFile('photo_'.$i)){
-               
+
             $extension = $request->file('photo_'.$i)->getClientOriginalExtension();
             $destinationPath = 'images/healthcare/';
             $fileName = str_replace(" ","",uniqid('img_'.$healthcare['id'].'_', true).microtime().'.'.$extension);
@@ -279,9 +281,9 @@ $pro_pic = $fileName;
             'type_id' => $data["treatment_type_$i"],
             'healthcare_id' => $healthcare['id']
         ]);
-        }  
-        } 
-        
+        }
+        }
+
             $user1 = Sentinel::findById($user['id']);
 
             $role = Sentinel::findRoleByName('Healthcare');
