@@ -360,14 +360,14 @@ $pro_pic = $fileName;
             $role->users()->attach($user1);
             $to = $data['email'];
     $subject = 'Thanks for registering with Chikitzo';
-    $message = '<html>Hello '.$data['name'].' Team,<br>
+    $message = '<html>Hello '.$data['name'].' Team,
 
-    Thanks for registering with us.<br>
+    Thanks for registering with us.
 
-    Your OTP is: '.$otp.'<br>
+    Your OTP is: '.$otp.'
 
-    Regards,<br>
-    Chikitzo Team<br></html>';
+    Regards,
+    Chikitzo Team';
     $from = 'info@chikitzo.com';
 
 
