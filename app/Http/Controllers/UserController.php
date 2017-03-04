@@ -112,22 +112,20 @@ class UserController extends Controller
 
       public function testMail() {
         $to = "hasgardee@gmail.com";
-$subject = 'Marriage Proposal';
-$message = 'Hi Jane, will you marry me?';
+$subject = 'Thanks for registering with Chikitzo';
+$message = '<html>Hello asdsd Team,<br>
+
+Thanks for registering with us.<br>
+
+Your OTP is: asdsad<br>
+
+Regards,<br>
+Chikitzo Team<br></html>';
 $from = 'info@chikitzo.com';
 
-// Sending email
-if(mail($to, $subject, $message)){
-    return 'Your mail has been sent successfully.';
-} else{
-    return 'Unable to send email. Please try again.';
-}
 
-        $data['email'] = "hasgardee@gmail.com";
-        Mail::send('healthcare.otpMail', ['otp' => '1234', 'name' => 'baby memo'], function($message) use ($data)
-           {
-           $message->from('chikitzo.com@gmail.com')->to([$data['email']],'Thanks for registering with Chikitzo')->subject('Thanks for registering with Chikitzo');
-           });
+mail($to, $subject, $message)
+
       }
 
       public function healthcareOtpVerification(Request $request){

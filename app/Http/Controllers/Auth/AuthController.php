@@ -358,10 +358,22 @@ $pro_pic = $fileName;
             $role = Sentinel::findRoleByName('Healthcare');
 
             $role->users()->attach($user1);
-            Mail::send('healthcare.otpMail', ['otp' => $otp, 'name' => $data['name']], function($message) use ($data)
-               {
-               $message->from('chikitzo.com@gmail.com')->to([$data['email']],'Thanks for registering with Chikitzo')->subject('Thanks for registering with Chikitzo');
-               });
+            $to = $data['email'];
+    $subject = 'Thanks for registering with Chikitzo';
+    $message = '<html>Hello '.$data['name'].' Team,<br>
+
+    Thanks for registering with us.<br>
+
+    Your OTP is: '.$otp.'<br>
+
+    Regards,<br>
+    Chikitzo Team<br></html>';
+    $from = 'info@chikitzo.com';
+
+
+    mail($to, $subject, $message)
+
+          
 
         }
         return $user;
