@@ -14,6 +14,7 @@ use App\Cities;
 use App\Types;
 use App\Fecilities;
 use Sentinel;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -33,7 +34,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         $states = States::where('country_id',101)->get();
         $types = Types::all();
         return view('public.home')->with('states',$states)->with('types',$types);
@@ -48,7 +49,7 @@ class HomeController extends Controller
         foreach ($json as $field => $value) {
     if ($value["SL"] != "") {
 
-        
+
 
         if(User::where('email',strtolower(str_replace(' ', '', $value["Email ID"])))->count() < 1) {
         $value["Lab"] = strtolower(str_replace(' ', '',$value["Lab"]));
@@ -490,6 +491,11 @@ echo $detail;
     public function contact()
     {
         return view('public.contact');
+
+    }
+    public function about()
+    {
+        return view('public.about');
 
     }
 

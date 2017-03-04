@@ -1,6 +1,6 @@
 @extends('public.layouts.master')
 
-@section('title', 'Home - Contact')
+@section('title', 'Contact - Chikitzo')
 
 
 @section('content')
@@ -20,16 +20,16 @@
 			<div class="container">
 					<div class="row">
 						@include('public.layouts.logo')
-						
+
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
 	</header>
 	<!--==================================Header Close=================================-->
-	
+
 	<!--==================================Section Open=================================-->
 	<section class="clearfix">
-		
+
 		<div  class="padding-top-60 padding-bottom-70 contact-left width-100" align="center">
 			<h3 class="lp-border-bottom padding-bottom-20 margin-bottom-20">Address</h3>
 			<div class="address-box mr-bottom-30">
@@ -45,7 +45,7 @@
 							<i class="fa fa-envelope"></i>
 							<span>support@chiktizo.com</span>
 						</p>
-				
+
 					<ul class="social-icons post-socials contact-social">
 						<li><a href="http://www.facebook.com/Chikitzo" target="_blank"><!-- Facebook icon by Icons8 -->
 							<img class="icon icons8-Facebook" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADEklEQVRoQ+1a7XHbMAwFNEE6QZIJmk5Qd4N4gmaDOAtQEBaoM0HTCepOEGeCuhPU3aBdgOiBJX10LFmMYsl0T7zLj9i0xAc8fEgPCA3LGPMREScAcOX/mrYO8fkKAFYismDmb3U3xOcfEtG1iHwCgIshTtjhHmtEvCOiRfzbLSBlWSqAmW4QkV9FUcwBYElEapGjLSJSVkystTNEPPcHmVdVdRcOtQFijJkj4q1+4REriOwWEc08Y9TY98zsDO+AeDp99SDeHdsDbdZTD4nId3/eqdLMASnL8qfGRM6eqInl4Jl1VVWXSEQ3IvJZY4KZcw3wWicZYzTwzxFxisaYB0TUVKuZIMu4aKJaiBcR+YJlWSrXrhAx+9iooVeIlZUCEd1QVdVOTWkLuhy+D+c/ChDfNVz7jiGOyyUArEVkVRTFU0r2PAoQnzY1zacmFZeR9nl+cCAexCMAnInIU1EUDwCwIKLf4aBEpL3dhbV2ogkohfKDAwlJRTMMM9+0xVdq7A4KJHQOL6lVWQLpUqtyBbJExPeI+IGINDNtFhFpzJQAoFlsJwm0lYVBqbXPusFbTTFzMkA2Fq3xVltC8A2vK+iDFMR9HkmNhSZQ2VAreyDhgLEl6/hety/+DSK+iYvmc8/07pFDATl6sL+GMtqqiMijtjLMrG1L4xrMI20WrTuhMYYQsUxpZ3IH4p5aRaRiZjpljzR2AicZ7Ih4SUTrLDzSNf2KyB9mPmur7r3HSHyAsbK3uePfy8Wx10qw0/aWkVoJJhuplWCknS0jtRKsNlIrwUgjtV5jpP/n5YMxZoWIb/sUevrKWkEUFZEfg0hvPQJxgqiT3iJpulWL6MLh+CXavrcoXR6JIzV66uS2SB3tRRDtwyOREOrU6EEGBg4NpHFgwHtlM8IhIjNmvu9Kpabn6kNQyxhzi4hORt8Z4Qg3judRvCg5TxUlU56ruwJRD1hrVZbQuRMnPcQg9P/aMSdrrXonTOEcyjEHuY6fWprtHXOK76TZzFrrJGStMwc5RceLaJ3QwbOiKFQ83ZrTCpf8CzG2NErUDo89AAAAAElFTkSuQmCC" alt="facebook"></a></li>
@@ -56,37 +56,37 @@
 					</ul><!-- ../social-icons-->
 			</div>
 			<h3 class="margin-top-60 margin-bottom-30 lp-border-bottom padding-bottom-20">Contact us</h3>
-				
+
 			<form class="form-horizontal width-50" id="contact" name="contact" action="/contactSend" method="post" novalidate="novalidate">
 			{{ csrf_field() }}
 					<div class="form-group">
 				  <div class="col-sm-6">
 					<input class="form-control nameform" id="name" name="name" placeholder="Name:" type="text" value="" required="">
 				  </div>
-				  <div class="col-sm-6">          
+				  <div class="col-sm-6">
 					<input class="form-control" id="email" name="email" placeholder="Email:" type="email" required="">
 				  </div>
 				</div>
 				<div class="form-group">
-				  <div class="col-sm-12">          
+				  <div class="col-sm-12">
 					<input class="form-control" id="subject" name="subject" placeholder="Sunject:" type="text" required>
 				  </div>
 				</div>
 				<div class="form-group mr-bottom-20">
-				  <div class="col-sm-12">          
+				  <div class="col-sm-12">
 				<textarea class="form-control" rows="5" id="message" name="message" placeholder="Message:" required></textarea>
 				  </div>
 				</div>
-				<div class="form-group">        
-				  <div class="col-sm-12">							
+				<div class="form-group">
+				  <div class="col-sm-12">
 					<input type="submit" id="submit" name="submit" value="Submit" class="lp-review-btn btn-second-hover">
 
 				  </div>
 				</div>
-			
-			
+
+
 			</form>
 		</div>
 	</section>
-	
+
 @endsection

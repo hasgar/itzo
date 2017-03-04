@@ -26,8 +26,9 @@
 					<div class="col-md-12">
 						<ul class="footer-menu">
 							<li><a href="/">Home</a></li>
-							<li><a href="/add-health-care">Add your health care service</a></li>
+							<li><a href="/add-health-care">Register Health Care Provider</a></li>
 							<li><a href="/contact">Contact us</a></li>
+							<li><a href="/about">About us</a></li>
 							@if (Auth::guest())
                        			 <li><a href="/login">Login</a></li>
                     		@endif

@@ -19,16 +19,17 @@ use App\Countries;
 use App\Booking;
 use App\Conversation;
 use App\Users;
+use App\Area;
 use Auth;
 use Sentinel;
 use Carbon;
 class HealthcareController extends Controller
 {
     public function selectHealthcare(Request $request) {
-        
+
         if( States::where('id',$request['state'])->count() > 0 && Cities::where('id',$request['city'])->count() > 0 && Types::where('id',$request['type'])->count() > 0) {
         $healthcare_types = HealthcareTypes::where('type_id',$request['type'])->pluck('healthcare_id');
-        $healthcare = Healthcare::where('city_id', $request['city'])->where('is_approved', 1)->where('status', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->get();
+        $healthcare = Healthcare::where('city_id', $request['city'])->where('is_approved', 1)->where('status', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->where('payment_done', 1)->where('is_verified', 1)->get();
         $states = States::where('country_id',101)->get();
         $cities = Cities::where('state_id',$request['state'])->get();
         $types = Types::all();
@@ -40,35 +41,36 @@ class HealthcareController extends Controller
         if(count($healthcare) < 1) {
             return view('public.noHealthcareFound')->with('states',$states)->with('fecilities',$fecilities)->with('fec',$fec)->with('cities',$cities)->with('types',$types)->with('healthcare',$healthcare)->with('city_sel',$city_sel)->with('state_sel',$state_sel)->with('type_sel',$type_sel);
         }
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('lab',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('lab',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= "8";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('parking',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('parking',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= ",9";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('pharmacy',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('pharmacy',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= ",10";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('wheelchair',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('wheelchair',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= ",11";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('ambulance',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('ambulance',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= ",12";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('inpatient',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('inpatient',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= ",13";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('bloodbank',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('bloodbank',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= ",14";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('fitness',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('fitness',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= ",15";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('yoga',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('yoga',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= ",16";
         if(Healthcare::where('id',$healthcare[0]['id'])->where('massage',1)->count() > 0)
         $fec .= ",17";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('sports',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('sports',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= ",18";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('insurance',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('insurance',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= ",20";
-        if(Healthcare::where('id',$healthcare[0]['id'])->where('tours',1)->count() > 0)
+        if(Healthcare::where('id',$healthcare[0]['id'])->where('tours',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= "19";
         return view('public.selectHealthcare')->with('states',$states)->with('fecilities',$fecilities)->with('fec',$fec)->with('cities',$cities)->with('types',$types)->with('healthcare',$healthcare)->with('city_sel',$city_sel)->with('state_sel',$state_sel)->with('type_sel',$type_sel);
         }
         else {
+
             return redirect('/404');
         }
     }
@@ -80,9 +82,9 @@ class HealthcareController extends Controller
             $request->name = "Chinese/Traditional";
         if( Types::where('name',$request->name)->count() > 0 ) {
           $id = Types::where('name',$request->name)->pluck('id')[0];
-        
+
          $healthcare_types = HealthcareTypes::where('type_id',$id)->pluck('healthcare_id');
-        $healthcare = Healthcare::where('is_approved', 1)->where('status', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->get();
+        $healthcare = Healthcare::where('is_approved', 1)->where('status', 1)->where('payment_done', 1)->where('is_verified', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->get();
         $type_sel = Types::where('id',$id)->get()[0];
         /*$states = States::where('country_id',101)->get();
         $cities = Cities::where('state_id',$request['state'])->get();
@@ -137,64 +139,65 @@ class HealthcareController extends Controller
         $fecilities = HealthcareFecilities::where('healthcare_id', $request->id)->with(['fecility'])->get();
         $photos = Photos::where('healthcare_id', $request->id)->get();
         return view('public.showHealthcare')->with('healthcare',$healthcare)->with('healthcare_types',$healthcare_types)->with('ratings',$ratings)->with('fecilities',$fecilities)->with('photos',$photos);
-   
+
     }
      public function addHealthcare() {
          if (Auth::check()) {
            Auth::logout();
          }
          $countries = Countries::all();
+         $areas = Area::all();
          $types = Types::all();
-        
-        return view('public.addHealthcare')->with('countries',$countries)->with('types',$types);
+
+        return view('public.addHealthcare')->with('countries',$countries)->with('types',$types)->with('areas',$areas);
     }
     public function bookHealthcare(Request $request) {
         if (Auth::check()) {
             $user = Sentinel::findById(Auth::user()->id);
         if ($user->inRole('user')){
-            $healthcare = Healthcare::where('id', $request->id)->get();
+            $healthcare = Healthcare::where('id', $request->id)->where('payment_done', 1)->where('is_verified', 1)->get();
         return view('public.bookHealthcare')->with('healthcare',$healthcare)->with('done',0);
         }
         }
-        return redirect('/signin'); 
-         
+        return redirect('/signin');
+
     }
 
      public function book(Request $request) {
-            
-            $healthcare = Healthcare::where('id', $request['id'])->get();
+
+            $healthcare = Healthcare::where('id', $request['id'])->where('payment_done', 1)->where('is_verified', 1)->get();
             $booking = Booking::create(['healthcare_id' => $request['id'],
-            'user_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0], 
-            'message' => $request['message'], 
+            'user_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0],
+            'message' => $request['message'],
             'date' => $request['dateOfBook'],
             'is_confirmed' => 0,
             ]);
             Conversation::create(['user_1_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0],
-            'user_2_id' => $healthcare[0]['id'], 
+            'user_2_id' => $healthcare[0]['id'],
             'from_user'  => 'user',
-            'message' => Auth::user()->name." made a booking for ".Carbon\Carbon::createFromFormat('Y-m-d', $request['dateOfBook'])->format('M d, Y') , 
+            'message' => Auth::user()->name." made a booking for ".Carbon\Carbon::createFromFormat('Y-m-d', $request['dateOfBook'])->format('M d, Y') ,
             'ip' => $_SERVER["REMOTE_ADDR"],
             'booking_id' => $booking['id'],
             ]);
             Conversation::create(['user_1_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0],
-            'user_2_id' => $healthcare[0]['id'], 
+            'user_2_id' => $healthcare[0]['id'],
             'from_user'  => 'user',
-            'message' => $request['message'], 
+            'message' => $request['message'],
             'ip' => $_SERVER["REMOTE_ADDR"],
             'booking_id' => $booking['id'],
             ]);
             //booking made email
         return view('public.bookHealthcare')->with('healthcare',$healthcare)->with('done',1);
 
-        
-         
+
+
     }
     public function cancelBooking(Request $request){
         $booking = Booking::where('id',$request->id)->where('user_id',Auth::user()->id)->update(['is_confirmed' => 3]);
         $booking = Booking::where('id',$request->id)->get();
         Conversation::create(['user_1_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0],
-            'user_2_id' => $booking[0]['healthcare_id'], 
-            'message' => "Booking #CH".$request->id." Cancelled by ".Auth::user()->name , 
+            'user_2_id' => $booking[0]['healthcare_id'],
+            'message' => "Booking #CH".$request->id." Cancelled by ".Auth::user()->name ,
             'ip' => $_SERVER["REMOTE_ADDR"],
             'booking_id' => $request->id,
             'from_user' => 'user',
@@ -332,11 +335,11 @@ class HealthcareController extends Controller
         $pro_pic = '';
             for($i=1;$i<4;$i++){
                 if($data->hasFile('photo_'.$i)){
-               
+
             $extension = $data->file('photo_'.$i)->getClientOriginalExtension();
             $destinationPath = 'images/healthcare/';
             $fileName = str_replace(" ","",uniqid('img_'.$data['healthcare_id'].'_', true).microtime().'.'.$extension);
-            
+
             if($data->file('photo_'.$i)->move($destinationPath, $fileName))
             {
               $photos = Photos::create([
@@ -363,9 +366,9 @@ class HealthcareController extends Controller
             'type_id' => $data["treatment_type_$i"],
             'healthcare_id' => $data['healthcare_id']
         ]);
-        }  
-        } 
-        
+        }
+        }
+
         return redirect('/healthcare/edit');
     }
 
@@ -374,8 +377,8 @@ class HealthcareController extends Controller
         $booking = Booking::where('id',$request->id)->where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->update(['is_confirmed' => 2]);
         $booking = Booking::where('id',$request->id)->get();
         Conversation::create(['user_1_id' => $booking[0]['user_id'],
-            'user_2_id' => $booking[0]['healthcare_id'], 
-            'message' => "Booking #CH".$request->id." Cancelled by ".Healthcare::where('id',$booking[0]['healthcare_id'])->pluck('name')[0], 
+            'user_2_id' => $booking[0]['healthcare_id'],
+            'message' => "Booking #CH".$request->id." Cancelled by ".Healthcare::where('id',$booking[0]['healthcare_id'])->pluck('name')[0],
             'ip' => $_SERVER["REMOTE_ADDR"],
             'booking_id' => $request->id,
             'from_user' => 'healthcare',
@@ -386,8 +389,8 @@ class HealthcareController extends Controller
         $booking = Booking::where('id',$request->id)->where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->update(['is_confirmed' => 4]);
         $booking = Booking::where('id',$request->id)->get();
         Conversation::create(['user_1_id' => $booking[0]['user_id'],
-            'user_2_id' => $booking[0]['healthcare_id'], 
-            'message' => "Booking #CH".$request->id." Cancelled by Admin",  
+            'user_2_id' => $booking[0]['healthcare_id'],
+            'message' => "Booking #CH".$request->id." Cancelled by Admin",
             'ip' => $_SERVER["REMOTE_ADDR"],
             'booking_id' => $request->id,
             'from_user' => 'admin',
@@ -399,8 +402,8 @@ class HealthcareController extends Controller
         $booking = Booking::where('id',$request->id)->where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->update(['is_confirmed' => 1]);
         $booking = Booking::where('id',$request->id)->get();
         Conversation::create(['user_1_id' => $booking[0]['user_id'],
-            'user_2_id' => $booking[0]['healthcare_id'], 
-            'message' => "Booking #CH".$request->id." Confirmed by ".Healthcare::where('id',$booking[0]['healthcare_id'])->pluck('name')[0], 
+            'user_2_id' => $booking[0]['healthcare_id'],
+            'message' => "Booking #CH".$request->id." Confirmed by ".Healthcare::where('id',$booking[0]['healthcare_id'])->pluck('name')[0],
             'ip' => $_SERVER["REMOTE_ADDR"],
             'booking_id' => $request->id,
             'from_user' => 'healthcare',

@@ -1,7 +1,7 @@
 <div class="col-md-4 col-xs-6 lp-logo-container">
-							<div class="lp-logo">
+							<div class="lp-logo white-logo">
 								<a href="/">
-									<img src="/images/logo.png" />
+									<img src="/images/logo-white.png" />
 								</a>
 							</div>
 						</div>
@@ -19,7 +19,7 @@
 									@if (Auth::guest())
 									<li><a href="/signin">Sign In</a> / <a href="/signup">Sign Up</a></li>
 									</li>
-									@else 
+									@else
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
 									<li><a href="/user/dashboard">Dashboard</a></li>
 									@endif
@@ -37,17 +37,17 @@
 							<div class="pull-right lp-add-listing-btn">
 							<ul>
 
-									<li><a href="/add-health-care"><i class="fa fa-plus"></i> Add your health care service</a></li>
+									<li><a href="/add-health-care"><i class="fa fa-plus"></i> Register Health care Provider</a></li>
 								</ul>
 							</div>
 							<div class="lp-menu pull-right menu">
 								<ul>
 									@if (Auth::guest())
 									<li><a href="/signin"><i class="fa fa-user user-plus-icon"></i>  Login</a> / <a href="/signup"><i class="fa fa-user-plus user-plus-icon"></i>  Register</a></li>
-									@else 
+									@else
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
 									<li><a href="/user/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
-									
+
 									@endif
 									@if(Sentinel::findById(Auth::user()->id)->inRole('healthcare'))
 									<li><a href="/healthcare/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>
@@ -58,7 +58,7 @@
 									@endif
 									<li><a href="/logout">Logout</a></li>
 									@endif
-									
+
 								</ul>
 							</div>
 						</div>

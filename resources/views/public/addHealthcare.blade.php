@@ -22,16 +22,6 @@
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
-		<div class="page-heading listing-page archive-page ">
-			<div class="page-heading-inner-container text-center">
-				<h1>Add Your Health Care</h1>
-				<ul class="breadcrumbs">
-					<li><a href="/">Home</a></li>
-					<li><span>Add Your Health Care</span></li>
-				</ul>
-			</div>
-			<div class="page-header-overlay"></div>
-		</div><!-- ../Home Search Container -->
 	</header>
 	<!--==================================Header Close=================================-->
 
@@ -43,15 +33,17 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="login-form-popup lp-border-radius-8">
+							<div class="login-form-popup lp-border-radius-8" style="
+    WIDTH: 600px;
+">
 
 								<div class="siginupcontainer page-signup">
-									<h1 class="text-center healthcare-heading">Add Your Health Care</h1>
+									<h1 class="text-center healthcare-heading">Register Health care Provider</h1>
 									<form id="add-healthcare" class="form-horizontal margin-top-30"role="form" method="POST" action="{{ url('/register') }}" enctype='multipart/form-data'>
                        					 {{ csrf_field() }}
 										<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-											<label for="name">Health care Service name *</label>
-											<input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" required placeholder="Enter health center name">
+											<label for="name">Name of Health care Provider *</label>
+											<input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" required placeholder="Enter Health care Provider name">
 											@if ($errors->has('name'))
 												<span class="help-block">
 													<strong>{{ $errors->first('name') }}</strong>
@@ -60,7 +52,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
 											<label for="email">Email Address *</label>
-											<input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Enter health center official email" required>
+											<input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Enter official email" required>
 											 @if ($errors->has('email'))
 												<span class="help-block">
 													<strong>{{ $errors->first('email') }}</strong>
@@ -86,12 +78,12 @@
 											@endif
 										</div>
 										<div class="form-group {{ $errors->has('treatment_type') ? ' has-error' : '' }}">
-											<label for="treatment_type">Type of Treatment *</label>
+											<label for="treatment_type">Type of Treatment available*</label>
 											<?php $i = 1; ?>
 @foreach ($types as $type)
 
 											<select class="form-control treatment-type-{{ $i }} margin-top-7 @if($i != 1) hide-type @endif" id="treatment_type_{{$i}}" name="treatment_type_{{$i}}" required>
-<option value="">Select your treatment type</option>
+<option value="">Select Type of Treatments available</option>
 										@foreach ($types as $type)
 										<option value="{{$type['id']}}">{{$type['name']}}</option>
 										@endforeach
@@ -108,70 +100,399 @@
 											<div class="form-group {{ $errors->has('working_hours') ? ' has-error' : '' }}">
 											<label for="working_hours">Working Hours ?</label>
 									 </div>
-									 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
-											<div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
-											<option value="Monday to Saturday">Monday to Saturday</option>
-											</select>
-											</div>
-											<div class="col-md-3"><select  class="form-control" name="working_hours_mon_from" id="working_hours_mon_from" required>
-											<option value="01 AM">01 AM</option>
-											<option value="02 AM">02 AM</option>
-											<option value="03 AM">03 AM</option>
-											<option value="04 AM">04 AM</option>
-											<option value="05 AM">05 AM</option>
-											<option value="06 AM">06 AM</option>
-											<option value="07 AM">07 AM</option>
-											<option value="08 AM">08 AM</option>
-											<option value="09 AM">09 AM</option>
-											<option value="10 AM">10 AM</option>
-											<option value="11 AM">11 AM</option>
-											<option value="12 PM">12 PM</option>
-											<option value="01 PM">01 PM</option>
-											<option value="02 PM">02 PM</option>
-											<option value="03 PM">03 PM</option>
-											<option value="04 PM">04 PM</option>
-											<option value="05 PM">05 PM</option>
-											<option value="06 PM">06 PM</option>
-											<option value="07 PM">07 PM</option>
-											<option value="08 PM">08 PM</option>
-											<option value="09 PM">09 PM</option>
-											<option value="10 PM">10 PM</option>
-											<option value="11 PM">11 PM</option>
-											<option value="12 AM">12 AM</option>
-											</select>
-											</div>
-											<div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_mon_to" id="working_hours_mon_to"  required>
-											<option value="01 AM">01 AM</option>
-											<option value="02 AM">02 AM</option>
-											<option value="03 AM">03 AM</option>
-											<option value="04 AM">04 AM</option>
-											<option value="05 AM">05 AM</option>
-											<option value="06 AM">06 AM</option>
-											<option value="07 AM">07 AM</option>
-											<option value="08 AM">08 AM</option>
-											<option value="09 AM">09 AM</option>
-											<option value="10 AM">10 AM</option>
-											<option value="11 AM">11 AM</option>
-											<option value="12 PM">12 PM</option>
-											<option value="01 PM">01 PM</option>
-											<option value="02 PM">02 PM</option>
-											<option value="03 PM">03 PM</option>
-											<option value="04 PM">04 PM</option>
-											<option value="05 PM">05 PM</option>
-											<option value="06 PM">06 PM</option>
-											<option value="07 PM">07 PM</option>
-											<option value="08 PM">08 PM</option>
-											<option value="09 PM">09 PM</option>
-											<option value="10 PM">10 PM</option>
-											<option value="11 PM">11 PM</option>
-											<option value="12 AM">12 AM</option></select>
-											</div>
-											@if ($errors->has('working_hours_mon'))
-												<span class="help-block">
-													<strong>{{ $errors->first('working_hours_mon') }}</strong>
-												</span>
-											@endif
-										</div>
+
+
+										<div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
+											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <option value="Monday to Saturday">Monday</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3"><select  class="form-control" name="working_hours_mon_from" id="working_hours_mon_from" required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_mon_to" id="working_hours_mon_to"  required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option></select>
+											 </div>
+											 @if ($errors->has('working_hours_mon'))
+												 <span class="help-block">
+													 <strong>{{ $errors->first('working_hours_mon') }}</strong>
+												 </span>
+											 @endif
+										 </div>
+
+										 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
+											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <option value="Monday to Saturday">Tuesday</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3"><select  class="form-control" name="working_hours_tue_from" id="working_hours_tue_from" required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_tue_to" id="working_hours_tue_to"  required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option></select>
+											 </div>
+											 @if ($errors->has('working_hours_mon'))
+												 <span class="help-block">
+													 <strong>{{ $errors->first('working_hours_mon') }}</strong>
+												 </span>
+											 @endif
+										 </div>
+
+										 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
+											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <option value="Monday to Saturday">Wednesday</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3"><select  class="form-control" name="working_hours_wed_from" id="working_hours_wed_from" required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_wed_to" id="working_hours_wed_to"  required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option></select>
+											 </div>
+											 @if ($errors->has('working_hours_mon'))
+												 <span class="help-block">
+													 <strong>{{ $errors->first('working_hours_mon') }}</strong>
+												 </span>
+											 @endif
+										 </div>
+
+										 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
+											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <option value="Monday to Saturday">Thursday</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3"><select  class="form-control" name="working_hours_thu_from" id="working_hours_thu_from" required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_thu_to" id="working_hours_thu_to"  required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option></select>
+											 </div>
+											 @if ($errors->has('working_hours_mon'))
+												 <span class="help-block">
+													 <strong>{{ $errors->first('working_hours_mon') }}</strong>
+												 </span>
+											 @endif
+										 </div>
+
+										 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
+											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <option value="Monday to Saturday">Friday</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3"><select  class="form-control" name="working_hours_fri_from" id="working_hours_fri_from" required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_fri_to" id="working_hours_fri_to"  required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option></select>
+											 </div>
+											 @if ($errors->has('working_hours_mon'))
+												 <span class="help-block">
+													 <strong>{{ $errors->first('working_hours_mon') }}</strong>
+												 </span>
+											 @endif
+										 </div>
+
+										 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
+											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <option value="Monday to Saturday">Saturday</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3"><select  class="form-control" name="working_hours_sat_from" id="working_hours_sat_from" required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option>
+											 </select>
+											 </div>
+											 <div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_sat_to" id="working_hours_sat_to"  required>
+											 <option value="01 AM">01 AM</option>
+											 <option value="02 AM">02 AM</option>
+											 <option value="03 AM">03 AM</option>
+											 <option value="04 AM">04 AM</option>
+											 <option value="05 AM">05 AM</option>
+											 <option value="06 AM">06 AM</option>
+											 <option value="07 AM">07 AM</option>
+											 <option value="08 AM">08 AM</option>
+											 <option value="09 AM">09 AM</option>
+											 <option value="10 AM">10 AM</option>
+											 <option value="11 AM">11 AM</option>
+											 <option value="12 PM">12 PM</option>
+											 <option value="01 PM">01 PM</option>
+											 <option value="02 PM">02 PM</option>
+											 <option value="03 PM">03 PM</option>
+											 <option value="04 PM">04 PM</option>
+											 <option value="05 PM">05 PM</option>
+											 <option value="06 PM">06 PM</option>
+											 <option value="07 PM">07 PM</option>
+											 <option value="08 PM">08 PM</option>
+											 <option value="09 PM">09 PM</option>
+											 <option value="10 PM">10 PM</option>
+											 <option value="11 PM">11 PM</option>
+											 <option value="12 AM">12 AM</option></select>
+											 </div>
+											 @if ($errors->has('working_hours_mon'))
+												 <span class="help-block">
+													 <strong>{{ $errors->first('working_hours_mon') }}</strong>
+												 </span>
+											 @endif
+										 </div>
+
+
 										<div class="form-group {{ $errors->has('working_hours_sun') ? ' has-error' : '' }}">
 											<div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
 											<option value="Sunday">Sunday</option>
@@ -250,8 +571,18 @@
 											@endif
 										</div>
 
+
+										<div class="form-group {{ $errors->has('accreditation') ? ' has-error' : '' }}">
+											<label for="accreditation">Accreditation</label> <br>
+											<label for="nabh" class="fecilities-lbl"><input type="checkbox" id="nabh" name="nabh" value="1" class="fecilites-check"> NABH</label>
+											<label for="iso" class="fecilities-lbl"><input type="checkbox" id="iso"  value="1" name="iso" class="fecilites-check"> ISO</label>
+									<label for="ohsas" class="fecilities-lbl"><input type="checkbox" id="ohsas" value="1" name="ohsas" class="fecilites-check"> OHSAS</label>
+									<label for="jci" class="fecilities-lbl"><input type="checkbox" id="jci" value="1" name="jci" class="fecilites-check"> JCI</label>
+									<label for="nabl" class="fecilities-lbl"><input type="checkbox" id="nabl" value="1" name="nabl" class="fecilites-check"> NABL</label>
+										</div>
+
 										<div class="form-group {{ $errors->has('departments') ? ' has-error' : '' }}">
-											<label for="departments">Departments *</label>
+											<label for="departments">Departments / Services * <span style="font-weight:100;">(seperate using comma)</span></label>
 											<input type="text" class="form-control" id="departments" name="departments" value="{{ old('departments') }}" placeholder="Enter departments" required>
 											 @if ($errors->has('departments'))
 												<span class="help-block">
@@ -296,19 +627,23 @@
 												</span>
 											@endif
 										</div>
-										<div class="form-group {{ $errors->has('village') ? ' has-error' : '' }}"   required>
-											<label for="village">Town/Village *</label>
-											<input type="text" class="form-control" name="village" id="village" required value="{{ old('village') }}" placeholder="Enter health center town/village">
-											@if ($errors->has('village'))
+										<div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}"   required>
+											<label for="area">Town / Village *</label>
+											<select  class="form-control" id="area" name="area">
+<option value="">Select your Town / Village</option>
+@foreach ($areas as $area)
+										<option value="{{$area['id']}}">{{$area['name']}}</option>
+										@endforeach
+</select>
+											@if ($errors->has('country'))
 												<span class="help-block">
-													<strong>{{ $errors->first('village') }}</strong>
+													<strong>{{ $errors->first('area') }}</strong>
 												</span>
 											@endif
-
 										</div>
 										<div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
-											<label for="address">Address *</label>
-											<textarea class="form-control" name="address" id="address" placeholder="Enter your healthcare center address"  required>{{ old('address') }}</textarea>
+											<label for="address">Address </label>
+											<textarea class="form-control" name="address" id="address" placeholder="Enter your healthcare center address" >{{ old('address') }}</textarea>
 											@if ($errors->has('address'))
 												<span class="help-block">
 													<strong>{{ $errors->first('address') }}</strong>
@@ -316,8 +651,8 @@
 											@endif
 										</div>
 										<div class="form-group {{ $errors->has('pin') ? ' has-error' : '' }}">
-											<label for="pin">Pin *</label>
-											<input type="number" class="form-control" name="pin" id="pin" required value="{{ old('pin') }}" placeholder="Enter health center Pin code" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+											<label for="pin">Pin </label>
+											<input type="number" class="form-control" name="pin" id="pin"  value="{{ old('pin') }}" placeholder="Enter health center Pin code" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 											@if ($errors->has('pin'))
 												<span class="help-block">
 													<strong>{{ $errors->first('pin') }}</strong>
@@ -390,7 +725,7 @@
 										</div>
 
 										<div class="form-group {{ $errors->has('fecilities') ? ' has-error' : '' }}">
-											<label for="fecilities">Available Fecilities</label> <br>
+											<label for="fecilities">Available services and facilities</label> <br>
 											<label for="fec-lab" class="fecilities-lbl"><input type="checkbox" id="fec-lab" name="fec-lab" class="fecilites-check" value="1"> Lab</label>
 											<label for="fec-parking" class="fecilities-lbl"><input type="checkbox" id="fec-parking" name="fec-parking" class="fecilites-check" value="1"> Parking</label>
 									<label for="fec-pharmacy" class="fecilities-lbl"><input type="checkbox" id="fec-pharmacy" name="fec-pharmacy" class="fecilites-check" value="1"> Pharmacy</label>
@@ -399,12 +734,22 @@
 									<label for="fec-inpatient" class="fecilities-lbl"><input type="checkbox" id="fec-inpatient" name="fec-inpatient" class="fecilites-check" value="1"> Inpatient</label>
 									<label for="fec-bloodbank" class="fecilities-lbl"><input type="checkbox" id="fec-bloodbank" name="fec-bloodbank" class="fecilites-check" value="1"> Blood Bank</label>
 									<label for="fec-fitnesscentre" class="fecilities-lbl"><input type="checkbox" id="fec-fitnesscentre" name="fec-fitnesscentre" class="fecilites-check" value="1"> Fitness Centre</label>
-									<label for="fec-yoga" class="fecilities-lbl"><input type="checkbox" id="fec-yoga" name="fec-yoga" class="fecilites-check" value="1" > Yoga</label>
-									<label for="fec-massage" class="fecilities-lbl"><input type="checkbox" id="fec-massage" name="fec-massage" class="fecilites-check" value="1"> Massage</label>
-									<label for="fec-sports" class="fecilities-lbl"><input type="checkbox" id="fec-sports" name="fec-sports" class="fecilites-check" value="1"> Sports</label>
-									<label for="fec-tours" class="fecilities-lbl"><input type="checkbox" id="fec-tours" name="fec-tours" class="fecilites-check" value="1"> Tours</label>
+									<label for="fec-canteen" class="fecilities-lbl"><input type="checkbox" id="fec-canteen" name="fec-canteen" class="fecilites-check" value="1" > Food/Canteen</label>
 									<label for="fec-insurance" class="fecilities-lbl"><input type="checkbox" id="fec-insurance" name="fec-insurance" class="fecilites-check" value="1"> Insurance</label>
 										</div>
+
+										<div class="form-group {{ $errors->has('other_fecilities') ? ' has-error' : '' }}">
+											<label for="other_fecilities">Any other fecilities available?</label>
+											<input type="text" class="form-control" name="other_fecilities"  id="other_fecilities" value="{{ old('other_fecilities') }}" placeholder="Enter Other fecilities avilable">
+
+											@if ($errors->has('other_fecilities'))
+												<span class="help-block">
+													<strong>{{ $errors->first('other_fecilities') }}</strong>
+												</span>
+											@endif
+										</div>
+
+
 										<div class="form-group {{ $errors->has('payment') ? ' has-error' : '' }}">
 											<label for="payment">Payment Modes</label> <br>
 											<label for="pay-cash" class="fecilities-lbl"><input type="checkbox" id="pay-cash" name="pay-cash" value="1" class="fecilites-check"> Cash</label>
@@ -413,48 +758,33 @@
 									<label for="pay-cheque" class="fecilities-lbl"><input type="checkbox" id="pay-cheque" value="1" name="pay-cheque" class="fecilites-check"> Cheque</label>
 										</div>
 
-										<div class="form-group {{ $errors->has('accommodation') ? ' has-error' : '' }}">
-											<label for="accommodation">Does accommodation available?</label>
-											<select  class="form-control" id="accommodation" name="accommodation" required>
-<option value="0">No</option>
-<option value="1">Yes</option>
-</select>
-											@if ($errors->has('accommodation'))
-												<span class="help-block">
-													<strong>{{ $errors->first('accommodation') }}</strong>
-												</span>
-											@endif
-										</div>
-
-										<div class="form-group {{ $errors->has('accommodation_type') ? ' has-error' : '' }} accommodation-type">
-											<label for="accommodation_type">Accommodation Available?</label> <br>
-											<label for="accommodation_single_ac" class="fecilities-lbl"><input type="checkbox" value="1" id="accommodation_single_ac" name="accommodation_single_ac" class="fecilites-check"> Single AC</label>
-											<label for="accommodation_single_non_ac" class="fecilities-lbl"><input type="checkbox" value="1" id="accommodation_single_non_ac" name="accommodation_single_non_ac" class="fecilites-check"> Single Non AC</label>
-										<label for="accommodation_shared" class="fecilities-lbl"><input type="checkbox" id="accommodation_shared" value="1" name="accommodation_shared" class="fecilites-check"> Shared Rooms</label>
-										<label for="accommodation_general" class="fecilities-lbl"><input type="checkbox" id="accommodation_general" value="1"  name="accommodation_general" class="fecilites-check"> General Ward</label>
-										</div>
-<div class="form-group {{ $errors->has('no_of_beds') ? ' has-error' : '' }}">
-											<label for="no_of_beds">No of Beds *</label>
-											<input type="text" class="form-control" id="no_of_beds" name="no_of_beds" value="{{ old('no_of_beds') }}" placeholder="Enter No of beds" required>
+										<div class="col-md-6" style="padding-left:0px;">
+										<div class="form-group {{ $errors->has('no_of_beds') ? ' has-error' : '' }}">
+											<label for="no_of_beds">Number of beds </label>
+											<input type="number" class="form-control" id="no_of_beds" name="no_of_beds" value="{{ old('no_of_beds') }}" placeholder="Enter No of beds">
 											 @if ($errors->has('no_of_beds'))
 												<span class="help-block">
 													<strong>{{ $errors->first('no_of_beds') }}</strong>
 												</span>
 											@endif
-										</div>
+										</div></div><div class="col-md-6" style="padding-right:0px;padding-left:30px">
+											<div class="form-group {{ $errors->has('bed_range') ? ' has-error' : '' }}">
+												<label for="bed_range">Bed range</label>
+												<select  class="form-control" id="bed_range" name="bed_range">
+											<option value="0-50" data-from="0" data-to="50">0-50</option>
+											<option value="51-100" data-from="51" data-to="100">51-100</option>
+											<option value="101-200" data-from="101" data-to="200">101-200</option>
+											<option value="201-300" data-from="201" data-to="+">201-300</option>
+											<option value="300+" data-from="0" data-to="50">300+</option>
+											</select>
+												@if ($errors->has('bed_range'))
+													<span class="help-block">
+														<strong>{{ $errors->first('bed_range') }}</strong>
+													</span>
+												@endif
+											</div>
+</div>
 
-<div class="form-group {{ $errors->has('food') ? ' has-error' : '' }}">
-											<label for="accommodation">Food provided?</label>
-											<select  class="form-control" id="food" name="food" required>
-<option value="0">No</option>
-<option value="1">Yes</option>
-</select>
-											@if ($errors->has('food'))
-												<span class="help-block">
-													<strong>{{ $errors->first('food') }}</strong>
-												</span>
-											@endif
-										</div>
 										<div class="form-group {{ $errors->has('food_types') ? ' has-error' : '' }} food-type">
 											<label for="food_types">Type of Foods</label> <br>
 											<label for="food_veg" class="fecilities-lbl"><input type="checkbox" value="1" id="food_veg" name="food_veg" class="fecilites-check"> Veg</label>
@@ -462,20 +792,19 @@
 									<label for="food_organic" class="fecilities-lbl"><input type="checkbox" value="1" id="food_organic" name="food_organic" class="fecilites-check"> Organic Food</label>
 									<label for="food_personalised" class="fecilities-lbl"><input type="checkbox" value="1" id="food_personalised" name="food_personalised" class="fecilites-check"> Personalised Diet</label>
 										</div>
-										<div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
-											<label for="price">Price Category *</label>
-											<select  class="form-control" id="price" name="price" required>
-												<option value="">Select your price category</option>
-												<option value="5">$$$$$</option>
-												<option value="4">$$$$</option>
-												<option value="3">$$$</option>
-												<option value="2">$$</option>
-												<option value="1">$</option>
+										<div class="form-group {{ $errors->has('category') ? ' has-error' : '' }}">
+											<label for="category">Select Health Care Provider category</label>
+											<select  class="form-control" id="category" name="category" required>
+												<option value="1">Clinic</option>
+												<option value="2">Mini Hospital</option>
+												<option value="3">Hospital / General</option>
+												<option value="4">Speciality</option>
+												<option value="5">Multi Speciality</option>
 
 											</select>
-											@if ($errors->has('price'))
+											@if ($errors->has('category'))
 												<span class="help-block">
-													<strong>{{ $errors->first('price') }}</strong>
+													<strong>{{ $errors->first('category') }}</strong>
 												</span>
 											@endif
 										</div>
@@ -539,7 +868,7 @@
 
 										<input type="hidden" name="type" value="2" />
 										<div class="form-group">
-											<input type="submit" value="Submit" class="lp-secondary-btn width-full btn-first-hover">
+											<input type="submit" onsubmit="return confirm('Are you sure you want to delete this item?');" value="Submit & Pay" class="lp-secondary-btn width-full btn-first-hover">
 										</div>
 									</form>
 

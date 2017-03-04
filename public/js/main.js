@@ -22,7 +22,35 @@ $(document).ready(function() {
   } else {
       $('.accommodation-type').hide()
   }
+
+
+
 });
+
+  $("#no_of_beds").keyup(function(){
+    if ($(this).val() < 51) {
+      $('#bed_range').val("0-50");
+
+    } else if ($(this).val() < 101) {
+
+        $('#bed_range').val("51-100");
+
+    } else if ($(this).val() < 201) {
+
+        $('#bed_range').val("101-200");
+
+    } else if ($(this).val() < 301) {
+
+        $('#bed_range').val("201-300");
+    }  else if ($(this).val() > 300) {
+
+        $('#bed_range').val("300+");
+    }
+    });
+
+    $('#bed_range').on('change', function() {
+      $("#no_of_beds").val("");
+    });
 $('#food').on('change', function() {
   if(this.value == 1 ) {
       $('.food-type').show()
@@ -48,7 +76,7 @@ $("#add-type").on('click', function() {
 });
 */
 $.ajax({
-                url: 'http://www.chikitzo.com/getStates',
+                url: '/getStates',
                 type: 'post',
                 data: {id:$('select[id=country]').val()},
                 success: function(data){
@@ -79,7 +107,7 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: 'http://www.chikitzo.com/getCities',
+                url: '/getCities',
                 type: 'post',
                 data: {id:$('select[id=state]').val()},
                 success: function(data){
@@ -351,7 +379,7 @@ $.ajaxSetup({
   }
 });
 $.ajax({
-                url: 'http://www.chikitzo.com/getCities',
+                url: '/getCities',
                 type: 'post',
                 data: {id:ui.item.option.value},
                 success: function(data){

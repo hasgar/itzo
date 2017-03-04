@@ -1,6 +1,6 @@
 @extends('public.layouts.master')
 
-@section('title', 'Sign In - Chikitzo')
+@section('title', 'Enter OTP - Chikitzo')
 
 
 @section('content')
@@ -22,7 +22,7 @@
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
-		
+
 	</header>
 	<!--==================================Header Close=================================-->
 
@@ -36,36 +36,31 @@
 						<div class="col-md-12">
 							<div class="login-form-popup lp-border-radius-8">
 								<div class="siginincontainer">
-									<h1 class="text-center">Sign In</h1>
-									<form class="form-horizontal margin-top-30" role="form" method="POST" action="{{ url('/login') }}">
+									<h1 class="text-center">Enter OTP</h1>
+  									<p class="text-center">We just sent you an OTP to your mobile number</p>
+                    @if (count($errors) > 0)
+                    <ul class="error_points">
+                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                              </ul>
+                      </blockquote>
+                      @endif
+
+									<form class="form-horizontal margin-top-30" role="form" method="POST" action="{{ url('/otpVerification') }}">
 										{{ csrf_field() }}
 										<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-											<label for="siusername">Email Address *</label>
-											<input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required />
-										@if ($errors->has('email'))
+											<label for="otp">OTP *</label>
+											<input type="text" class="form-control" id="otp" name="otp" value="{{ old('otp') }}" required />
+										@if ($errors->has('otp'))
 											<span class="help-block">
-												<strong>{{ $errors->first('email') }}</strong>
+												<strong>{{ $errors->first('otp') }}</strong>
 											</span>
 										@endif
 										</div>
-										<div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-											<label for="password">Password *</label>
-											<input type="password" class="form-control" id="password" name="password" required />
-											@if ($errors->has('password'))
-												<span class="help-block">
-													<strong>{{ $errors->first('password') }}</strong>
-												</span>
-											@endif
-										</div>
-										<div class="form-group">
-											<div class="checkbox pad-bottom-10">
-												<input id="check1" type="checkbox" name="remember">
-												<label for="check1">Keep me signed in</label>
-											</div>
-										</div>
 
 										<div class="form-group">
-											<input type="submit" value="Sign in" class="lp-secondary-btn width-full btn-first-hover" />
+											<input type="submit" value="Confirm" class="lp-secondary-btn width-full btn-first-hover" />
 										</div>
 									</form>
 									<div class="pop-form-bottom">

@@ -23,6 +23,7 @@ class CreateUserTable extends Migration
             $table->string('mobile', 20)->nullable();
             $table->string('email', 150)->nullable();
             $table->boolean('status')->default(1);
+            $table->boolean('is_verified')->default(1);
             $table->timestamps();
         });
     }

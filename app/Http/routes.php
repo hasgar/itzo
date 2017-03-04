@@ -34,6 +34,13 @@ Route::get('/add-health-care', 'HealthcareController@addHealthcare');
 
 Route::get('/404', 'HomeController@notFound');
 Route::post('/addRating', 'RatingController@addRating');
+Route::post('/otpVerification', 'UserController@otpVerification');
+Route::get('/healthcareOtpVerification', 'UserController@healthcareOtpVerification');
+
+Route::get('/userOtp', 'UserController@userOtp');
+Route::get('/paymentPending', 'UserController@paymentPending');
+Route::get('/healthcareOtp', 'UserController@healthcareOtp');
+Route::get('/about', 'HomeController@about');
 Route::get('/user/cancel/{id}/{name}', 'HealthcareController@cancelBooking')->middleware('isUser');
 Route::get('/user/chat/{id}/{name}', 'UserController@chat')->middleware('isUser');
 Route::post('/user/chatSend', 'UserController@chatSend')->middleware('isUser');

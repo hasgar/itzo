@@ -76,13 +76,13 @@
 									</div>
 											</div>
 									<div class="lp-search-bar-right">
-										<input type="submit" value="Search" class="lp-search-btn" />
+										<input type="submit" value="" class="lp-search-btn" />
 										<i class="icons8-search lp-search-icon"></i>
 									</div>
 									<div class="clearfix"></div> <!-- ../clearfix -->
 									<input type="hidden" name="country" class="country-sel" value="101">
-									<input type="hidden" name="state"  class="state-sel" value="1">
-									<input type="hidden" name="city" class="city-sel" value="1">
+									<input type="hidden" name="state"  class="state-sel" value="19">
+									<!--<input type="hidden" name="city" class="city-sel" value="1">-->
 									<input type="hidden" name="type" class="type-sel" value="1">
 
 								</form>
@@ -109,6 +109,36 @@
 							</li>
 						</ul> -->
 
+						<div class="col-md-3">
+							<a href="/healthcare/type/allopathy" > <img src="/images/allopathy.png" class="h-types" /></a>
+
+						</div>
+						<div class="col-md-3">
+							<a href="/healthcare/type/allopathy" > <img src="/images/ayurveda.png" class="h-types" /></a>
+
+						</div>
+						<div class="col-md-3">
+							<a href="/healthcare/type/allopathy" > <img src="/images/holistic.png" class="h-types" /></a>
+
+						</div>
+						<div class="col-md-3">
+							<a href="/healthcare/type/allopathy" > <img src="/images/unani.png" class="h-types" /></a>
+
+						</div>
+
+
+        <div class="col-xs-3 margin-top-15" id="p1">
+					<a href="/healthcare/type/allopathy" > <img src="/images/siddha.png" class="h-types" /></a>
+</div>
+        <div class="col-xs-2 margin-top-15 col-half-offset" id="p2"><a href="/healthcare/type/allopathy" > <img src="/images/homeopathy.png" class="h-types" /></a>
+</div>
+        <div class="col-xs-2 margin-top-15 col-half-offset" id="p3"><a href="/healthcare/type/allopathy" > <img src="/images/accupuncture.png" class="h-types" /></a>
+</div>
+        <div class="col-xs-2 margin-top-15 col-half-offset" id="p4"><a href="/healthcare/type/allopathy" > <img src="/images/psychology.png" class="h-types" /></a>
+</div>
+        <div class="col-xs-3 margin-top-15 col-half-offset" id="p5"><a href="/healthcare/type/allopathy" > <img src="/images/chinese.png" class="h-types" /></a>
+</div>
+<!--
 <div class="col-md-4 no-padding">
 						<div class="col-md-4 no-padding">
 							<a href="/healthcare/type/allopathy" > <img src="/images/allopathy.png" class="h-types" /></a>
@@ -150,7 +180,7 @@
 							</div></div>
 
 
-
+-->
 
 
 					</div>

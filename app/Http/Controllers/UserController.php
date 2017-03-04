@@ -23,7 +23,7 @@ class UserController extends Controller
 {
 
     public function showSignIn() {
-      
+
         if (Auth::check()) {
             $user = Sentinel::findById(Auth::user()->id);
              if ($user->inRole('admin')){
@@ -41,9 +41,9 @@ class UserController extends Controller
         }
         return view('public.signin');
     }
-    
+
     public function showSignUp(){
-      
+
         if (Auth::check()) {
             $user = Sentinel::findById(Auth::user()->id);
             if ($user->inRole('admin')){
@@ -60,7 +60,7 @@ class UserController extends Controller
             }
         }
         $countries = Countries::all();
-        
+
         return view('public.signup')->with('countries',$countries);
     }
 
@@ -76,8 +76,8 @@ class UserController extends Controller
     public function chatSend(Request $request){
         if(Booking::where('id',$request['id'])->where('user_id',Users::where('user_id',Auth::user()->id)->pluck('id')[0])->count() > 0){
        Conversation::create(['user_1_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0],
-            'user_2_id' => Booking::where('id',$request['id'])->pluck('healthcare_id')[0], 
-            'message' => $request['message'] , 
+            'user_2_id' => Booking::where('id',$request['id'])->pluck('healthcare_id')[0],
+            'message' => $request['message'] ,
             'ip' => $_SERVER["REMOTE_ADDR"],
             'booking_id' => $request['id'],
             'from_user' => 'user',
@@ -88,6 +88,39 @@ class UserController extends Controller
             return redirect('/noPermission');
         }
     }
+
+    public function userOtp(){
+              return view('user.otp');
+        }
+        public function healthcareOtp(){
+                  return view('healthcare.otp');
+            }
+            public function paymentPending(){
+                      return view('healthcare.paymentPending');
+                }
+
+        public function otpVerification(Request $request){
+          if (Users::where('user_id',Auth::user()->id)->first()["OTP"] == $request['otp']) {
+            Users::where('user_id', Auth::user()->id)
+          ->update(['is_verified' => 1]);
+            return redirect('/user/dashboard');
+          } else {
+                  return view('user.otp')->withErrors(['Wrong OTP, please try again.']);
+                }
+      }
+
+      public function healthcareOtpVerification(Request $request){
+        
+        if (Healthcare::where('user_id',Auth::user()->id)->first()["OTP"] == $request['otp']) {
+          Healthcare::where('user_id', Auth::user()->id)
+        ->update(['is_verified' => 1]);
+          return redirect('/healthcare/dashboard');
+        } else {
+                return view('healthcare.otp')->withErrors(['Wrong OTP, please try again.']);
+              }
+    }
+
+
 
 
 public function noPermission(){
@@ -100,8 +133,8 @@ public function noPermission(){
           return view('public.hSuccessfullyRegistered');
     }
     public function hDashboard() {
-        
-        $booking = Booking::where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->with(['healthcare','user'])->orderBy('id','desc')->get();
+
+        $booking = Booking::where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->where('payment_done', 1)->where('is_verified', 1)->pluck('id')[0])->with(['healthcare','user'])->orderBy('id','desc')->get();
 
                 return view('healthcare.dashboard')->with('booking',$booking);
     }
@@ -110,7 +143,7 @@ public function noPermission(){
         return view('admin.dashboard')->with('booking',$booking);
     }
     public function userBookings(Request $request){
-        
+
         $booking = Booking::where('user_id',$request->id)->get();
         return view('admin.bookings')->with('booking',$booking);
     }
@@ -119,7 +152,7 @@ public function noPermission(){
         return view('admin.users')->with('users',$users);
     }
     public function aHealthcares(){
-        $healthcares = Healthcare::all();
+        $healthcares = Healthcare::where('payment_done', 1)->where('is_verified', 1)->get();
         return view('admin.healthcares')->with('healthcares',$healthcares);
     }
      public function hChat(Request $request){
@@ -135,8 +168,8 @@ public function noPermission(){
     public function hChatSend(Request $request){
         if(Booking::where('id',$request['id'])->where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->count() > 0){
             Conversation::create(['user_1_id' => Booking::where('id',$request['id'])->pluck('user_id')[0],
-            'user_2_id' => Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0], 
-            'message' => $request['message'] , 
+            'user_2_id' => Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0],
+            'message' => $request['message'] ,
             'ip' => $_SERVER["REMOTE_ADDR"],
             'booking_id' => $request['id'],
             'from_user' => 'healthcare',
@@ -149,35 +182,35 @@ public function noPermission(){
     }
     public function block(Request $request){
         $user = Users::where('id',$request->id)->update(['status' => 0]);
-        
+
         return redirect('/admin/users');
     }
     public function hBlock(Request $request){
         $user = Healthcare::where('id',$request->id)->update(['is_approved' => 0]);
-        
+
         return redirect('/admin/healthcares');
     }
     public function hApprove(Request $request){
         $user = Healthcare::where('id',$request->id)->update(['is_approved' => 1]);
-        
+
         return redirect('/admin/healthcares');
     }
     public function unblock(Request $request){
         $user = Users::where('id',$request->id)->update(['status' => 1]);
-        
+
         return redirect('/admin/users');
     }
 
     public function aSettings(Request $request){
-        
+
         return view('admin.settings');
     }
     public function uSettings(Request $request){
-        
+
         return view('user.settings');
     }
     public function hSettings(Request $request){
-        
+
         return view('healthcare.settings');
     }
      public function hEdit(Request $request){
@@ -206,8 +239,8 @@ public function noPermission(){
         }
     }
     public function uUpdateEmail(Request $request){
-        
-        
+
+
         if (Hash::check($request['cpass'], User::where('id',Auth::user()->id)->pluck('password')[0]))
         {
             $user = User::where('id',Auth::user()->id)->update(['email' => $request['nemail']]);
@@ -218,8 +251,8 @@ public function noPermission(){
         }
     }
     public function hUpdateEmail(Request $request){
-        
-        
+
+
         if (Hash::check($request['cpass'], User::where('id',Auth::user()->id)->pluck('password')[0]))
         {
             $user = User::where('id',Auth::user()->id)->update(['email' => $request['nemail']]);
