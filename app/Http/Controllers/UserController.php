@@ -19,6 +19,7 @@ use App\Photos;
 use App\Conversation;
 use App\HealthcareTypes;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 class UserController extends Controller
 {
 
