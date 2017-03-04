@@ -111,7 +111,8 @@ class UserController extends Controller
       }
 
       public function testMail() {
-        Mail::send('healthcare.otpMail', ['otp' => $otp, 'name' => $data['name']], function($message) use ($data)
+        $data['email'] = "hasgardee@gmail.com";
+        Mail::send('healthcare.otpMail', ['otp' => '1234', 'name' => 'baby memo'], function($message) use ($data)
            {
            $message->from('info@chikitzo.com')->to([$data['email']],'Thanks for registering with Chikitzo')->subject('Thanks for registering with Chikitzo');
            });
