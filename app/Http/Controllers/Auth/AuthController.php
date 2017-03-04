@@ -360,7 +360,7 @@ $pro_pic = $fileName;
             $role->users()->attach($user1);
             Mail::send('healthcare.otpMail', ['otp' => $otp, 'name' => $data['name']], function($message) use ($data)
                {
-               $message->from('info@chikitzo.com')->to([$data['email']],'Thanks for registering with Chikitzo')->subject('Thanks for registering with Chikitzo');
+               $message->from('chikitzo.com@gmail.com')->to([$data['email']],'Thanks for registering with Chikitzo')->subject('Thanks for registering with Chikitzo');
                });
 
         }
