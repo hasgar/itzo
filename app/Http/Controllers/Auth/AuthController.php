@@ -371,9 +371,9 @@ $pro_pic = $fileName;
     $from = 'info@chikitzo.com';
 
 
-    mail($to, $subject, $message)
+    mail($to, $subject, $message);
 
-          
+
 
         }
         return $user;

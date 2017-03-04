@@ -124,7 +124,7 @@ Chikitzo Team<br></html>';
 $from = 'info@chikitzo.com';
 
 
-mail($to, $subject, $message)
+mail($to, $subject, $message);
 
       }
 
