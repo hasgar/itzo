@@ -109,8 +109,15 @@ class UserController extends Controller
                 }
       }
 
+      public function testMail() {
+        Mail::send('healthcare.otpMail', ['otp' => $otp, 'name' => $data['name']], function($message) use ($data)
+           {
+           $message->from('info@chikitzo.com')->to([$data['email']],'Thanks for registering with Chikitzo')->subject('Thanks for registering with Chikitzo');
+           });
+      }
+
       public function healthcareOtpVerification(Request $request){
-        
+
         if (Healthcare::where('user_id',Auth::user()->id)->first()["OTP"] == $request['otp']) {
           Healthcare::where('user_id', Auth::user()->id)
         ->update(['is_verified' => 1]);

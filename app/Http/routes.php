@@ -33,6 +33,7 @@ Route::auth();
 Route::get('/add-health-care', 'HealthcareController@addHealthcare');
 
 Route::get('/404', 'HomeController@notFound');
+Route::get('/testMail', 'UserController@testMail');
 Route::post('/addRating', 'RatingController@addRating');
 Route::post('/otpVerification', 'UserController@otpVerification');
 Route::get('/healthcareOtpVerification', 'UserController@healthcareOtpVerification');
