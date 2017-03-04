@@ -111,6 +111,18 @@ class UserController extends Controller
       }
 
       public function testMail() {
+        $to = "hasgardee@gmail.com";
+$subject = 'Marriage Proposal';
+$message = 'Hi Jane, will you marry me?';
+$from = 'info@chikitzo.com';
+
+// Sending email
+if(mail($to, $subject, $message)){
+    return 'Your mail has been sent successfully.';
+} else{
+    return 'Unable to send email. Please try again.';
+}
+
         $data['email'] = "hasgardee@gmail.com";
         Mail::send('healthcare.otpMail', ['otp' => '1234', 'name' => 'baby memo'], function($message) use ($data)
            {
