@@ -16,7 +16,7 @@
 			<div class="container">
 					<div class="row">
 						@include('public.layouts.logo')
-						
+
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -27,7 +27,7 @@
 
 
 
-		
+
 	<section class="aliceblue">
 
 		<div class="post-meta-info">
@@ -62,7 +62,11 @@
 										<img class="icon icons8-Phone" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAEbElEQVRoQ81a4XnUMAy1vEC7QekEwASUCWgnoEzQY4FE9gLQCWgnoJ2AMgF0AtoJgAUivpdPyefzJU6cC5fcv/Z8iZ71JD3JJpP4MPO5iJTGmFfGmCcicsx8k/rNUt9R14uZ+VhEPhljLuPviegtMz8sZXDfe3eAKIhv8IKI/LXWMjN/ZuaNgoNnXjPznzWB2QLCzDAeIOCRR2vtJTP/bAwuiuInEb00xtw55y5WCaQDxFm868z8QkR+AQARXTDz3VrA1B5RA3+oJ26ttZs+6hRFwUSEBPCHiE7XQjGKYuLee38+tMsNxUTk2nu/GVp/iO+pKIrPRHSlMbFDp56shliCB0GxVWQxKssSnH+Ra1BAsVVkMQAR7KxzrrOmpGixJoqBWtjREw3cpxw+a6ZbBcUA5IGI3kxNpyHFnHOnORsx51oAqdPpPhmooecUr84FBum3yUBPU3ZU0/fvqXE2GxA8KIiT7FTaaDAR+e69P5vLsNzn1JkqoNet935H8fY9VL2B9H2cm75zDR1a30gUiMSaHjk8DzZgUW/UdgfK9oaI3ovIKK9EAjKbkkM7nPt9CyQyDP1GK9+7HlqW5VdjDDrIUcBzDctdv1XNg5rw4Jx7m4iNUGtBAWcV0lwjx6yPG6vjqqpQ6Y+I6CM6wx7ROGrdGAPmWtPV6oIuoA36DVCsc7d1MIF1q1DAnUKxKIo7InpnjElSLGqyEPDJuJpr97ue0ztFqaoK/fmJiDjvPfcZURRFne2MMVgPMIsMJXqlOzOf6SAiSR0UxaqqIDwxlFgMTLIHiaiTipfFwQw2U0G8JHcbdUjpeLSEZwaBRNRJzrOgpJVmAAO6YWR0kJgZBIIgj3b7xjn3IVUsAzAHi5lRQBRMu9upYhmvPRTNRgNRAy9F5IsWwQ+pyXxEs9GeAZUx1cmtSVlAJoBBAkBxbVIzwHcWTVUKV8aYpjmDVML6UZP/bCATwISpGbIHCaA1TusVRrB93SUGiDiXSSaNSUAmgoFBUABGRNhae6uHSHVHqkcYmDnXB0lBDcOfg96ZDCQXTIdxbeKDDLLW4gxma9c1ziCBQE18er2zF5ApYEAljZsjEbnXyX+ynxnjnb2BxGBEZOO9v04p3SmZacg7swCJwRhjkkVzHznf553ZgDRgqqoCjyFRkHaRPmeXKLF38J5ZgfRUdaTb/9LTbx1t7OPmhN4KC+FO7Zjzne3cec6Hhs9S1YzUiZa5rh3eezfn+4Jx7ePs1IoNjYIT0h5xszfVwlNoqIX/DkTjpq0dmM6od5Ipeih96xkmjsvrAeFBgCgYaK6Watp4YXaWNXmJTqFxqaE+wD0YkGaHoXI1RZ/o/wAOonAU3cqyRBuBduLZWvuqSe8HBxJ4Z6MXDxqMqDvXfbK9444MPNF6cxEggXeQpnH0V6ti/cAzdyLyYK19hKdU6uO2UnPRZwsEfrcokAAQusLLqqrgpYZyO/GulxrOu2i4CiBR/cFsANdI0GjhIgOmnc/wkl656pQ8/wC3pFkyvejV7AAAAABJRU5ErkJggg==" alt="phone-icon">
 									</span>
 									<span class="phone-number">
-										{{ $healthcare[0]['mobile'] }}
+										@if(\Auth::check())
+										{{$healthcare[0]['mobile'] }}
+										@else
+										<i class="fa fa-lock"> </i> <a href="/signin">sign in to see</a>
+										@endif
 									</span>
 								</li>
 								<li>
@@ -70,7 +74,12 @@
 										@
 									</span>
 									<span >
+										@if(\Auth::check())
 										{{ $healthcare[0]['email'] }}
+										@else
+										<i class="fa fa-lock"> </i> <a href="/signin">sign in to see</a>
+										@endif
+
 									</span>
 								</li>
 								<li>
@@ -79,7 +88,7 @@
 										<!-- Globe icon by Icons8 -->
 										<img class="icon icons8-Globe" src="data:image/png;base64,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" alt="web-link">
 									</span>
-									
+
 									<span class="website-link">
 										{{ $healthcare[0]['website'] }}
 									</span>
@@ -107,7 +116,7 @@
 
 								<li>
 									<span class="email-icon">
-										<!-- Hearts icon by Icons8 
+										<!-- Hearts icon by Icons8
 										<img class="icon icons8-Hearts" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD/ElEQVRoQ+1Yi1HcMBDVqgFIBYEKIBWEVMClglwq4GhAXquBcBUEKghUAKkgpIJcKghpQJt5nlXGOLYs22fIMKcZhrmxvdLbtx/tI/NCFr0QHGYH5H9jcsfIjpGZPLALrZkcO9rsYEacc6dEtDDGHBhjTnTnjTFmIyJ31torZsbvzsXMByGED0SE72EHf1h3aufae38zBFU2EOccNubapql97ojoYxMQAIjI55oDUjbgGPbeX+UA6gXCzPsi8skYs4RBEflprb0wxtwzMzxocEAADCHgnQUR7RljHojonJkv9Z2l2oG938aYa2stnm0iYGYGQ8chhBURvVYAl2rnIQUoCURB3MI4NrfWruLBuozimxACE9EZ3gEz6gAwAUesrbXMzMmDMfMyhHChTrknonepb5JAiqLA5vDkd2vtkpnvc2iuMVAdPi4Nt4qhnMXMYAeMHBljLsuyrJzStjqBwCOIZ2XiZAiIuFG0EZnpY7PtgAoGObeXckQnkKIofiDuh3qxeRjnHPLJeO9XOSx0gKmcinwqy/IwmxFmXojIFyS29z6WxlHnQM5oqCVzos+4c26DAkBE75n5uvl+KyPOOcQlyi2qTuXR517MvELVE5Er731VQeurCwhi8q1WiqrEPvdCaRaRWxH56r2PjfjvsVqBFEUheKMsy94+85QAU+faAXlKJuJegxlxzqGTHhHRmzH9Yw6Qo3KkVrVw8cvuxHMAiDZHVa2+j+Y8cJftvpbQmux63UZnx6XvVd8Fb25genn9pec5bJt3Osurc67qJSJSeu8xhzzbcs7hNl109ZAKYNfpYnLpXAEvTLpijPWCsoHo2E816GTDq7GynnLpGwsC3+HSidkmxUaSETzEFVpEvmlsYrB50utKLSqQq8lW0HsFifGpIQZjSWFhivfr32rBgRMxGvfmaS8QpbdKfMzpfSPnNoA0RuzWS2JznywgOocDDEbOWcE0QGDExnTaW2iygGi+QCUBCCgks4BpETsOckD0JnuTvoYYALkHBSBbkEiFnRYWKDbICTCxGJKP2YzU7jyQe2KYPdKuxuaHihTQziKIrHCq7zcYiIYZwGAcPlVjF2VZno8BUhQFAFTCBMZY1c56c2JUsie6fzVH63PkDW7LWaGmoQRl5Fj71CR9YBQjjXp/ouxA4nxQvXadYsc5d6Y6MkIJEizEv0nNdjKQjlDLErFF5EZBDA6lrYZWS1VbKDtRxEaoVRqUamUIpUrEVgD/6FNj8mxw+c3ZRJvno0KAw9fU/K2xMLlqZQJaqSoPdlCRstT8HNtt72wlRxJVrVLT8Xyomj8U0KxAYiHQ/5MTOgVudiBDPTv2/R2QsZ6b67sdI3N5dqzdP6xqi1FZGrwUAAAAAElFTkSuQmCC" alt="favorites">
 									</span>
 									<a class="email-address" href="">
@@ -116,7 +125,7 @@
 								</li>
 
 							</ul> -->
-									
+
 							<div class="padding-top-30 booknow-btn">
 								<a href="/book/{{$healthcare[0]['id']}}/{{urlencode($healthcare[0]['name'])}}" class="secondary-btn">
 									Book Now
@@ -130,8 +139,8 @@
 		<div class="container single-inner-container single_listing"  data-title="The Dorchester grill" data-reviews="4" data-number="+007-123-4567-89" data-email="jhonruss@example.com" data-website="www.example.com" data-price="$200" data-pricetext="Text about your price" data-description="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi archeum" data-userimage="images/user-thumb-94x94.png" data-username="Jhon Russel" data-fb="www.facebook.com" data-gplus="www.plus.google.com" data-linkedin="www.linkedin.com" data-instagram="www.instagram.com" data-twitter="www.twitter.com" data-lattitue="40.6700" data-longitute="-73.9400" >
 			<div class="row">
 				<div class="col-md-8">
-							
-						
+
+
 					<div class="post-row">
 						<h3>About {{ $healthcare[0]['name'] }}</h3>
 						<p>
@@ -144,7 +153,7 @@
 						<ul class="features list-style-none">
 @if ($healthcare[0]['food'] == 1)
 						@if ($healthcare[0]['veg'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -156,7 +165,7 @@
 							</li>
 							@endif
 							@if ($healthcare[0]['non_veg'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -168,7 +177,7 @@
 							</li>
 							@endif
 							@if ($healthcare[0]['organic'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -180,7 +189,7 @@
 							</li>
 							@endif
 							@if ($healthcare[0]['personalised_diet'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -191,9 +200,9 @@
 								</a>
 							</li>
 
-							
+
 							@endif
-							@else 
+							@else
 							Accomodation not available
 							@endif
 						</ul>
@@ -206,7 +215,7 @@
 						<ul class="features list-style-none">
 						@if ($healthcare[0]['accommodation'] == 1)
 							@if ($healthcare[0]['single_ac'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -218,7 +227,7 @@
 							</li>
 							@endif
 							@if ($healthcare[0]['single_non_ac'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -230,7 +239,7 @@
 							</li>
 							@endif
 							@if ($healthcare[0]['shared'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -242,7 +251,7 @@
 							</li>
 							@endif
 							@if ($healthcare[0]['general_ward'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -252,9 +261,9 @@
 								General Ward
 								</a>
 							</li>
-							
+
 							@endif
-							@else 
+							@else
 							Accomodation not available
 							@endif
 						</ul>
@@ -265,7 +274,7 @@
 						</div>
 						<ul class="features list-style-none">
 							@if ($healthcare[0]['cash'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -277,7 +286,7 @@
 							</li>
 							@endif
 							@if ($healthcare[0]['cheque'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -289,7 +298,7 @@
 							</li>
 							@endif
 							@if ($healthcare[0]['debit_card'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -301,7 +310,7 @@
 							</li>
 							@endif
 							@if ($healthcare[0]['credit_card'] == 1)
-									
+
 							<li>
 								<span class="tick-icon">
 									<!-- Checked icon by Icons8 -->
@@ -311,7 +320,7 @@
 								Credit Card
 								</a>
 							</li>
-							
+
 							@endif
 						</ul>
 					</div>
@@ -323,8 +332,8 @@
  @endforeach
 </div>
 					</div>
-					
-					
+
+
 					<div class="comments-container padding-left-40 padding-right-40 clearfix margin-top-50">
 						<div class="comments-header clearfix">
 							<h3> {{count($ratings)}} Reviews</h3>
@@ -364,7 +373,7 @@
 									</div>
 								</div>
 							</div><!--../comments-box-->
-							
+
 						@endforeach
 						</div>
 					</div>
@@ -409,11 +418,11 @@
 									<label class="user-position quickformtrigger">Qucik Contact</label>
 
 									<ul class="social-icons post-socials">
-										<li><a href="post-detail.html#"><!-- Facebook icon by Icons8 
+										<li><a href="post-detail.html#"><!-- Facebook icon by Icons8
 											<img class="icon icons8-Facebook" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADEklEQVRoQ+1a7XHbMAwFNEE6QZIJmk5Qd4N4gmaDOAtQEBaoM0HTCepOEGeCuhPU3aBdgOiBJX10LFmMYsl0T7zLj9i0xAc8fEgPCA3LGPMREScAcOX/mrYO8fkKAFYismDmb3U3xOcfEtG1iHwCgIshTtjhHmtEvCOiRfzbLSBlWSqAmW4QkV9FUcwBYElEapGjLSJSVkystTNEPPcHmVdVdRcOtQFijJkj4q1+4REriOwWEc08Y9TY98zsDO+AeDp99SDeHdsDbdZTD4nId3/eqdLMASnL8qfGRM6eqInl4Jl1VVWXSEQ3IvJZY4KZcw3wWicZYzTwzxFxisaYB0TUVKuZIMu4aKJaiBcR+YJlWSrXrhAx+9iooVeIlZUCEd1QVdVOTWkLuhy+D+c/ChDfNVz7jiGOyyUArEVkVRTFU0r2PAoQnzY1zacmFZeR9nl+cCAexCMAnInIU1EUDwCwIKLf4aBEpL3dhbV2ogkohfKDAwlJRTMMM9+0xVdq7A4KJHQOL6lVWQLpUqtyBbJExPeI+IGINDNtFhFpzJQAoFlsJwm0lYVBqbXPusFbTTFzMkA2Fq3xVltC8A2vK+iDFMR9HkmNhSZQ2VAreyDhgLEl6/hety/+DSK+iYvmc8/07pFDATl6sL+GMtqqiMijtjLMrG1L4xrMI20WrTuhMYYQsUxpZ3IH4p5aRaRiZjpljzR2AicZ7Ih4SUTrLDzSNf2KyB9mPmur7r3HSHyAsbK3uePfy8Wx10qw0/aWkVoJJhuplWCknS0jtRKsNlIrwUgjtV5jpP/n5YMxZoWIb/sUevrKWkEUFZEfg0hvPQJxgqiT3iJpulWL6MLh+CXavrcoXR6JIzV66uS2SB3tRRDtwyOREOrU6EEGBg4NpHFgwHtlM8IhIjNmvu9Kpabn6kNQyxhzi4hORt8Z4Qg3judRvCg5TxUlU56ruwJRD1hrVZbQuRMnPcQg9P/aMSdrrXonTOEcyjEHuY6fWprtHXOK76TZzFrrJGStMwc5RceLaJ3QwbOiKFQ83ZrTCpf8CzG2NErUDo89AAAAAElFTkSuQmCC" alt="facebook"></a></li>
 										<li><a href="post-detail.html#"><!-- Google Plus icon by Icons8
 											<img class="icon icons8-Google-Plus" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAEh0lEQVRoQ+1a4VnUQBDdWQpQKhAqECsQKxAqACsQC2Azuw2oFXhUIFagViBWAFQAFkDG762z+fZCcknOSy5+n/kDHLlk3s7szHszS6blYuYDETkxxhwYYw7b7pvo82/GmCsiumDmq6Z3Uv1DBfB+Bsa3rdE3InpXB7QEhJmPROSTMeapiPwyxiystZfMjBXZ2sXMh2VZHhljTonoiTHmnojeMPNlMqoCwsynCsKIyIW19oyZ77dmfcOLmflpWZYfiAghb4joOIGJQJh5T0R+wBOKdDEnAA3hnxYdnnnBzDcRSFEUX7En4IkQwumcQSTbnHOXRPTaGHPpvT8m9cY19oS1dm9u4bQiqyLMbrBniGifnHOIubci8jGEcPYveCPzSmU7gCCdvSSiV9vOTkMXEdlMRL6KyHcqiuIOm3zoQ2Z2/z2AyMyMWsucCoj3/lGVX+uJE38pOeI/kIkXvvV1/z0yF08kO/7aI86510QEOrOnmqURI3K8tZbHqlFrA9Ei9EkpzQdjzE2NYgMQRNA70O02IbQpz64FJFF9rHIIYUk1QpCVZQmWAL2Aa+G9f7Mpg9ueMxhIIpeqAxrpDDOfiQjUZbymoD2DgWS02awqns45MNJnACIiX0IIUHajXYOB5FSmA0hkpGr5jfd+fzQUf7RUpFi9KntimVnI7LbpFtX9n9O9Y1OfvwVSaeX6auegm5LCpr0zCAhenofWKklcA+JDCNzH+DoL7+vJwUCcc4vUvdCMBNH/qFmWpehB0nkyINqKiRpZVxhFD2m4ahnhHnRjRGTXWns4pBhOBgTGo5aUZYnuxXMFAxALfGatjQ00EbnF72jR9AmpdM+kQNJLkZnKskRlR18YvbAEDEWwMeS6QG0FSG7UOul2XXndlAAGb/a2Fc1brZoE0GAGmWy95goE+wYbPyUBAFhJGGcH5Pz8/CWsttbCA9gv+fUoq7Vt7K79s4olrBVamrVOiAgZCoOgW+gRfRF+HtU80wqmbvxkm905VxBRrNIi4q21i3qKVU2CwlllMdzbp7pPAqQoCgx/Ype+K71q4YTAqmqN9363K3xGB1IbAPVqdCsYhFXUJeiWdxXI0YEURXGtDYZBii9fgC4v1kkp/t44acxXaoh0zTrlv0IIozXJe2ct5xzGW7FG9N24ysuifh97ClYBSYa2ubJG3wEKjLdx1p1xMbBgzC32x5yCKdu+Q2uqc9DTQN/vRYSttRjeP5r6akjBEwAxiMp3Zbb6/5cGPX1Gb1of0FSIlVwvgLgSkTiDJyJU9th1nGq8nduOYShejNE0wgZpsnW2roN71JODWtFDhb+y1gIUDhgM0iJDPaF7EOGLjAoZ8SIOd9IcsYvsrfPCsb6TinRqcFQHBhKDRfyHEPxYBmziuYkuaf/5oDowoK7COZTUjwJfgq6Y3REObckmurR8hCNLm5CwABEPriQ9vrOz83NboJA1Hx4enqeeQDrwY609bTxUk4GBUAKYPENtIiI28gydtwDEUkJpneRqyo0ZSrNUrgA3YlSfh+hxKxRgZEVIh8Zi/BvU1cKW0t95DwAAAABJRU5ErkJggg==" alt="google-plus"></a></li>
-										<li><a href="post-detail.html#"><!-- LinkedIn icon by Icons8 
+										<li><a href="post-detail.html#"><!-- LinkedIn icon by Icons8
 											<img class="icon icons8-LinkedIn" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAEBUlEQVRoQ+1a7VEbMRDVqgHoAKgAUwFOBTEVBCoAGtCt1EBMBZgKMBUEKohTAaSCkAa0mXeRPPL5PmQP3MGMb4Y/Rnfa1dt9+yVSDY8x5hsRjZVSo/DXtLSP3xdKqYWIPDrn7uo2pOqPzDwRke9KqcM+JNxijxciumbmefruiiJFUUCBKywQkV9a65lS6pGZcSKDPcwMqxh778+J6DgIMrXWXkehlooYY6ZEdCkif7XWzMzTwSRv2ZiZr7z3TER7InLjnCsPvlQkmNN9UGI8NAJdBwiERORnqQDRGcysVKQoimf4RLC9D4lEjS9fBV9+sdYeETOfi8gtfMI5B1v8NI8xZgGfASpkjJkREagWTPAp0IgnDX8BKiJyR0VRwNZGRHTS5BshpsCpImLg9GkTp/cFaeIrCygi2NhauxZTgv/cKqXOG4SbWWsv+hK8bp8of6siCXSgZCASg9DEew+63iOiC2ZGvBnkyVIkMbuS4lJJI0kgdbDWngyixX/GLS2qFZE2s2PmfRH502aWfSiXpYgx5jWYzxEzv1QQORSRZwRR59x+H0Jv7SORmuEb1tqz9ENFUdwrpZBg3jnnmsjg3fXLQoSZD733CDp7SikgsnR2ZAIhpRlV0Xp36ZMNshQJedjIez8nooNUQBH5rbWeDJ2XZSuSRFGk0Si0lNZ6UWWxPlGomHgWa5VRv0PI0n8iVeesZeaxiHxFjZF8/zVUgXOt9UOuuWYhEhd1nTaygty1wc8mHd98DSmQ7dp7I0Va0pdlepOR6pRr8YAklFJTrfU8+hjiUqgCJ0hiw1IQzRdmBlq1z2CKhBIaxVujcEgGvfePgS3XqH8bH+lKKLMRQe0QiKJViYRcltTfls/1jkiXrdf9P8nnyipw68iea/epszf5UxTCGFMQETIBtJteRGSmtb5pMjVjDNo/B7E2ryozCCItFN3o1MYYdEyKtGMyqI8ktc0yIwgpELKGYxGxzjmunniIOT9E5Mk5VwbkQRVJapuVQiy2oprqmqRcqPWT3k2rzd828cWPgEgjle8UeYtSFxCnJ/kWp5qTCu1MCyeQc1I7RCom2paG1B3ojn7rompOrrWLIx2mtzOtnWm1jC/egroxsYrjq7VBT25nZJMuShuFdlWR1XfjoAd9gNbRmzEGDYDTtg1E5ME5N9lkbfV72767Mnr7KHOOLjQaAmUcG56V47akLv40A9G04nTOHa5cGFBKYR6ChtigVza60Gm8MBBQKa9wQBkRYefcTdcHh/i/MeaSiMox+toVjqRVE5XBTxhBo1XzNDRCofN4GtpIZVO92lWpveYUJrYr85AhTr9uzzCXuWq95pS+CDYL8xBcJohXiwbRB3ECFqK1xpWr2lH4PxVzvVlIavAKAAAAAElFTkSuQmCC" alt="linkedin"></a></li>
 										<li><a href="post-detail.html#"><!-- Instagram icon by Icons8											<img class="icon icons8-Instagram" src="data:image/png;base64,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" alt="instagram"></a></li>
 										<li><a href="post-detail.html#"><!-- Tumblr icon by Icons8
@@ -469,13 +478,13 @@
 <!--<div class="widget-box widget-bg-color widget-categories lp-border-radius-5">
 
 							<div class="widget-content">
-								
+
 								<ul class=" list-style-none categories-container">
 									@for($i = 0;$i<count($fecilities);$i++)
 
 									<li><a href="javascript::void(0)"><span class="cat-icon"><img class="icon icons8-Food" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAFLklEQVRoQ+1azXHbOBT+nm/2Zb0VREgDUSow1IF9DHWwXYG1FaxTQZIKohykHC1XIGwFtiuAXEHsS7wnv50HghRJgSQoMc5OJpzxjDwEQXzv53sfHkj4RS76RXDgN5CQJ0dze8QEDXZ/h0QYZuOYcQvCg/ufYPCMazNWt31FxM4e0V+txjNOiXDWdVEMrMAw2MMX806Zrs8Xx28NRM/tMYALAnRhwjsGZEEGjFXR4npmh9jDoXgKgCbmYxC9yj0mzxDebwuoMxD91Q7A+JwDYL5n0BR7mJp3atXFqg4ccEzEE4D+kGedIfZxYk5UGoaRVycgzgsCgsSq/MigS5Ooj5Hvqh2mr+whvmOSAfIhd1LNIRlXBzAaiJ7ZCyK4RTPjGgc462q1NsCyUHpyofnGv+fcjNVUfuuZlRz8AGAUIokoIHpmxQsumRn4qw8vNIHSc/uRgAtmvJVFC6EQY1kF1ynZ9dxOyFmCH5lpklmozbq73pdclJzzebSUcGbGezNWl6G5Gz0iOUHAVZMldl1wo2fS3BEQQwa+mETVUnwtEMdOz7hxlniBcAoB0jMr7xdmu+N96KacrAcyt0uhWElsM1ZSM170yvNS6P2AhgJCcqWuzgSBrEOKH3mfBn2zU5tFKnmpiwnPhFEITB2Q1Bs/IaSEZonw2TPkiUnUwtPvJRH+loJpEjWqGmMDSE51zPfL8etBm/X6vF9hqLyGOCCuxvBKFEDIK5tA5nZKwGkT1fW5+GyuCrkEGUrPbOaVjfsbQEZzy86tBNVVO20L0EsUR7MA/lkmqihE82kFLDEsMx5wAFXM3RKQQt24WyYq30tsu8DY5/TcXhEgzNhKs6O5lT3Mm2p4lYGsXffJJGoSu5Bdxq3lDz8y0bAtCgrypVTlS0BGcyuC7YiBnC12WWTbs2uGcvLH0WzsM9X6VvWIq6SZWGubdJf7MUIwWO3XArKUS1WPuERfJipaFUtydhWSsUIwCCSV+t8k4c1Y/ZmN2RpIqXAxSpzfKgSfcEPAoE0I1s2TMWvR4FsD8dV2XYUZIvE/tYVbUQhuy4y9AwmAmZqxOq8DExKCbcBD92OApBztd2axL6mEWRBMVpX9Bi2KoYI5MrNDItxIzSl6tDf6TVmIF04LMUpgSkBr1Gu00dabvXrWKmiZrQqisBERGwfGt3XwHQNvQWlaRJNCbXiu9/P1BTHjdmlvmrF6G2ul4rgSGGmTwgGRXWbjVjX2XRlZNEoUmawP0ZiCgbRxsrZOL7vMTDRKni2T19KxzK8fJuMLPSq07bc7eCNexufhBaxMolTsS+qqMP7FYZsQjH2HntlvLkwDhBGUIgXx+MObcdEg8v5aeL/S2HwIbWBiX9znOL/xsnXekHfVisOCVxYmUSd9LqzrXNnGq6k11digI+ZbXxN+WoiVWkMNG6//d8u0pjUU8mjrviOziMsX6XP5Nn/X8Og6vtLfao2IViBO4foWkfzmSLnedeEVdbA+i4lUBFFAPBh/vODOSBbYx3nfrVTHTk/uWM/1mrt0OqOBeDDHBJ56hSuhdhmzmYrxjpyIyXyFY72zrF0a83wnIA5M2iQTHXXkrbZCqqvkiLnbYagcXQCnYJzJ1teH7jX2MOk6V2cgmXV8M096Xw6QX4R8FGCIYRi43zjMFDEJvMo+Kih+UCBNDCZcvtjxdNXN7oOB1KKnMSFQHuNOhhfi0W0BZPNt7ZHQov1XEJrkMw64DwOcjC9cdwAeOP3awey6+OLEvQLp7pH+nvgNpD9b9jPTfwQDNWCupe5qAAAAAElFTkSuQmCC" alt="Food"></span><span>{{$fecilities[$i]['fecility'][0]['name'] }}</span></a></li>
 									@endfor
-									
+
 								</ul>
 							</div>
 							-->
@@ -519,14 +528,14 @@
 <li><a ><span class="tag-icon"><i class="fa fa-bus"></i> </span><span>Tours</span></a></li>
 @endif
 								@if ($healthcare[0]['insurance'] == 1)
-<li><a ><span class="tag-icon"><i class="fa fa-hospital-o"></i> </span><span>Insurance</span></a></li>								
+<li><a ><span class="tag-icon"><i class="fa fa-hospital-o"></i> </span><span>Insurance</span></a></li>
 								@endif
-									
+
 								</ul>
 							</div>
 						</div>
 						</div>
-		
+
 
 
 					</div><!-- ../sidebar-post  -->
@@ -534,5 +543,5 @@
 			</div>
 		</div>
 	</section>
-	
+
 @endsection
