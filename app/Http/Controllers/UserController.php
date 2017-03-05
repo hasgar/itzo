@@ -97,7 +97,25 @@ class UserController extends Controller
                   return view('healthcare.otp');
             }
             public function paymentPending(){
-                      return view('healthcare.paymentPending');
+                      $health = Healthcare::where('user_id',Auth::user()->id)->first();
+                      $amount = 1000;
+                      if ($health['bed_range'] > 0) {
+$amount = 1000;
+                      } else if ($health['bed_range'] > 50) {
+$amount = 2000;
+                      } else if ($health['bed_range'] > 100) {
+$amount = 3000;
+                      } else if ($health['bed_range'] > 200) {
+$amount = 4000;
+                      } else if ($health['bed_range'] > 300) {
+$amount = 5000;
+                      }
+                      $mytime = Carbon\Carbon::now();
+                      $date_from = $mytime->toFormattedDateString();
+                      $mytime->addYears(5);
+$date_to = $mytime->toFormattedDateString();
+
+                      return view('healthcare.paymentPending')->with('name',$health['name'])->with('amount',$amount)->with('date_from',$date_from)->with('date_to',$date_to);
                 }
 
         public function otpVerification(Request $request){

@@ -37,8 +37,9 @@
 							<div class="login-form-popup lp-border-radius-8">
 								<div class="siginincontainer">
 									<h1 class="text-center">Payment Pending</h1>
-  									<p class="text-center">Please complete your payment</p>
-                    
+  									<p class="text-center">You are now one step away from registering {{$name}} </p>
+	  									<p class="text-center">Please pay Rs. {{$amount}} for subscribing to chikitzo from {{$date_from}} to {{$date_to}} </p>
+
 								<a class="md-close"><i class="fa fa-close"></i></a>
 								</div>
 
