@@ -370,7 +370,6 @@ $pro_pic = $fileName;
     Chikitzo Team';
     $from = 'info@chikitzo.com';
 
-
     mail($to, $subject, $message);
 
 
