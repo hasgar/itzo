@@ -36,7 +36,7 @@ Route::get('/404', 'HomeController@notFound');
 Route::get('/testMail', 'UserController@testMail');
 Route::post('/addRating', 'RatingController@addRating');
 Route::post('/otpVerification', 'UserController@otpVerification');
-Route::get('/healthcareOtpVerification', 'UserController@healthcareOtpVerification');
+Route::post('/healthcareOtpVerification', 'UserController@healthcareOtpVerification');
 
 Route::get('/userOtp', 'UserController@userOtp');
 Route::get('/paymentPending', 'UserController@paymentPending');
