@@ -22,7 +22,7 @@ class isHealthcare
             $user = Sentinel::findById(Auth::user()->id);
         if ($user->inRole('healthcare')){
           if (Healthcare::where('user_id',Auth::user()->id)->first()["is_verified"] == 0) {
-            return redirect('/healthcareOtp');
+            return redirect('/healthcareOtpVerification');
           }
           if (Healthcare::where('user_id',Auth::user()->id)->first()["payment_done"] == 0) {
             return redirect('/paymentPending');

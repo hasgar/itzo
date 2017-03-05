@@ -158,8 +158,6 @@ mail($to, $subject, $message);
     }
 
 
-
-
 public function noPermission(){
           return view('public.noPermission');
     }
