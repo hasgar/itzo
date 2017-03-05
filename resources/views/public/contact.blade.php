@@ -35,7 +35,7 @@
 			<div class="address-box mr-bottom-30">
 						<p>
 							<i class="fa fa-map-marker"></i>
-							<span>Your Address</span>
+							<span>Beach Road, Kozhikode, India</span>
 						</p>
 						<p>
 							<i class="fa fa-phone"></i>
@@ -43,7 +43,7 @@
 						</p>
 						<p>
 							<i class="fa fa-envelope"></i>
-							<span>support@chiktizo.com</span>
+							<span>info@chiktizo.com</span>
 						</p>
 
 					<ul class="social-icons post-socials contact-social">
