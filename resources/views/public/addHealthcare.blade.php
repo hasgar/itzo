@@ -868,7 +868,8 @@
 
 										<input type="hidden" name="type" value="2" />
 										<div class="form-group">
-											<input type="submit" onsubmit="return confirm('Are you sure you want to delete this item?');" value="Submit & Pay" class="lp-secondary-btn width-full btn-first-hover">
+											<input type="submit"  value="Submit & Pay" id="submit-healthcare" class="lp-secondary-btn width-full btn-first-hover">
+
 										</div>
 									</form>
 

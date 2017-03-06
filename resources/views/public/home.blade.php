@@ -16,7 +16,7 @@
 							<div id="menu">
 								@include('public.layouts.headerMob')
 							</div>
-		<div class="lp-menu-bar">
+		<div class="lp-menu-bar  lp-menu-bar-color">
 			<div class="container">
 					<div class="row">
 						@include('public.layouts.logo')

@@ -58,6 +58,9 @@ $('#food').on('change', function() {
       $('.food-type').hide()
   }
 });
+
+
+
 $('#country').on('change', function (e) {
     if($('select[id=country]').val() != "0") {
         $("#state option[value!='0']").remove();
