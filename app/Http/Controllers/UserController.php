@@ -112,7 +112,7 @@ $amount = 5000;
                       }
                       $mytime = \Carbon\Carbon::now();
                       $date_from = $mytime->toFormattedDateString();
-                      $mytime->addYears(5);
+                      $mytime->addYears(1);
 $date_to = $mytime->toFormattedDateString();
 
                       return view('healthcare.paymentPending')->with('name',$health['name'])->with('amount',$amount)->with('date_from',$date_from)->with('date_to',$date_to);
@@ -131,7 +131,7 @@ $date_to = $mytime->toFormattedDateString();
       public function testMail() {
         $mytime = \Carbon\Carbon::now();
         $date_from = $mytime->toFormattedDateString();
-        $mytime->addYears(5);
+        $mytime->addYears(1);
 return $mytime->toFormattedDateString();
         $to = "hasgardee@gmail.com";
 $subject = 'Thanks for registering with Chikitzo';
