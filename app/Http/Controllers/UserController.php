@@ -195,6 +195,12 @@ public function noPermission(){
 
       return redirect('/admin/healthcares');
     }
+
+    public function  verifiedComplete(Request $request) {
+      $user = Healthcare::where('id',$request->id)->update(['is_verified' => 1]);
+
+      return redirect('/admin/healthcares');
+    }
      public function hChat(Request $request){
         $booking = Booking::where('id',$request->id)->get();
         $chat = Conversation::where('user_2_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->where('booking_id',$request->id)->orderBy('id','desc')->get();
