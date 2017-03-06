@@ -129,7 +129,10 @@ $date_to = $mytime->toFormattedDateString();
       }
 
       public function testMail() {
-        return \Carbon\Carbon::now();
+        $mytime = \Carbon\Carbon::now();
+        $date_from = $mytime->toFormattedDateString();
+        $mytime->addYears(5);
+return $mytime->toFormattedDateString();
         $to = "hasgardee@gmail.com";
 $subject = 'Thanks for registering with Chikitzo';
 $message = '<html>Hello asdsd Team,<br>
