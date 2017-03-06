@@ -187,7 +187,7 @@ public function noPermission(){
         return view('admin.users')->with('users',$users);
     }
     public function aHealthcares(){
-        $healthcares = Healthcare::where('payment_done', 1)->where('is_verified', 1)->get();
+        $healthcares = Healthcare::where('is_verified', 1)->get();
         return view('admin.healthcares')->with('healthcares',$healthcares);
     }
     public function  paymentDoneComplete() {
