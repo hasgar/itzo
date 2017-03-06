@@ -145,7 +145,7 @@
 @if($healthcare['is_verified'] != 1)
 														<div class="lp-list-pay-btn">
 															  <a href="/admin/healthcare/verifiedComplete/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" onclick="return confirm('Are you sure?')"> <i class="fa fa-check"></i>
-																<span>Payment Done</span>
+																<span>Verified</span>
 															  </a>
 
 														</div>
