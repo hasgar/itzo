@@ -190,7 +190,7 @@ public function noPermission(){
         $healthcares = Healthcare::where('is_verified', 1)->get();
         return view('admin.healthcares')->with('healthcares',$healthcares);
     }
-    public function  paymentDoneComplete() {
+    public function  paymentDoneComplete(Request $request) {
       $user = Healthcare::where('user_id',$request->id)->update(['payment_done' => 1]);
 
       return redirect('/admin/healthcares');
