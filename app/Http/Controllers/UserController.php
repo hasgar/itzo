@@ -110,7 +110,7 @@ $amount = 4000;
                       } else if ($health['bed_range'] > 300) {
 $amount = 5000;
                       }
-                      $mytime = Carbon\Carbon::now();
+                      $mytime = \Carbon\Carbon::now();
                       $date_from = $mytime->toFormattedDateString();
                       $mytime->addYears(5);
 $date_to = $mytime->toFormattedDateString();
