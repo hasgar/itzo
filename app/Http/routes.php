@@ -59,6 +59,8 @@ Route::get('/user/settings', 'UserController@uSettings')->middleware('isUser');
 Route::get('/healthcare/settings', 'UserController@hSettings')->middleware('isHealthcare');
 Route::get('/healthcare/edit', 'UserController@hEdit')->middleware('isHealthcare');
 Route::get('/admin/block/{id}/{name}', 'UserController@block')->middleware('isAdmin');
+Route::get('/admin/paymentDone/{id}/{name}', 'UserController@paymentDoneComplete')->middleware('isAdmin');
+
 Route::get('/admin/healthcare/approve/{id}/{name}', 'UserController@hApprove')->middleware('isAdmin');
 Route::get('/admin/healthcare/block/{id}/{name}', 'UserController@hBlock')->middleware('isAdmin');
 Route::get('/admin/bookings/{id}/{name}', 'UserController@userBookings')->middleware('isAdmin');

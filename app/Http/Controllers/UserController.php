@@ -190,6 +190,11 @@ public function noPermission(){
         $healthcares = Healthcare::where('payment_done', 1)->where('is_verified', 1)->get();
         return view('admin.healthcares')->with('healthcares',$healthcares);
     }
+    public function  paymentDoneComplete() {
+      $user = Healthcare::where('user_id',$request->id)->update(['payment_done' => 1]);
+
+      return redirect('/admin/healthcares');
+    }
      public function hChat(Request $request){
         $booking = Booking::where('id',$request->id)->get();
         $chat = Conversation::where('user_2_id',Healthcare::where('user_id',Auth::user()->id)->pluck('id')[0])->where('booking_id',$request->id)->orderBy('id','desc')->get();

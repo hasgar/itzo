@@ -9,7 +9,7 @@
 	<header class="">
 
 
-		
+
 		<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
 								@include('public.layouts.headerMob')
@@ -18,7 +18,7 @@
 			<div class="container">
 					<div class="row">
 						@include('public.layouts.logo')
-						
+
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -34,7 +34,7 @@
 		</div><!-- ../Home Search Container -->
 	</header>
 	<!--==================================Header Close=================================-->
-	
+
 	<!--==================================Section Open=================================-->
 	<section class="aliceblue">
 			<div class="dashboard-tabs">
@@ -69,8 +69,8 @@
 				<div class="tab-content">
 					<div class="tab-pane fade active in" id="dashborad">
 						<div class="dashboard-tab">
-							
-							
+
+
 							<div class="user-recent-listings-container">
 									<div class="col-md-8"><h3 class="padding-top-35 padding-bottom-35">All Healthcares</h3></div><div class="col-md-4"><div class="price-plan-button  pull-right">
 									<a href="/logout" class="lp-secondary-btn btn-second-hover">Sign Out</a>
@@ -80,7 +80,7 @@
 										@foreach($healthcares as $healthcare)
 										<div class="col-md-12 col-sm-6 col-xs-12 lp-list-view">
 											<div class="lp-list-view-inner-contianer lp-border lp-border-radius-8 clearfix">
-												
+
 												<div class="lp-list-view-content">
 													<div class="lp-list-view-content-upper">
 													<h3 class="booking-id">{{$healthcare['name']}}</h3>
@@ -95,7 +95,7 @@
 														<i class="fa fa-info-circle"></i>
 														<span>{{$healthcare['email']}}</span>
 													</li>
-													
+
 												</ul>
 											</div>
 													</div>
@@ -107,39 +107,47 @@
 																</span>
 																<span class="lp-list-sp-text">
 																	{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $healthcare['created_at'])->format('M d, Y') }}
-												
+
 																</span>
 															</li>
 															<li>
 																<span class="lp-list-sp-icon">
-																	
+
 																</span>
-																
+
 															</li>
-															
-															
-														</ul> 
+
+
+														</ul>
 													</div>
 												</div>
 												<div class="lp-list-view-paypal">
 													<div class="lp-list-view-paypal-inner">
-														<h4>Manage Healthcare</h4>
+														<!--<h4>Manage Healthcare</h4> -->
 														<div>
 															<p></p>
 														</div>
 														<!-- <div class="lp-list-pay-btn">
-															 <a href="/admin/healthcare/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" > 
+															 <a href="/admin/healthcare/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" >
 																<i class="fa fa-wechat"></i>
 																<span>See Bookings</span>
-														 </a> 
+														 </a>
 														</div> -->
-														
+
+														<div class="lp-list-pay-btn">
+															@if($healthcare['payment_done'] != 1)  <a href="/admin/healthcare/paymentDone/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" onclick="return confirm('Are you sure?')"> <i class="fa fa-close"></i>
+																<span>Payment Done</span>
+															  </a>
+															  @endif
+														</div>
+
+
 														<div class="lp-list-pay-btn">
 															@if($healthcare['is_approved'] == 1)  <a href="/admin/healthcare/block/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" onclick="return confirm('Are you sure?')"> <i class="fa fa-close"></i>
 																<span>Block</span>
 															  </a> @else <a href="/admin/healthcare/approve/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" onclick="return confirm('Are you sure?')"> <i class="fa fa-check"></i>
 																<span>Approve</span>
-															  </a> 
+															  </a>
 															  @endif
 														</div>
 													</div>
@@ -147,7 +155,7 @@
 											</div>
 										</div>
 @endforeach
-@else 
+@else
 <div class="col-md-12 col-sm-6 col-xs-12 lp-list-view">
 											<div class="lp-list-view-inner-contianer lp-border lp-border-radius-8 clearfix no-bookings" align="center">
 <h4 class="no-bookings">No Healthcares available</h4>
@@ -158,9 +166,9 @@
 								</div>
 							</div>
 						</div>
-					</div>			
-					
-					
+					</div>
+
+
 				</div>
 			</div>
 	</section>
