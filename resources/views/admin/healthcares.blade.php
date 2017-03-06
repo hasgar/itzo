@@ -135,7 +135,7 @@
 														</div> -->
 
 														<div class="lp-list-pay-btn">
-															@if($healthcare['payment_done'] == 0)  <a href="/admin/healthcare/paymentDone/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" onclick="return confirm('Are you sure?')"> <i class="fa fa-check"></i>
+															@if($healthcare['payment_done'] != 1)  <a href="/admin/healthcare/paymentDone/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" onclick="return confirm('Are you sure?')"> <i class="fa fa-check"></i>
 																<span>Payment Done</span>
 															  </a>
 															  @endif
