@@ -103,7 +103,9 @@
 
 
 										<div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
-											 <div class="col-md-6 no-left-padding" >Monday
+											 <div class="col-md-6 no-left-padding" ><select  class="form-control" disabled></div>
+											 <option value="Monday to Saturday">Monday</option>
+											 </select>
 											 </div>
 											 <div class="col-md-3"><select  class="form-control" name="working_hours_mon_from" id="working_hours_mon_from" required>
 											 <option value="01 AM">01 AM</option>
@@ -132,7 +134,7 @@
 											 <option value="12 AM">12 AM</option>
 											 </select>
 											 </div>
-											 <div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_mon_to" id="working_hours_mon_to"  required>
+											 <div class="col-md-3 no-right-padding"><select  class="form-control" disabled name="working_hours_mon_to" id="working_hours_mon_to"  required>
 											 <option value="01 AM">01 AM</option>
 											 <option value="02 AM">02 AM</option>
 											 <option value="03 AM">03 AM</option>
@@ -170,7 +172,7 @@
 											 <option value="Monday to Saturday">Tuesday</option>
 											 </select>
 											 </div>
-											 <div class="col-md-3"><select  class="form-control" name="working_hours_tue_from" id="working_hours_tue_from" required>
+											 <div class="col-md-3"><select  class="form-control" disabled name="working_hours_tue_from" id="working_hours_tue_from" required>
 											 <option value="01 AM">01 AM</option>
 											 <option value="02 AM">02 AM</option>
 											 <option value="03 AM">03 AM</option>
@@ -197,7 +199,7 @@
 											 <option value="12 AM">12 AM</option>
 											 </select>
 											 </div>
-											 <div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_tue_to" id="working_hours_tue_to"  required>
+											 <div class="col-md-3 no-right-padding"><select  disabled class="form-control" name="working_hours_tue_to" id="working_hours_tue_to"  required>
 											 <option value="01 AM">01 AM</option>
 											 <option value="02 AM">02 AM</option>
 											 <option value="03 AM">03 AM</option>
@@ -231,7 +233,7 @@
 										 </div>
 
 										 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
-											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <div class="col-md-6 no-left-padding" ><select  disabled class="form-control"></div>
 											 <option value="Monday to Saturday">Wednesday</option>
 											 </select>
 											 </div>
@@ -262,7 +264,7 @@
 											 <option value="12 AM">12 AM</option>
 											 </select>
 											 </div>
-											 <div class="col-md-3 no-right-padding"><select  class="form-control" name="working_hours_wed_to" id="working_hours_wed_to"  required>
+											 <div class="col-md-3 no-right-padding"><select  disabled class="form-control" name="working_hours_wed_to" id="working_hours_wed_to"  required>
 											 <option value="01 AM">01 AM</option>
 											 <option value="02 AM">02 AM</option>
 											 <option value="03 AM">03 AM</option>

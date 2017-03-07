@@ -1,7 +1,7 @@
 <div class="col-md-4 col-xs-6 lp-logo-container">
 							<div class="lp-logo white-logo">
 								<a href="/">
-									<img src="/images/logo-white.png" />
+									<img src="/images/logo.png" />
 								</a>
 							</div>
 						</div>
