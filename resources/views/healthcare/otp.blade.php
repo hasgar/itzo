@@ -37,7 +37,7 @@
 							<div class="login-form-popup lp-border-radius-8">
 								<div class="siginincontainer">
 									<h1 class="text-center">Enter OTP</h1>
-  									<p class="text-center">We just sent you an OTP to your email</p>
+  									<p class="text-center">We just sent you an OTP to your {{$type}}</p>
                     @if (count($errors) > 0)
                     <ul class="error_points">
                     @foreach ($errors->all() as $error)

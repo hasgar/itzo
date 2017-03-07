@@ -27,6 +27,11 @@ $(document).ready(function() {
 
 });
 
+  $(".healthcare-email").keyup(function(){
+    
+    $("#contact_email").val($(this).val())
+
+  })
   $("#no_of_beds").keyup(function(){
     if ($(this).val() < 51) {
       $('#bed_range').val("0-50");

@@ -82,10 +82,16 @@
     padding-top: 30px;
     padding-left: 0px;
 "><select class="form-control" id="country_code" name="country_code">
-<option value="91">+91</option>
-<option value="971">+971</option>
+<option value="91">+91 (IND)</option>
+<option value="974">+974 (QAT)</option>
+<option value="971">+971 (UAE)</option>
+<option value="966">+966 (KSA)</option>
+<option value="968">+968 (OMA)</option>
+<option value="965">+965 (KWT)</option>
+<option value="973">+973 (BAH)</option>
+
 </select></div><div class="col-md-9" style="
-    padding-left: 0px; padding-right: 0px; 
+    padding-left: 0px; padding-right: 0px;
 ">
 <input type="text" class="form-control" id="mobile" name="mobile" value="{{ old('mobile') }}" required> </div>
 											 @if ($errors->has('mobile'))

@@ -52,7 +52,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
 											<label for="email">Email Address *</label>
-											<input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Enter official email" required>
+											<input type="email" class="form-control healthcare-email" id="email" name="email" value="{{ old('email') }}" placeholder="Enter official email" required>
 											 @if ($errors->has('email'))
 												<span class="help-block">
 													<strong>{{ $errors->first('email') }}</strong>
@@ -103,9 +103,7 @@
 
 
 										<div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
-											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
-											 <option value="Monday to Saturday">Monday</option>
-											 </select>
+											 <div class="col-md-6 no-left-padding" >Monday
 											 </div>
 											 <div class="col-md-3"><select  class="form-control" name="working_hours_mon_from" id="working_hours_mon_from" required>
 											 <option value="01 AM">01 AM</option>
@@ -677,10 +675,25 @@
 												</span>
 											@endif
 										</div>
-										<div class="form-group {{ $errors->has('mobile') ? ' has-error' : '' }}">
-											<label for="mobile">Mobile *</label>
-											<input type="number" class="form-control" name="mobile" required id="mobile" placeholder="Enter health center mobile number" value="{{ old('mobile') }}" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
-											@if ($errors->has('mobile'))
+										<div class="form-group  col-md-6  padding-left-0  {{ $errors->has('mobile') ? ' has-error' : '' }}">
+											<label for="mobile">Mobile Number</label>
+											<div class="col-md-3" style="
+    padding-top: 30px;
+    padding-left: 0px;
+"><select class="form-control" id="country_code" name="country_code">
+<option value="91">+91 (IND)</option>
+<option value="974">+974 (QAT)</option>
+<option value="971">+971 (UAE)</option>
+<option value="966">+966 (KSA)</option>
+<option value="968">+968 (OMA)</option>
+<option value="965">+965 (KWT)</option>
+<option value="973">+973 (BAH)</option>
+
+</select></div><div class="col-md-9" style="
+    padding-left: 0px; padding-right: 0px;
+">
+<input type="text" class="form-control" id="mobile" name="mobile" value="{{ old('mobile') }}" required> </div>
+											 @if ($errors->has('mobile'))
 												<span class="help-block">
 													<strong>{{ $errors->first('mobile') }}</strong>
 												</span>

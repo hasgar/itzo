@@ -91,7 +91,12 @@ class UserController extends Controller
     }
 
     public function userOtp(){
-              return view('user.otp');
+
+      $health = Healthcare::where('user_id',Auth::user()->id)->first();
+      $type = "Email"
+          if ($health["country_code"] == "91")
+          $type = "Mobile"
+              return view('user.otp')->with('type', $type);
         }
         public function healthcareOtp(){
                   return view('healthcare.otp');
@@ -99,13 +104,13 @@ class UserController extends Controller
             public function paymentPending(){
                       $health = Healthcare::where('user_id',Auth::user()->id)->first();
                       $amount = 1000;
-                      if ($health['bed_range'] > 0) {
+                      if ($health['bed_range'] > 0 && $health['bed_range'] <= 50 ) {
 $amount = 1000;
-                      } else if ($health['bed_range'] > 50) {
+                      } else if ($health['bed_range'] > 50 && $health['bed_range'] <= 100 ) {
 $amount = 2000;
-                      } else if ($health['bed_range'] > 100) {
+                      } else if ($health['bed_range'] > 100 && $health['bed_range'] <= 200) {
 $amount = 3000;
-                      } else if ($health['bed_range'] > 200) {
+                      } else if ($health['bed_range'] > 200 && $health['bed_range'] <= 300) {
 $amount = 4000;
                       } else if ($health['bed_range'] > 300) {
 $amount = 5000;

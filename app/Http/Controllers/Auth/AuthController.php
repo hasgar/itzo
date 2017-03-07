@@ -114,6 +114,7 @@ class AuthController extends Controller
             'is_verified' => 0,
             'city_id' => $data['city'],
         ]);
+        if ($data['country_code'] == "91") {
   $username = "chikitzosearch@gmail.com";
 	$hash = "35cb84c9d6a28ee5a7e67369f3db75b399c0f485";
 
@@ -134,7 +135,20 @@ class AuthController extends Controller
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$result = curl_exec($ch); // This is the result from the API
 	curl_close($ch);
+} else {
+  $subject = 'Thanks for registering with Chikitzo';
+  $message = 'Hello '.$data['name'].' Team,
 
+  Thanks for registering with us.
+
+  Your OTP is: '.$otp.'
+
+  Regards,
+  Chikitzo Team';
+  $from = 'info@chikitzo.com';
+
+  mail($to, $subject, $message);
+}
             $user1 = Sentinel::findById($user['id']);
 
             $role = Sentinel::findRoleByName('User');
@@ -244,6 +258,7 @@ class AuthController extends Controller
             'email' =>  $data['email'],
             'certificate' =>  $data['certificate'],
             'country_id' => $data['country'],
+            'country_code' => $data['country_code'],
             'state_id' => $data['state'],
             'area_id' => $data['area'],
             'city_id' => $data['city'],
@@ -360,7 +375,7 @@ $pro_pic = $fileName;
             $role->users()->attach($user1);
             $to = $data['email'];
     $subject = 'Thanks for registering with Chikitzo';
-    $message = '<html>Hello '.$data['name'].' Team,
+    $message = 'Hello '.$data['name'].' Team,
 
     Thanks for registering with us.
 

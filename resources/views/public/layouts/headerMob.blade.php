@@ -2,9 +2,9 @@
 									<li><a href="/">Home</a>
 									</li>
 									@if (Auth::guest())
-									<li><a href="/signin">Sign In</a> / <a href="/signup">Sign Up</a></li>
+									<li><a href="/signin">Login</a> / <a href="/signup">Sign Up</a></li>
 									</li>
-									@else 
+									@else
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
 									<li><a href="/user/dashboard">Dashboard</a></li>
 									</li>
@@ -20,5 +20,3 @@
 									@endif
 
 								</ul>
-
-								
