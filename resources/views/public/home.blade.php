@@ -101,50 +101,50 @@
 
 <div class="col-md-4 no-padding">
 						<div class="col-md-4 no-padding">
-							<a href="/healthcare/type/allopathy" > <img src="/images/allopathy.png" class="h-types" /></a> <br>
+							<a href="/healthcare/type/allopathy" > <img src="/images/allopathy_1.png" class="h-types" /></a> <br>
 							<h5 class="heading-item">Allopathy</h5>
 						</div>
 
 						<div class="col-md-4 no-padding">
-							<a href="/healthcare/type/ayurveda" > <img src="/images/ayurveda.png" class="h-types" /></a>
+							<a href="/healthcare/type/ayurveda" > <img src="/images/ayurveda_1.png" class="h-types" /></a>
 							<h5 class="heading-item">Ayurveda</h5>
 						</div>
 
 
 						<div class="col-md-4 no-padding">
-							<a href="/healthcare/type/holistic" > <img src="/images/holistic.png" class="h-types" /></a>
+							<a href="/healthcare/type/holistic" > <img src="/images/holistic_1.png" class="h-types" /></a>
 							<h5 class="heading-item">Yoga & Naturopathy</h5>
 						</div>
 </div>
 <div class="col-md-4 no-padding">
 							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/unani" ><img src="/images/unani.png" class="h-types" /></a>
+								<a href="/healthcare/type/unani" ><img src="/images/unani_1.png" class="h-types" /></a>
 								<h5 class="heading-item">Unani</h5>
 							</div>
 
 
 							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/siddha" ><img src="/images/siddha.png" class="h-types" /></a>
+								<a href="/healthcare/type/siddha" ><img src="/images/siddha_1.png" class="h-types" /></a>
 								<h5 class="heading-item">Siddha</h5>
 							</div>
 							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/homeopathy" > <img src="/images/homeopathy.png" class="h-types" /></a>
+								<a href="/healthcare/type/homeopathy" > <img src="/images/homeopathy_1.png" class="h-types" /></a>
 								<h5 class="heading-item">Homeopathy</h5>
 							</div>
 </div>
 							<div class="col-md-4 no-padding">
 							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/acupuncture" > <img src="/images/accupuncture.png" class="h-types"  /></a>
+								<a href="/healthcare/type/acupuncture" > <img src="/images/accupuncture_1.png" class="h-types"  /></a>
 								<h5 class="heading-item">Acupuncture & Chinese</h5>
 							</div>
 
 							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/psychology" ><img src="/images/psychology.png" class="h-types" /></a>
+								<a href="/healthcare/type/psychology" ><img src="/images/psychology_1.png" class="h-types" /></a>
 								<h5 class="heading-item">Psychology</h5>
 							</div>
 
 							<div class="col-md-4 no-padding">
-								<a href="/healthcare/type/chinese" ><img src="/images/chinese.png" class="h-types" /> </a>
+								<a href="/healthcare/type/chinese" ><img src="/images/chinese_1.png" class="h-types" /> </a>
 								<h5 class="heading-item">Other alternative medicine & therapy</h5>
 							</div></div>
 
