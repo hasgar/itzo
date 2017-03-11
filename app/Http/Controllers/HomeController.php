@@ -500,6 +500,7 @@ echo $detail;
     }
 
     public function contactSend(Request $request) {
+      
         if(isset($request['subject']) && isset($request['name']) && isset($request['email']) && isset($request['message'])) {
          $emails = "info@chiktizo.com";
          $to = "info@chiktizo.com";

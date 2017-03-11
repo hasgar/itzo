@@ -100,6 +100,7 @@ class UserController extends Controller
           $type = "Email";
               if ($health["country_code_mobile"] == "91")
               $type = "Mobile";
+
                   return view('healthcare.otp')->with('type', $type);
             }
             public function paymentPending(){
@@ -141,7 +142,7 @@ $date_to = $mytime->toFormattedDateString();
 return $mytime->toFormattedDateString();
         $to = "hasgardee@gmail.com";
 $subject = 'Thanks for registering with Chikitzo';
-$message = '<html>Hello asdsd Team,<br>
+$message = 'Hello asdsd Team,<br>
 
 Thanks for registering with us.<br>
 
@@ -157,10 +158,38 @@ mail($to, $subject, $message);
       }
 
       public function healthcareOtpVerification(Request $request){
-
-        if (Healthcare::where('user_id',Auth::user()->id)->first()["OTP"] == $request['otp']) {
+        $healthcare = Healthcare::where('user_id',Auth::user()->id)->first();
+        if ($healthcare["OTP"] == $request['otp']) {
           Healthcare::where('user_id', Auth::user()->id)
         ->update(['is_verified' => 1]);
+        $to = "info@chikitzo.com";
+$subject = 'New Healthcare Registered';
+$message = 'Hello,
+
+'.$healthcare["name"].' registered in chikitzo.<br>
+Payment mode: '.$healthcare["payment_mode"].'
+
+Regards,
+Chikitzo Team';
+$from = 'info@chikitzo.com';
+mail($to, $subject, $message);
+
+
+$to = $healthcare["email"];
+$subject = 'Chikitzo - Payment pending!';
+$message = 'Hello '.$user["name"].' Team,
+
+Thanks for registering with us.
+
+Your payment is pending.
+
+Clear your payment and get your healthcare live on chikitzo.
+
+Regards,
+Chikitzo Team';
+$from = 'info@chikitzo.com';
+mail($to, $subject, $message);
+
           return redirect('/healthcare/dashboard');
         } else {
                 return view('healthcare.otp')->withErrors(['Wrong OTP, please try again.']);
@@ -202,7 +231,22 @@ public function noPermission(){
     }
     public function  paymentDoneComplete(Request $request) {
       $user = Healthcare::where('id',$request->id)->update(['payment_done' => 1]);
+      $to = $user["email"];
+$subject = 'Chikitzo - Payment recieved!';
+$message = 'Hello '.$user["name"].' Team,
 
+Thanks for registering with us.
+
+We have received your payment.
+
+Your healthcare is live at chikitzo now!
+
+Regards,
+Chikitzo Team';
+$from = 'info@chikitzo.com';
+
+
+mail($to, $subject, $message);
       return redirect('/admin/healthcares');
     }
 
