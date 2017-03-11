@@ -107,8 +107,7 @@ class AuthController extends Controller
             'user_id' => $user['id'],
             'email' => $user['email'],
             'country_id' => $data['country'],
-            'country_code' => $data['country_code'],
-            'mobile' => $data['mobile'],
+            'mobile' => $data['country_code'].$data['mobile'],
             'state_id' => $data['state'],
             'OTP' => $otp,
             'is_verified' => 0,
@@ -250,6 +249,9 @@ class AuthController extends Controller
             if(!isset($data['accommodation_general'])) {
                 $data['accommodation_general'] = 0;
             }
+            if($data['twentyfourseven'] == 0) {
+                $data['accommodation_general'] = 0;
+            }
 
             $otp = rand(1000,9999);
             $healthcare = Healthcare::create([
@@ -258,15 +260,14 @@ class AuthController extends Controller
             'email' =>  $data['email'],
             'certificate' =>  $data['certificate'],
             'country_id' => $data['country'],
-            'country_code' => $data['country_code'],
             'state_id' => $data['state'],
-            'area_id' => $data['area'],
+            'area' => $data['area'],
             'city_id' => $data['city'],
             'address' => $data['address'],
             'pin' => $data['pin'],
-            'mobile' => $data['mobile'],
-            'phone' => $data['phone'],
-            'fax' => $data['fax'],
+            'mobile' => $data['country_code_mobile'].$data['mobile'],
+            'phone' => $data['country_code_phone'].$data['phone'],
+            'fax' => $data['country_code_fax'].$data['fax'],
             'price' => $data['category'],
             'description' => $data['description'],
             'veg' => $data['food_veg'],
@@ -330,9 +331,11 @@ class AuthController extends Controller
             'OTP' => $otp,
             'is_verified' => 0
         ]);
-
+        if (!isset($data['no_of_pics'])) {
+          $data['no_of_pics'] = 2;
+        }
         $pro_pic = '';
-            for($i=1;$i<4;$i++){
+            for($i=1;$i<$data['no_of_pics'];$i++){
                 if($request->hasFile('photo_'.$i)){
 
             $extension = $request->file('photo_'.$i)->getClientOriginalExtension();

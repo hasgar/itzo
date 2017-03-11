@@ -3,6 +3,13 @@
 @section('title', 'Add Health Care - Chikitzo')
 
 
+@section('addition_css')
+
+<link href="/css/bootstrap-tagsinput.css" type="text/css" rel="stylesheet" />
+
+
+@endsection
+
 @section('content')
 <div id="page">
 	<!--==================================Header Open=================================-->
@@ -39,8 +46,9 @@
 
 								<div class="siginupcontainer page-signup">
 									<h1 class="text-center healthcare-heading">Register Health care Provider</h1>
-									<form id="add-healthcare" class="form-horizontal margin-top-30"role="form" method="POST" action="{{ url('/register') }}" enctype='multipart/form-data'>
-                       					 {{ csrf_field() }}
+									<form id="add-healthcare" class="form-horizontal margin-top-30" role="form" method="POST" action="{{ url('/register') }}" enctype='multipart/form-data'>
+<fieldset id="add-healthcare-form">
+										   					 {{ csrf_field() }}
 										<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 											<label for="name">Name of Health care Provider *</label>
 											<input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" required placeholder="Enter Health care Provider name">
@@ -97,9 +105,24 @@
 											@endif
 											<div class="add-type"><i class="fa fa-plus"></i> Add More</div>
 										</div>
-											<div class="form-group {{ $errors->has('working_hours') ? ' has-error' : '' }}">
+
+										<div class="form-group {{ $errors->has('twentyfourseven') ? ' has-error' : '' }}">
+											<label for="twentyfourseven">Is your healthcare work 24x7 ?</label>
+											<select  class="form-control" id="twentyfourseven" name="twentyfourseven">
+											<option value="0">No</option>
+										<option value="1" selected="">Yes</option>
+										</select>
+											@if ($errors->has('twentyfourseven'))
+												<span class="help-block">
+													<strong>{{ $errors->first('twentyfourseven') }}</strong>
+												</span>
+											@endif
+										</div>
+<div class="working-hours"  style="display:none">
+											<div class="form-group  {{ $errors->has('working_hours') ? ' has-error' : '' }}">
 											<label for="working_hours">Working Hours ?</label>
 									 </div>
+
 
 
 										<div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
@@ -134,7 +157,7 @@
 											 <option value="12 AM">12 AM</option>
 											 </select>
 											 </div>
-											 <div class="col-md-3 no-right-padding"><select  class="form-control" disabled name="working_hours_mon_to" id="working_hours_mon_to"  required>
+											 <div class="col-md-3 no-right-padding"><select  class="form-control"  name="working_hours_mon_to" id="working_hours_mon_to"  required>
 											 <option value="01 AM">01 AM</option>
 											 <option value="02 AM">02 AM</option>
 											 <option value="03 AM">03 AM</option>
@@ -168,11 +191,11 @@
 										 </div>
 
 										 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
-											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <div class="col-md-6 no-left-padding" ><select  disabled class="form-control"></div>
 											 <option value="Monday to Saturday">Tuesday</option>
 											 </select>
 											 </div>
-											 <div class="col-md-3"><select  class="form-control" disabled name="working_hours_tue_from" id="working_hours_tue_from" required>
+											 <div class="col-md-3"><select  class="form-control" name="working_hours_tue_from" id="working_hours_tue_from" required>
 											 <option value="01 AM">01 AM</option>
 											 <option value="02 AM">02 AM</option>
 											 <option value="03 AM">03 AM</option>
@@ -199,7 +222,7 @@
 											 <option value="12 AM">12 AM</option>
 											 </select>
 											 </div>
-											 <div class="col-md-3 no-right-padding"><select  disabled class="form-control" name="working_hours_tue_to" id="working_hours_tue_to"  required>
+											 <div class="col-md-3 no-right-padding"><select   class="form-control" name="working_hours_tue_to" id="working_hours_tue_to"  required>
 											 <option value="01 AM">01 AM</option>
 											 <option value="02 AM">02 AM</option>
 											 <option value="03 AM">03 AM</option>
@@ -264,7 +287,7 @@
 											 <option value="12 AM">12 AM</option>
 											 </select>
 											 </div>
-											 <div class="col-md-3 no-right-padding"><select  disabled class="form-control" name="working_hours_wed_to" id="working_hours_wed_to"  required>
+											 <div class="col-md-3 no-right-padding"><select   class="form-control" name="working_hours_wed_to" id="working_hours_wed_to"  required>
 											 <option value="01 AM">01 AM</option>
 											 <option value="02 AM">02 AM</option>
 											 <option value="03 AM">03 AM</option>
@@ -298,7 +321,7 @@
 										 </div>
 
 										 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
-											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <div class="col-md-6 no-left-padding" ><select  disabled class="form-control"></div>
 											 <option value="Monday to Saturday">Thursday</option>
 											 </select>
 											 </div>
@@ -363,7 +386,7 @@
 										 </div>
 
 										 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
-											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <div class="col-md-6 no-left-padding" ><select  disabled class="form-control"></div>
 											 <option value="Monday to Saturday">Friday</option>
 											 </select>
 											 </div>
@@ -428,7 +451,7 @@
 										 </div>
 
 										 <div class="form-group {{ $errors->has('working_hours_mon') ? ' has-error' : '' }}">
-											 <div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											 <div class="col-md-6 no-left-padding" ><select  disabled class="form-control"></div>
 											 <option value="Monday to Saturday">Saturday</option>
 											 </select>
 											 </div>
@@ -494,7 +517,7 @@
 
 
 										<div class="form-group {{ $errors->has('working_hours_sun') ? ' has-error' : '' }}">
-											<div class="col-md-6 no-left-padding" ><select  class="form-control"></div>
+											<div class="col-md-6 no-left-padding" ><select disabled class="form-control"></div>
 											<option value="Sunday">Sunday</option>
 											</select>
 											</div>
@@ -557,7 +580,7 @@
 												</span>
 											@endif
 										</div>
-
+</div>
 										<div class="form-group {{ $errors->has('certificate') ? ' has-error' : '' }}">
 											<label for="certificate">Do you have certification ?</label>
 											<select  class="form-control" id="certificate" name="certificate">
@@ -594,10 +617,7 @@
 										<div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}"   required>
 											<label for="country">Country *</label>
 											<select  class="form-control" id="country" name="country">
-<option value="">Select your country</option>
-@foreach ($countries as $country)
-										<option value="{{$country['id']}}">{{$country['name']}}</option>
-										@endforeach
+<option value="101">India</option>
 </select>
 											@if ($errors->has('country'))
 												<span class="help-block">
@@ -608,7 +628,7 @@
 										<div class="form-group {{ $errors->has('state') ? ' has-error' : '' }}"   required>
 											<label for="state">State *</label>
 											<select class="form-control" id="state" name="state">
-<option value="">Select your state</option>
+<option value="19">Kerala</option>
 </select>
 											@if ($errors->has('state'))
 												<span class="help-block">
@@ -619,7 +639,7 @@
 										<div class="form-group {{ $errors->has('city') ? ' has-error' : '' }}"   required>
 											<label for="city">City *</label>
 											<select class="form-control" id="city" name="city">
-<option value="">Select your city</option>
+<option value="1947">Kozhikode</option>
 </select>
 											@if ($errors->has('city'))
 												<span class="help-block">
@@ -627,15 +647,11 @@
 												</span>
 											@endif
 										</div>
-										<div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}"   required>
+										<div class="form-group {{ $errors->has('area') ? ' has-error' : '' }}"   required>
 											<label for="area">Town / Village *</label>
-											<select  class="form-control" id="area" name="area">
-<option value="">Select your Town / Village</option>
-@foreach ($areas as $area)
-										<option value="{{$area['id']}}">{{$area['name']}}</option>
-										@endforeach
-</select>
-											@if ($errors->has('country'))
+											<input type="text" class="form-control" name="area" id="area"  value="{{ old('area') }}" placeholder="Enter town / village" ></input>
+
+											@if ($errors->has('area'))
 												<span class="help-block">
 													<strong>{{ $errors->first('area') }}</strong>
 												</span>
@@ -652,7 +668,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('pin') ? ' has-error' : '' }}">
 											<label for="pin">Pin </label>
-											<input type="number" class="form-control" name="pin" id="pin"  value="{{ old('pin') }}" placeholder="Enter health center Pin code" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+											<input type="number" class="form-control" min="0" name="pin" id="pin"  value="{{ old('pin') }}" placeholder="Enter health center Pin code" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 											@if ($errors->has('pin'))
 												<span class="help-block">
 													<strong>{{ $errors->first('pin') }}</strong>
@@ -670,19 +686,19 @@
 										</div>
 										<div class="form-group {{ $errors->has('contact_email') ? ' has-error' : '' }}">
 											<label for="contact_email">Contact Person Email </label>
-											<input type="text" class="form-control" name="contact_email" required id="contact_email" placeholder="Enter contact person email" value="{{ old('contact_name') }}">
+											<input type="text" class="form-control" name="contact_email" required id="contact_email" placeholder="Enter contact person email" value="{{ old('contact_email') }}">
 											@if ($errors->has('contact_email'))
 												<span class="help-block">
 													<strong>{{ $errors->first('contact_email') }}</strong>
 												</span>
 											@endif
 										</div>
-										<div class="form-group  col-md-6  padding-left-0  {{ $errors->has('mobile') ? ' has-error' : '' }}">
-											<label for="mobile">Mobile Number</label>
+										<div class="form-group  padding-left-0  {{ $errors->has('mobile') ? ' has-error' : '' }}">
+											<label for="mobile">Mobile Number *</label>
 											<div class="col-md-3" style="
     padding-top: 30px;
     padding-left: 0px;
-"><select class="form-control" id="country_code" name="country_code">
+"><select class="form-control" id="country_code_mobile" name="country_code_mobile" >
 <option value="91">+91 (IND)</option>
 <option value="974">+974 (QAT)</option>
 <option value="971">+971 (UAE)</option>
@@ -694,7 +710,7 @@
 </select></div><div class="col-md-9" style="
     padding-left: 0px; padding-right: 0px;
 ">
-<input type="text" class="form-control" id="mobile" name="mobile" value="{{ old('mobile') }}" required> </div>
+<input type="number" min="0" class="form-control" id="mobile" placeholder="Enter health care mobile number" name="mobile" value="{{ old('mobile') }}" required> </div>
 											 @if ($errors->has('mobile'))
 												<span class="help-block">
 													<strong>{{ $errors->first('mobile') }}</strong>
@@ -702,23 +718,54 @@
 											@endif
 										</div>
 										<div class="form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
-											<label for="phone">Phone *</label>
-											<input type="number" class="form-control" name="phone" required id="phone" placeholder="Enter health center phone number" value="{{ old('phone') }}" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+											<label for="phone">Phone</label>
+											<div class="col-md-3" style="
+    padding-top: 30px;
+    padding-left: 0px;
+"><select class="form-control" id="country_code_phone" name="country_code_phone">
+<option value="91">+91 (IND)</option>
+<option value="974">+974 (QAT)</option>
+<option value="971">+971 (UAE)</option>
+<option value="966">+966 (KSA)</option>
+<option value="968">+968 (OMA)</option>
+<option value="965">+965 (KWT)</option>
+<option value="973">+973 (BAH)</option>
+
+</select></div><div class="col-md-9" style="
+    padding-left: 0px; padding-right: 0px;
+">
+											<input type="number" min="0"  class="form-control" name="phone" required id="phone" placeholder="Enter health center phone number" value="{{ old('phone') }}" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 											@if ($errors->has('phone'))
 												<span class="help-block">
 													<strong>{{ $errors->first('phone') }}</strong>
 												</span>
 											@endif
 										</div>
+										</div>
 										<div class="form-group {{ $errors->has('fax') ? ' has-error' : '' }}">
 											<label for="fax">Fax</label>
-											<input type="text" class="form-control" name="fax"  id="fax" value="{{ old('fax') }}" placeholder="Enter Health center fax">
+											<div class="col-md-3" style="
+    padding-top: 30px;
+    padding-left: 0px;
+"><select class="form-control" id="country_code_fax" name="country_code_fax">
+<option value="91">+91 (IND)</option>
+<option value="974">+974 (QAT)</option>
+<option value="971">+971 (UAE)</option>
+<option value="966">+966 (KSA)</option>
+<option value="968">+968 (OMA)</option>
+<option value="965">+965 (KWT)</option>
+<option value="973">+973 (BAH)</option>
+
+</select></div><div class="col-md-9" style="
+    padding-left: 0px; padding-right: 0px;
+">
+											<input  type="number" min="0" class="form-control" name="fax"  id="fax" value="{{ old('fax') }}" placeholder="Enter Health center fax">
 											@if ($errors->has('fax'))
 												<span class="help-block">
 													<strong>{{ $errors->first('fax') }}</strong>
 												</span>
 											@endif
-										</div>
+										</div></div>
 										<div class="form-group {{ $errors->has('website') ? ' has-error' : '' }}">
 											<label for="website">Website</label>
 											<input type="text" class="form-control" name="website"  id="website" value="{{ old('website') }}" placeholder="Enter Health center website address">
@@ -754,7 +801,7 @@
 										</div>
 
 										<div class="form-group {{ $errors->has('other_fecilities') ? ' has-error' : '' }}">
-											<label for="other_fecilities">Any other fecilities available?</label>
+											<label for="other_fecilities">Any other facilities available?</label>
 											<input type="text" class="form-control" name="other_fecilities"  id="other_fecilities" value="{{ old('other_fecilities') }}" placeholder="Enter Other fecilities avilable">
 
 											@if ($errors->has('other_fecilities'))
@@ -776,7 +823,7 @@
 										<div class="col-md-6" style="padding-left:0px;">
 										<div class="form-group {{ $errors->has('no_of_beds') ? ' has-error' : '' }}">
 											<label for="no_of_beds">Number of beds </label>
-											<input type="number" class="form-control" id="no_of_beds" name="no_of_beds" value="{{ old('no_of_beds') }}" placeholder="Enter No of beds">
+											<input type="number" min="0"  class="form-control" id="no_of_beds" name="no_of_beds" value="{{ old('no_of_beds') }}" placeholder="Enter No of beds">
 											 @if ($errors->has('no_of_beds'))
 												<span class="help-block">
 													<strong>{{ $errors->first('no_of_beds') }}</strong>
@@ -831,7 +878,7 @@
 												<option value="cheque">Cheque</option>
 												<option value="dd">DD</option>
 												<option value="net_banking">Net banking</option>
-
+												<option value="other">Other</option>
 											</select>
 											@if ($errors->has('payment_mode'))
 												<span class="help-block">
@@ -852,8 +899,7 @@
 										<input type="hidden" name="loc-lon" id="loc-lon">
 										<input type="hidden" name="loc-rad" id="loc-rad">
 </div>
-
-										<div class="form-group {{ $errors->has('photo_1') ? ' has-error' : '' }}">
+								<div class="form-group {{ $errors->has('photo_1') ? ' has-error' : '' }}">
 											<label for="photo_1">Photo 1 *</label>
 											<input type="file" class="form-control" name="photo_1" id="photo_1" required value="{{ old('photo_1') }}">
 											@if ($errors->has('photo_1'))
@@ -871,6 +917,8 @@
 												</span>
 											@endif
 										</div>
+
+
 										<div class="form-group {{ $errors->has('photo_3') ? ' has-error' : '' }}">
 											<label for="photo_3">Photo 3</label>
 											<input type="file" class="form-control" name="photo_3" id="photo_3" value="{{ old('photo_3') }}">
@@ -882,8 +930,12 @@
 										</div>
 
 										<input type="hidden" name="type" value="2" />
+
+										</fieldset>
 										<div class="form-group">
-											<input type="submit"  value="Submit & Pay" id="submit-healthcare" class="lp-secondary-btn width-full btn-first-hover">
+											<input type="button"  value="Edit" id="edit-healthcare" style="display:none" class="lp-secondary-btn width-full btn-second-hover">
+<br><br>
+											<input type="submit"  value="Review" id="submit-healthcare" class="lp-secondary-btn width-full btn-first-hover">
 
 										</div>
 									</form>
@@ -900,4 +952,54 @@
 
 	</section>
 
+@endsection
+
+@section('addition_scripts')
+<script>
+$( function() {
+var availableTags = [
+	"ACOUSTIC NEUROMA TREATMENT","ALLERGY","ANAESTHESIOLOGY","ARTHRALGIAS","ARTHRITIS TREATMENT","ASTHMA","AUDIOLOGY","AUDIOLOGY & SPEECH PATHOLOGY","AUTISM SPECTRUM DISORDERS","AVIATION MEDICINE","BACK PAIN","BEHAVIOR & LEARNING DISABILITY","BLOOD BANK & TRANSFUSION MEDICINE","BREAST SURGERY","CANCER SURGERY","CANCER TREATMENT","CARDIAC PHYSIOTHERAPY","CARDIOLOGY","CARDIOTHORACIC SURGERY","CARPAL TUNNEL SYNDROME","CATARACT CLINIC","CEREBRAL PALSY","CHILD & ADOLESCENT GUIDANCE","CLEANSING","CLINICAL PSYCHOLOGY","COCHLEAR IMPLANTATION","COMMUNITY MEDICINE","COMMUNITY OPHTHALMOLOGY","CONTACT LENS CLINIC","COSMETIC DERMATOLOGY","COSMETOLOGY","CRITICAL CARE MEDICINE","CRITICAL CARE NEUROSURGERY","CT SCAN","CUPPING","DE ADDICTION","DENTAL","DENTAL & FACIOMAXILLARY SURGERY","DERMATOLOGY","DHARA","DIABETOLOGY","DISC PROLAPSE","ELECTROPHYSIOLOGY","EMERGENCY MEDICINE","ENDOCRINE SURGERY","ENDOCRINOLOGY","ENDOSCOPIC SINUS SURGERY","ENT","EYE BANK","EYE CARE","GASTROENTEROLOGY","GASTROINTESTINAL SURGERY","GENERAL MEDICINE","GENERAL OPHTHALMOLOGY","GENERAL SURGERY","GERIATRIC","GLAUCOMA","GYNAECOLOGY","HAIR LOSS","HEAD & NECK","HEAD ACHE","HEARING IMPAIRMENT","HISTOPATHOLOGY","INFERTILITY TREATMENT","INTERNAL MEDICINE","JOINT REPLACEMENT & TRAUMATOLOGY","KALARI UZHICHIL","KERALA TRADITIONAL TREATMENTS","KIZHI","KNEE JOINT PAIN","LABORATORY SERVICE","LAPAROSCOPIC SURGERY","LASIK","LEECH THERAPY","LIFESTYLE DISEASES","LOW VISION CLINIC","MASSAGE","MAXILLOFACIAL SURGERY","MEDICAL ONCOLOGY","MEMORY ENHANCEMENT THERAPY","MENSTRUAL DISORDERS","MICROBIOLOGY","MIGRAINE","MRI","NASYAM","NAVARAKKIZHI","NECK PAIN","NEONATOLOGY","NEONATOLOGY AND PEDIATRICS","NEPHROLOGY","NEURO OPHTHALMOLOGY","NEURO SPINAL & RHEUMATOLOGICAL DISORDERS","NEUROLOGY","NEUROSURGERY","NUCLEAR MEDICINE","NUTRITION AND DIETARY","OBSTETRICS & GYNAECOLOGY","OCULOPLASTY","ONCOLOGY","OPHTHALMOLOGY","ORGAN TRANSPLANT","ORTHOPAEDICS","ORTHOPAEDICS & TRAUMATOLOGY","OSTEOARTHRITIS","PAIN & PALLIATIVE CARE","PAIN MEDICINE","PANCHAKARMA TREATMENTS","PATHOLOGY","PATHOLOGY & LABORATORY MEDICINE","PATHOLOGY AND MICROBIOLOGY","PEDIATRIC & SQUINT OPHTHALMOLOGY","PEDIATRIC CARDIOLOGY","PEDIATRIC NEURO SURGERY","PEDIATRIC SURGERY","PEDIATRICS","PHYSICAL MEDICINE & REHABILITATION","PILES AND FISTULA TREATMENT","PIZHICHIL","PLANTAR FASCIITIS","PLASTIC SURGERY","PSORIASIS TREATMENT","PSYCHIATRIC","PSYCHIATRY & BEHAVIOUR MEDICINE","PSYCHOLOGICAL DISORDERS","PSYCHOSOMATIC","PULMONOLOGY","RADIATION ONCOLOGY","RADIODIAGNOSIS AND IMAGING","RADIOLOGY & IMAGING","RECONSTRUCTIVE & HAND SURGERY","RECONSTRUCTIVE AND MICRO-VASCULAR SURGERY","REFRACTIVE SURGERY","REJUVENATION AND BEAUTY THERAPIES","REPRODUCTIVE MEDICINE AND LAPROSCOPIC SURGERY","RESEARCH","RESPIRATORY MEDICINE","RHEUMATOLOGY","SASTHRA KARMA","SEXUAL PROBLEMS","SIRODHARA","SIROLEPA","SIROVASTHI","SKIN AILMENTS","SKIN THERAPY","SLEEP ENDOSCOPY","SLEEP MEDICINE & CRITICAL CARE","SPECTACLES","SPONDYLOSIS","SPORTS MEDICINE","STEAM BATH","STRESS MANAGEMENT","STROKE & TRAUMA REHABILITATION","STROKE COMPLICATIONS","SURGERY","SURGICAL GASTROENTEROLOGY","SURGICAL ONCOLOGY","TB & CHEST","THYROPLASTY","TRIGEMINAL NEURALGIA","UROLOGY","UROLOGY & RENAL TRANSPLANTATION","UROLOGY AND TRANSPLANT SURGERY","UZHICHIL","VARICOSE VEIN","VASCULAR & ENDOVASCULAR SURGERY","VASCULAR SURGERY","VASTHI","VITREO RETINAL","WEIGHT MANAGEMENT","WOMEN'S HEALTH"
+];
+function split( val ) {
+	return val.split( /,\s*/ );
+}
+function extractLast( term ) {
+	return split( term ).pop();
+}
+
+$( "#departments" )
+	// don't navigate away from the field on tab when selecting an item
+	.on( "keydown", function( event ) {
+		if ( event.keyCode === $.ui.keyCode.TAB &&
+				$( this ).autocomplete( "instance" ).menu.active ) {
+			event.preventDefault();
+		}
+	})
+	.autocomplete({
+		minLength: 0,
+		source: function( request, response ) {
+			// delegate back to autocomplete, but extract the last term
+			response( $.ui.autocomplete.filter(
+				availableTags, extractLast( request.term ) ) );
+		},
+		focus: function() {
+			// prevent value inserted on focus
+			return false;
+		},
+		select: function( event, ui ) {
+			var terms = split( this.value );
+			// remove the current input
+			terms.pop();
+			// add the selected item
+			terms.push( ui.item.value );
+			// add placeholder to get the comma-and-space at the end
+			terms.push( "" );
+			this.value = terms.join( ", " );
+			return false;
+		}
+	});
+
+} );
+
+</script>
 @endsection

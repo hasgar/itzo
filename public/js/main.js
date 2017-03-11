@@ -16,6 +16,11 @@ $(document).ready(function() {
 }); */
 
 
+
+  $('#add-healthcare').on('submit', function() {
+
+
+  })
     $('#accommodation').on('change', function() {
   if(this.value == 1 ) {
       $('.accommodation-type').show()
@@ -26,9 +31,16 @@ $(document).ready(function() {
 
 
 });
+$('#twentyfourseven').on('change', function() {
+if(this.value == 1 ) {
+  $('.working-hours').hide()
+} else {
+  $('.working-hours').show()
+}
+})
 
   $(".healthcare-email").keyup(function(){
-    
+
     $("#contact_email").val($(this).val())
 
   })

@@ -92,14 +92,15 @@ class UserController extends Controller
 
     public function userOtp(){
 
-      $health = Healthcare::where('user_id',Auth::user()->id)->first();
-      $type = "Email"
-          if ($health["country_code"] == "91")
-          $type = "Mobile"
-              return view('user.otp')->with('type', $type);
+
+              return view('user.otp');
         }
         public function healthcareOtp(){
-                  return view('healthcare.otp');
+          $health = Healthcare::where('user_id',Auth::user()->id)->first();
+          $type = "Email";
+              if ($health["country_code_mobile"] == "91")
+              $type = "Mobile";
+                  return view('healthcare.otp')->with('type', $type);
             }
             public function paymentPending(){
                       $health = Healthcare::where('user_id',Auth::user()->id)->first();

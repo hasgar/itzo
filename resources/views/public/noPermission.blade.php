@@ -9,7 +9,7 @@
 	<header class="">
 
 
-		
+
 		<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
 								@include('public.layouts.headerMob')
@@ -18,7 +18,7 @@
 			<div class="container">
 					<div class="row">
 						@include('public.layouts.logo')
-						
+
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -34,10 +34,10 @@
 		</div><!-- ../Home Search Container -->
 	</header>
 	<!--==================================Header Close=================================-->
-	
+
 	<!--==================================Section Open=================================-->
 	<section>
-		
+
 		<div class="lp-section-row aliceblue">
 			<div class="lp-section-content-container-one">
 				<div class="container">
@@ -47,25 +47,25 @@
 								<div class="siginincontainer">
 									<h2 class="text-center">No Permission</h2>
 
-								<div class="alert alert-danger margin-top-20">403 Forbidden or No Permission to Access 
+								<div class="alert alert-danger margin-top-20">403 Forbidden or No Permission to Access
 </div>
-									
+
 									</div>
 									<div class="pop-form-bottom">
-									
+
 
 									</div>
 								<a class="md-close"><i class="fa fa-close"></i></a>
 								</div>
-								
-								
-							</div>	
+
+
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!-- ../section-row -->
-	
+
 	</section>
-	
+
 @endsection

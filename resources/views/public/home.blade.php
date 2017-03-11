@@ -29,10 +29,10 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-sm-12 text-center">
-						  <h1>Find the best Health care in india</h1>
-						  <p class="lp-banner-browse-txt">Get information about the best health care in a city, read reviews, locate and book your appointment</p>
+						  <h1  style="color: #00818e;">Find the best Health care in india</h1>
+						  <p class="lp-banner-browse-txt" style="color: #00818e;">Get information about the best health care in a city, read reviews, locate and book your appointment</p>
 						</div>
-						<div class="col-md-10 col-xs-12 col-md-offset-1 col-sm-offset-0">
+						<div class="col-md-8 col-xs-8 col-md-offset-2 col-sm-offset-2">
 							<div class="lp-search-bar">
 								<form method="get" action="/selectHealthcare">
 									<div class="lp-search-bar-left">
@@ -59,13 +59,7 @@
 									<option value="1947">Kozhikode</option>
 									</select>
 								</div>
-								<div class="ui-widget border-dropdown">
-									<select class="comboboxs your-locality" name="locality">
-									<option value="1">Nadakkavu</option>
-									<option value="2">Eranjipalam</option>
-									<option value="3">Koyilandy</option>
-									</select>
-								</div>
+
 									<div class="ui-widget border-dropdown">
 									  <select class="comboboxs you-lookingfor">
 										<option value="">Select one...</option>
@@ -76,9 +70,10 @@
 									</div>
 											</div>
 									<div class="lp-search-bar-right">
-										<input type="submit" value="" class="lp-search-btn" />
-										<i class="icons8-search lp-search-icon"></i>
-									</div>
+										<button type="submit" class="lp-search-btn" style=" width: 60px;">
+<i class="icons8-search lp-search-icon"></i>
+</button>
+
 									<div class="clearfix"></div> <!-- ../clearfix -->
 									<input type="hidden" name="country" class="country-sel" value="101">
 									<input type="hidden" name="state"  class="state-sel" value="19">
@@ -103,84 +98,56 @@
 				<div class="row">
 
 					<div class="col-md-12 lp-home-categoires margin-top-subtract-55 padding-left-0" align="center">
-						<!--<ul class="lp-home-categoires margin-top-subtract-55 padding-left-0">
-							<li class="treatment-types">
-								<img src="/images/types_of_treatments.png" />
-							</li>
-						</ul> -->
 
-						<div class="col-md-3">
-							<a href="/healthcare/type/allopathy" > <img src="/images/allopathy.png" class="h-types" /></a>
-
-						</div>
-						<div class="col-md-3">
-							<a href="/healthcare/type/allopathy" > <img src="/images/ayurveda.png" class="h-types" /></a>
-
-						</div>
-						<div class="col-md-3">
-							<a href="/healthcare/type/allopathy" > <img src="/images/holistic.png" class="h-types" /></a>
-
-						</div>
-						<div class="col-md-3">
-							<a href="/healthcare/type/allopathy" > <img src="/images/unani.png" class="h-types" /></a>
-
-						</div>
-
-
-        <div class="col-xs-3 margin-top-15" id="p1">
-					<a href="/healthcare/type/allopathy" > <img src="/images/siddha.png" class="h-types" /></a>
-</div>
-        <div class="col-xs-2 margin-top-15 col-half-offset" id="p2"><a href="/healthcare/type/allopathy" > <img src="/images/homeopathy.png" class="h-types" /></a>
-</div>
-        <div class="col-xs-2 margin-top-15 col-half-offset" id="p3"><a href="/healthcare/type/allopathy" > <img src="/images/accupuncture.png" class="h-types" /></a>
-</div>
-        <div class="col-xs-2 margin-top-15 col-half-offset" id="p4"><a href="/healthcare/type/allopathy" > <img src="/images/psychology.png" class="h-types" /></a>
-</div>
-        <div class="col-xs-3 margin-top-15 col-half-offset" id="p5"><a href="/healthcare/type/allopathy" > <img src="/images/chinese.png" class="h-types" /></a>
-</div>
-<!--
 <div class="col-md-4 no-padding">
 						<div class="col-md-4 no-padding">
-							<a href="/healthcare/type/allopathy" > <img src="/images/allopathy.png" class="h-types" /></a>
+							<a href="/healthcare/type/allopathy" > <img src="/images/allopathy.png" class="h-types" /></a> <br>
+							<h5 class="heading-item">Allopathy</h5>
 						</div>
 
 						<div class="col-md-4 no-padding">
 							<a href="/healthcare/type/ayurveda" > <img src="/images/ayurveda.png" class="h-types" /></a>
+							<h5 class="heading-item">Ayurveda</h5>
 						</div>
 
 
 						<div class="col-md-4 no-padding">
 							<a href="/healthcare/type/holistic" > <img src="/images/holistic.png" class="h-types" /></a>
+							<h5 class="heading-item">Yoga & Naturopathy</h5>
 						</div>
 </div>
 <div class="col-md-4 no-padding">
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/unani" ><img src="/images/unani.png" class="h-types" /></a>
+								<h5 class="heading-item">Unani</h5>
 							</div>
 
 
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/siddha" ><img src="/images/siddha.png" class="h-types" /></a>
+								<h5 class="heading-item">Siddha</h5>
 							</div>
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/homeopathy" > <img src="/images/homeopathy.png" class="h-types" /></a>
+								<h5 class="heading-item">Homeopathy</h5>
 							</div>
 </div>
 							<div class="col-md-4 no-padding">
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/acupuncture" > <img src="/images/accupuncture.png" class="h-types"  /></a>
+								<h5 class="heading-item">Acupuncture & Chinese</h5>
 							</div>
 
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/psychology" ><img src="/images/psychology.png" class="h-types" /></a>
+								<h5 class="heading-item">Psychology</h5>
 							</div>
 
 							<div class="col-md-4 no-padding">
 								<a href="/healthcare/type/chinese" ><img src="/images/chinese.png" class="h-types" /> </a>
+								<h5 class="heading-item">Other alternative medicine & therapy</h5>
 							</div></div>
 
-
--->
 
 
 					</div>
@@ -193,7 +160,7 @@
 				<div class="row">
 
 					<div class="col-md-12">
-						<div class="lp-section-title-container text-center ">
+						<!--<div class="lp-section-title-container text-center ">
 							<h1>Let's explore</h1>
 							<div class="lp-sub-title">the best health care service for you.</div>
 							<div class="text-center banner-arrow-dark">
