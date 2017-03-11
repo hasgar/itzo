@@ -9,7 +9,7 @@
 	<header class="">
 
 
-		
+
 		<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
 								@include('public.layouts.headerMob')
@@ -18,7 +18,7 @@
 			<div class="container">
 					<div class="row">
 						@include('public.layouts.logo')
-						
+
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -46,7 +46,7 @@
 								<div class="input-group-addon lp-border "><i class="fa fa-crosshairs"></i></div>
 									<div class="ui-widget border-dropdown">
 									  <select class="comboboxs state">
-											
+
 											<option value="{{$state_sel['id']}}">{{$state_sel['name']}}</option>
 										@foreach ($states as $state)
 										<option value="{{$state['id']}}">{{$state['name']}}</option>
@@ -90,7 +90,7 @@
 										@foreach ($fecilities as $fecility)
 										<option value="{{$fecility['id']}}">{{$fecility['name']}}</option>
 										@endforeach
-									
+
 									</select>
 							</div>
 						</div>
@@ -109,7 +109,7 @@
 				</div>
 				<div class="col-md-4 col-sm-4  text-center">
 					<p class="view-on-map">
-						
+
 
 					</p>
 				</div>
@@ -130,6 +130,8 @@
 					<!-- Popup Close -->
 					<div class="md-overlay md-overlayi"></div> <!-- Overlay for Popup -->
 			</div>
+			<?php
+$row_i=0; ?>
 					<div class="row lp-list-page-grid">
 						<?php $fect = "" ?>
 						@foreach ($healthcare as $health)
@@ -213,8 +215,12 @@
 								</div><!-- ../grid-box-bottom-->
 							</div><!-- ../grid-box -->
 						</div>
+						<?php
+						    $row_i++;
+						    if ($row_i%4 == 0 ) echo '</div><div class="row lp-list-page-grid">';
+						?>
 						@endforeach
-						
+
 
 
 
@@ -222,5 +228,5 @@
 					</div>
 		</div>
 	</section>
-	
+
 @endsection

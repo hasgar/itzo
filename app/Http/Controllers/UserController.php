@@ -226,7 +226,7 @@ public function noPermission(){
         return view('admin.users')->with('users',$users);
     }
     public function aHealthcares(){
-        $healthcares = Healthcare::where('is_verified', 1)->get();
+        $healthcares = Healthcare::where('is_verified', 1)->orderBy('id', 'desc')->get();
         return view('admin.healthcares')->with('healthcares',$healthcares);
     }
     public function  paymentDoneComplete(Request $request) {
