@@ -502,6 +502,7 @@ echo $detail;
     public function contactSend(Request $request) {
         if(isset($request['subject']) && isset($request['name']) && isset($request['email']) && isset($request['message'])) {
          $emails = "info@chiktizo.com";
+         $to = "info@chiktizo.com";
           $email = htmlspecialchars($request['email']) ;
         $name = htmlspecialchars($request['name']);
 $sub = htmlspecialchars($request['subject']);
@@ -513,7 +514,7 @@ $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
 $headers .= "From: ". $emails . "\r\n" .
 "Reply-To: " . $email . "\r\n" .
 "X-Mailer: PHP/" . phpversion();
-if(mail("md.jasil@gmail.com",$subject,$message,$headers)){
+if(mail($to,$subject,$message,$headers)){
    return view('public.contactSuccess');
 }
 else {

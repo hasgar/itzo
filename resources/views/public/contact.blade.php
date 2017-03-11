@@ -69,7 +69,7 @@
 				</div>
 				<div class="form-group">
 				  <div class="col-sm-12">
-					<input class="form-control" id="subject" name="subject" placeholder="Sunject:" type="text" required>
+					<input class="form-control" id="subject" name="subject" placeholder="Subject:" type="text" required>
 				  </div>
 				</div>
 				<div class="form-group mr-bottom-20">
