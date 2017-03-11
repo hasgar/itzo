@@ -106,15 +106,15 @@ class UserController extends Controller
             public function paymentPending(){
                       $health = Healthcare::where('user_id',Auth::user()->id)->first();
                       $amount = 1000;
-                      if ($health['bed_range'] > 0 && $health['bed_range'] <= 50 ) {
+                      if ($health['bed_range'] == "0-50" ) {
 $amount = 1000;
-                      } else if ($health['bed_range'] > 50 && $health['bed_range'] <= 100 ) {
+                      } else if ($health['bed_range'] == "51-100" ) {
 $amount = 2000;
-                      } else if ($health['bed_range'] > 100 && $health['bed_range'] <= 200) {
+                      } else if ($health['bed_range'] == "101-200" ) {
 $amount = 3000;
-                      } else if ($health['bed_range'] > 200 && $health['bed_range'] <= 300) {
+                      } else if ($health['bed_range'] == "201-300" ) {
 $amount = 4000;
-                      } else if ($health['bed_range'] > 300) {
+                      } else if ($health['bed_range'] == "300+" ) {
 $amount = 5000;
                       }
                       $mytime = \Carbon\Carbon::now();
