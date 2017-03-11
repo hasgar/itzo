@@ -9,7 +9,7 @@
 	<header class="">
 
 
-		
+
 		<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
 								@include('public.layouts.headerMob')
@@ -18,7 +18,7 @@
 			<div class="container">
 					<div class="row">
 						@include('public.layouts.logo')
-						
+
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -38,14 +38,14 @@
 	<!--==================================Section Open=================================-->
 	<section>
 		<div class="container page-container">
-			
+
 			<!-- <div class="row listing-page-result-row margin-bottom-25">
 				<div class="col-md-4 col-sm-4 text-left">
 					<p>10 Results</p>
 				</div>
 				<div class="col-md-4 col-sm-4  text-center">
 					<p class="view-on-map">
-						
+
 
 					</p>
 				</div>
@@ -66,6 +66,8 @@
 					<!-- Popup Close -->
 					<div class="md-overlay md-overlayi"></div> <!-- Overlay for Popup -->
 			</div>
+			<?php
+$row_i=0; ?>
 					<div class="row lp-list-page-grid padding-top-50">
 						<?php $fect = "" ?>
 						@foreach ($healthcare as $health)
@@ -149,8 +151,12 @@
 								</div><!-- ../grid-box-bottom-->
 							</div><!-- ../grid-box -->
 						</div>
+						<?php
+						    $row_i++;
+						    if ($row_i%4 == 0 ) echo '</div><div class="row lp-list-page-grid padding-top-50">';
+						?>
 						@endforeach
-						
+
 
 
 
@@ -158,5 +164,5 @@
 					</div>
 		</div>
 	</section>
-	
+
 @endsection
