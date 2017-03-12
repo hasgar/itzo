@@ -605,7 +605,7 @@
 										</div>
 
 										<div class="form-group {{ $errors->has('departments') ? ' has-error' : '' }}">
-											<label for="departments">Departments / Services * <span style="font-weight:100;">(seperate using comma)</span></label>
+											<label for="departments">Departments / Services * </label>
 											<input type="text" class="form-control" id="departments" name="departments" value="{{ old('departments') }}" placeholder="Enter departments" required>
 											 @if ($errors->has('departments'))
 												<span class="help-block">

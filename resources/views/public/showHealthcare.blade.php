@@ -151,6 +151,15 @@
 								<p>
 									{{ $healthcare[0]['bed_range'] }}
 								</p>
+
+								<div class="post-row padding-top-5"></div>
+									<div class="post-row">
+										<h3>Departments</h3>
+										<p>
+											{{ $healthcare[0]['departments'] }}
+										</p>
+
+
 								<div class="post-row padding-top-5"></div>
 
 
