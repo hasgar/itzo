@@ -140,13 +140,23 @@
 			<div class="row">
 				<div class="col-md-8">
 
-
 					<div class="post-row">
 						<h3>About {{ $healthcare[0]['name'] }}</h3>
 						<p>
 							{{ $healthcare[0]['description'] }}
 						</p>
-						<div class="post-row padding-top-5">
+						<div class="post-row padding-top-5"></div>
+							<div class="post-row">
+								<h3>Beds</h3>
+								<p>
+									{{ $healthcare[0]['bed_range'] }}
+								</p>
+								<div class="post-row padding-top-5"></div>
+
+
+
+							@if ($healthcare[0]['food'] == 1)
+
 						<div class="post-row-header clearfix margin-bottom-15">
 							<h3>Food</h3>
 						</div>
@@ -202,12 +212,11 @@
 
 
 							@endif
-							@else
-							Accomodation not available
-							@endif
+
 						</ul>
 					</div>
-
+						@endif
+@if ($healthcare[0]['accommodation'] == 1)
 					<div class="post-row padding-top-5">
 						<div class="post-row-header clearfix margin-bottom-15">
 							<h3>Accommodation</h3>
@@ -263,11 +272,10 @@
 							</li>
 
 							@endif
-							@else
-							Accomodation not available
-							@endif
+
 						</ul>
 					</div>
+					@endif
 <div class="post-row padding-top-5">
 						<div class="post-row-header clearfix margin-bottom-15">
 							<h3>Payment Methods</h3>
