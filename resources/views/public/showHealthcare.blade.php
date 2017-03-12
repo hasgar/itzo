@@ -90,12 +90,12 @@
 									</span>
 
 									<span class="website-link">
-										<a href="http://{{ $healthcare[0]['website'] }}">{{ $healthcare[0]['website'] }}</a>
+										<a target="_blank" href="http://{{ $healthcare[0]['website'] }}">{{ $healthcare[0]['website'] }}</a>
 									</span>
 									@endif
 								</li>
 							</ul>
-							<div class="padding-top-10">Address: {{ $healthcare[0]['address'] }}</div>
+							<div class="padding-top-10">Address: {{ $healthcare[0]['address'] }},{{ $healthcare[0]['area'] }}</div>
 <div class="padding-top-10">Pricing: @for($i=0;$i<$healthcare[0]['price'];$i++)
 										<i class="fa fa-usd price-usd"></i>
 										@endfor</div>
