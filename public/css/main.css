@@ -95,7 +95,7 @@ color: #efaa52;
 .margin-top-7 {
 	margin-top: 7px;
 }
-.add-type {
+.add-type, .add-photo {
 	margin-top:7px;
     float: right;
     color: #4f95ff;
@@ -105,7 +105,7 @@ color: #efaa52;
 .mm-offcanvas {
 	display: none !important;
 }
-.add-type:hover {
+.add-type:hover, .add-photo:hover {
     color: #4082e6;
     cursor: pointer;
 

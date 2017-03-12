@@ -40,69 +40,28 @@
 		<div class="container page-container">
 			<div class="row">
 				<div class="col-md-12 search-row margin-top-subtract-35  margin-bottom-35">
-					<form class="form-inline clearfix">
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon lp-border "><i class="fa fa-crosshairs"></i></div>
-									<div class="ui-widget border-dropdown">
-									  <select class="comboboxs state">
-
-											<option value="{{$state_sel['id']}}">{{$state_sel['name']}}</option>
-										@foreach ($states as $state)
-										<option value="{{$state['id']}}">{{$state['name']}}</option>
-										@endforeach
-									  </select>
-									</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon lp-border"><i class="fa fa-crosshairs"></i></div>
-									<div class="ui-widget border-dropdown">
-									  <select class="comboboxs city-filter">
-											<option value="{{$city_sel['id']}}">{{$city_sel['name']}}</option>
-										@foreach ($cities as $city)
-										<option value="{{$city['id']}}">{{$city['name']}}</option>
-										@endforeach
-									  </select>
-									</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon lp-border"><i class="fa fa-list"></i></div>
-									<div class="ui-widget comboboxCategory border-dropdown">
-									  <select id="comboboxCategory" class="hospital-type">
-										<option value="{{$type_sel['id']}}">{{$type_sel['name']}}</option>
-										@foreach ($types as $type)
-										<option value="{{$type['id']}}">{{$type['name']}}</option>
-										@endforeach
-										 </select>
-									</div>
-
-							</div>
-						</div>
-						<div class="form-group margin-right-0">
-							<div class="input-group margin-right-0">
-								<div class="input-group-addon lp-border"><i class="fa fa-tag"></i></div>
-									<select data-placeholder="Tags" class="chosen-select tag-select-one fec-types" multiple >
-
-										@foreach ($fecilities as $fecility)
-										<option value="{{$fecility['id']}}">{{$fecility['name']}}</option>
-										@endforeach
-
-									</select>
-							</div>
-						</div>
+					<form class="form-inline clearfix" action="/selectHealthcare" method="get" style="
+							padding: 0px;
+					">
+					<input type="hidden" name="your-state" value="19" />
+					<input type="hidden" name="city" value="1947" />
+					<input type="hidden" name="country" value="101" />
+					<input type="hidden" name="state" value="19" />
+					<input type="hidden" name="type" value="1" />
+						<input type="text" id="search" name="search" placeholder="Search healthcare" autocomplete="off" style="
+						    padding: 17px;
+						    width: 100%;
+						">
 					</form>
-					<input class="selected-types" value="[]" type="hidden" />
-				</div>
+					</div>
+					<?php if($search != "0") { ?>
+					<p style="
+    color: #d43737;
+    padding-left: 20px;
+">Search result for: <b><?php echo $search; ?></b></p>
+<?php } ?>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="LPtagsContainer "></div>
-				</div>
-			</div>
+
 			<!-- <div class="row listing-page-result-row margin-bottom-25">
 				<div class="col-md-4 col-sm-4 text-left">
 					<p>10 Results</p>

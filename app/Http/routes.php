@@ -18,6 +18,7 @@ Route::post('/getCities', 'LocationController@getCities');
 Route::post('/getStates', 'LocationController@getStates');
 Route::get('/selectHealthcare', 'HealthcareController@selectHealthcare');
 Route::get('/healthcare/type/{name}', 'HealthcareController@typeHealthcares');
+Route::get('/healthcare/type/{name}', 'HealthcareController@typeHealthcares');
 Route::get('/healthcare/{id}/{name}', 'HealthcareController@showHealthcare');
 Route::get('/book/{id}/{name}', 'HealthcareController@bookHealthcare');
 Route::post('/booked', 'HealthcareController@book')->middleware('isUser');

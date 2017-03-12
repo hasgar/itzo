@@ -26,10 +26,15 @@ use Carbon;
 class HealthcareController extends Controller
 {
     public function selectHealthcare(Request $request) {
-
+      $search = "0";
         if( States::where('id',$request['state'])->count() > 0 && Cities::where('id',$request['city'])->count() > 0 && Types::where('id',$request['type'])->count() > 0) {
         $healthcare_types = HealthcareTypes::where('type_id',$request['type'])->pluck('healthcare_id');
+        if (isset($request["search"])) {
+          $search  = $request["search"];
+          $healthcare = Healthcare::where('city_id', $request['city'])->where('is_approved', 1)->where('status', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->where('payment_done', 1)->where('is_verified', 1)->where('name', 'LIKE', '%'.$request["search"].'%')->get();
+        } else {
         $healthcare = Healthcare::where('city_id', $request['city'])->where('is_approved', 1)->where('status', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->where('payment_done', 1)->where('is_verified', 1)->get();
+      }
         $states = States::where('country_id',101)->get();
         $cities = Cities::where('state_id',$request['state'])->get();
         $types = Types::all();
@@ -67,7 +72,8 @@ class HealthcareController extends Controller
         $fec .= ",20";
         if(Healthcare::where('id',$healthcare[0]['id'])->where('tours',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= "19";
-        return view('public.selectHealthcare')->with('states',$states)->with('fecilities',$fecilities)->with('fec',$fec)->with('cities',$cities)->with('types',$types)->with('healthcare',$healthcare)->with('city_sel',$city_sel)->with('state_sel',$state_sel)->with('type_sel',$type_sel);
+
+        return view('public.selectHealthcare')->with('states',$states)->with('fecilities',$fecilities)->with('fec',$fec)->with('cities',$cities)->with('types',$types)->with('healthcare',$healthcare)->with('city_sel',$city_sel)->with('state_sel',$state_sel)->with('type_sel',$type_sel)->with('search',$search);
         }
         else {
 
@@ -77,6 +83,8 @@ class HealthcareController extends Controller
 
 
     public function typeHealthcares(Request $request) {
+      $search = "0";
+
         $request->name = ucfirst($request->name);
         if( $request->name == "Chinese")
             $request->name = "Chinese/Traditional";
@@ -84,7 +92,12 @@ class HealthcareController extends Controller
           $id = Types::where('name',$request->name)->pluck('id')[0];
 
          $healthcare_types = HealthcareTypes::where('type_id',$id)->pluck('healthcare_id');
-        $healthcare = Healthcare::where('is_approved', 1)->where('status', 1)->where('payment_done', 1)->where('is_verified', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->get();
+         if (isset($request["search"])) {
+           $search  = $request["search"];
+           $healthcare = Healthcare::where('is_approved', 1)->where('status', 1)->where('payment_done', 1)->where('is_verified', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->where('name', 'LIKE', '%'.$request["search"].'%')->get();
+           } else {
+           $healthcare = Healthcare::where('is_approved', 1)->where('status', 1)->where('payment_done', 1)->where('is_verified', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->get();
+           }
         $type_sel = Types::where('id',$id)->get()[0];
         /*$states = States::where('country_id',101)->get();
         $cities = Cities::where('state_id',$request['state'])->get();
@@ -125,7 +138,7 @@ class HealthcareController extends Controller
         if(Healthcare::where('id',$healthcare[0]['id'])->where('tours',1)->count() > 0)
         $fec .= "19";
         */
-        return view('public.selectHealthcares')->with('healthcare',$healthcare)->with('type_sel',$type_sel);
+        return view('public.selectHealthcares')->with('healthcare',$healthcare)->with('type_sel',$type_sel)->with('search',$search)->with('name',$request->name);
         }
         else {
             return redirect('/404');

@@ -11,6 +11,7 @@ use Sentinel;
 use App\Users;
 use App\Healthcare;
 use App\Photos;
+use Illuminate\Support\Facades\Input;
 use App\Types;
 use App\HealthcareTypes;
 use Illuminate\Support\Facades\Mail;
@@ -249,12 +250,9 @@ class AuthController extends Controller
             if(!isset($data['accommodation_general'])) {
                 $data['accommodation_general'] = 0;
             }
-            if($data['twentyfourseven'] == 0) {
-                $data['accommodation_general'] = 0;
-            }
 
             $otp = rand(1000,9999);
-            $healthcare = Healthcare::create([
+           $healthcare = Healthcare::create([
             'name' => $data['name'],
             'user_id' => $user['id'],
             'email' =>  $data['email'],
@@ -266,8 +264,8 @@ class AuthController extends Controller
             'address' => $data['address'],
             'pin' => $data['pin'],
             'mobile' => $data['country_code_mobile'].$data['mobile'],
-            'phone' => $data['country_code_phone'].$data['phone'],
-            'fax' => $data['country_code_fax'].$data['fax'],
+            'phone' =>$data['country_code_phone'].$data['mobile'],
+            'fax' => $data['country_code_fax'].$data['mobile'],
             'price' => $data['category'],
             'description' => $data['description'],
             'veg' => $data['food_veg'],
@@ -331,19 +329,18 @@ class AuthController extends Controller
             'OTP' => $otp,
             'is_verified' => 0
         ]);
-        if (!isset($data['no_of_pics'])) {
-          $data['no_of_pics'] = 2;
-        }
-        $pro_pic = '';
-            for($i=1;$i<$data['no_of_pics'];$i++){
-                if($request->hasFile('photo_'.$i)){
 
-            $extension = $request->file('photo_'.$i)->getClientOriginalExtension();
+
+        $pro_pic = '';
+        $i = 0;
+        foreach(Input::file("photos") as $file) {
+          $i++;
+            $extension = $file->getClientOriginalExtension();
             $destinationPath = 'images/healthcare/';
             $fileName = str_replace(" ","",uniqid('img_'.$healthcare['id'].'_', true).microtime().'.'.$extension);
             if($i == 1)
 $pro_pic = $fileName;
-            if($request->file('photo_'.$i)->move($destinationPath, $fileName))
+            if($file->move($destinationPath, $fileName))
             {
               $photos = Photos::create([
             'healthcare_id' => $healthcare['id'],
@@ -356,7 +353,6 @@ $pro_pic = $fileName;
                 'message' => 'image_upload',
                 'errors' => 'photo upload failed'
             ];
-            }
             }
             }
             Healthcare::where('id',$healthcare['id'])->update(['pro_pic' => $pro_pic]);

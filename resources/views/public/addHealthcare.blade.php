@@ -899,35 +899,18 @@
 										<input type="hidden" name="loc-lon" id="loc-lon">
 										<input type="hidden" name="loc-rad" id="loc-rad">
 </div>
-								<div class="form-group {{ $errors->has('photo_1') ? ' has-error' : '' }}">
-											<label for="photo_1">Photo 1 *</label>
-											<input type="file" class="form-control" name="photo_1" id="photo_1" required value="{{ old('photo_1') }}">
-											@if ($errors->has('photo_1'))
+								<div class="form-group {{ $errors->has('photos') ? ' has-error' : '' }}">
+											<label for="photos">Choose Mutiple Photos * (Max :10mb, 50 files)</label>
+											<input type="file" name="photos[]" multiple="" />
+											@if ($errors->has('photos'))
 												<span class="help-block">
-													<strong>{{ $errors->first('photo_1') }}</strong>
+													<strong>{{ $errors->first('photos') }}</strong>
 												</span>
 											@endif
-										</div>
-										<div class="form-group {{ $errors->has('photo_2') ? ' has-error' : '' }}">
-											<label for="photo_2">Photo 2 </label>
-											<input type="file" class="form-control" name="photo_2" id="photo_2" value="{{ old('photo_2') }}">
-											@if ($errors->has('photo_2'))
-												<span class="help-block">
-													<strong>{{ $errors->first('photo_2') }}</strong>
-												</span>
-											@endif
-										</div>
 
 
-										<div class="form-group {{ $errors->has('photo_3') ? ' has-error' : '' }}">
-											<label for="photo_3">Photo 3</label>
-											<input type="file" class="form-control" name="photo_3" id="photo_3" value="{{ old('photo_3') }}">
-											@if ($errors->has('photo_3'))
-												<span class="help-block">
-													<strong>{{ $errors->first('photo_3') }}</strong>
-												</span>
-											@endif
 										</div>
+
 
 										<input type="hidden" name="type" value="2" />
 
@@ -955,6 +938,7 @@
 @endsection
 
 @section('addition_scripts')
+
 <script>
 $( function() {
 var availableTags = [

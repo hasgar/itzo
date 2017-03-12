@@ -38,8 +38,26 @@
 	<!--==================================Section Open=================================-->
 	<section>
 		<div class="container page-container">
+			<div class="row">
+				<div class="col-md-12 search-row margin-top-subtract-35  margin-bottom-35">
+					<form class="form-inline clearfix" action="/healthcare/type/{{strtolower($name)}}" method="get" style="
+							padding: 0px;
+					">
 
-			<!-- <div class="row listing-page-result-row margin-bottom-25">
+						<input type="text" id="search" name="search" placeholder="Search healthcare" autocomplete="off" style="
+						    padding: 17px;
+						    width: 100%;
+						">
+					</form>
+					</div>
+					<?php if($search != "0") { ?>
+					<p style="
+    color: #d43737;
+    padding-left: 20px;
+">Search result for: <b><?php echo $search; ?></b></p>
+<?php } ?>
+			</div>
+				<!-- <div class="row listing-page-result-row margin-bottom-25">
 				<div class="col-md-4 col-sm-4 text-left">
 					<p>10 Results</p>
 				</div>
@@ -104,8 +122,8 @@ $row_i=0; ?>
 								<div class="lp-grid-box-thumb-container">
 									<div class="lp-grid-box-thumb">
 										<a href="/healthcare/{{ $health['id'] }}/{{ urlencode($health['name']) }}">
-										<img src="images/healthcare/{{ $health['pro_pic'] }}" alt="grid-3" />
-									</a>
+											<img src="../../images/healthcare/{{ $health['pro_pic'] }}" alt="grid-3" />
+										</a>
 									</div><!-- ../grid-box-thumb -->
 
 								</div>
