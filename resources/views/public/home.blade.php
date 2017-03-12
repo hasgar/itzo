@@ -177,11 +177,11 @@
 										</div>
 										<div class="city-title text-center">
 											<h3 class="lp-h3">
-												<a href="listing.html">Advertise here</a>
+												<a href="/contact">Advertise here</a>
 											</h3>
 											<label class="lp-listing-quantity">Contact us</label>
 										</div>
-										<a href="listing.html" class="overlay-link"></a>
+										<a href="/contact" class="overlay-link"></a>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
@@ -191,11 +191,11 @@
 										</div>
 										<div class="city-title text-center">
 											<h3 class="lp-h3">
-												<a href="listing.html">Advertise here</a>
+												<a href="/contact">Advertise here</a>
 											</h3>
 											<label class="lp-listing-quantity">Contact us</label>
 										</div>
-										<a href="listing.html" class="overlay-link"></a>
+										<a href="/contact" class="overlay-link"></a>
 									</div>
 								</div>
 								<div class="col-md-3 col-sm-3 col-xs-12">
@@ -205,11 +205,11 @@
 										</div>
 										<div class="city-title text-center">
 											<h3 class="lp-h3">
-												<a href="listing.html">Advertise here</a>
+												<a href="/contact">Advertise here</a>
 											</h3>
 											<label class="lp-listing-quantity">Contact us</label>
 										</div>
-										<a href="listing.html" class="overlay-link"></a>
+										<a href="/contact" class="overlay-link"></a>
 									</div>
 								</div>
 								<div class="col-md-3 col-sm-3 col-xs-12">
@@ -219,11 +219,11 @@
 										</div>
 										<div class="city-title text-center">
 											<h3 class="lp-h3">
-												<a href="listing.html">Advertise here</a>
+												<a href="/contact">Advertise here</a>
 											</h3>
 											<label class="lp-listing-quantity">Contact us</label>
 										</div>
-										<a href="listing.html" class="overlay-link"></a>
+										<a href="/contact" class="overlay-link"></a>
 									</div>
 								</div>
 							</div>
