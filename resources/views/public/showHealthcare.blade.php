@@ -306,6 +306,7 @@
 <b>Sunday:</b> {{$healthcare[0]['sun_from']}} - {{$healthcare[0]['sun_to']}} <br>
 @endif
 </div>
+</div>
 
 <div class="post-row padding-top-5">
 						<div class="post-row-header clearfix margin-bottom-15">
