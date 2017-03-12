@@ -25,10 +25,7 @@
 		<div class="page-heading listing-page archive-page ">
 			<div class="page-heading-inner-container text-center">
 				<h1>{{$type_sel['name']}}</h1>
-				<ul class="breadcrumbs">
-					<li><a href="/">Home</a></li>
-					<li><span>{{$type_sel['name']}}</span></li>
-				</ul>
+				
 			</div>
 			<div class="page-header-overlay"></div>
 		</div><!-- ../Home Search Container -->

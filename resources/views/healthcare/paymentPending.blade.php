@@ -1,6 +1,6 @@
 @extends('public.layouts.master')
 
-@section('title', 'Enter OTP - Chikitzo')
+@section('title', 'Payment Pending - Chikitzo')
 
 
 @section('content')
