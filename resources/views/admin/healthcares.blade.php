@@ -83,7 +83,7 @@
 
 												<div class="lp-list-view-content">
 													<div class="lp-list-view-content-upper">
-													<h3 class="booking-id">{{$healthcare['name']}}</h3>
+													<h3 class="booking-id"><a href="/healthcare/{{ $healthcare['id'] }}/{{ urlencode($healthcare['name']) }}" target="_blank">{{$healthcare['name']}}</a></h3>
 														<h4>Healthcare ID: H{{$healthcare['id']}}</h4>
 														<div class="user-portfolio-stat padding-top-0">
 												<ul>
