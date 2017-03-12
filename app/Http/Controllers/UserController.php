@@ -177,7 +177,7 @@ mail($to, $subject, $message);
 
 $to = $healthcare["email"];
 $subject = 'Chikitzo - Payment pending!';
-$message = 'Hello '.$user["name"].' Team,
+$message = 'Hello '.$healthcare["name"].' Team,
 
 Thanks for registering with us.
 
