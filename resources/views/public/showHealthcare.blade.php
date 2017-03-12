@@ -288,6 +288,26 @@
 					</div>
 					@endif
 <div class="post-row padding-top-5">
+
+					<div class="post-row-header clearfix margin-bottom-15">
+						<h3>Timing</h3>
+					</div>
+@if ($healthcare[0]['twentyfourseven'] == 1)
+<b>24x7</b>
+
+@else
+
+Monday: {{$healthcare[0]['mon_from']}} - {{$healthcare[0]['mon_to']}}
+Tuesday: {{$healthcare[0]['tue_from']}} - {{$healthcare[0]['tue_to']}}
+Wednesday: {{$healthcare[0]['wed_from']}} - {{$healthcare[0]['wed_to']}}
+Thursday: {{$healthcare[0]['thu_from']}} - {{$healthcare[0]['thu_to']}}
+Friday: {{$healthcare[0]['fri_from']}} - {{$healthcare[0]['fri_to']}}
+Saturday: {{$healthcare[0]['sat_from']}} - {{$healthcare[0]['sat_to']}}
+Sunday: {{$healthcare[0]['sun_from']}} - {{$healthcare[0]['sun_to']}}
+@endif
+</div>
+
+<div class="post-row padding-top-5">
 						<div class="post-row-header clearfix margin-bottom-15">
 							<h3>Accreditation</h3>
 						</div>
@@ -355,7 +375,7 @@
 							</li>
 							@endif
 
-							
+
 						</ul>
 					</div>
 

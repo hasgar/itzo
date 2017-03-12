@@ -276,6 +276,7 @@ class AuthController extends Controller
             'shared' => $data['accommodation_shared'],
             'single_non_ac' => $data['accommodation_single_non_ac'],
             'single_ac' => $data['accommodation_single_ac'],
+            'twentyfourseven' => $data['accommodation_single_ac'],
             'mon_from' => $data['working_hours_mon_from'],
             'mon_to' => $data['working_hours_mon_to'],
             'tue_from' => $data['working_hours_tue_from'],
