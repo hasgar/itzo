@@ -90,7 +90,7 @@
 									</span>
 
 									<span class="website-link">
-										{{ $healthcare[0]['website'] }}
+										<a href="http://{{ $healthcare[0]['website'] }}">{{ $healthcare[0]['website'] }}</a>
 									</span>
 									@endif
 								</li>
