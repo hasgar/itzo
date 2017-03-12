@@ -213,6 +213,7 @@
 
 							@endif
 
+								@endif
 						</ul>
 					</div>
 						@endif
@@ -270,8 +271,9 @@
 								General Ward
 								</a>
 							</li>
-
 							@endif
+
+								@endif
 
 						</ul>
 					</div>
