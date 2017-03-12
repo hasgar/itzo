@@ -297,13 +297,13 @@
 
 @else
 
-Monday: {{$healthcare[0]['mon_from']}} - {{$healthcare[0]['mon_to']}}
-Tuesday: {{$healthcare[0]['tue_from']}} - {{$healthcare[0]['tue_to']}}
-Wednesday: {{$healthcare[0]['wed_from']}} - {{$healthcare[0]['wed_to']}}
-Thursday: {{$healthcare[0]['thu_from']}} - {{$healthcare[0]['thu_to']}}
-Friday: {{$healthcare[0]['fri_from']}} - {{$healthcare[0]['fri_to']}}
-Saturday: {{$healthcare[0]['sat_from']}} - {{$healthcare[0]['sat_to']}}
-Sunday: {{$healthcare[0]['sun_from']}} - {{$healthcare[0]['sun_to']}}
+<b>Monday:</b> {{$healthcare[0]['mon_from']}} - {{$healthcare[0]['mon_to']}} <br>
+<b>Tuesday:</b> {{$healthcare[0]['tue_from']}} - {{$healthcare[0]['tue_to']}} <br>
+<b>Wednesday:</b> {{$healthcare[0]['wed_from']}} - {{$healthcare[0]['wed_to']}} <br>
+<b>Thursday:</b> {{$healthcare[0]['thu_from']}} - {{$healthcare[0]['thu_to']}} <br>
+<b>Friday:</b> {{$healthcare[0]['fri_from']}} - {{$healthcare[0]['fri_to']}} <br>
+<b>Saturday:</b> {{$healthcare[0]['sat_from']}} - {{$healthcare[0]['sat_to']}} <br>
+<b>Sunday:</b> {{$healthcare[0]['sun_from']}} - {{$healthcare[0]['sun_to']}} <br>
 @endif
 </div>
 
