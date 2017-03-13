@@ -31,9 +31,9 @@ class HealthcareController extends Controller
         $healthcare_types = HealthcareTypes::where('type_id',$request['type'])->pluck('healthcare_id');
         if (isset($request["search"])) {
           $search  = $request["search"];
-          $healthcare = Healthcare::where('city_id', $request['city'])->where('is_approved', 1)->where('status', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->where('payment_done', 1)->where('is_verified', 1)->where('name', 'LIKE', '%'.$request["search"].'%')->get();
+          $healthcare = Healthcare::where('city_id', $request['city'])->where('is_approved', 1)->where('status', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->where('payment_done', 1)->where('is_verified', 1)->where('name', 'LIKE', '%'.$request["search"].'%')->orderBy('name', 'asc')->get();
         } else {
-        $healthcare = Healthcare::where('city_id', $request['city'])->where('is_approved', 1)->where('status', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->where('payment_done', 1)->where('is_verified', 1)->get();
+        $healthcare = Healthcare::where('city_id', $request['city'])->where('is_approved', 1)->where('status', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->where('payment_done', 1)->where('is_verified', 1)->orderBy('name', 'asc')->get();
       }
         $states = States::where('country_id',101)->get();
         $cities = Cities::where('state_id',$request['state'])->get();
@@ -94,9 +94,9 @@ class HealthcareController extends Controller
          $healthcare_types = HealthcareTypes::where('type_id',$id)->pluck('healthcare_id');
          if (isset($request["search"])) {
            $search  = $request["search"];
-           $healthcare = Healthcare::where('is_approved', 1)->where('status', 1)->where('payment_done', 1)->where('is_verified', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->where('name', 'LIKE', '%'.$request["search"].'%')->get();
+           $healthcare = Healthcare::where('is_approved', 1)->where('status', 1)->where('payment_done', 1)->where('is_verified', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->where('name', 'LIKE', '%'.$request["search"].'%')->orderBy('name', 'asc')->get();
            } else {
-           $healthcare = Healthcare::where('is_approved', 1)->where('status', 1)->where('payment_done', 1)->where('is_verified', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->get();
+           $healthcare = Healthcare::where('is_approved', 1)->where('status', 1)->where('payment_done', 1)->where('is_verified', 1)->whereIn('id', $healthcare_types)->with(['rating','city'])->orderBy('name', 'asc')->get();
            }
         $type_sel = Types::where('id',$id)->get()[0];
         /*$states = States::where('country_id',101)->get();
@@ -152,7 +152,7 @@ class HealthcareController extends Controller
             $country = Countries::where('id', $healthcare[0]['country_id'])->first();
 
         $healthcare_types = HealthcareTypes::where('healthcare_id',$request->id)->with(['types'])->get();
-        
+
         $ratings = Ratings::where('healthcare_id', $request->id)->with(['user'])->orderBy('id', 'desc')->get();
         $fecilities = HealthcareFecilities::where('healthcare_id', $request->id)->with(['fecility'])->get();
         $photos = Photos::where('healthcare_id', $request->id)->get();
