@@ -96,9 +96,9 @@
 								</li>
 							</ul>
 							<div class="padding-top-10">Address: {{ $healthcare[0]['address'] }}, {{ $healthcare[0]['area'] }}, {{ $healthcare[0]['city'][0]["name"] }}, {{ $state["name"] }}, {{ $country["name"] }}</div>
-<div class="padding-top-10">Pricing: @for($i=0;$i<$healthcare[0]['price'];$i++)
+<!--<div class="padding-top-10">Pricing: @for($i=0;$i<$healthcare[0]['price'];$i++)
 										<i class="fa fa-usd price-usd"></i>
-										@endfor</div>
+										@endfor</div> -->
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-12">
