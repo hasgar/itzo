@@ -44,7 +44,7 @@ class HealthcareController extends Controller
         $type_sel = Types::where('id',$request['type'])->get()[0];
         $fec = "";
         if(count($healthcare) < 1) {
-            return view('public.noHealthcareFound')->with('states',$states)->with('fecilities',$fecilities)->with('fec',$fec)->with('cities',$cities)->with('types',$types)->with('healthcare',$healthcare)->with('city_sel',$city_sel)->with('state_sel',$state_sel)->with('type_sel',$type_sel);
+            return view('public.noHealthcareFound')->with('states',$states)->with('fecilities',$fecilities)->with('fec',$fec)->with('cities',$cities)->with('types',$types)->with('healthcare',$healthcare)->with('city_sel',$city_sel)->with('state_sel',$state_sel)->with('type_sel',$type_sel)->with('search',$search);
         }
         if(Healthcare::where('id',$healthcare[0]['id'])->where('lab',1)->where('payment_done', 1)->where('is_verified', 1)->count() > 0)
         $fec .= "8";
@@ -109,7 +109,7 @@ class HealthcareController extends Controller
         $fec = "";
         */
         if(count($healthcare) < 1) {
-            return view('public.noHealthcaresFound')->with('healthcare',$healthcare)->with('type_sel',$type_sel);
+            return view('public.noHealthcaresFound')->with('healthcare',$healthcare)->with('type_sel',$type_sel)->with('search',$search);
         }
         /*if(Healthcare::where('id',$healthcare[0]['id'])->where('lab',1)->count() > 0)
         $fec .= "8";
@@ -147,11 +147,16 @@ class HealthcareController extends Controller
 
     public function showHealthcare(Request $request) {
         $healthcare = Healthcare::where('id', $request->id)->where('is_approved', 1)->where('status', 1)->get();
-        $healthcare_types = HealthcareTypes::where('healthcare_id',$request->id);
+
+        $state = States::where('id', $healthcare[0]['state_id'])->first();
+            $country = Countries::where('id', $healthcare[0]['country_id'])->first();
+
+        $healthcare_types = HealthcareTypes::where('healthcare_id',$request->id)->with(['types'])->get();
+        
         $ratings = Ratings::where('healthcare_id', $request->id)->with(['user'])->orderBy('id', 'desc')->get();
         $fecilities = HealthcareFecilities::where('healthcare_id', $request->id)->with(['fecility'])->get();
         $photos = Photos::where('healthcare_id', $request->id)->get();
-        return view('public.showHealthcare')->with('healthcare',$healthcare)->with('healthcare_types',$healthcare_types)->with('ratings',$ratings)->with('fecilities',$fecilities)->with('photos',$photos);
+        return view('public.showHealthcare')->with('healthcare',$healthcare)->with('healthcare_types',$healthcare_types)->with('ratings',$ratings)->with('fecilities',$fecilities)->with('photos',$photos)->with('state',$state)->with('country',$country);
 
     }
      public function addHealthcare() {
@@ -180,7 +185,7 @@ class HealthcareController extends Controller
 
             $healthcare = Healthcare::where('id', $request['id'])->where('payment_done', 1)->where('is_verified', 1)->get();
             $booking = Booking::create(['healthcare_id' => $request['id'],
-            'user_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0],
+            'user_id' => Auth::user()->id,
             'message' => $request['message'],
             'date' => $request['dateOfBook'],
             'is_confirmed' => 0,
@@ -206,10 +211,11 @@ class HealthcareController extends Controller
 
     }
     public function cancelBooking(Request $request){
+
         $booking = Booking::where('id',$request->id)->where('user_id',Auth::user()->id)->update(['is_confirmed' => 3]);
-        $booking = Booking::where('id',$request->id)->get();
-        Conversation::create(['user_1_id' => Users::where('user_id',Auth::user()->id)->pluck('id')[0],
-            'user_2_id' => $booking[0]['healthcare_id'],
+$booking = Booking::where('id',$request->id)->first();
+        Conversation::create(['user_1_id' => Auth::user()->id,
+            'user_2_id' => $booking['healthcare_id'],
             'message' => "Booking #CH".$request->id." Cancelled by ".Auth::user()->name ,
             'ip' => $_SERVER["REMOTE_ADDR"],
             'booking_id' => $request->id,

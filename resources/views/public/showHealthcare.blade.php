@@ -39,7 +39,7 @@
 								<li><a href="/">Home</a></li>
 								<li><a href="/">Chinese Traditional</a></li>
 							</ul> -->
-							<h1 class="hospital-name-head">{{ $healthcare[0]['name'] }}</h1>
+							<h1 class="hospital-name-head">{{ $healthcare[0]['name'] }} @if($healthcare[0]['certificate'] == "1") <img src="/images/certified.png" />  @endif</h1>
 							<ul class="post-stat">
 								@if(count($ratings) > 0)
 								<li class="reviews">
@@ -95,7 +95,7 @@
 									@endif
 								</li>
 							</ul>
-							<div class="padding-top-10">Address: {{ $healthcare[0]['address'] }},{{ $healthcare[0]['area'] }}</div>
+							<div class="padding-top-10">Address: {{ $healthcare[0]['address'] }}, {{ $healthcare[0]['area'] }}, {{ $healthcare[0]['city'][0]["name"] }}, {{ $state["name"] }}, {{ $country["name"] }}</div>
 <div class="padding-top-10">Pricing: @for($i=0;$i<$healthcare[0]['price'];$i++)
 										<i class="fa fa-usd price-usd"></i>
 										@endfor</div>
@@ -145,6 +145,34 @@
 						<p>
 							{{ $healthcare[0]['description'] }}
 						</p>
+						@if(\Auth::check())
+						<h3>Contact</h3>
+						<p>
+							<b>Name:</b> {{ $healthcare[0]['contact_name'] }} <br>
+							<b>Email:</b> {{ $healthcare[0]['contact_email'] }}
+						</p>
+						@endif
+						<div class="post-row padding-top-5"></div>
+
+
+<h3>Catehory of healthcare provider</h3>
+<p>
+@if($healthcare[0]['price'] == "1")
+Clinic
+@endif
+@if($healthcare[0]['price'] == "2")
+Mini Hospital
+@endif
+@if($healthcare[0]['price'] == "3")
+Hospital / General
+@endif
+@if($healthcare[0]['price'] == "4")
+Speciality
+@endif
+@if($healthcare[0]['price'] == "5")
+Multi Speciality
+@endif
+</p>
 						<div class="post-row padding-top-5"></div>
 							<div class="post-row">
 								<h3>Beds</h3>
@@ -152,9 +180,17 @@
 									{{ $healthcare[0]['bed_range'] }}
 								</p>
 
+																	<div class="post-row padding-top-5"></div>
+									<h3>Types of treatment available</h3>
+									<p>
+										 @foreach($healthcare_types as $type)
+										{{ $type["types"][0]["name"] }},
+										@endforeach
+									</p>
+
 								<div class="post-row padding-top-5"></div>
 									<div class="post-row">
-										<h3>Departments</h3>
+										<h3>Departments & Services</h3>
 										<p>
 											{{ $healthcare[0]['departments'] }}
 										</p>
@@ -164,7 +200,7 @@
 
 
 
-							
+
 
 <div class="post-row padding-top-5">
 

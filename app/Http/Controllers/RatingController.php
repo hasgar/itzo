@@ -17,17 +17,11 @@ class RatingController extends Controller
     {
         $this->middleware('isUser');
     }
-  
+
    public function addRating(Request $request)
   {
-      //$results =Excel::load( 'public/sample.csv' , function($reader) {
-        //  return  $reader->toObject();
-      //});
-      return Excel::load($request->file('file'), function($reader) {
 
-})->get();
-      return $results;
-            return 'sds';
+    
       $rules = array(
         'rating' => 'required|in:1,2,3,4,5',
         'message' => 'required',
@@ -42,14 +36,14 @@ class RatingController extends Controller
             'errors' => $validation->errors()
         ];
     }
-    
+
     Ratings::create([
             'rating' => $request['rating'],
             'user_id' => Auth::user()->id,
             'message' => $request['message'],
             'healthcare_id' =>  $request['healthcare_id'],
         ]);
-    
+
     return redirect('/healthcare/'.Healthcare::where('id',$request['healthcare_id'])->pluck('id')[0].'/'.urlencode(Healthcare::where('id',$request['healthcare_id'])->pluck('name')[0]));
   }
 }

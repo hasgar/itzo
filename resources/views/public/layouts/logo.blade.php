@@ -43,7 +43,7 @@
 							<div class="lp-menu pull-right menu">
 								<ul>
 									@if (Auth::guest())
-									<li><a href="/signin"><i class="fa fa-user user-plus-icon"></i>  Login</a> / <a href="/signup"><i class="fa fa-user-plus user-plus-icon"></i>  Register</a></li>
+									<li><a href="/signin"><i class="fa fa-user user-plus-icon"></i>  Login</a> / <a href="/signup"><i class="fa fa-user-plus user-plus-icon"></i>  Sign up</a></li>
 									@else
 									@if(Sentinel::findById(Auth::user()->id)->inRole('user'))
 									<li><a href="/user/dashboard"><i class="fa fa-dashboard user-plus-icon"></i>  Dashboard</a></li>

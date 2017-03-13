@@ -107,7 +107,7 @@
 										</div>
 
 										<div class="form-group {{ $errors->has('twentyfourseven') ? ' has-error' : '' }}">
-											<label for="twentyfourseven">Is your healthcare work 24x7 ?</label>
+											<label for="twentyfourseven">Is your working hours 24 x 7?</label>
 											<select  class="form-control" id="twentyfourseven" name="twentyfourseven">
 											<option value="0">No</option>
 										<option value="1" selected="">Yes</option>
@@ -802,7 +802,7 @@
 
 										<div class="form-group {{ $errors->has('other_fecilities') ? ' has-error' : '' }}">
 											<label for="other_fecilities">Any other facilities available?</label>
-											<input type="text" class="form-control" name="other_fecilities"  id="other_fecilities" value="{{ old('other_fecilities') }}" placeholder="Enter Other fecilities avilable">
+											<input type="text" class="form-control" name="other_fecilities"  id="other_fecilities" value="{{ old('other_fecilities') }}" placeholder="Enter Other facilities avilable">
 
 											@if ($errors->has('other_fecilities'))
 												<span class="help-block">
@@ -871,21 +871,7 @@
 											@endif
 										</div>
 
-										<div class="form-group {{ $errors->has('payment_mode') ? ' has-error' : '' }}">
-											<label for="payment_mode">Payment Mode *</label>
-											<select  class="form-control" id="payment_mode" name="payment_mode" required>
-												<option value="">Select your payment mode</option>
-												<option value="cheque">Cheque</option>
-												<option value="dd">DD</option>
-												<option value="net_banking">Net banking</option>
-												<option value="other">Other</option>
-											</select>
-											@if ($errors->has('payment_mode'))
-												<span class="help-block">
-													<strong>{{ $errors->first('payment_mode') }}</strong>
-												</span>
-											@endif
-										</div>
+
 
 <div class="form-group {{ $errors->has('location') ? ' has-error' : '' }}">
 											<label for="location">Choose location on map</label>
@@ -909,6 +895,21 @@
 											@endif
 
 
+										</div>
+										<div class="form-group {{ $errors->has('payment_mode') ? ' has-error' : '' }}">
+											<label for="payment_mode">Payment Mode for registration *</label>
+											<select  class="form-control" id="payment_mode" name="payment_mode" required>
+												<option value="">Select your payment mode</option>
+												<option value="cheque">Cheque</option>
+												<option value="dd">DD</option>
+												<option value="net_banking">Net banking</option>
+												<option value="other">Other</option>
+											</select>
+											@if ($errors->has('payment_mode'))
+												<span class="help-block">
+													<strong>{{ $errors->first('payment_mode') }}</strong>
+												</span>
+											@endif
 										</div>
 
 

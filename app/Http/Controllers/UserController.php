@@ -66,7 +66,7 @@ class UserController extends Controller
     }
 
     public function dashboard(){
-        $booking = Booking::where('user_id',Users::where('user_id',Auth::user()->id)->pluck('id')[0])->with(['healthcare'])->orderBy('id','desc')->get();
+        $booking = Booking::where('user_id',Auth::user()->id)->with(['healthcare'])->orderBy('id','desc')->get();
                 return view('user.dashboard')->with('booking',$booking);
     }
      public function chat(Request $request){

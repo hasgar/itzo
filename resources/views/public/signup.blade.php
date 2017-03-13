@@ -40,6 +40,7 @@
 									<h1 class="text-center padding-top-15">Sign Up</h1>
 									<form class="form-horizontal margin-top-30"role="form" method="POST" action="{{ url('/register') }}">
                        					 {{ csrf_field() }}
+<div class="row">
 										<div class="col-md-6  padding-left-0  form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 											<label for="name">Full Name *</label>
 											<input type="name" class="form-control" name="name" id="name" value="{{ old('name') }}" required>
@@ -58,6 +59,7 @@
 												</span>
 											@endif
 										</div>
+									</div><div class="row">
 										<div class="col-md-6  padding-left-0  form-group {{ $errors->has('password') ? ' has-error' : '' }}">
 											<label for="sipassword">Password *</label>
 											<input type="password" class="form-control" id="password" name="password" required>
@@ -76,6 +78,7 @@
 												</span>
 											@endif
 										</div>
+										</div><div class="row">
 										<div class="form-group  col-md-6  padding-left-0  {{ $errors->has('mobile') ? ' has-error' : '' }}">
 											<label for="mobile">Mobile Number</label>
 											<div class="col-md-3" style="
@@ -114,6 +117,7 @@
 												</span>
 											@endif
 										</div>
+										</div><div class="row">
 										<div class="form-group   col-md-6  padding-left-0 {{ $errors->has('state') ? ' has-error' : '' }}">
 											<label for="state">State *</label>
 											<select type="state" class="form-control" id="state" name="state" required>
@@ -136,6 +140,7 @@
 												</span>
 											@endif
 										</div>
+										</div><div class="row">
 										<input type="hidden" name="type" value="1" />
 										<div class="form-group" align="center">
 
@@ -151,6 +156,7 @@
 
 									</div>
 								<a class="md-close"><i class="fa fa-close"></i></a>
+								</div>
 								</div>
 
 							</div>

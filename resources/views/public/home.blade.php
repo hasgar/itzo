@@ -29,7 +29,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-sm-12 text-center">
-						  <h1  style="color: #00818e;">Find the best Health care in india</h1>
+						  <h1  style="color: #00818e;">Find the best Health care in India</h1>
 						  <p class="lp-banner-browse-txt" style="color: #00818e;">Get information about the best health care in a city, read reviews, locate and book your appointment</p>
 						</div>
 						<div class="col-md-8 col-xs-8 col-md-offset-2 col-sm-offset-2">
