@@ -41,10 +41,14 @@
 							padding: 0px;
 					">
 
-						<input type="text" id="search" name="search" placeholder="Search healthcare" autocomplete="off" style="
-						    padding: 17px;
-						    width: 100%;
-						">
+					<input type="text" id="search" name="search" placeholder="Search healthcare" autocomplete="off" style="
+							padding: 17px;
+							width: 91%;
+					"><button type="submit" class="lp-search-btn" style="  width: 60px;
+	padding: 9px;
+">
+<i class="icons8-search lp-search-icon" style="position:inherit"></i>
+</button>
 					</form>
 					</div>
 					<?php if($search != "0") { ?>
