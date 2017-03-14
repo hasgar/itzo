@@ -130,6 +130,7 @@
 								<a href="/book/{{$healthcare[0]['id']}}/{{urlencode($healthcare[0]['name'])}}" class="secondary-btn">
 									Book Now
 								</a>
+								
 							</div>
 						</div>
 					</div>
