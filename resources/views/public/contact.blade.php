@@ -39,7 +39,7 @@
 						</p>
 						<p>
 							<i class="fa fa-phone"></i>
-							<span>+000 000 000</span>
+							<span>+91-9048 11 99 41</span>
 						</p>
 						<p>
 							<i class="fa fa-envelope"></i>

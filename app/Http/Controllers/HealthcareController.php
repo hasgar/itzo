@@ -147,7 +147,7 @@ class HealthcareController extends Controller
 
     public function showHealthcare(Request $request) {
         $healthcare = Healthcare::where('id', $request->id)->where('is_approved', 1)->where('status', 1)->get();
-
+        
         $state = States::where('id', $healthcare[0]['state_id'])->first();
             $country = Countries::where('id', $healthcare[0]['country_id'])->first();
 
