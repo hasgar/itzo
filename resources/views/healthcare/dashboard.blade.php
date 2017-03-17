@@ -9,7 +9,7 @@
 	<header class="">
 
 
-		
+
 		<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
 								@include('public.layouts.headerMob')
@@ -18,7 +18,7 @@
 			<div class="container">
 					<div class="row">
 					@include('public.layouts.logo')
-						
+
 					</div>
 				</div>
 		</div><!-- ../menu-bar -->
@@ -34,7 +34,7 @@
 		</div><!-- ../Home Search Container -->
 	</header>
 	<!--==================================Header Close=================================-->
-	
+
 	<!--==================================Section Open=================================-->
 	<section class="aliceblue">
 			<div class="dashboard-tabs">
@@ -64,8 +64,8 @@
 				<div class="tab-content">
 					<div class="tab-pane fade active in" id="dashborad">
 						<div class="dashboard-tab">
-							
-							
+
+
 							<div class="user-recent-listings-container">
 									<div class="col-md-8"><h3 class="padding-top-35 padding-bottom-35">Your Bookings</h3></div><div class="col-md-4"><div class="price-plan-button  pull-right">
 									<a href="/logout" class="lp-secondary-btn btn-second-hover">Sign Out</a>
@@ -77,25 +77,25 @@
 											<div class="lp-list-view-inner-contianer lp-border lp-border-radius-8 clearfix">
 												<div class="lp-list-view-thumb">
 													<div class="lp-list-view-thumb-inner">
-														<img height="50" src="/images/healthcare/{{$book['healthcare'][0]['pro_pic']}}" alt="list-1">
+														<img height="50" src="/images/healthcare/{{$book['pro_pic']}}" alt="list-1">
 													</div>
-													
+
 												</div>
 												<div class="lp-list-view-content">
 													<div class="lp-list-view-content-upper">
 													<h3 class="booking-id">Booking ID: CH{{$book['id']}}</h3>
-														<h4>{{$book['user'][0]['name']}}</h4>
+														<h4>{{$user['name']}}</h4>
 														<div class="user-portfolio-stat padding-top-0">
 												<ul>
 													<li>
 														<i class="fa fa-phone"></i>
-														<span>{{$book['user'][0]['mobile']}}</span>
+														<span>{{$user['mobile']}}</span>
 													</li>
 													<li>
 														<i class="fa fa-info-circle"></i>
-														<span>{{$book['user'][0]['email']}}</span>
+														<span>{{$user['email']}}</span>
 													</li>
-													
+
 												</ul>
 											</div>
 													</div>
@@ -107,10 +107,10 @@
 																</span>
 																<span class="lp-list-sp-text">
 																	{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $book['created_at'])->format('M d, Y') }}
-												
+
 																</span>
 															</li>
-															
+
 															<li>
 															@if($book['is_confirmed'] == 0)
 																<span class="lp-list-sp-icon">
@@ -149,7 +149,7 @@
 																</span>
 														  @endif
 															</li>
-															
+
 														</ul>
 													</div>
 												</div>
@@ -160,29 +160,29 @@
 															<p></p>
 														</div>
 														<div class="lp-list-pay-btn">
-															 <a href="/healthcare/chat/{{$book['id']}}/{{urlencode($book['user'][0]['name'])}}" > 
+															 <a href="/healthcare/chat/{{$book['id']}}/{{urlencode($user['name'])}}" >
 																<i class="fa fa-wechat"></i>
 																<span>Chat</span>
-														 </a> 
+														 </a>
 														</div>
 														<div class="lp-list-pay-btn">
-															@if($book['is_confirmed'] == 0 || $book['is_confirmed'] == 1)  <a href="/healthcare/confirm/{{$book['id']}}/{{urlencode($book['user'][0]['name'])}}" onclick="return confirm('Are you sure?')"> @else <a href="javascript::void(0)" onclick="alert('Its already cancelled'); return false">  @endif
+															@if($book['is_confirmed'] == 0 || $book['is_confirmed'] == 1)  <a href="/healthcare/confirm/{{$book['id']}}/{{urlencode($user['name'])}}" onclick="return confirm('Are you sure?')"> @else <a href="javascript::void(0)" onclick="alert('Its already cancelled'); return false">  @endif
 																<i class="fa fa-check"></i>
 																<span>Confirm</span>
-															  </a> 
+															  </a>
 														</div>
 														<div class="lp-list-pay-btn">
-															@if($book['is_confirmed'] == 0 || $book['is_confirmed'] == 1)  <a href="/healthcare/cancel/{{$book['id']}}/{{urlencode($book['user'][0]['name'])}}" onclick="return confirm('Are you sure?')"> @else <a href="javascript::void(0)" onclick="alert('Its already cancelled'); return false">  @endif
+															@if($book['is_confirmed'] == 0 || $book['is_confirmed'] == 1)  <a href="/healthcare/cancel/{{$book['id']}}/{{urlencode($user['name'])}}" onclick="return confirm('Are you sure?')"> @else <a href="javascript::void(0)" onclick="alert('Its already cancelled'); return false">  @endif
 																<i class="fa fa-close"></i>
 																<span>Cancel</span>
-															  </a> 
+															  </a>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 @endforeach
-@else 
+@else
 <div class="col-md-12 col-sm-6 col-xs-12 lp-list-view">
 											<div class="lp-list-view-inner-contianer lp-border lp-border-radius-8 clearfix no-bookings" align="center">
 <h4 class="no-bookings">No don't have any booking</h4>
@@ -193,9 +193,9 @@
 								</div>
 							</div>
 						</div>
-					</div>			
-					
-					
+					</div>
+
+
 				</div>
 			</div>
 	</section>

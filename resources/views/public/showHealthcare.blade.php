@@ -39,7 +39,7 @@
 								<li><a href="/">Home</a></li>
 								<li><a href="/">Chinese Traditional</a></li>
 							</ul> -->
-							<h1 class="hospital-name-head">{{ $healthcare[0]['name'] }} @if($healthcare[0]['certificate'] == "1") <img src="/images/certified.png" />  @endif</h1>
+							<h1 class="hospital-name-head">{{ $healthcare['name'] }} @if($healthcare['certificate'] == "1") <img src="/images/certified.png" />  @endif</h1>
 							<ul class="post-stat">
 								@if(count($ratings) > 0)
 								<li class="reviews">
@@ -58,28 +58,30 @@
 								</li> <br>
 								<li>
 									@foreach($healthcare_types as $type)
-								 {{ $type["types"][0]["name"] }},
+								<b> {{ $type["types"][0]["name"] }}, </b>
 								 @endforeach
 								</li><br>
 								<li>
-								{{ $healthcare[0]['area'] }}, {{ $healthcare[0]['city'][0]["name"] }}, {{ $state["name"] }}, {{ $country["name"] }}
+								{{ $healthcare['area'] }}, {{ $healthcare['city'][0]["name"] }}, {{ $state["name"] }}, {{ $country["name"] }}
 							</li> <br>
 							<li>
-							@if($healthcare[0]['price'] == "1")
+								<b>
+							@if($healthcare['price'] == "1")
 							Clinic
 							@endif
-							@if($healthcare[0]['price'] == "2")
+							@if($healthcare['price'] == "2")
 							Mini Hospital
 							@endif
-							@if($healthcare[0]['price'] == "3")
+							@if($healthcare['price'] == "3")
 							Hospital / General
 							@endif
-							@if($healthcare[0]['price'] == "4")
+							@if($healthcare['price'] == "4")
 							Speciality
 							@endif
-							@if($healthcare[0]['price'] == "5")
+							@if($healthcare['price'] == "5")
 							Multi Speciality
 							@endif
+						</b>
 							</li><br>
 							<li>
 								<span class="email-icon">
@@ -87,7 +89,7 @@
 								</span>
 								<span >
 									@if(\Auth::check())
-									{{ $healthcare[0]['email'] }}
+									{{ $healthcare['email'] }}
 									@else
 									<i class="fa fa-lock"> </i> <a href="/signin">sign in to see</a>
 									@endif
@@ -95,14 +97,14 @@
 								</span>
 							</li>
 							<li>
-								@if(isset($healthcare[0]['website']))
+								@if(isset($healthcare['website']))
 								<span class="website-link-icon">
 									<!-- Globe icon by Icons8 -->
 									<img class="icon icons8-Globe" src="data:image/png;base64,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" alt="web-link">
 								</span>
 
 								<span class="website-link">
-									<a target="_blank" href="http://{{ $healthcare[0]['website'] }}">{{ $healthcare[0]['website'] }}</a>
+									<a target="_blank" href="http://{{ $healthcare['website'] }}">{{ $healthcare['website'] }}</a>
 								</span>
 								@endif
 							</li>
@@ -113,7 +115,7 @@
 									</span>
 									<span class="phone-number">
 										@if(\Auth::check())
-										+{{$healthcare[0]['mobile'] }}
+										+{{$healthcare['mobile'] }}
 										@else
 										<i class="fa fa-lock"> </i> <a href="/signin">sign in to see</a>
 										@endif
@@ -125,19 +127,27 @@
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-12" style="text-align:center"><br>
-						{{$healthcare[0]['address']}} <br>
-						{{$healthcare[0]['pin']}}
+						<div class="widget-box widget-bg-color widget-tags lp-border-radius-5" style="
+    background-color: #eff3f6;
+">
+							<div class="widget-content">
+                              {{$healthcare['address']}} <br> {{$healthcare['pin']}}
 
-						<div class="post-meta-right-box text-right">
+                              <div class="post-meta-right-box text-right">
 
 
 							<div class="padding-top-30 booknow-btn">
-								<a href="/book/{{$healthcare[0]['id']}}/{{urlencode($healthcare[0]['name'])}}" class="secondary-btn">
+								<a href="/book/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" class="secondary-btn">
 									Book Now
 								</a>
 
 							</div>
 						</div>
+							</div>
+
+						</div>
+
+
 					</div>
 				</div>
 			</div>
@@ -147,12 +157,12 @@
 				<div class="col-md-8">
 
 					<div class="post-row">
-						<h3>About {{ $healthcare[0]['name'] }}</h3>
+						<h3>About {{ $healthcare['name'] }}</h3>
 						<p>
 						<?php
-						if (strlen($healthcare[0]['description']) > 800) { echo substr($healthcare[0]['description'], 0, 798).".."; }
+						if (strlen($healthcare['description']) > 800) { echo substr($healthcare['description'], 0, 798).".."; }
 						else {
-							echo $healthcare[0]['description'];
+							echo $healthcare['description'];
 						}
 						?>
 						</p>
@@ -168,7 +178,7 @@
 									<div class="post-row">
 										<h3>Departments & Services</h3>
 										<p>
-											{{ $healthcare[0]['departments'] }}
+											{{ $healthcare['departments'] }}
 										</p>
 
 										<div class="post-row padding-top-5"></div>
@@ -176,18 +186,18 @@
 															<div class="post-row-header clearfix margin-bottom-15">
 																<h3>Timing</h3>
 															</div>
-										@if ($healthcare[0]['twentyfourseven'] == 1)
+										@if ($healthcare['twentyfourseven'] == 1)
 										<b>24x7</b>
 
 										@else
 
-										<b>Monday:</b> {{$healthcare[0]['mon_from']}} - {{$healthcare[0]['mon_to']}} <br>
-										<b>Tuesday:</b> {{$healthcare[0]['tue_from']}} - {{$healthcare[0]['tue_to']}} <br>
-										<b>Wednesday:</b> {{$healthcare[0]['wed_from']}} - {{$healthcare[0]['wed_to']}} <br>
-										<b>Thursday:</b> {{$healthcare[0]['thu_from']}} - {{$healthcare[0]['thu_to']}} <br>
-										<b>Friday:</b> {{$healthcare[0]['fri_from']}} - {{$healthcare[0]['fri_to']}} <br>
-										<b>Saturday:</b> {{$healthcare[0]['sat_from']}} - {{$healthcare[0]['sat_to']}} <br>
-										<b>Sunday:</b> {{$healthcare[0]['sun_from']}} - {{$healthcare[0]['sun_to']}} <br>
+										<b>Monday:</b> {{$healthcare['mon_from']}} - {{$healthcare['mon_to']}} <br>
+										<b>Tuesday:</b> {{$healthcare['tue_from']}} - {{$healthcare['tue_to']}} <br>
+										<b>Wednesday:</b> {{$healthcare['wed_from']}} - {{$healthcare['wed_to']}} <br>
+										<b>Thursday:</b> {{$healthcare['thu_from']}} - {{$healthcare['thu_to']}} <br>
+										<b>Friday:</b> {{$healthcare['fri_from']}} - {{$healthcare['fri_to']}} <br>
+										<b>Saturday:</b> {{$healthcare['sat_from']}} - {{$healthcare['sat_to']}} <br>
+										<b>Sunday:</b> {{$healthcare['sun_from']}} - {{$healthcare['sun_to']}} <br>
 										@endif
 										</div>
 
@@ -199,7 +209,7 @@
 																	<h3>Accreditation</h3>
 																</div>
 																<ul class="features list-style-none">
-																	@if ($healthcare[0]['nabh'] == 1)
+																	@if ($healthcare['nabh'] == 1)
 
 																	<li>
 																		<span class="tick-icon">
@@ -211,7 +221,7 @@
 																		</a>
 																	</li>
 																	@endif
-																	@if ($healthcare[0]['iso'] == 1)
+																	@if ($healthcare['iso'] == 1)
 
 																	<li>
 																		<span class="tick-icon">
@@ -223,7 +233,7 @@
 																		</a>
 																	</li>
 																	@endif
-																	@if ($healthcare[0]['ohsas'] == 1)
+																	@if ($healthcare['ohsas'] == 1)
 
 																	<li>
 																		<span class="tick-icon">
@@ -235,7 +245,7 @@
 																		</a>
 																	</li>
 																	@endif
-																	@if ($healthcare[0]['jci'] == 1)
+																	@if ($healthcare['jci'] == 1)
 
 																	<li>
 																		<span class="tick-icon">
@@ -249,7 +259,7 @@
 
 																	@endif
 
-																	@if ($healthcare[0]['nabl'] == 1)
+																	@if ($healthcare['nabl'] == 1)
 
 																	<li>
 																		<span class="tick-icon">
@@ -270,9 +280,9 @@
 								<div class="post-row padding-top-5"></div>
 
 
-								<h3>Number of Beds</h3>
+								<h3>Number of Beds : @if ($healthcare['no_of_beds'] != "") {{$healthcare['no_of_beds']}} @endif</h3>
 								<p>
-									{{ $healthcare[0]['bed_range'] }}
+									{{ $healthcare['bed_range'] }}
 								</p>
 
 
@@ -282,7 +292,7 @@
 						<h3>Payment Methods</h3>
 					</div>
 					<ul class="features list-style-none">
-						@if ($healthcare[0]['cash'] == 1)
+						@if ($healthcare['cash'] == 1)
 
 						<li>
 							<span class="tick-icon">
@@ -294,7 +304,7 @@
 							</a>
 						</li>
 						@endif
-						@if ($healthcare[0]['cheque'] == 1)
+						@if ($healthcare['cheque'] == 1)
 
 						<li>
 							<span class="tick-icon">
@@ -306,7 +316,7 @@
 							</a>
 						</li>
 						@endif
-						@if ($healthcare[0]['debit_card'] == 1)
+						@if ($healthcare['debit_card'] == 1)
 
 						<li>
 							<span class="tick-icon">
@@ -318,7 +328,7 @@
 							</a>
 						</li>
 						@endif
-						@if ($healthcare[0]['credit_card'] == 1)
+						@if ($healthcare['credit_card'] == 1)
 
 						<li>
 							<span class="tick-icon">
@@ -337,9 +347,10 @@
 				@if(\Auth::check())
 				<h3>Contact Person</h3>
 				<p>
-					<b>Name:</b> {{ $healthcare[0]['contact_name'] }} <br>
-					<b>Email:</b> {{ $healthcare[0]['contact_email'] }}<br>
-					<b>Email:</b> {{ $healthcare[0]['contact_phone'] }}
+					<b>Name:</b> {{ $healthcare['contact_name'] }} <br>
+					<b>Email:</b> {{ $healthcare['contact_email'] }}<br>
+					<b>Phone:</b> {{ $healthcare['contact_phone'] }}<br>
+					<b>Fax:</b> {{ $healthcare['fax'] }}
 				</p>
 				@endif
 
@@ -348,7 +359,7 @@
 
 						<div id="owl-demo" class="owl-carousel owl-theme">
  @foreach($photos as $photo)
-  <div class="item"><img src="/images/healthcare/{{$photo['photo_url']}}" alt="{{$healthcare[0]['name']}}"></div>
+  <div class="item"><img src="/images/healthcare/{{$photo['photo_url']}}" alt="{{$healthcare['name']}}"></div>
  @endforeach
 </div>
 					</div>
@@ -415,7 +426,7 @@
 								<label for="review">Review</label>
 								<textarea class="form-control" rows="8" id="review" name="message" ></textarea>
 							</div>
-							<input type="hidden" name="healthcare_id" value="{{ $healthcare[0]['id'] }}">
+							<input type="hidden" name="healthcare_id" value="{{ $healthcare['id'] }}">
 							<!--<input type="file" name="file">-->
 							<div class="form-group margin-bottom-0">
 								<input type="submit" value="@if (Auth::guest()) Login as User to Submit @else Submit Review @endif" class="lp-review-btn btn-second-hover"  @if (Auth::guest()) disabled @endif/>
@@ -488,7 +499,7 @@
 								</ul><!-- ../post-stat -->
 							</div>
 							<div class="widget-content ">
-								<iframe src="https://www.google.com/maps?q={{$healthcare[0]['latitude']}},{{$healthcare[0]['longtitude']}}&hl=es;z%3D16&amp;output=embed" width="300" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+								<iframe src="https://www.google.com/maps?q={{$healthcare['latitude']}},{{$healthcare['longtitude']}}&hl=es;z%3D16&amp;output=embed" width="300" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe>
 							</div>
 						</div><!-- ../widget-box  -->
 <!--<div class="widget-box widget-bg-color widget-categories lp-border-radius-5">
@@ -511,43 +522,43 @@
 							<div class="widget-box widget-bg-color widget-tags lp-border-radius-5">
 							<div class="widget-content">
 								<ul class="list-style-none categories-container">
-								@if ($healthcare[0]['lab'] == 1)
+								@if ($healthcare['lab'] == 1)
 									<li><a ><span class="tag-icon"><i class="fa fa-flask"></i> </span><span>Lab</span></a></li>
 									@endif
-								@if ($healthcare[0]['parking'] == 1)
+								@if ($healthcare['parking'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-car"></i> </span><span>Parking</span></a></li>
 @endif
-								@if ($healthcare[0]['pharmacy'] == 1)
+								@if ($healthcare['pharmacy'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-building-o"></i> </span><span>Pharmacy</span></a></li>
 @endif
-								@if ($healthcare[0]['wheelchair'] == 1)
+								@if ($healthcare['wheelchair'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-wheelchair"></i> </span><span>Wheelchair</span></a></li>
 @endif
-								@if ($healthcare[0]['ambulance'] == 1)
+								@if ($healthcare['ambulance'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-ambulance"></i> </span><span>Ambulance</span></a></li>
 @endif
-								@if ($healthcare[0]['inpatient'] == 1)
+								@if ($healthcare['inpatient'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-hotel"></i> </span><span>Inpatient</span></a></li>
 @endif
-								@if ($healthcare[0]['bloodbank'] == 1)
+								@if ($healthcare['bloodbank'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-tint"></i> </span><span>Blood Bank</span></a></li>
 @endif
-								@if ($healthcare[0]['fitness'] == 1)
+								@if ($healthcare['fitness'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-puzzle-piece"></i> </span><span>Fitness</span></a></li>
 @endif
-								@if ($healthcare[0]['yoga'] == 1)
+								@if ($healthcare['yoga'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-universal-access"></i> </span><span>Yoga</span></a></li>
 @endif
-								@if ($healthcare[0]['massage'] == 1)
+								@if ($healthcare['massage'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-signing"></i> </span><span>Massage</span></a></li>
 @endif
-								@if ($healthcare[0]['sports'] == 1)
+								@if ($healthcare['sports'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-pied-piper-alt"></i> </span><span>Sports</span></a></li>
 @endif
-								@if ($healthcare[0]['tours'] == 1)
+								@if ($healthcare['tours'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-bus"></i> </span><span>Tours</span></a></li>
 @endif
-								@if ($healthcare[0]['insurance'] == 1)
+								@if ($healthcare['insurance'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-hospital-o"></i> </span><span>Insurance</span></a></li>
 								@endif
 

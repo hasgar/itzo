@@ -668,7 +668,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('pin') ? ' has-error' : '' }}">
 											<label for="pin">Pin </label>
-											<input type="number" class="form-control" min="0" name="pin" id="pin"  value="{{ old('pin') }}" placeholder="Enter health center Pin code" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+											<input type="text" class="form-control" min="0" name="pin" id="pin"  value="{{ old('pin') }}" placeholder="Enter health center Pin code" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 											@if ($errors->has('pin'))
 												<span class="help-block">
 													<strong>{{ $errors->first('pin') }}</strong>
@@ -710,7 +710,7 @@
 </select></div><div class="col-md-9" style="
     padding-left: 0px; padding-right: 0px;
 ">
-<input type="number" min="0" class="form-control" id="mobile" placeholder="Enter health care mobile number" name="mobile" value="{{ old('mobile') }}" required> </div>
+<input type="text" min="0" class="form-control" id="mobile" placeholder="Enter health care mobile number" name="mobile" value="{{ old('mobile') }}" required> </div>
 											 @if ($errors->has('mobile'))
 												<span class="help-block">
 													<strong>{{ $errors->first('mobile') }}</strong>
@@ -734,7 +734,7 @@
 </select></div><div class="col-md-9" style="
     padding-left: 0px; padding-right: 0px;
 ">
-											<input type="number" min="0"  class="form-control" name="phone" required id="phone" placeholder="Enter health center phone number" value="{{ old('phone') }}" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+											<input type="text" min="0"  class="form-control" name="phone" required id="phone" placeholder="Enter health center phone number" value="{{ old('phone') }}" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
 											@if ($errors->has('phone'))
 												<span class="help-block">
 													<strong>{{ $errors->first('phone') }}</strong>
@@ -759,7 +759,7 @@
 </select></div><div class="col-md-9" style="
     padding-left: 0px; padding-right: 0px;
 ">
-											<input  type="number" min="0" class="form-control" name="fax"  id="fax" value="{{ old('fax') }}" placeholder="Enter Health center fax">
+											<input  type="text" min="0" class="form-control" name="fax"  id="fax" value="{{ old('fax') }}" placeholder="Enter Health center fax">
 											@if ($errors->has('fax'))
 												<span class="help-block">
 													<strong>{{ $errors->first('fax') }}</strong>

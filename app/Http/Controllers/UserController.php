@@ -208,9 +208,10 @@ public function noPermission(){
     }
     public function hDashboard() {
 
-        $booking = Booking::where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->where('payment_done', 1)->where('is_verified', 1)->pluck('id')[0])->with(['healthcare','user'])->orderBy('id','desc')->get();
+        $booking = Booking::where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->where('payment_done', 1)->where('is_verified', 1)->pluck('id')[0])->with(['healthcare'])->orderBy('id','desc')->get();
+        $user = User::where('id',$booking[0]['user_id'])->first();
 
-                return view('healthcare.dashboard')->with('booking',$booking);
+                return view('healthcare.dashboard')->with('booking',$booking)->with('user',$user);
     }
     public function aDashboard(){
         $booking = Booking::with(['user'])->get();
