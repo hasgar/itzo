@@ -95,7 +95,6 @@
 														<i class="fa fa-info-circle"></i>
 														<span>{{$user['email']}}</span>
 													</li>
-
 												</ul>
 											</div>
 													</div>
