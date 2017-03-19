@@ -91,17 +91,17 @@ class UserController extends Controller
     }
 
     public function userOtp(){
+      $health = Users::where('user_id',Auth::user()->id)->first();
+      $type = "Email";
+          if ($health["country_code"] == "91")
+          $type = "Mobile";
 
-
-              return view('user.otp');
+              return view('user.otp')->with('type', $type);
         }
         public function healthcareOtp(){
-          $health = Healthcare::where('user_id',Auth::user()->id)->first();
-          $type = "Email";
-              if ($health["country_code_mobile"] == "91")
-              $type = "Mobile";
 
-                  return view('healthcare.otp')->with('type', $type);
+
+                  return view('healthcare.otp');
             }
             public function paymentPending(){
                       $health = Healthcare::where('user_id',Auth::user()->id)->first();
@@ -208,7 +208,7 @@ public function noPermission(){
     }
     public function hDashboard() {
 
-        $booking = Booking::where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->where('payment_done', 1)->where('is_verified', 1)->pluck('id')[0])->with(['healthcare'])->orderBy('id','desc')->get();
+ $booking = Booking::where('healthcare_id',Healthcare::where('user_id',Auth::user()->id)->where('payment_done', 1)->where('is_verified', 1)->pluck('id')[0])->with(['healthcare','user'])->orderBy('id','desc')->get();
         $user = User::where('id',$booking[0]['user_id'])->first();
 
                 return view('healthcare.dashboard')->with('booking',$booking)->with('user',$user);

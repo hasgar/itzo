@@ -8,8 +8,6 @@
 	<!--==================================Header Open=================================-->
 	<header class="">
 
-
-
 		<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
 								@include('public.layouts.headerMob')
@@ -37,7 +35,7 @@
 							<div class="login-form-popup lp-border-radius-8">
 								<div class="siginincontainer">
 									<h1 class="text-center">Enter OTP</h1>
-  									<p class="text-center">We just sent you an OTP to your mobile number</p>
+  									<p class="text-center">We just sent you an OTP to your {{$type}}</p>
                     @if (count($errors) > 0)
                     <ul class="error_points">
                     @foreach ($errors->all() as $error)
@@ -49,7 +47,7 @@
 
 									<form class="form-horizontal margin-top-30" role="form" method="POST" action="{{ url('/otpVerification') }}">
 										{{ csrf_field() }}
-										<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+										<div class="form-group {{ $errors->has('otp') ? ' has-error' : '' }}">
 											<label for="otp">OTP *</label>
 											<input type="text" class="form-control" id="otp" name="otp" value="{{ old('otp') }}" required />
 										@if ($errors->has('otp'))

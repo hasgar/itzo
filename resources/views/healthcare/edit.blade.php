@@ -85,8 +85,10 @@
 
 
 
-									<form id="add-healthcare" class="form-horizontal margin-top-30" role="form" method="POST" action="{{ url('/register') }}" enctype='multipart/form-data'>
-									<fieldset id="add-healthcare-form">
+									<form id="add-healthcare" class="form-horizontal edit-health margin-top-30" role="form" method="POST" action="/healthcare/update" enctype='multipart/form-data'>
+									<fieldset id="add-healthcare-form" style="
+    padding-top: 34px;
+">
 																 {{ csrf_field() }}
 																 					<input type="hidden" name="healthcare_id" id="healthcare_id" value="{{ $healthcare[0]['id'] }}">
 										<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
@@ -699,7 +701,7 @@
 										</div>
 										<div class="form-group {{ $errors->has('area') ? ' has-error' : '' }}"   required>
 											<label for="area">Town / Village *</label>
-											<input type="text" class="form-control" name="area" id="area"  value="{{ {{ $healthcare[0]['area'] }} }}" placeholder="Enter town / village" ></input>
+											<input type="text" class="form-control" name="area" id="area"  value="{{ $healthcare[0]['area'] }}" placeholder="Enter town / village" ></input>
 
 											@if ($errors->has('area'))
 												<span class="help-block">
@@ -941,20 +943,20 @@
 											<input type="hidden" name="loc-rad" id="loc-rad">
 									</div>
 									<div class="form-group {{ $errors->has('photos') ? ' has-error' : '' }}">
-<ul class="thumbnails">
+
+<div class="thumbnails row">
 										@foreach($photos as $photo)
-										<li class="span4">
-											<div class="thumbnail">
+											<div class="thumbnail col-md-4" style="margin-right:10px">
 												<a class="close del-image" data-id="{{$photo['id']}}" href="javascript::void(0)">×</a>
 												<img src="/images/healthcare/{{$photo['photo_url']}}">
 											</div>
-										</li>
+
 
 										@endforeach
-</ul>
+</div>
 
 <input value="" type="hidden" name="deleted_img" id="deleted_img" />
-<label for="photos">Add Mutiple Photos * (Max :10mb, 50 files)</label>
+<label for="photos">Add New Photos * (Max :10mb, 50 files)</label>
 <input type="file" name="photos[]" multiple="" />
 @if ($errors->has('photos'))
 	<span class="help-block">

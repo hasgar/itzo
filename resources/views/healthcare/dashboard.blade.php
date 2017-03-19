@@ -77,23 +77,23 @@
 											<div class="lp-list-view-inner-contianer lp-border lp-border-radius-8 clearfix">
 												<div class="lp-list-view-thumb">
 													<div class="lp-list-view-thumb-inner">
-														<img height="50" src="/images/healthcare/{{$book['pro_pic']}}" alt="list-1">
+														<img height="50" src="/images/healthcare/{{$book['healthcare'][0]['pro_pic']}}" alt="list-1">
 													</div>
 
 												</div>
 												<div class="lp-list-view-content">
 													<div class="lp-list-view-content-upper">
 													<h3 class="booking-id">Booking ID: CH{{$book['id']}}</h3>
-														<h4>{{$user['name']}}</h4>
+														<h4>{{$book['user'][0]['name']}}</h4>
 														<div class="user-portfolio-stat padding-top-0">
 												<ul>
 													<li>
 														<i class="fa fa-phone"></i>
-														<span>{{$user['mobile']}}</span>
+														<span>+{{$book['user'][0]['mobile']}}</span>
 													</li>
 													<li>
 														<i class="fa fa-info-circle"></i>
-														<span>{{$user['email']}}</span>
+														<span>{{$book['user'][0]['email']}}</span>
 													</li>
 												</ul>
 											</div>

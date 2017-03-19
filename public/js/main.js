@@ -17,10 +17,15 @@ $(document).ready(function() {
 
 
 
-  $('#add-healthcare').on('submit', function() {
+  $('.del-image').on('click', function() {
 
+    $('#deleted_img').val($('#deleted_img').val()+","+$(this).data('id'))
+
+$(this).parent().remove();
 
   })
+
+
     $('#accommodation').on('change', function() {
   if(this.value == 1 ) {
       $('.accommodation-type').show()

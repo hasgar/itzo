@@ -55,7 +55,12 @@ $(".form-horizontal").validate({
     //     }
     // });
 $("#edit-healthcare").show();
+
+if ($("#healthcare_id").val() != "") {
+	$("#submit-healthcare").val("Update");
+} else {
 		$("#submit-healthcare").val("Submit & Pay");
+	}
    $("#add-healthcare-form").prop("disabled", true);
 	 $('html, body').animate({
         scrollTop: $('#add-healthcare').offset().top
