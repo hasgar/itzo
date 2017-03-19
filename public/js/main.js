@@ -16,6 +16,14 @@ $(document).ready(function() {
 }); */
 
 
+  $('#country').on('change', function() {
+ if ($(this).val() != "101") {
+   $('#city').prop("disabled", true);
+ } else {
+   $('#city').prop("disabled", false);
+ }
+
+  })
 
   $('.del-image').on('click', function() {
 

@@ -8,8 +8,6 @@
 	<!--==================================Header Open=================================-->
 	<header class="">
 
-
-
 		<div class="md-overlay"></div> <!-- Overlay for Popup -->
 							<div id="menu">
 								@include('public.layouts.headerMob')
@@ -131,7 +129,7 @@
 										</div>
 										<div class="form-group  padding-right-0 padding-left-40 col-md-6  {{ $errors->has('city') ? ' has-error' : '' }}">
 											<label for="city">City *</label>
-											<select type="city" class="form-control" id="city" name="city" required>
+											<select type="city" class="form-control" id="city" name="city">
 <option value="">Select your city</option>
 </select>
 											@if ($errors->has('city'))

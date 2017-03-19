@@ -102,6 +102,9 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
         $otp = rand(1000,9999);
+        if (!isset($data['city'])) {
+          $data['city'] = "0";
+        }
         if($data['type'] == 1){
             Users::create([
             'name' => $data['name'],
