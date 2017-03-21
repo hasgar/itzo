@@ -331,11 +331,11 @@ class AuthController extends Controller
             'longtitude' => $data['loc-lon'],
             'latitude' => $data['loc-lat'],
             'payment_mode' => $data['payment_mode'],
-            'payment_done' => 0,
-            'payment_till' => '2016-12-31',
+            'payment_done' => 1,
+            'payment_till' => '2017-12-31',
             'is_approved' => 1,
             'OTP' => $otp,
-            'is_verified' => 0
+            'is_verified' => 1
         ]);
 
 
@@ -392,7 +392,7 @@ $pro_pic = $fileName;
     Chikitzo Team';
     $from = 'info@chikitzo.com';
 
-    mail($to, $subject, $message);
+    //mail($to, $subject, $message);
 
 
 
