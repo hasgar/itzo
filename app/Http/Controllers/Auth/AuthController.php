@@ -333,9 +333,9 @@ class AuthController extends Controller
             'payment_mode' => $data['payment_mode'],
             'payment_done' => 1,
             'payment_till' => '2017-12-31',
-            'is_approved' => 1,
+            'is_approved' => 0,
             'OTP' => $otp,
-            'is_verified' => 1
+            'is_verified' => 0
         ]);
 
 

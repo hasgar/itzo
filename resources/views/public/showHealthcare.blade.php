@@ -136,12 +136,13 @@
                               <div class="post-meta-right-box text-right">
 
 
-							<div class="padding-top-30 booknow-btn">
+							@if($healthcare['is_govt'] != 1) <div class="padding-top-30 booknow-btn">
 								<a href="/book/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" class="secondary-btn">
 									Book Now
 								</a>
 
 							</div>
+							@endif
 						</div>
 							</div>
 
