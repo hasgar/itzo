@@ -87,7 +87,7 @@
 			</div>
 			<?php
 $row_i=0; ?>
-					<div class="row row-flex row-flex-wrap lp-list-page-grid padding-top-50">
+					<div class="row lp-list-page-grid padding-top-50">
 						<?php $fect = "" ?>
 						@foreach ($healthcare as $health)
 						@if($health['lab'] == 1)
@@ -172,7 +172,7 @@ $row_i=0; ?>
 						</div>
 						<?php
 						    $row_i++;
-						    if ($row_i%4 == 0 ) echo '</div><div class="row row-flex row-flex-wrap lp-list-page-grid padding-top-50">';
+						    if ($row_i%4 == 0 ) echo '</div><div class="row lp-list-page-grid padding-top-50">';
 						?>
 						@endforeach
 
