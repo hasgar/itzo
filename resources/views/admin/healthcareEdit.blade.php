@@ -24,10 +24,10 @@
 		</div><!-- ../menu-bar -->
 		<div class="page-heading listing-page archive-page ">
 			<div class="page-heading-inner-container text-center">
-				<h1>Healthcare Dashboard</h1>
+				<h1>Admin Dashboard</h1>
 				<ul class="breadcrumbs">
 					<li><a href="/">Home</a></li>
-					<li><span>Healthcare Dashboard</span></li>
+					<li><span>Admin Dashboard</span></li>
 				</ul>
 			</div>
 			<div class="page-header-overlay"></div>
