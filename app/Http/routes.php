@@ -89,3 +89,6 @@ Route::get('/user/error', 'UserController@uError')->middleware('isUser');
 Route::get('/healthcare/emailSuccess', 'UserController@heSuccess')->middleware('isHealthcare');
 Route::get('/healthcare/passwordSuccess', 'UserController@hpSuccess')->middleware('isHealthcare');
 Route::get('/healthcare/error', 'UserController@hError')->middleware('isHealthcare');
+
+
+Route::get('/adminNew', 'UserController@adminNew');

