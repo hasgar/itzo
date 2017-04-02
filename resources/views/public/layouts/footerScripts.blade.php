@@ -56,7 +56,7 @@ $(".form-horizontal").validate({
     // });
 $("#edit-healthcare").show();
 
-if ($("#healthcare_id").val() != "") {
+if ($("#healthcare_id").length) {
 	$("#submit-healthcare").val("Update");
 } else {
 		$("#submit-healthcare").val("Submit & Pay");

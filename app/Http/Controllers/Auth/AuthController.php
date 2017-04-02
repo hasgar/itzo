@@ -331,9 +331,9 @@ class AuthController extends Controller
             'longtitude' => $data['loc-lon'],
             'latitude' => $data['loc-lat'],
             'payment_mode' => $data['payment_mode'],
-            'payment_done' => 1,
+            'payment_done' => 0,
             'payment_till' => '2017-12-31',
-            'is_approved' => 0,
+            'is_approved' => 1,
             'OTP' => $otp,
             'is_verified' => 0
         ]);
