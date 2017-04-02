@@ -303,7 +303,7 @@ mail($to, $subject, $message);
       $countries = Countries::all();
               $countries = Countries::all();
       $types = Types::all();
-      $healthcare = Healthcare::where('user_id',Auth::user()->id)->get();
+      $healthcare = Healthcare::where('id',$request->id)->get();
    $selectedTypes = HealthcareTypes::where('healthcare_id',$healthcare[0]['id'])->pluck('type_id');
 
       $selectedTypes = Types::whereIn('id',$selectedTypes)->get();
