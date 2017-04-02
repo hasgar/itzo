@@ -40,21 +40,24 @@
 			<div class="dashboard-tabs">
 				<div class="container">
 					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
+          <ul class="nav nav-tabs" role="tablist">
 						<li>
-							<a href="/healthcare/dashboard" role="tab" data-toggle="tab">
-								Your Bookings
+							<a href="/admin/dashboard" role="tab" data-toggle="tab">
+								Bookings
 							</a>
 						</li>
-
-						<li  class="active">
-							<a href="#" role="tab" data-toggle="tab">
-								Your Healthcare
+						<li>
+							<a href="/admin/users" role="tab" data-toggle="tab">
+								Users
 							</a>
 						</li>
-
+						<li class="active">
+							<a href="/admin/healthcares" role="tab" data-toggle="tab">
+								Healthcares
+							</a>
+						</li>
 						<li>
-							<a href="/healthcare/settings" role="tab" data-toggle="tab">
+							<a href="/admin/settings" role="tab" data-toggle="tab">
 								Account Settings
 							</a>
 						</li>
@@ -69,7 +72,7 @@
 
 
 							<div class="user-recent-listings-container">
-									<div class="col-md-8"><h3 class="padding-top-35 padding-bottom-35">Your Healthcare</h3></div><div class="col-md-4"><div class="price-plan-button  pull-right">
+									<div class="col-md-8"><h3 class="padding-top-35 padding-bottom-35">Your Healthcare: {{ $healthcare[0]['id'] }}</h3></div><div class="col-md-4"><div class="price-plan-button  pull-right">
 									<a href="/logout" class="lp-secondary-btn btn-second-hover">Sign Out</a>
 								</div></div><div class="user-recent-listings-inner">
 
