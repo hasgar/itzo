@@ -73,7 +73,7 @@ Route::get('/healthcare/cancel/{id}/{name}', 'HealthcareController@cancelBook')-
 Route::get('/healthcare/confirm/{id}/{name}', 'HealthcareController@confirmBook')->middleware('isHealthcare');
 Route::get('/healthcare/chat/{id}/{name}', 'UserController@hChat')->middleware('isHealthcare');
 Route::post('/healthcare/chatSend', 'UserController@hChatSend')->middleware('isHealthcare');
-Route::post('/admin/healthcare/update', 'UserController@editHealthcare')->middleware('isHealthcare');
+Route::post('/admin/healthcare/update', 'UserController@editHealthcare')->middleware('isAdmin');
 Route::post('/admin/updateEmail', 'UserController@aUpdateEmail')->middleware('isAdmin');
 Route::post('/admin/updatePassword', 'UserController@aUpdatePassword')->middleware('isAdmin');
 Route::post('/user/updateEmail', 'UserController@uUpdateEmail')->middleware('isUser');
