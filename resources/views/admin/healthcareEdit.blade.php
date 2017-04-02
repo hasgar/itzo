@@ -1,6 +1,6 @@
 @extends('public.layouts.master')
 
-@section('title', 'Healthcare Dashboard')
+@section('title', 'Admin Dashboard')
 
 
 @section('content')
@@ -88,7 +88,7 @@
 
 
 
-									<form id="add-healthcare" class="form-horizontal edit-health margin-top-30" role="form" method="POST" action="/healthcare/update" enctype='multipart/form-data'>
+									<form id="add-healthcare" class="form-horizontal edit-health margin-top-30" role="form" method="POST" action="/admin/healthcare/update" enctype='multipart/form-data'>
 									<fieldset id="add-healthcare-form" style="
     padding-top: 34px;
 ">
