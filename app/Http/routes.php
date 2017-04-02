@@ -58,13 +58,14 @@ Route::get('/admin/healthcares', 'UserController@aHealthcares')->middleware('isA
 Route::get('/admin/settings', 'UserController@aSettings')->middleware('isAdmin');
 Route::get('/user/settings', 'UserController@uSettings')->middleware('isUser');
 Route::get('/healthcare/settings', 'UserController@hSettings')->middleware('isHealthcare');
-Route::get('/healthcare/edit', 'UserController@hEdit')->middleware('isHealthcare');
+Route::get('/healthcare/edit', 'UserController@admin/healthcare/update')->middleware('isHealthcare');
 Route::get('/admin/block/{id}/{name}', 'UserController@block')->middleware('isAdmin');
 Route::get('/admin/healthcare/paymentDone/{id}/{name}', 'UserController@paymentDoneComplete')->middleware('isAdmin');
 
 Route::get('/admin/healthcare/verifiedComplete/{id}/{name}', 'UserController@verifiedComplete')->middleware('isAdmin');
 
 Route::get('/admin/healthcare/approve/{id}/{name}', 'UserController@hApprove')->middleware('isAdmin');
+Route::get('/admin/healthcare/edit/{id}/{name}', 'UserController@aEdit')->middleware('isAdmin');
 Route::get('/admin/healthcare/block/{id}/{name}', 'UserController@hBlock')->middleware('isAdmin');
 Route::get('/admin/bookings/{id}/{name}', 'UserController@userBookings')->middleware('isAdmin');
 Route::get('/admin/unblock/{id}/{name}', 'UserController@unblock')->middleware('isAdmin');
@@ -72,7 +73,7 @@ Route::get('/healthcare/cancel/{id}/{name}', 'HealthcareController@cancelBook')-
 Route::get('/healthcare/confirm/{id}/{name}', 'HealthcareController@confirmBook')->middleware('isHealthcare');
 Route::get('/healthcare/chat/{id}/{name}', 'UserController@hChat')->middleware('isHealthcare');
 Route::post('/healthcare/chatSend', 'UserController@hChatSend')->middleware('isHealthcare');
-
+Route::post('/admin/healthcare/update', 'UserController@editHealthcare')->middleware('isHealthcare');
 Route::post('/admin/updateEmail', 'UserController@aUpdateEmail')->middleware('isAdmin');
 Route::post('/admin/updatePassword', 'UserController@aUpdatePassword')->middleware('isAdmin');
 Route::post('/user/updateEmail', 'UserController@uUpdateEmail')->middleware('isUser');

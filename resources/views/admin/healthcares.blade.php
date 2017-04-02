@@ -158,6 +158,10 @@
 																<span>Approve</span>
 															  </a>
 															  @endif
+
+																<a href="/admin/healthcare/edit/{{$healthcare['id']}}/{{urlencode($healthcare['name'])}}" > <i class="fa fa-pencil"></i>
+																	<span>Edit</span>
+																  </a>
 														</div>
 													</div>
 												</div>
