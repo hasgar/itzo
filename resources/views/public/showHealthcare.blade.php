@@ -344,7 +344,6 @@
 				<p>
 					<b>Name:</b> {{ $healthcare['contact_name'] }} <br>
 					<b>Email:</b> {{ $healthcare['contact_email'] }}<br>
-					<b>Phone:</b> {{ $healthcare['contact_phone'] }}<br>
 					<b>Fax:</b> {{ $healthcare['fax'] }}
 				</p>
 

@@ -316,6 +316,7 @@ mail($to, $subject, $message);
 
 
     public function editHealthcare(Request $data){
+
       if(!isset($data['food_veg'])) {
           $data['food_veg'] = 0;
       }
