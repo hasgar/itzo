@@ -88,11 +88,9 @@
 									@
 								</span>
 								<span >
-									@if(\Auth::check())
+
 									{{ $healthcare['email'] }}
-									@else
-									<i class="fa fa-lock"> </i> <a href="/signin">sign in to see</a>
-									@endif
+
 
 								</span>
 							</li>
@@ -114,11 +112,8 @@
 										<img class="icon icons8-Phone" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAEbElEQVRoQ81a4XnUMAy1vEC7QekEwASUCWgnoEzQY4FE9gLQCWgnoJ2AMgF0AtoJgAUivpdPyefzJU6cC5fcv/Z8iZ71JD3JJpP4MPO5iJTGmFfGmCcicsx8k/rNUt9R14uZ+VhEPhljLuPviegtMz8sZXDfe3eAKIhv8IKI/LXWMjN/ZuaNgoNnXjPznzWB2QLCzDAeIOCRR2vtJTP/bAwuiuInEb00xtw55y5WCaQDxFm868z8QkR+AQARXTDz3VrA1B5RA3+oJ26ttZs+6hRFwUSEBPCHiE7XQjGKYuLee38+tMsNxUTk2nu/GVp/iO+pKIrPRHSlMbFDp56shliCB0GxVWQxKssSnH+Ra1BAsVVkMQAR7KxzrrOmpGixJoqBWtjREw3cpxw+a6ZbBcUA5IGI3kxNpyHFnHOnORsx51oAqdPpPhmooecUr84FBum3yUBPU3ZU0/fvqXE2GxA8KIiT7FTaaDAR+e69P5vLsNzn1JkqoNet935H8fY9VL2B9H2cm75zDR1a30gUiMSaHjk8DzZgUW/UdgfK9oaI3ovIKK9EAjKbkkM7nPt9CyQyDP1GK9+7HlqW5VdjDDrIUcBzDctdv1XNg5rw4Jx7m4iNUGtBAWcV0lwjx6yPG6vjqqpQ6Y+I6CM6wx7ROGrdGAPmWtPV6oIuoA36DVCsc7d1MIF1q1DAnUKxKIo7InpnjElSLGqyEPDJuJpr97ue0ztFqaoK/fmJiDjvPfcZURRFne2MMVgPMIsMJXqlOzOf6SAiSR0UxaqqIDwxlFgMTLIHiaiTipfFwQw2U0G8JHcbdUjpeLSEZwaBRNRJzrOgpJVmAAO6YWR0kJgZBIIgj3b7xjn3IVUsAzAHi5lRQBRMu9upYhmvPRTNRgNRAy9F5IsWwQ+pyXxEs9GeAZUx1cmtSVlAJoBBAkBxbVIzwHcWTVUKV8aYpjmDVML6UZP/bCATwISpGbIHCaA1TusVRrB93SUGiDiXSSaNSUAmgoFBUABGRNhae6uHSHVHqkcYmDnXB0lBDcOfg96ZDCQXTIdxbeKDDLLW4gxma9c1ziCBQE18er2zF5ApYEAljZsjEbnXyX+ynxnjnb2BxGBEZOO9v04p3SmZacg7swCJwRhjkkVzHznf553ZgDRgqqoCjyFRkHaRPmeXKLF38J5ZgfRUdaTb/9LTbx1t7OPmhN4KC+FO7Zjzne3cec6Hhs9S1YzUiZa5rh3eezfn+4Jx7ePs1IoNjYIT0h5xszfVwlNoqIX/DkTjpq0dmM6od5Ipeih96xkmjsvrAeFBgCgYaK6Watp4YXaWNXmJTqFxqaE+wD0YkGaHoXI1RZ/o/wAOonAU3cqyRBuBduLZWvuqSe8HBxJ4Z6MXDxqMqDvXfbK9444MPNF6cxEggXeQpnH0V6ti/cAzdyLyYK19hKdU6uO2UnPRZwsEfrcokAAQusLLqqrgpYZyO/GulxrOu2i4CiBR/cFsANdI0GjhIgOmnc/wkl656pQ8/wC3pFkyvejV7AAAAABJRU5ErkJggg==" alt="phone-icon">
 									</span>
 									<span class="phone-number">
-										@if(\Auth::check())
+
 										+{{$healthcare['country_code_phone'].$healthcare['mobile'] }}
-										@else
-										<i class="fa fa-lock"> </i> <a href="/signin">sign in to see</a>
-										@endif
 									</span>
 								</li>
 
@@ -345,7 +340,6 @@
 					</ul>
 				</div>
 				<br>
-				@if(\Auth::check())
 				<h3>Contact Person</h3>
 				<p>
 					<b>Name:</b> {{ $healthcare['contact_name'] }} <br>
@@ -353,7 +347,7 @@
 					<b>Phone:</b> {{ $healthcare['contact_phone'] }}<br>
 					<b>Fax:</b> {{ $healthcare['fax'] }}
 				</p>
-				@endif
+
 
 
 					<br>
@@ -550,18 +544,18 @@
 								@if ($healthcare['yoga'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-universal-access"></i> </span><span>Yoga</span></a></li>
 @endif
-								@if ($healthcare['massage'] == 1)
-<li><a ><span class="tag-icon"><i class="fa fa-signing"></i> </span><span>Massage</span></a></li>
-@endif
-								@if ($healthcare['sports'] == 1)
-<li><a ><span class="tag-icon"><i class="fa fa-pied-piper-alt"></i> </span><span>Sports</span></a></li>
-@endif
-								@if ($healthcare['tours'] == 1)
-<li><a ><span class="tag-icon"><i class="fa fa-bus"></i> </span><span>Tours</span></a></li>
-@endif
+
 								@if ($healthcare['insurance'] == 1)
 <li><a ><span class="tag-icon"><i class="fa fa-hospital-o"></i> </span><span>Insurance</span></a></li>
 								@endif
+
+								@if ($healthcare['canteen'] == 1)
+<li><a ><span class="tag-icon"><i class="fa fa-hospital-o"></i> </span><span>Food/Canteen</span></a></li>
+								@endif
+								@if ($healthcare['other_fecilities'] != "")
+								<li><a ><span class="tag-icon"><i class="fa fa-hospital-o"></i> </span><span>{{$healthcare['other_fecilities']}}</span></a></li>
+								@endif
+
 
 								</ul>
 							</div>
