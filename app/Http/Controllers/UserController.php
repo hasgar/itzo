@@ -11,6 +11,7 @@ use App\Countries;
 use App\States;
 use App\Cities;
 use App\Booking;
+use Illuminate\Support\Facades\Input;
 use App\Users;
 use App\User;
 use App\Types;
