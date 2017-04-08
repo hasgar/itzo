@@ -78,7 +78,7 @@
 
 
 							<div class="user-recent-listings-container">
-									<div class="col-md-8"><h3 class="padding-top-35 padding-bottom-35">Your Healthcare: {{ $healthcare[0]['id'] }}</h3></div><div class="col-md-4"><div class="price-plan-button  pull-right">
+									<div class="col-md-8"><h3 class="padding-top-35 padding-bottom-35"></h3></div><div class="col-md-4"><div class="price-plan-button  pull-right">
 									<a href="/logout" class="lp-secondary-btn btn-second-hover">Sign Out</a>
 								</div></div><div class="user-recent-listings-inner">
 
