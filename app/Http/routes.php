@@ -60,6 +60,8 @@ Route::get('/user/settings', 'UserController@uSettings')->middleware('isUser');
 Route::get('/healthcare/settings', 'UserController@hSettings')->middleware('isHealthcare');
 Route::get('/healthcare/edit', 'UserController@admin/healthcare/update')->middleware('isHealthcare');
 Route::get('/admin/block/{id}/{name}', 'UserController@block')->middleware('isAdmin');
+Route::post('/admin/addHealthcare', 'UserController@createHealthcare')->middleware('isAdmin');
+Route::get('/admin/addHealthcare', 'UserController@addHealthcare')->middleware('isAdmin');
 Route::get('/admin/healthcare/paymentDone/{id}/{name}', 'UserController@paymentDoneComplete')->middleware('isAdmin');
 
 Route::get('/admin/healthcare/verifiedComplete/{id}/{name}', 'UserController@verifiedComplete')->middleware('isAdmin');

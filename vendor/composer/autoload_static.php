@@ -323,6 +323,7 @@ class ComposerStaticInita2053563625d86c418cb09cccebad4b0
     public static $classMap = array (
         'AddKeysToTables' => __DIR__ . '/../..' . '/database/migrations/2016_07_29_163720_add_keys_to_tables.php',
         'AddKeysToTables1' => __DIR__ . '/../..' . '/database/migrations/2016_07_30_071037_add_keys_to_tables_1.php',
+        'App\\Area' => __DIR__ . '/../..' . '/app/Area.php',
         'App\\Booking' => __DIR__ . '/../..' . '/app/Booking.php',
         'App\\Cities' => __DIR__ . '/../..' . '/app/Cities.php',
         'App\\Console\\Commands\\Inspire' => __DIR__ . '/../..' . '/app/Console/Commands/Inspire.php',

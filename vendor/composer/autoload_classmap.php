@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddKeysToTables' => $baseDir . '/database/migrations/2016_07_29_163720_add_keys_to_tables.php',
     'AddKeysToTables1' => $baseDir . '/database/migrations/2016_07_30_071037_add_keys_to_tables_1.php',
+    'App\\Area' => $baseDir . '/app/Area.php',
     'App\\Booking' => $baseDir . '/app/Booking.php',
     'App\\Cities' => $baseDir . '/app/Cities.php',
     'App\\Console\\Commands\\Inspire' => $baseDir . '/app/Console/Commands/Inspire.php',
