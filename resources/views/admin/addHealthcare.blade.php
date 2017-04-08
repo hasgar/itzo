@@ -86,7 +86,9 @@
 						<div class="col-md-12">
 							<div class="login-form-popup lp-border-radius-8">
 
-								<div class="siginupcontainer page-signup">
+								<div class="siginupcontainer page-signup" style="
+    padding-top: 12px;
+">
 
 
 
