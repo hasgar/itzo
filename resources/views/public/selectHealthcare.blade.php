@@ -128,7 +128,7 @@ $row_i=0; ?>
 								<div class="lp-grid-box-thumb-container">
 									<div class="lp-grid-box-thumb">
 										<a href="/healthcare/{{ $health['id'] }}/{{ urlencode($health['name']) }}">
-										<img src="images/healthcare/{{ $health['pro_pic'] }}" alt="grid-3" />
+										<img src="images/healthcare/{{ $health['photo'][count($health['photo']) - 1]['photo_url'] }}" alt="grid-3" />
 									</a>
 									</div><!-- ../grid-box-thumb -->
 

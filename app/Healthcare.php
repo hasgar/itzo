@@ -18,4 +18,8 @@ class Healthcare extends Model
   {
     return $this->hasMany('App\Cities', 'id', 'city_id');
   }
+  public function photo()
+  {
+    return $this->hasMany('App\Photos', 'healthcare_id', 'id');
+  }
 }
