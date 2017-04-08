@@ -157,7 +157,7 @@ class HealthcareController extends Controller
         $ratings = Ratings::where('healthcare_id', $request->id)->with(['user'])->orderBy('id', 'desc')->get();
         $fecilities = HealthcareFecilities::where('healthcare_id', $request->id)->with(['fecility'])->get();
 
-        return view('public.showHealthcare')->with('healthcare',$healthcare)->with('healthcare_types',$healthcare_types)->with('ratings',$ratings)->with('fecilities',$fecilities)->with('photos',$photos)->with('state',$state)->with('country',$country);
+        return view('public.showHealthcare')->with('healthcare',$healthcare)->with('healthcare_types',$healthcare_types)->with('ratings',$ratings)->with('fecilities',$fecilities)->with('state',$state)->with('country',$country);
 
     }
      public function addHealthcare() {
