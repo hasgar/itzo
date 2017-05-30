@@ -113,7 +113,7 @@
 									</span>
 									<span class="phone-number">
 
-										+{{$healthcare['country_code_phone'].$healthcare['mobile'] }}
+										+{{$healthcare['mobile'] }}
 									</span>
 								</li>
 
@@ -155,10 +155,11 @@
 					<div class="post-row">
 						<h3>About {{ $healthcare['name'] }}</h3>
 						<p>
+
 						<?php
-						if (strlen($healthcare['description']) > 800) { echo substr($healthcare['description'], 0, 798).".."; }
+						if (strlen($healthcare['description']) > 1200) { echo nl2br(e(substr($healthcare['description'], 0, 1198))).".."; }
 						else {
-							echo $healthcare['description'];
+							echo nl2br(e($healthcare['description']));
 						}
 						?>
 						</p>
@@ -344,7 +345,7 @@
 				<p>
 					<b>Name:</b> {{ $healthcare['contact_name'] }} <br>
 					<b>Email:</b> {{ $healthcare['contact_email'] }}<br>
-					<b>Fax:</b> {{ $healthcare['fax'] }}
+					<b>Phone:</b> {{ $healthcare['phone'] }}
 				</p>
 
 

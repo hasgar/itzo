@@ -173,15 +173,15 @@
 								<div class="col-md-6 col-sm-6  col-xs-12">
 									<div class="city-girds lp-border-radius-8">
 										<div class="city-thumb">
-											<img src="images/city/london.png" alt="london" />
+											<img src="images/AYURVEDA-NILAYAM-NURSING-HOME-AND-RESEARCH-CENTER.png" alt="AYURVEDA NILAYAM NURSING HOME AND RESEARCH CENTER" />
 										</div>
 										<div class="city-title text-center">
 											<h3 class="lp-h3">
-												<a href="/contact">Advertise here</a>
+												<a href="http://www.chikitzo.com/healthcare/299/AYURVEDA+NILAYAM+NURSING+HOME+AND+RESEARCH+CENTER">AYURVEDA NILAYAM </a>
 											</h3>
-											<label class="lp-listing-quantity">Contact us</label>
+											<label class="lp-listing-quantity">NURSING HOME AND RESEARCH CENTER</label>
 										</div>
-										<a href="/contact" class="overlay-link"></a>
+										<a href="http://www.chikitzo.com/healthcare/299/AYURVEDA+NILAYAM+NURSING+HOME+AND+RESEARCH+CENTER" class="overlay-link"></a>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">

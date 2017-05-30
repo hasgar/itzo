@@ -234,16 +234,17 @@ public function noPermission(){
         return view('admin.healthcares')->with('healthcares',$healthcares);
     }
     public function  paymentDoneComplete(Request $request) {
-      $user = Healthcare::where('id',$request->id)->update(['payment_done' => 1]);
-      $to = $user["email"];
+      Healthcare::where('id',$request->id)->update(['payment_done' => 1]);
+      $user = Healthcare::where('id',$request->id)->first();
+  $to = $user["email"];
 $subject = 'Chikitzo - Payment recieved!';
 $message = 'Hello '.$user["name"].' Team,
 
 Thanks for registering with us.
 
-We have received your payment.
+Your payment has been received and healthcare has been registered.
 
-Your healthcare is live at chikitzo now!
+Please visit www.chikitzo.com to view your listing
 
 Regards,
 Chikitzo Team';
@@ -427,8 +428,8 @@ mail($to, $subject, $message);
               'address' => $data['address'],
               'pin' => $data['pin'],
               'mobile' => $data['mobile'],
-              'phone' => $data['mobile'],
-              'fax' => $data['mobile'],
+              'phone' => $data['phone'],
+              'fax' => $data['fax'],
               'price' => $data['category'],
               'description' => $data['description'],
               'veg' => $data['food_veg'],
@@ -491,7 +492,7 @@ mail($to, $subject, $message);
         $photos = explode(',',$data['deleted_img']);
 $k = 0;
        while($k < count($photos)) {
-        Photos::where('id',$photos[$k])->delete();
+        Photos::where('id',$photos[$k])->forceDelete();
         $k++;
          }
 
@@ -522,9 +523,10 @@ if ($data->hasFile('photos')) {
             }
 
 }
-            //Healthcare::where('id',$data['healthcare_id'])->update(['pro_pic' => $pro_pic]);
+
+        //Healthcare::where('id',$data['healthcare_id'])->update(['pro_pic' => $pro_pic]);
         $types_count = Types::all()->count();
-        HealthcareTypes::where('healthcare_id',$data['healthcare_id'])->delete();
+        HealthcareTypes::where('healthcare_id',$data['healthcare_id'])->forceDelete();
         for($i = 1;$i <= $types_count ; $i++) {
         if($data["treatment_type_$i"] != "")
         {
@@ -677,9 +679,7 @@ if ($data->hasFile('photos')) {
     }
 
     public function addHealthcare() {
-         if (Auth::check()) {
-           Auth::logout();
-         }
+
          $countries = Countries::all();
          $areas = Area::all();
          $types = Types::all();
@@ -690,6 +690,15 @@ if ($data->hasFile('photos')) {
 
     public function createHealthcare(Request $data)
     {
+
+        $this->validate($data, [
+       'name' => 'required',
+       'email' => 'email|required|unique:users,email',
+       'state' => 'required',
+       'country' => 'required',
+       'city' => 'required',
+       'mobile' => 'required',
+     ]);
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -792,7 +801,7 @@ if ($data->hasFile('photos')) {
             if(!isset($data['accommodation_general'])) {
                 $data['accommodation_general'] = 0;
             }
-
+$otp = rand(999,9999);
            $healthcare = Healthcare::create([
             'name' => $data['name'],
             'user_id' => $user['id'],
@@ -923,14 +932,11 @@ $pro_pic = $fileName;
 
     Thanks for registering with us.
 
-    Your OTP is: '.$otp.'
-
     Regards,
     Chikitzo Team';
     $from = 'info@chikitzo.com';
 
-    mail($to, $subject, $message);
-
+    //mail($to, $subject, $message);
     return redirect('/admin/healthcares');
     }
 

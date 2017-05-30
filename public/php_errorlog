@@ -16,3 +16,5 @@
 [03-Apr-2017 17:42:24 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Input' not found in /home/chikitzo/chikitzo/app/Http/Controllers/UserController.php on line 499
 [03-Apr-2017 17:43:08 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Input' not found in /home/chikitzo/chikitzo/app/Http/Controllers/UserController.php on line 499
 [03-Apr-2017 17:44:12 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Input' not found in /home/chikitzo/chikitzo/app/Http/Controllers/UserController.php on line 499
+[08-Apr-2017 09:54:25 UTC] PHP Fatal error:  Trait 'App\SoftDeletes' not found in /home/chikitzo/chikitzo/app/Photos.php on line 9
+[27-May-2017 10:51:30 UTC] PHP Fatal error:  Call to a member function getClientOriginalExtension() on null in /home/chikitzo/chikitzo/app/Http/Controllers/Auth/AuthController.php on line 346

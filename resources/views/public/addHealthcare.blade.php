@@ -676,7 +676,7 @@
 											@endif
 										</div>
 										<div class="form-group {{ $errors->has('contact_name') ? ' has-error' : '' }}">
-											<label for="contact_name">Contact Person Name </label>
+											<label for="contact_name">Contact Person Name *</label>
 											<input type="text" class="form-control" name="contact_name" required id="contact_name" placeholder="Enter contact person name" value="{{ old('contact_name') }}">
 											@if ($errors->has('contact_name'))
 												<span class="help-block">
@@ -685,7 +685,7 @@
 											@endif
 										</div>
 										<div class="form-group {{ $errors->has('contact_email') ? ' has-error' : '' }}">
-											<label for="contact_email">Contact Person Email </label>
+											<label for="contact_email">Contact Person Email *</label>
 											<input type="text" class="form-control" name="contact_email" required id="contact_email" placeholder="Enter contact person email" value="{{ old('contact_email') }}">
 											@if ($errors->has('contact_email'))
 												<span class="help-block">

@@ -754,14 +754,14 @@
 									padding-top: 30px;
 									padding-left: 0px;
 									"><select class="form-control" id="country_code_mobile" name="country_code_mobile" >
-										<option value="{{ $healthcare[0]['country_code_mobile'] }}">+{{ $healthcare[0]['country_code_mobile'] }}</option>
-									<option value="91">+91 (IND)</option>
-									<option value="974">+974 (QAT)</option>
-									<option value="971">+971 (UAE)</option>
-									<option value="966">+966 (KSA)</option>
-									<option value="968">+968 (OMA)</option>
-									<option value="965">+965 (KWT)</option>
-									<option value="973">+973 (BAH)</option>
+										
+									<option value="91" @if($healthcare[0]['country_code_mobile'] == "91") selected @endif  >+91 (IND)</option>
+									<option value="974" @if($healthcare[0]['country_code_mobile'] == "974") selected @endif >+974 (QAT)</option>
+									<option value="971" @if($healthcare[0]['country_code_mobile'] == "971") selected @endif >+971 (UAE)</option>
+									<option value="966" @if($healthcare[0]['country_code_mobile'] == "966") selected @endif >+966 (KSA)</option>
+									<option value="968"@if($healthcare[0]['country_code_mobile'] == "968") selected @endif >+968 (OMA)</option>
+									<option value="965" @if($healthcare[0]['country_code_mobile'] == "965") selected @endif >+965 (KWT)</option>
+									<option value="973" @if($healthcare[0]['country_code_mobile'] == "973") selected @endif >+973 (BAH)</option>
 
 									</select></div><div class="col-md-9" style="
 									padding-left: 0px; padding-right: 0px;
@@ -779,15 +779,14 @@
 									padding-top: 30px;
 									padding-left: 0px;
 									"><select class="form-control" id="country_code_phone" name="country_code_phone">
-										<option value="{{ $healthcare[0]['country_code_phone'] }}">+{{ $healthcare[0]['country_code_phone'] }}</option>
-									<option value="91">+91 (IND)</option>
-									<option value="974">+974 (QAT)</option>
-									<option value="971">+971 (UAE)</option>
-									<option value="966">+966 (KSA)</option>
-									<option value="968">+968 (OMA)</option>
-									<option value="965">+965 (KWT)</option>
-									<option value="973">+973 (BAH)</option>
-
+										
+									<option value="91" @if($healthcare[0]['country_code_phone'] == "91") selected @endif  >+91 (IND)</option>
+									<option value="974" @if($healthcare[0]['country_code_phone'] == "974") selected @endif >+974 (QAT)</option>
+									<option value="971" @if($healthcare[0]['country_code_phone'] == "971") selected @endif >+971 (UAE)</option>
+									<option value="966" @if($healthcare[0]['country_code_phone'] == "966") selected @endif >+966 (KSA)</option>
+									<option value="968"@if($healthcare[0]['country_code_phone'] == "968") selected @endif >+968 (OMA)</option>
+									<option value="965" @if($healthcare[0]['country_code_phone'] == "965") selected @endif >+965 (KWT)</option>
+									<option value="973" @if($healthcare[0]['country_code_phone'] == "973") selected @endif >+973 (BAH)</option>
 									</select></div><div class="col-md-9" style="
 									padding-left: 0px; padding-right: 0px;
 									">
@@ -805,14 +804,13 @@
 									padding-top: 30px;
 									padding-left: 0px;
 									"><select class="form-control" id="country_code_fax" name="country_code_fax">
-										<option value="{{ $healthcare[0]['country_code_fax'] }}">+{{ $healthcare[0]['country_code_fax'] }}</option>
-									<option value="91">+91 (IND)</option>
-									<option value="974">+974 (QAT)</option>
-									<option value="971">+971 (UAE)</option>
-									<option value="966">+966 (KSA)</option>
-									<option value="968">+968 (OMA)</option>
-									<option value="965">+965 (KWT)</option>
-									<option value="973">+973 (BAH)</option>
+										<option value="91" @if($healthcare[0]['country_code_fax'] == "91") selected @endif  >+91 (IND)</option>
+									<option value="974" @if($healthcare[0]['country_code_fax'] == "974") selected @endif >+974 (QAT)</option>
+									<option value="971" @if($healthcare[0]['country_code_fax'] == "971") selected @endif >+971 (UAE)</option>
+									<option value="966" @if($healthcare[0]['country_code_fax'] == "966") selected @endif >+966 (KSA)</option>
+									<option value="968"@if($healthcare[0]['country_code_fax'] == "968") selected @endif >+968 (OMA)</option>
+									<option value="965" @if($healthcare[0]['country_code_fax'] == "965") selected @endif >+965 (KWT)</option>
+									<option value="973" @if($healthcare[0]['country_code_fax'] == "973") selected @endif >+973 (BAH)</option>
 
 									</select></div><div class="col-md-9" style="
 									padding-left: 0px; padding-right: 0px;

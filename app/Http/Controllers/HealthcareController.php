@@ -149,8 +149,8 @@ class HealthcareController extends Controller
     public function showHealthcare(Request $request) {
         $healthcare = Healthcare::where('id', $request->id)->where('is_approved', 1)->where('status', 1)->first();
 
-        $state = States::where('id', $healthcare[0]['state_id'])->first();
-            $country = Countries::where('id', $healthcare[0]['country_id'])->first();
+        $state = States::where('id', $healthcare['state_id'])->first();
+            $country = Countries::where('id', $healthcare['country_id'])->first();
 
         $healthcare_types = HealthcareTypes::where('healthcare_id',$request->id)->with(['types'])->get();
 
@@ -398,7 +398,7 @@ $booking = Booking::where('id',$request->id)->first();
         $photos = explode(',',$data['deleted_img']);
 $k = 0;
        while($k < count($photos)) {
-        Photos::where('id',$photos[$k])->delete();
+        Photos::where('id',$photos[$k])->forceDelete();
         $k++;
          }
 
@@ -429,9 +429,9 @@ if ($data->hasFile('photos')) {
             }
 
 }
-            //Healthcare::where('id',$data['healthcare_id'])->update(['pro_pic' => $pro_pic]);
+        //Healthcare::where('id',$data['healthcare_id'])->update(['pro_pic' => $pro_pic]);
         $types_count = Types::all()->count();
-        HealthcareTypes::where('healthcare_id',$data['healthcare_id'])->delete();
+        HealthcareTypes::where('healthcare_id',$data['healthcare_id'])->forceDelete();
         for($i = 1;$i <= $types_count ; $i++) {
         if($data["treatment_type_$i"] != "")
         {
